@@ -8,11 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 class Form extends React.Component {
 
     state = {
-        id: 0,
+        id: "",
         name: "",
-        currentQuantity: 0,
-        minimalQuantity: 0,
-        maximalQuantity: 0,
+        currentQuantity: "",
+        minimalQuantity: "",
+        maximalQuantity: "",
         editItem: false,
     };
 
@@ -36,7 +36,6 @@ class Form extends React.Component {
     };
 
     notify = () => {
-
         toast.success("Dodano", {
             position: toast.POSITION.TOP_CENTER
         });
@@ -59,7 +58,7 @@ class Form extends React.Component {
                                        name="name"
                                        type="text"
                                        value={this.state.name}
-                                       placeholder="name"/>
+                                       placeholder=""/>
                                 <label className={styles.label} htmlFor="name">
                                     name
                                 </label>
@@ -71,31 +70,29 @@ class Form extends React.Component {
                                        name="currentQuantity"
                                        type="number"
                                        value={this.state.currentQuantity}
-                                       placeholder="current quantity"/>
+                                       placeholder=""/>
                                 <label className={styles.label} htmlFor="currentQuantity">
                                     current quantity
                                 </label>
                             </div>
                             <div className={styles.formItem}>
-
                                 <input className={styles.input}
                                        onChange={this.handleInputChange}
                                        name="minimalQuantity"
                                        type="number"
                                        value={this.state.minimalQuantity}
-                                       placeholder="minimal quantity"/>
+                                       placeholder=""/>
                                 <label className={styles.label} htmlFor="minimalQuantity">
                                     minimal quantity
                                 </label>
                             </div>
                             <div className={styles.formItem}>
-
                                 <input className={styles.input}
                                        onChange={this.handleInputChange}
                                        name="maximalQuantity"
                                        type="number"
                                        value={this.state.maximalQuantity}
-                                       placeholder="maximal quantity"/>
+                                       placeholder=""/>
                                 <label className={styles.label} htmlFor="maximalQuantity">
                                     maximal quantity
                                 </label>

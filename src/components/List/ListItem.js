@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './ListItem.module.scss'
-import Bar from './Bar'
 
-const ListItem = ({name, id, currentQuantity, decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
+const ListItem = ({name, id, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
     <li className={styles.wrapper}>
         <h3>{name}</h3>
-        <h6>{currentQuantity}</h6>
-        <Bar/>
+        <span>{`${currentQuantity} / ${maximalQuantity} szt`}</span>
         <button onClick={deleteItem}>Usun</button>
 
         {toEdit ? (
