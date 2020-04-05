@@ -29,13 +29,14 @@ class Form extends React.Component {
         this.setState({
             id: 0,
             name: "",
-            currentQuantity: 0,
-            minimalQuantity: 0,
-            maximalQuantity: 0,
+            currentQuantity: "",
+            minimalQuantity: "",
+            maximalQuantity: "",
         });
     };
 
     notify = () => {
+
         toast.success("Dodano", {
             position: toast.POSITION.TOP_CENTER
         });
