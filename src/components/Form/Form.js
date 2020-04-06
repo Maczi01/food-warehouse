@@ -13,12 +13,10 @@ class Form extends React.Component {
         currentQuantity: "",
         minimalQuantity: "",
         maximalQuantity: "",
-        editItem: false,
     };
 
     handleInputChange = e => {
         this.setState({
-            [e.id]: uuidv4(),
             [e.target.name]: e.target.value,
         });
     };

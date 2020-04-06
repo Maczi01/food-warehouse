@@ -8,7 +8,7 @@ const MainView = () => (
             <List items={context.foodList}
                   deleteItem={context.deleteItem}
                   toEdit={false}
-
+                  shop={true}
             />
         )}
     </AppContext.Consumer>

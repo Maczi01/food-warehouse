@@ -12,7 +12,11 @@ const ListView = () => (
                 context.foodList.filter((item) => (
                     item.currentQuantity < item.minimalQuantity
                 )).map(item =>
-                    <ListItem {...item} key={item.id}/>))}
+                    <ListItem {...item}
+                              key={item.id}
+                              shop={false}
+                    />)
+            )}
         </AppContext.Consumer>
     </>
 );

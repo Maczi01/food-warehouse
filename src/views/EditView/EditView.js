@@ -11,6 +11,7 @@ const EditView = () => (
                   increaseQuantity={context.increaseQuantity}
                   editName={context.editName}
                   toEdit={true}
+                  shop={true}
             />
         )}
     </AppContext.Consumer>

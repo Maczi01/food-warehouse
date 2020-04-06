@@ -9,6 +9,7 @@ import EditView from "../EditView/EditView";
 import SettingsView from "../SettingsView/Settings";
 import AppContext from "../../context/context";
 import 'react-toastify/dist/ReactToastify.css';
+import {v4 as uuidv4} from 'uuid';
 
 class Root extends React.Component {
 
@@ -19,6 +20,7 @@ class Root extends React.Component {
     addItem = (e, newItem) => {
         e.preventDefault();
         this.setState(prevState => {
+            newItem.id = uuidv4()
             const newState = {
                 foodList: [...prevState.foodList, newItem]
             };
