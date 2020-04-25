@@ -14,7 +14,24 @@ import {v4 as uuidv4} from 'uuid';
 class Root extends React.Component {
 
     state = {
-        foodList: [],
+        foodList: [
+            {
+                name: "kawiarka",
+                currentQuantity: 10,
+                category: "pieczywo",
+                maximalQuantity: 12,
+                minimalQuantity: 5,
+                toEdit: false,
+            },
+            {
+                name: "babka piaskowa",
+                category: "slodycze i przekąski",
+                currentQuantity: 10,
+                maximalQuantity: 12,
+                minimalQuantity: 5,
+                toEdit: false,
+            }
+        ],
     };
 
     addItem = (e, newItem) => {

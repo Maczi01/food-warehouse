@@ -34,7 +34,6 @@ class Form extends React.Component {
     };
 
     notify = () => {
-
         toast.success("Dodano", {
             position: toast.POSITION.TOP_CENTER
         });
