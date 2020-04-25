@@ -1,6 +1,7 @@
 import React from 'react';
 import ListItem from "./ListItem";
 import styled from "styled-components";
+import theme from "../../theme/theme";
 
 const UlWrapper = styled.ul`
   width: 75vw;
@@ -8,20 +9,21 @@ const UlWrapper = styled.ul`
 `
 
 const CategoryWrapper = styled.div`
-  margin-top: 30px;
+  margin: 0 auto;
   height: 70px;
   display: flex;
+  width: 75vw;
   align-items: center;
   justify-content: center;
-  background-color: #00214D;
-  color: white;
+  background-color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.white};
 `
 
 
 const List = ({items, shop, deleteItem, decreaseQuantity, increaseQuantity, editName, toEdit}) => {
     return (
         <>
-            <CategoryWrapper>Pieczywo </CategoryWrapper>
+            <CategoryWrapper>Pieczywo</CategoryWrapper>
             <UlWrapper>
                 {items.map(item => (
                     <ListItem {...item}

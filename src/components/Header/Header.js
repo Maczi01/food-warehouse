@@ -3,27 +3,25 @@ import logo from '../../asstets/img/logo.svg';
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import settings from "../../asstets/img/settings.svg";
+import theme from "../../theme/theme";
 
 const HeaderWrapper = styled.nav`
   display: flex;
   justify-content: space-between; 
-  //grid-template-columns: 120px 1fr 100px;
   align-items: center;
-  //padding: 30px 60px;
   height: 70px;
-  background-color: #00214D;
+  background-color: ${theme.colors.blue};
+  margin-bottom: 30px;
 `
 
-const StyledLogoLink = styled(NavLink)`
+const StyledLogoLink = styled.div`
     display: block;
     width: 67px;
     height: 67px;
     background-image: url(${logo});
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    //background-size: 80%;
     border: none;
-    //margin-bottom: 10vh;
 `;
 
 const List = styled.li`
@@ -40,20 +38,21 @@ const ListItem = styled.li`
   text-decoration: none;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${theme.colors.white};
   &.active {
-    background-color: red;
+    background-color: ${theme.colors.darkblue};
   }
 `
 
 const Header = () => (
     <HeaderWrapper>
         <List>
-            <ListItem><StyledLogoLink exact to="/"/></ListItem>
-            <ListItem as={NavLink} to="/edit" activeclass="active">edytuj </ListItem>
-            <ListItem as={NavLink} to="/add" activeclass="active">dodaj </ListItem>
-            <ListItem as={NavLink} to="/list" activeclass="active">lista </ListItem>
-            <ListItem as={NavLink} to="/settings" activeclass="active"><img src={settings}/></ListItem>
+            <ListItem as={NavLink} exact to="/"><StyledLogoLink/></ListItem>
+            <ListItem as={NavLink} to="/edit" activeclass="active">Sprawdź zapasy</ListItem>
+            <ListItem as={NavLink} to="/add" activeclass="active">Dodaj produkt</ListItem>
+            <ListItem as={NavLink} to="/list" activeclass="active">Lista zakupów</ListItem>
+            <ListItem as={NavLink} to="/settings" activeclass="active"><img src={settings}
+                                                                            alt="Settings icon"/></ListItem>
         </List>
     </HeaderWrapper>
 );

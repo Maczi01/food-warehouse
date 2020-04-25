@@ -10,34 +10,101 @@ import SettingsView from "../SettingsView/Settings";
 import AppContext from "../../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
+import {ThemeProvider} from "styled-components";
+import {theme} from '../../theme/theme'
 
 class Root extends React.Component {
-
     state = {
         foodList: [
             {
                 name: "kawiarka",
-                currentQuantity: 10,
+                currentQuantity: 1,
                 category: "pieczywo",
-                maximalQuantity: 12,
+                maximalQuantity: 10,
                 minimalQuantity: 5,
                 toEdit: false,
             },
             {
                 name: "babka piaskowa",
                 category: "slodycze i przekąski",
-                currentQuantity: 10,
-                maximalQuantity: 12,
+                currentQuantity: 2,
+                maximalQuantity: 10,
                 minimalQuantity: 5,
                 toEdit: false,
-            }
+            },
+            {
+                name: "czekolada",
+                category: "slodycze i przekąski",
+                currentQuantity: 3,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },
+            {
+                name: "polędwica",
+                category: "slodycze i przekąski",
+                currentQuantity: 4,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },{
+                name: "pistacja",
+                category: "slodycze i przekąski",
+                currentQuantity: 5,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },{
+                name: "pistacja",
+                category: "slodycze i przekąski",
+                currentQuantity: 6,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },{
+                name: "chipsy",
+                category: "slodycze i przekąski",
+                currentQuantity: 7,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },{
+                name: "draże",
+                category: "slodycze i przekąski",
+                currentQuantity: 8,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },{
+                name: "draże",
+                category: "slodycze i przekąski",
+                currentQuantity: 9,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },{
+                name: "draże",
+                category: "slodycze i przekąski",
+                currentQuantity: 10,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },{
+                name: "draże",
+                category: "slodycze i przekąski",
+                currentQuantity: 9,
+                maximalQuantity: 10,
+                minimalQuantity: 5,
+                toEdit: false,
+            },
         ],
     };
 
     addItem = (e, newItem) => {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState(prevState => {
-            newItem.id = uuidv4()
+            newItem.id = uuidv4();
+            console.log(newItem)
             const newState = {
                 foodList: [...prevState.foodList, newItem]
             };
@@ -124,16 +191,18 @@ class Root extends React.Component {
 
         return (
             <BrowserRouter>
-                <AppContext.Provider value={contextElements}>
-                    <Header/>
-                    <Switch>
-                        <Route exact path="/" component={MainView}/>
-                        <Route path="/list" component={ListView}/>
-                        <Route path="/add" component={AddView}/>
-                        <Route path="/edit" component={EditView}/>
-                        <Route path="/settings" component={SettingsView}/>
-                    </Switch>
-                </AppContext.Provider>
+                <ThemeProvider theme={theme}>
+                    <AppContext.Provider value={contextElements}>
+                        <Header/>
+                        <Switch>
+                            <Route exact path="/" component={MainView}/>
+                            <Route path="/list" component={ListView}/>
+                            <Route path="/add" component={AddView}/>
+                            <Route path="/edit" component={EditView}/>
+                            <Route path="/settings" component={SettingsView}/>
+                        </Switch>
+                    </AppContext.Provider>
+                </ThemeProvider>
             </BrowserRouter>
         );
     }
