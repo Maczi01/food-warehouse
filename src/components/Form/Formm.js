@@ -26,7 +26,7 @@ const FormWrapper = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-      margin-top: 20px;
+      margin: 20px 0 20px 0;
       display: flex;
       justify-content: flex-end
 `
@@ -44,7 +44,7 @@ const StyledInput = styled.input`
     border: 1px solid white;
     width: 300px;
     border-radius: 3px;
-    margin: 8px;
+    margin: 6px;
     text-align: center;
     font-size: 18px;
     color: black;
@@ -73,7 +73,7 @@ const StyledLabel = styled.label`
       font-size: 16px;
       height: 70px;
       width: 300px;
-      margin: 8px;
+      margin: 6px;
       display: flex;
       text-decoration: none;
       align-items: center;
@@ -117,7 +117,7 @@ class Formm extends React.Component {
     render() {
         return (
             <FormWrapper>
-                <h2>Dodaj nowy produkt</h2>
+                <h3>Dodaj nowy produkt</h3>
                 <Formik
                     initialValues={{name: 'xxx', currentQuantity: '', minimalQuantity: '', maximalQuantity: ''}}
                     onSubmit={this.handleSubmitForm}

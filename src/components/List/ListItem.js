@@ -2,7 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import edit from "../../asstets/img/edit.svg";
 import remove from "../../asstets/img/remove.svg";
-// import theme from "../../theme/theme";
+import plus from "../../asstets/img/plus.svg";
+import minus from "../../asstets/img/minus.svg";
 
 const ItemWraper = styled.li`
     display: flex;
@@ -22,7 +23,12 @@ const NameWrapper = styled.span`
 const StyledButton = styled.img`
     margin: 0 30px;
     margin-bottom: 20px;
-    :hover { transform: scale(1.2); }
+    height: 40px;
+    width: 40px;
+    :hover { transform: scale(1.05); }
+     :active {
+    transform: translateY(4px);
+   }
 `
 
 const QuantityWrapper = styled.span`
@@ -46,7 +52,7 @@ const QuantityBarInside = styled.div`
     background-color: ${({theme}) => theme.colors.green};
 `
 
-const ListItem = ({name,children, id, shop, currentQuantity, maximalQuantity, typeOfUnit = "szt", decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
+const ListItem = ({name, children, id, shop, currentQuantity, maximalQuantity, typeOfUnit = "szt", decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
     <ItemWraper>
         <NameWrapper>{name}</NameWrapper>
         {shop ? (
@@ -54,8 +60,10 @@ const ListItem = ({name,children, id, shop, currentQuantity, maximalQuantity, ty
                 <QuantityWrapper>{currentQuantity} z {maximalQuantity} {typeOfUnit}</QuantityWrapper>
                 <QuantityBarOutside><QuantityBarInside
                     style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/></QuantityBarOutside>
-                <StyledButton src={edit}/>
-                <StyledButton src={remove}/>
+                <StyledButton src={minus} onClick={decreaseQuantity}/>
+                <StyledButton src={plus} onClick={increaseQuantity}/>
+                <StyledButton src={edit} onClick={editName}/>
+                <StyledButton src={remove} onClick={deleteItem}/>
             </>
         ) : null}
         {children}

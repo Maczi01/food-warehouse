@@ -11,7 +11,7 @@ const HeaderWrapper = styled.nav`
   align-items: center;
   height: 70px;
   background-color: ${theme.colors.blue};
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `
 
 const StyledLogoLink = styled.div`

@@ -17,6 +17,7 @@ const ListWrapper = styled.div`
       flex-direction: column;
       margin: 0 auto;
       width: 60vw;
+      font-size: 14px;
       //height: 90vh;
       //position: fixed;
 `;
@@ -34,9 +35,8 @@ const ListView = () => (
                     <ListItem {...item}
                               key={item.id}
                               shop={false}
-                              unit="szt."
                               categry="Pieczywo"
-                    >{item.maximalQuantity - item.currentQuantity} {item.category}</ListItem>)
+                    >{item.maximalQuantity - item.currentQuantity} </ListItem>)
             )}
         </AppContext.Consumer>
     </ListWrapper>
