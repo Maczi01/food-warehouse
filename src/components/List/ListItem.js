@@ -36,25 +36,33 @@ const QuantityWrapper = styled.span`
 const QuantityBarOutside = styled.div`
     margin: 0 auto;
     width: 30vw;
-    border: 4px solid ${({ theme }) => theme.colors.blue};
+    border: 4px solid ${({theme}) => theme.colors.blue};
     height: 30px;
     margin-bottom: 20px;
     padding: 4px;
 `
 const QuantityBarInside = styled.div`
     height: 100%;
-    background-color: ${({ theme }) => theme.colors.green};
+    background-color: ${({theme}) => theme.colors.green};
 `
 
-const ListItem = ({name, id, shop, currentQuantity, maximalQuantity, typeOfUnit = "szt", decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
+const ListItem = ({name,children, id, shop, currentQuantity, maximalQuantity, typeOfUnit = "szt", decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
     <ItemWraper>
         <NameWrapper>{name}</NameWrapper>
-        <QuantityWrapper>{currentQuantity} z {maximalQuantity} {typeOfUnit}</QuantityWrapper>
-        <QuantityBarOutside><QuantityBarInside  style={{width: `${(currentQuantity/maximalQuantity)*100}%`}}/></QuantityBarOutside>
-
-        <StyledButton src={edit}/>
-        {shop ? (<StyledButton src={remove}/>
+        {shop ? (
+            <>
+                <QuantityWrapper>{currentQuantity} z {maximalQuantity} {typeOfUnit}</QuantityWrapper>
+                <QuantityBarOutside><QuantityBarInside
+                    style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/></QuantityBarOutside>
+                <StyledButton src={edit}/>
+                <StyledButton src={remove}/>
+            </>
         ) : null}
+        {children}
+
+        {/*<StyledButton src={edit}/>*/}
+        {/*{shop ? (<StyledButton src={remove}/>*/}
+        {/*) : null}*/}
 
 
     </ItemWraper>

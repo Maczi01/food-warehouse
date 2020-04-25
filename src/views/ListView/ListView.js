@@ -3,10 +3,27 @@ import AppContext from "../../context/context";
 import ListItem from "../../components/List/ListItem";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../../asstets/img/bag.svg';
+import styled from "styled-components";
+
+const ListWrapper = styled.div`
+      //padding: 70px 80px 50px;
+      //top: 50%;
+      //transform: translateY(-50%);
+      //left: 0;
+      //right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 auto;
+      width: 60vw;
+      //height: 90vh;
+      //position: fixed;
+`;
 
 
 const ListView = () => (
-    <>
+    <ListWrapper>
         <h1>Lista zakupów</h1>
         <img src={bag} alt="shoping bag"/>
         <AppContext.Consumer>
@@ -17,10 +34,12 @@ const ListView = () => (
                     <ListItem {...item}
                               key={item.id}
                               shop={false}
-                    />)
+                              unit="szt."
+                              categry="Pieczywo"
+                    >{item.maximalQuantity - item.currentQuantity} {item.category}</ListItem>)
             )}
         </AppContext.Consumer>
-    </>
+    </ListWrapper>
 );
 
 export default ListView;

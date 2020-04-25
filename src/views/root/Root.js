@@ -24,6 +24,7 @@ class Root extends React.Component {
         // e.preventDefault();
         this.setState(prevState => {
             newItem.id = uuidv4();
+            newItem.category = "Pieczywo";
             console.log(newItem)
             const newState = {
                 foodList: [...prevState.foodList, newItem]
@@ -31,6 +32,7 @@ class Root extends React.Component {
             localStorage.setItem("list", JSON.stringify(newState));
             return newState
         });
+        console.log(this.state)
     };
 
     handleDelete = id => {
