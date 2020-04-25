@@ -16,87 +16,7 @@ import {theme} from '../../theme/theme'
 class Root extends React.Component {
     state = {
         foodList: [
-            {
-                name: "kawiarka",
-                currentQuantity: 1,
-                category: "pieczywo",
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },
-            {
-                name: "babka piaskowa",
-                category: "slodycze i przekąski",
-                currentQuantity: 2,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },
-            {
-                name: "czekolada",
-                category: "slodycze i przekąski",
-                currentQuantity: 3,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },
-            {
-                name: "polędwica",
-                category: "slodycze i przekąski",
-                currentQuantity: 4,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },{
-                name: "pistacja",
-                category: "slodycze i przekąski",
-                currentQuantity: 5,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },{
-                name: "pistacja",
-                category: "slodycze i przekąski",
-                currentQuantity: 6,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },{
-                name: "chipsy",
-                category: "slodycze i przekąski",
-                currentQuantity: 7,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },{
-                name: "draże",
-                category: "slodycze i przekąski",
-                currentQuantity: 8,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },{
-                name: "draże",
-                category: "slodycze i przekąski",
-                currentQuantity: 9,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },{
-                name: "draże",
-                category: "slodycze i przekąski",
-                currentQuantity: 10,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },{
-                name: "draże",
-                category: "slodycze i przekąski",
-                currentQuantity: 9,
-                maximalQuantity: 10,
-                minimalQuantity: 5,
-                toEdit: false,
-            },
+
         ],
     };
 
@@ -109,7 +29,6 @@ class Root extends React.Component {
                 foodList: [...prevState.foodList, newItem]
             };
             localStorage.setItem("list", JSON.stringify(newState));
-
             return newState
         });
     };

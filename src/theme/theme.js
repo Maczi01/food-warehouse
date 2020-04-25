@@ -5,7 +5,8 @@ export const theme = {
         green: '#00EBC7',
         blue:'#00214D',
         darkblue:'#2D5283',
-        white: '#FFFFFE'
+        white: '#FFFFFE',
+        gray: '#E5E5E5'
     },
     fontFamily: {
         primary: `'Red Hat Display', sans-serif`,

@@ -52,10 +52,10 @@ const ListItem = ({name, id, shop, currentQuantity, maximalQuantity, typeOfUnit 
         <QuantityWrapper>{currentQuantity} z {maximalQuantity} {typeOfUnit}</QuantityWrapper>
         <QuantityBarOutside><QuantityBarInside  style={{width: `${(currentQuantity/maximalQuantity)*100}%`}}/></QuantityBarOutside>
 
+        <StyledButton src={edit}/>
         {shop ? (<StyledButton src={remove}/>
         ) : null}
 
-        <StyledButton src={edit}/>
 
     </ItemWraper>
 );
