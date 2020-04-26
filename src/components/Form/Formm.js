@@ -96,16 +96,16 @@ class Formm extends React.Component {
         });
     };
 
-    handleSubmitForm = e => {
+    handleSubmitForm = () => {
         const {addItem} = this.props
-        addItem(e, this.state);
-        this.setState({
-            id: 0,
-            name: "",
-            currentQuantity: "",
-            minimalQuantity: "",
-            maximalQuantity: "",
-        });
+        addItem(this.state);
+        // this.setState({
+        //     id: 0,
+        //     name: "",
+        //     currentQuantity: "",
+        //     minimalQuantity: "",
+        //     maximalQuantity: "",
+        // });
     };
 
     notify = () => {
