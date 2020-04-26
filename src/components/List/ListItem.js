@@ -68,10 +68,6 @@ const ListItem = ({name, children, id, shop, currentQuantity, maximalQuantity, t
         ) : null}
         {children}
 
-        {/*<StyledButton src={edit}/>*/}
-        {/*{shop ? (<StyledButton src={remove}/>*/}
-        {/*) : null}*/}
-
 
     </ItemWraper>
 );

@@ -1,11 +1,10 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from "../../components/Header/Header";
 import "./index.css";
 import MainView from '../MainView/MainView'
 import ListView from "../ListView/ListView";
 import AddView from "../AddView/AddView";
-import EditView from "../EditView/EditView";
 import SettingsView from "../SettingsView/Settings";
 import AppContext from "../../context/context";
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,9 +14,7 @@ import {theme} from '../../theme/theme'
 
 class Root extends React.Component {
     state = {
-        foodList: [
-
-        ],
+        foodList: [],
     };
 
     addItem = (e, newItem) => {
@@ -119,7 +116,7 @@ class Root extends React.Component {
                             <Route exact path="/" component={MainView}/>
                             <Route path="/list" component={ListView}/>
                             <Route path="/add" component={AddView}/>
-                            <Route path="/edit" component={EditView}/>
+                            {/*<Route path="/edit" component={EditView}/>*/}
                             <Route path="/settings" component={SettingsView}/>
                         </Switch>
                     </AppContext.Provider>

@@ -26,7 +26,10 @@ const MainView = () => (
 
                 <List items={context.foodList}
                       deleteItem={context.deleteItem}
-                      toEdit={false}
+                      decreaseQuantity={context.decreaseQuantity}
+                      increaseQuantity={context.increaseQuantity}
+                      editName={context.editName}
+                      toEdit={true}
                       shop={true}
                 />
             </ViewWrapper>
