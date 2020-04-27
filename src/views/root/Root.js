@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from "../../components/Header/Header";
 import "./index.css";
@@ -13,10 +13,6 @@ import {ThemeProvider} from "styled-components";
 import {theme} from '../../theme/theme'
 import firebase from "../../firebase/firebase";
 
-// class Root extends React.Component {
-// state = {
-//     foodList: [],
-// };
 const Root = () => {
 
     const [foodList, setFoodList] = React.useState([]);
@@ -33,16 +29,6 @@ const Root = () => {
         return unSubscribe;
     }, []);
 
-
-    // React.useEffect(() => {
-    //     const fetchData = async () => {
-    //         const db = firebase.firestore();
-    //         const data = await db.collection("foodList").get();
-    //         setFoodList(data.docs.map(doc => ({...doc.data(), id: doc.id})));
-    //     };
-    //     fetchData();
-    // }, []);
-
     const addItem = (newItem) => {
         newItem.id = uuidv4();
         newItem.category = "Pieczywo";
@@ -51,13 +37,15 @@ const Root = () => {
     };
 
     const increaseQuantity = (item) => {
-        const db = firebase.firestore()
-        db.collection("foodList").doc(item.id).update({currentQuantity: item.currentQuantity++});
+        const db = firebase.firestore();
+        const increment = firebase.firestore.FieldValue.increment(+1)
+        db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) + 1});
     };
 
     const decreaseQuantity = (item) => {
-        const db = firebase.firestore();
-        db.collection("foodList").doc(item.id).update({currentQuantity: item.currentQuantity--})
+        const db = firebase.firestore()
+        const decreament = firebase.firestore.FieldValue.increment(-1)
+        db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});
     };
 
     const editName = (item) => {
@@ -69,20 +57,6 @@ const Root = () => {
         //     ...foodList.map(item =>
         //         item.id === id ? {item.name = result} : {item})
         // })
-
-
-        // const itemToIncrease = this.state.foodList.find(item => item.id === id);
-        // itemToIncrease.name = result;
-        // this.setState(prevState => {
-        //     const newState = {
-        //         foodList: [
-        //             ...prevState.foodList.map(item =>
-        //                 item.id === id ? itemToIncrease : item)]
-        //     };
-        //     localStorage.setItem("list", JSON.stringify(newState));
-        //
-        //     return newState
-        // });
     }
 
     // componentDidMount() {
@@ -96,7 +70,6 @@ const Root = () => {
     }
     // render() {
     const contextElements = {
-        // ...this.state,
         foodList: foodList,
         deleteItem: handleDelete,
         addItem: addItem,
@@ -114,7 +87,6 @@ const Root = () => {
                         <Route exact path="/" component={MainView}/>
                         <Route path="/list" component={ListView}/>
                         <Route path="/add" component={AddView}/>
-                        {/*<Route path="/edit" component={EditView}/>*/}
                         <Route path="/settings" component={SettingsView}/>
                     </Switch>
                 </AppContext.Provider>

@@ -85,9 +85,9 @@ class Formm extends React.Component {
     state = {
         id: "",
         name: "",
-        currentQuantity: "",
-        minimalQuantity: "",
-        maximalQuantity: "",
+        currentQuantity: 0,
+        minimalQuantity: 0,
+        maximalQuantity: 0,
     };
 
     handleInputChange = e => {
@@ -99,7 +99,13 @@ class Formm extends React.Component {
     handleSubmitForm = () => {
         const {addItem} = this.props
         addItem(this.state);
-
+        this.setState({
+            id: 0,
+            name: "",
+            currentQuantity: "",
+            minimalQuantity: "",
+            maximalQuantity: "",
+        });
     };
 
     notify = () => {
@@ -113,7 +119,7 @@ class Formm extends React.Component {
             <FormWrapper>
                 <h3>Dodaj nowy produkt</h3>
                 <Formik
-                    initialValues={{name: 'xxx', currentQuantity: '', minimalQuantity: '', maximalQuantity: ''}}
+                    initialValues={{name: 'xxx', currentQuantity: 0, minimalQuantity: '', maximalQuantity: ''}}
                     onSubmit={this.handleSubmitForm}
                 >
                     {() => (
