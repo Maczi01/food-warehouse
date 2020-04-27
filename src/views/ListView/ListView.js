@@ -4,6 +4,8 @@ import ListItem from "../../components/List/ListItem";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../../asstets/img/bag.svg';
 import styled from "styled-components";
+import Modal from "../../components/Modal";
+import Formm from "../../components/Form/Formm";
 
 const ListWrapper = styled.div`
       //padding: 70px 80px 50px;

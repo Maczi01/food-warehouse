@@ -44,9 +44,9 @@ const List = ({items, shop, deleteItem, decreaseQuantity, increaseQuantity, edit
                                   deleteItem={() => deleteItem(item.id)}
                                   toEdit={toEdit}
                                   shop={shop}
-                                  decreaseQuantity={() => decreaseQuantity(item.id)}
-                                  increaseQuantity={() => increaseQuantity(item.id)}
-                                  editName={() => editName(item.id)
+                                  decreaseQuantity={() => decreaseQuantity(item)}
+                                  increaseQuantity={() => increaseQuantity(item)}
+                                  editName={() => editName(item)
                                   }/>
                     )) :
                     <InfoWrapper>Pusta spizarnia!</InfoWrapper>

@@ -22,13 +22,26 @@ const Root = () => {
     const [foodList, setFoodList] = React.useState([]);
 
     React.useEffect(() => {
-        const fetchData = async () => {
-            const db = firebase.firestore();
-            const data = await db.collection("foodList").get();
-            setFoodList(data.docs.map(doc => ({...doc.data(), id: doc.id})));
-        };
-        fetchData();
+        const db = firebase.firestore();
+        const unSubscribe = db.collection("foodList").onSnapshot(
+            (snapshot) => {
+                const foodListData = []
+                snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
+                setFoodList(foodListData)
+            }
+        );
+        return unSubscribe;
     }, []);
+
+
+    // React.useEffect(() => {
+    //     const fetchData = async () => {
+    //         const db = firebase.firestore();
+    //         const data = await db.collection("foodList").get();
+    //         setFoodList(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+    //     };
+    //     fetchData();
+    // }, []);
 
     const addItem = (newItem) => {
         newItem.id = uuidv4();
@@ -38,18 +51,19 @@ const Root = () => {
     };
 
     const increaseQuantity = (item) => {
-        const db = firebase.firestore();
-        db.collection("foodList").doc(item.id).set({...item, currentQuantity: item.currentQuantity++})
+        const db = firebase.firestore()
+        db.collection("foodList").doc(item.id).update({currentQuantity: item.currentQuantity++});
     };
 
     const decreaseQuantity = (item) => {
         const db = firebase.firestore();
-        db.collection("foodList").doc(item.id).set({...item, currentQuantity: item.currentQuantity--})
+        db.collection("foodList").doc(item.id).update({currentQuantity: item.currentQuantity--})
     };
 
-    const editName = (id) => {
+    const editName = (item) => {
         const result = prompt('Change the name');
-
+        const db = firebase.firestore();
+        db.collection("foodList").doc(item.id).update({name: item.name = result})
         // const db = firebase.firestore();
         // db.collection("foodList").doc(id).set({
         //     ...foodList.map(item =>
