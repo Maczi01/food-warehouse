@@ -31,93 +31,55 @@ const Root = () => {
     }, []);
 
     const addItem = (newItem) => {
-
-        // e.preventDefault();
-        // this.setState(prevState => {
         newItem.id = uuidv4();
         newItem.category = "Pieczywo";
-
-        console.log(newItem)
         const db = firebase.firestore();
         db.collection("foodList").add(newItem);
-
-        //     const newState = {
-        //         foodList: [...prevState.foodList, newItem]
-        //     };
-        //     localStorage.setItem("list", JSON.stringify(newState));
-        //     return newState
-        // });
-        // console.log(this.state)
     };
 
-    const handleDelete = id => {
-        const res = window.confirm('Do you want to delete this item?');
+    const increaseQuantity = (item) => {
         const db = firebase.firestore();
-        db.collection("foodList").doc(id).delete()
+        db.collection("foodList").doc(item.id).set({...item, currentQuantity: item.currentQuantity++})
+    };
 
-        // if (res) {
-        //     this.setState(prevState => {
-        //         const newState = {
-        //             foodList: [
-        //                 ...prevState.foodList.filter(item => item.id !== id)]
-        //         };
-        //         localStorage.setItem("list", JSON.stringify(newState));
-        //         return newState
-        //     });
-        // }
-    }
-
-    const increaseQuantity = (id) => {
-        const itemDecrease = this.state.foodList.find(item => item.id === id);
-        itemDecrease.currentQuantity++;
-        this.setState(prevState => {
-            const newState = {
-                foodList: [
-                    ...prevState.foodList.map(item =>
-                        item.id === id ? itemDecrease : item)]
-            };
-            localStorage.setItem("list", JSON.stringify(newState));
-
-            return newState
-        });
-    }
-
-    const decreaseQuantity = (id) => {
-        const itemDecrease = this.state.foodList.find(item => item.id === id);
-        itemDecrease.currentQuantity--;
-        this.setState(prevState => {
-            const newState = {
-                foodList: [
-                    ...prevState.foodList.map(item =>
-                        item.id === id ? itemDecrease : item)]
-            };
-            localStorage.setItem("list", JSON.stringify(newState));
-
-            return newState
-        });
-    }
+    const decreaseQuantity = (item) => {
+        const db = firebase.firestore();
+        db.collection("foodList").doc(item.id).set({...item, currentQuantity: item.currentQuantity--})
+    };
 
     const editName = (id) => {
         const result = prompt('Change the name');
-        const itemToIncrease = this.state.foodList.find(item => item.id === id);
-        itemToIncrease.name = result;
-        this.setState(prevState => {
-            const newState = {
-                foodList: [
-                    ...prevState.foodList.map(item =>
-                        item.id === id ? itemToIncrease : item)]
-            };
-            localStorage.setItem("list", JSON.stringify(newState));
 
-            return newState
-        });
+        // const db = firebase.firestore();
+        // db.collection("foodList").doc(id).set({
+        //     ...foodList.map(item =>
+        //         item.id === id ? {item.name = result} : {item})
+        // })
+
+
+        // const itemToIncrease = this.state.foodList.find(item => item.id === id);
+        // itemToIncrease.name = result;
+        // this.setState(prevState => {
+        //     const newState = {
+        //         foodList: [
+        //             ...prevState.foodList.map(item =>
+        //                 item.id === id ? itemToIncrease : item)]
+        //     };
+        //     localStorage.setItem("list", JSON.stringify(newState));
+        //
+        //     return newState
+        // });
     }
 
     // componentDidMount() {
     //     const localStorageState = JSON.parse(localStorage.getItem("list"));
     //     localStorageState && this.setState(localStorageState);
     // }
-
+    const handleDelete = id => {
+        const res = window.confirm('Do you want to delete this item?');
+        const db = firebase.firestore();
+        db.collection("foodList").doc(id).delete()
+    }
     // render() {
     const contextElements = {
         // ...this.state,
