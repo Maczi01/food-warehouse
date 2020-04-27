@@ -99,6 +99,7 @@ class Formm extends React.Component {
     handleSubmitForm = () => {
         const {addItem} = this.props
         addItem(this.state);
+
     };
 
     notify = () => {
