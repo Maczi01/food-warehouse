@@ -169,6 +169,7 @@ class AddItemForm extends React.Component {
                                     value={this.state.category}
                                     placeholder=""
                                 >
+                                    <option>Wybierz kategorię...</option>
                                     <option>Makaron ryż, kasze</option>
                                     <option>Produkty sypkie, przyprawy</option>
                                     <option>Pieczywo</option>
@@ -189,9 +190,10 @@ class AddItemForm extends React.Component {
                                     value={this.state.unit}
                                     placeholder=""
                                 >
-                                    <option>Sztuka</option>
-                                    <option>Litr</option>
-                                    <option>Kilogram</option>
+                                    <option value="Wybierz jednostkę..." label=""/>
+                                    <option value="Sztuka" label="Sztuka"/>
+                                    <option value="Litr" label="Litr"/>
+                                    <option value="Kilogram" label="Kilogram"/>
                                 </Select>
                             </FormItem>
                             <FormItem>

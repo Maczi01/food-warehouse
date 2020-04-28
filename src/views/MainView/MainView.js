@@ -32,7 +32,6 @@ const MainView = () => (
             <ViewWrapper>
                 <Heading>Sprawdź, co masz w spiżarni</Heading>
                 {/*<img src={shop} alt="Logo"/>*/}
-
                 <List items={context.foodList}
                       deleteItem={context.deleteItem}
                       decreaseQuantity={context.decreaseQuantity}
