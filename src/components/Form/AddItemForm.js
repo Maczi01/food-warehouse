@@ -1,28 +1,19 @@
 import React from 'react'
-import AppContext from "../../context/context";
-import {v4 as uuidv4} from 'uuid';
-import {ToastContainer, toast} from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Formik, Form} from 'formik';
+import {Form, Formik} from 'formik';
 import accept from '../../asstets/img/accept.svg'
 import decline from '../../asstets/img/decline.svg'
 import styled from "styled-components";
 import ButtonIcon from "../ButtonIcon";
 
 const FormWrapper = styled.div`
-      //padding: 70px 80px 50px;
-      //top: 50%;
-      //transform: translateY(-50%);
-      //left: 0;
-      //right: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       margin: 0 auto;
       width: 60vw;
-      //height: 90vh;
-      //position: fixed;
 `;
 
 const ButtonContainer = styled.div`
@@ -70,7 +61,7 @@ const StyledLabel = styled.label`
       text-align: center;
       justify-content: center;  
       transition: 0.2s ease-out all;
-      font-size: 16px;
+      font-size: 18px;
       height: 70px;
       width: 300px;
       margin: 6px;
@@ -78,16 +69,40 @@ const StyledLabel = styled.label`
       text-decoration: none;
       align-items: center;
 `
+const Select = styled.select`
+      width: 300px;
+      font-size: 18px;
+      display: flex;
+      text-decoration: none;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      height: 70px;
+      padding-left: 5px;
+      border: none;
+      margin: 6px;
+      text-align-last:center;
+      outline: none;
+      color: black;
+      background-color: ${({theme}) => theme.colors.gray};
+  `
 
+const categories = ["Pieczywo", "Makaron, ryż, kasze",
+    "Produkty sypkie, przyprawy", "Warzywa i owoce",
+    "Mięso, ryby, owoce morza", "Nabiał", "Słodycze i przekąski", "Napoje"];
 
-class Formm extends React.Component {
+const units = ["sztuka", "litr", "kilogram"]
+
+class AddItemForm extends React.Component {
 
     state = {
         id: "",
         name: "",
-        currentQuantity: 0,
-        minimalQuantity: 0,
-        maximalQuantity: 0,
+        category: "",
+        unit: "",
+        currentQuantity: "",
+        minimalQuantity: "",
+        maximalQuantity: "",
     };
 
     handleInputChange = e => {
@@ -102,6 +117,8 @@ class Formm extends React.Component {
         this.setState({
             id: 0,
             name: "",
+            category: '',
+            unit: "",
             currentQuantity: "",
             minimalQuantity: "",
             maximalQuantity: "",
@@ -119,11 +136,18 @@ class Formm extends React.Component {
             <FormWrapper>
                 <h3>Dodaj nowy produkt</h3>
                 <Formik
-                    initialValues={{name: 'xxx', currentQuantity: 0, minimalQuantity: '', maximalQuantity: ''}}
+                    initialValues={{
+                        name: '',
+                        category: '',
+                        unit: '',
+                        currentQuantity: 0,
+                        minimalQuantity: '',
+                        maximalQuantity: ''
+                    }}
                     onSubmit={this.handleSubmitForm}
                 >
                     {() => (
-                        <Form>
+                        <Form autoComplete="off">
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     Nazwa produktu
@@ -139,13 +163,36 @@ class Formm extends React.Component {
                                 <StyledLabel htmlFor="currentQuantity">
                                     Kategoria
                                 </StyledLabel>
-                                <StyledInput/>
+                                <Select
+                                    onChange={this.handleInputChange}
+                                    name="category"
+                                    value={this.state.category}
+                                    placeholder=""
+                                >
+                                    <option>Makaron ryż, kasze</option>
+                                    <option>Produkty sypkie, przyprawy</option>
+                                    <option>Pieczywo</option>
+                                    <option>Warzywa i owoce</option>
+                                    <option>Mięso, ryby, owoce morza</option>
+                                    <option>Nabiał</option>
+                                    <option>Słodycze i przekąski</option>
+                                    <option>Napoje</option>
+                                </Select>
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     Jednostka
                                 </StyledLabel>
-                                <StyledInput/>
+                                <Select
+                                    onChange={this.handleInputChange}
+                                    name="unit"
+                                    value={this.state.unit}
+                                    placeholder=""
+                                >
+                                    <option>Sztuka</option>
+                                    <option>Litr</option>
+                                    <option>Kilogram</option>
+                                </Select>
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
@@ -201,7 +248,7 @@ class Formm extends React.Component {
 ;
 
 
-export default Formm;
+export default AddItemForm;
 
 
 

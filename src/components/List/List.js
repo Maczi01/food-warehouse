@@ -2,21 +2,24 @@ import React from 'react';
 import ListItem from "./ListItem";
 import styled from "styled-components";
 import theme from "../../theme/theme";
+import TableMarkup from "../Table";
 
 const UlWrapper = styled.ul`
     width: 75vw;
+         padding: 0;
+    
     margin: 40px auto 0;
 `
 
 const InfoWrapper = styled.h1`
-    margin: 0 auto;
-    height: 70px;
-    display: flex;
-    width: 75vw;
-    align-items: center;
-    justify-content: center;
-    background-color: ${({theme}) => theme.colors.blue};
-    color: ${({theme}) => theme.colors.white};
+     margin: 0 auto;
+     height: 70px;
+     display: flex;
+     width: 75vw;
+     align-items: center;
+     justify-content: center;
+     background-color: ${({theme}) => theme.colors.blue};
+     color: ${({theme}) => theme.colors.white};
 `
 
 const CategoryWrapper = styled.div`
@@ -49,7 +52,8 @@ const List = ({items, shop, deleteItem, decreaseQuantity, increaseQuantity, edit
                                   editName={() => editName(item)
                                   }/>
                     )) :
-                    <InfoWrapper>Pusta spizarnia!</InfoWrapper>
+                    <InfoWrapper>Pusta spizarnia!
+                    </InfoWrapper>
                 }
             </UlWrapper>
         </>)

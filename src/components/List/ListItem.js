@@ -31,17 +31,17 @@ const StyledButton = styled.img`
    }
 `
 
-const QuantityWrapper = styled.span`
+const InfoWrapper = styled.span`
     font-size: 14px;
     width: 100px;
-    margin: 0 30px;
+    margin: 0 20px;
     margin-bottom: 20px;
 
 `
 
 const QuantityBarOutside = styled.div`
     margin: 0 auto;
-    width: 30vw;
+    width: 20vw;
     border: 4px solid ${({theme}) => theme.colors.blue};
     height: 30px;
     margin-bottom: 20px;
@@ -52,12 +52,14 @@ const QuantityBarInside = styled.div`
     background-color: ${({theme}) => theme.colors.green};
 `
 
-const ListItem = ({name, children, id, shop, currentQuantity, maximalQuantity, typeOfUnit = "szt", decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
+const ListItem = ({name, children, id, shop, unit, category, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
     <ItemWraper>
         <NameWrapper>{name}</NameWrapper>
         {shop ? (
             <>
-                <QuantityWrapper>{currentQuantity} z {maximalQuantity} {typeOfUnit}</QuantityWrapper>
+                <InfoWrapper>{category}</InfoWrapper>
+                <InfoWrapper>{currentQuantity} z {maximalQuantity}</InfoWrapper>
+                <InfoWrapper>{unit} </InfoWrapper>
                 <QuantityBarOutside><QuantityBarInside
                     style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/></QuantityBarOutside>
                 <StyledButton src={minus} onClick={decreaseQuantity}/>

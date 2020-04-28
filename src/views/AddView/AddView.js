@@ -1,11 +1,11 @@
 import React from 'react'
-import Formm from "../../components/Form/Formm";
+import AddItemForm from "../../components/Form/AddItemForm";
 import AppContext from "../../context/context";
 
 const AddView = () => (
     <AppContext.Consumer>
         {(context) => (
-            <Formm addItem={context.addItem}/>
+            <AddItemForm addItem={context.addItem}/>
         )}
     </AppContext.Consumer>
 );

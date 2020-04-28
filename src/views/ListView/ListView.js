@@ -1,11 +1,9 @@
 import React from 'react';
 import AppContext from "../../context/context";
-import ListItem from "../../components/List/ListItem";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../../asstets/img/bag.svg';
 import styled from "styled-components";
-import Modal from "../../components/Modal";
-import Formm from "../../components/Form/Formm";
+import TableMarkup from "../../components/Table";
 
 const ListWrapper = styled.div`
       //padding: 70px 80px 50px;
@@ -31,14 +29,27 @@ const ListView = () => (
         <img src={bag} alt="shoping bag"/>
         <AppContext.Consumer>
             {(context) => (
-                context.foodList.filter((item) => (
-                    item.currentQuantity < item.minimalQuantity
-                )).map(item =>
-                    <ListItem {...item}
-                              key={item.id}
-                              shop={false}
-                              categry="Pieczywo"
-                    >{item.maximalQuantity - item.currentQuantity} </ListItem>)
+                (context.foodList.length) ?
+                    <TableMarkup data={context.foodList}/>
+                    :
+                    <span>Nothing here</span>
+
+
+                // (context.foodList.length) ?
+                //
+                //     context.foodList.filter((item) => (
+                //         item.currentQuantity < item.minimalQuantity
+                //     )).map(item =>
+                //         <ListItem {...item}
+                //                   key={item.id}
+                //                   shop={false}
+                //                   categry="Pieczywo"
+                //         >{item.maximalQuantity - item.currentQuantity} </ListItem>)
+                //     :
+                //     <>
+                //         <span>Nothing here</span>
+                //         <TableMarkup data={item}/>
+                //     </>
             )}
         </AppContext.Consumer>
     </ListWrapper>

@@ -11,14 +11,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
 import {ThemeProvider} from "styled-components";
 import {theme} from '../../theme/theme'
-import firebase from "../../firebase/firebase";
+// import firebase from "../../firebase/firebase";
+import GlobalStyle from "../../theme/GlobalStyle";
+// import * as firebase from "firebase";
+import {db} from '../../firebase/firebase'
+import {routes} from '../../components/routes/routes'
+import LoginView from "../LoginView/LoginView";
+import {AuthProvider} from "../../firebase/Auth";
+import PrivateRoute from "../../firebase/PrivateRoute";
 
 const Root = () => {
 
-    const [foodList, setFoodList] = React.useState([]);
 
+    const [foodList, setFoodList] = React.useState([]);
     React.useEffect(() => {
-        const db = firebase.firestore();
+        // const db = firebase.firestore();
         const unSubscribe = db.collection("foodList").onSnapshot(
             (snapshot) => {
                 const foodListData = []
@@ -31,26 +38,25 @@ const Root = () => {
 
     const addItem = (newItem) => {
         newItem.id = uuidv4();
-        newItem.category = "Pieczywo";
-        const db = firebase.firestore();
+        // const db = firebase.firestore();
         db.collection("foodList").add(newItem);
     };
 
     const increaseQuantity = (item) => {
-        const db = firebase.firestore();
-        const increment = firebase.firestore.FieldValue.increment(+1)
+        // const db = firebase.firestore();
+        // const increment = firebase.firestore.FieldValue.increment(+1)
         db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) + 1});
     };
 
     const decreaseQuantity = (item) => {
-        const db = firebase.firestore()
-        const decreament = firebase.firestore.FieldValue.increment(-1)
+        // const db = firebase.firestore()
+        // const decreament = firebase.firestore.FieldValue.increment(-1)
         db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});
     };
 
     const editName = (item) => {
         const result = prompt('Change the name');
-        const db = firebase.firestore();
+        // const db = firebase.firestore();
         db.collection("foodList").doc(item.id).update({name: item.name = result})
         // const db = firebase.firestore();
         // db.collection("foodList").doc(id).set({
@@ -65,10 +71,9 @@ const Root = () => {
     // }
     const handleDelete = id => {
         const res = window.confirm('Do you want to delete this item?');
-        const db = firebase.firestore();
+        // const db = firebase.firestore();
         db.collection("foodList").doc(id).delete()
     }
-    // render() {
     const contextElements = {
         foodList: foodList,
         deleteItem: handleDelete,
@@ -77,21 +82,24 @@ const Root = () => {
         decreaseQuantity: decreaseQuantity,
         editName: editName,
     };
-    // }
     return (
-        <BrowserRouter>
-            <ThemeProvider theme={theme}>
-                <AppContext.Provider value={contextElements}>
-                    <Header/>
-                    <Switch>
-                        <Route exact path="/" component={MainView}/>
-                        <Route path="/list" component={ListView}/>
-                        <Route path="/add" component={AddView}/>
-                        <Route path="/settings" component={SettingsView}/>
-                    </Switch>
-                </AppContext.Provider>
-            </ThemeProvider>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <GlobalStyle/>
+                <ThemeProvider theme={theme}>
+                    <AppContext.Provider value={contextElements}>
+                        <Switch>
+                        <Header/>
+                            <PrivateRoute exact path={routes.home} component={MainView}/>
+                            <PrivateRoute path={routes.list} component={ListView}/>
+                            <PrivateRoute path={routes.add} component={AddView}/>
+                            <PrivateRoute path={routes.settings} component={SettingsView}/>
+                            <Route path={routes.login} component={LoginView}/>
+                        </Switch>
+                    </AppContext.Provider>
+                </ThemeProvider>
+            </BrowserRouter>
+        </AuthProvider>
     );
 
 }

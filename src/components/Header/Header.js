@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import settings from "../../asstets/img/settings.svg";
 import theme from "../../theme/theme";
+import {auth} from "../../firebase/firebase";
 
 const HeaderWrapper = styled.nav`
   display: flex;
