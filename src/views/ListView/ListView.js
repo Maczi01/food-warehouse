@@ -33,23 +33,6 @@ const ListView = () => (
                     <TableMarkup data={context.foodList}/>
                     :
                     <span>Nothing here</span>
-
-
-                // (context.foodList.length) ?
-                //
-                //     context.foodList.filter((item) => (
-                //         item.currentQuantity < item.minimalQuantity
-                //     )).map(item =>
-                //         <ListItem {...item}
-                //                   key={item.id}
-                //                   shop={false}
-                //                   categry="Pieczywo"
-                //         >{item.maximalQuantity - item.currentQuantity} </ListItem>)
-                //     :
-                //     <>
-                //         <span>Nothing here</span>
-                //         <TableMarkup data={item}/>
-                //     </>
             )}
         </AppContext.Consumer>
     </ListWrapper>

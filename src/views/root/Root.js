@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from "../../components/Header/Header";
 import "./index.css";
@@ -17,15 +17,15 @@ import GlobalStyle from "../../theme/GlobalStyle";
 import {db} from '../../firebase/firebase'
 import {routes} from '../../components/routes/routes'
 import LoginView from "../LoginView/LoginView";
-import {AuthProvider} from "../../firebase/Auth";
+import {AuthContext, AuthProvider} from "../../firebase/Auth";
 import PrivateRoute from "../../firebase/PrivateRoute";
+import My404Component from "../My404Component/My404Component";
+import RegisterView from "../RegisterView/RegisterView";
 
 const Root = () => {
 
-
     const [foodList, setFoodList] = React.useState([]);
     React.useEffect(() => {
-        // const db = firebase.firestore();
         const unSubscribe = db.collection("foodList").onSnapshot(
             (snapshot) => {
                 const foodListData = []
@@ -82,19 +82,22 @@ const Root = () => {
         decreaseQuantity: decreaseQuantity,
         editName: editName,
     };
+
+
     return (
         <AuthProvider>
             <BrowserRouter>
                 <GlobalStyle/>
                 <ThemeProvider theme={theme}>
                     <AppContext.Provider value={contextElements}>
-                        <Switch>
                         <Header/>
+                        <Switch>
                             <PrivateRoute exact path={routes.home} component={MainView}/>
                             <PrivateRoute path={routes.list} component={ListView}/>
                             <PrivateRoute path={routes.add} component={AddView}/>
                             <PrivateRoute path={routes.settings} component={SettingsView}/>
                             <Route path={routes.login} component={LoginView}/>
+                            <Route path={routes.register} component={RegisterView}/>
                         </Switch>
                     </AppContext.Provider>
                 </ThemeProvider>

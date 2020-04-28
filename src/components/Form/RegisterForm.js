@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import React from 'react'
 import {Redirect} from "react-router";
+import {withRouter} from "react-router";
 import {Link} from "react-router-dom";
 
-const LoginContainer = styled.div`
+const RegisterContainer = styled.div`
         align-items: center;
         margin: auto;
         width: 60vw;
@@ -66,18 +67,18 @@ flex-direction: column;
 `
 
 
-const LoginForm = ({handleLogin}) => (
-    <LoginContainer>
+const RegisterForm = ({handleRegister}) => (
+    <RegisterContainer>
         <StyledTitle>Login</StyledTitle>
         <ItemsContainer>
-            <Form onSubmit={handleLogin} autocomplete="off">
+            <Form onSubmit={handleRegister} autocomplete="off">
                 <StyledInput type="email" name="email" placeholder="Email"/>
                 <StyledInput type="password" name="password" placeholder="Hasło"/>
-                <Button>Zaloguj</Button>
+                <Button>Zarejestruj</Button>
             </Form>
-            <span>Nie masz konta?<Link to="/register">Zarejestruj się</Link> </span>
+            <span>Masz już konto?<Link to="/login">Zaloguj się</Link> </span>
         </ItemsContainer>
-    </LoginContainer>
+    </RegisterContainer>
 );
 
-export default LoginForm;
+export default RegisterForm;
