@@ -3,7 +3,26 @@ import styled from "styled-components";
 import ButtonIcon from "./ButtonIcon";
 import print from "../asstets/img/print.svg";
 import sms from "../asstets/img/sms.svg";
+import emailjs from 'emailjs-com';
 
+var templateParams = {
+    name: 'James',
+    notes: 'Check this out!'
+};
+
+
+
+const sendMail = () =>{
+    console.log("clicked")
+    emailjs.init("mateusz_w_twardy_gmail_com");
+    emailjs.send('mateusz_w_twardy_gmail_com', 'template_cGuzq0Bv', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+            console.log('FAILED...', error);
+        });
+
+}
 const TableWrapper = styled.div`
       display: flex;
       justify-content: center;
@@ -54,6 +73,8 @@ const ButtonContainer = styled.div`
 `
 
 
+
+
 const TableMarkup = ({data}) => (
     <TableWrapper>
         <StyledTable>
@@ -86,6 +107,7 @@ const TableMarkup = ({data}) => (
                 icon={print}
             />
             <ButtonIcon
+                onClick={() =>sendMail()}
                 icon={sms}
             />
         </ButtonContainer>

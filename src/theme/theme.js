@@ -9,9 +9,8 @@ export const theme = {
         white: '#FFFFFE',
         gray: '#E5E5E5'
     },
-    // fontFamily: {
-    //     primary: `'Raleway', sans-serif;`,
-    // },
+    mobile: "767px"
+
 };
 
 export default theme;

@@ -25,10 +25,10 @@ const StyledButton = styled.img`
     margin-bottom: 20px;
     height: 40px;
     width: 40px;
-    :hover { transform: scale(1.05); }
-     :active {
-    transform: translateY(4px);
-   }
+    //:hover { transform: scale(1.05); }
+   //  :active {
+   // transform: translateY(4px);
+   //}
 `
 
 const InfoWrapper = styled.span`
@@ -41,7 +41,7 @@ const InfoWrapper = styled.span`
 
 const QuantityBarOutside = styled.div`
     margin: 0 auto;
-    width: 20vw;
+    width: 300px;
     border: 4px solid ${({theme}) => theme.colors.blue};
     height: 30px;
     margin-bottom: 20px;

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "emailjs-com": "^2.4.1",
     "firebase": "^7.14.2",
     "formik": "^2.1.4",
     "node-sass": "^4.13.1",
