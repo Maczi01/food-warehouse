@@ -1,1 +1,3 @@
-[Demo](https://foodwarehouse.maczi01.now.sh/)
+I add toastify, firebase authentication, 
+
+[Demo - first version](https://foodwarehouse-b9pth5klm.now.sh/)
