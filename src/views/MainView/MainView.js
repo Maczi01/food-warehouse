@@ -14,7 +14,7 @@ const ViewWrapper = styled.div`
 `
 
 const Heading = styled.h1`
-     //margin-top: 30px;
+     padding: 10px;
      color: ${({theme}) => theme.colors.blue};
      text-align: center;
          display: flex;

@@ -1,7 +1,6 @@
 import {createGlobalStyle} from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600i&display=swap');
   *, *::before, *::after {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;

@@ -5,12 +5,12 @@ import {Link} from "react-router-dom";
 
 const LoginContainer = styled.div`
         align-items: center;
-        margin: auto;
+        margin: 0 auto;
         width: 60vw;
         text-align: center;
         background-color: ${({theme}) => theme.colors.yellow};
         border-radius: 10px;
-        height: 60vh;
+        height: 80vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -48,7 +48,7 @@ const StyledTitle = styled.div`
 
 const Button = styled.button`
     padding: 20px 30px;
-    margin-top: 30px;
+    margin: 30px;
     outline: none;
     border: none;
     font-size: medium;
@@ -75,7 +75,7 @@ const LoginForm = ({handleLogin}) => (
                 <StyledInput type="password" name="password" placeholder="Hasło"/>
                 <Button>Zaloguj</Button>
             </Form>
-            <span>Nie masz konta?<Link to="/register">Zarejestruj się</Link> </span>
+            <span>Nie masz konta? <Link to="/register"> Zarejestruj się</Link> </span>
         </ItemsContainer>
     </LoginContainer>
 );

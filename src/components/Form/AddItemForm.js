@@ -6,6 +6,7 @@ import accept from '../../asstets/img/accept.svg'
 import decline from '../../asstets/img/decline.svg'
 import styled from "styled-components";
 import ButtonIcon from "../ButtonIcon";
+import {Link} from "react-router-dom";
 
 const FormWrapper = styled.div`
       display: flex;
@@ -89,14 +90,16 @@ const Select = styled.select`
 
 const Heading = styled.h1`
      //margin-top: 30px;
-     color: ${({theme}) => theme.colors.blue};
-     text-align: center;
-         display: flex;
+      color: ${({theme}) => theme.colors.blue};
+      text-align: center;
+      display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       margin: 0 auto;
-      width: 75vw;
+      padding: 10px;
+
+      //width: 75vw;
 `
 
 const categories = ["Pieczywo", "Makaron, ryż, kasze",
@@ -146,7 +149,7 @@ class AddItemForm extends React.Component {
     render() {
         return (
             <FormWrapper>
-                <Heading>Sprawdź, co masz w spiżarni</Heading>
+                <Heading>Dodaj produkt</Heading>
                 <Formik
                     initialValues={{
                         name: '',
@@ -181,15 +184,15 @@ class AddItemForm extends React.Component {
                                     value={this.state.category}
                                     placeholder=""
                                 >
-                                    <option>Wybierz kategorię...</option>
-                                    <option>Makaron ryż, kasze</option>
-                                    <option>Produkty sypkie, przyprawy</option>
-                                    <option>Pieczywo</option>
-                                    <option>Warzywa i owoce</option>
-                                    <option>Mięso, ryby, owoce morza</option>
-                                    <option>Nabiał</option>
-                                    <option>Słodycze i przekąski</option>
-                                    <option>Napoje</option>
+                                    <option label="Wybierz kategorię..." value="Wybierz kategorię..."/>
+                                    <option label="Makaron ryż, kasze" value="Makaron ryż, kasze"/>
+                                    <option label="Produkty sypkie, przyprawy" value="Produkty sypkie, przyprawy"/>
+                                    <option label="Pieczywo" value="Pieczywo"/>
+                                    <option label="Warzywa i owoce" value="Warzywa i owoce"/>
+                                    <option label="Mięso, ryby, owoce morza" value="Mięso, ryby, owoce morza"/>
+                                    <option label="Nabiał" value="Nabiał"/>
+                                    <option label="Słodycze i przekąski" value="Słodycze i przekąski"/>
+                                    <option label="Napoje" value="Napoje"/>
                                 </Select>
                             </FormItem>
                             <FormItem>
@@ -242,9 +245,14 @@ class AddItemForm extends React.Component {
                                     placeholder=""/>
                             </FormItem>
                             <ButtonContainer>
-                                <ButtonIcon
-                                    icon={decline}
-                                />
+
+                                <Link to="/register">
+                                    <ButtonIcon
+                                        icon={decline}
+
+                                    />
+                                </Link>
+
                                 <ButtonIcon
                                     onClick={() => this.notify(this.state.name)}
                                     type="submit"

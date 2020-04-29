@@ -57,7 +57,6 @@ const Header = () => {
                     <ListItem as={NavLink} exact to="/" activeclass="active">Sprawdź zapasy</ListItem>
                     <ListItem as={NavLink} to="/add" activeclass="active">Dodaj produkt</ListItem>
                     <ListItem as={NavLink} to="/list" activeclass="active">Lista zakupów</ListItem>
-                    <ListItem as={NavLink} to="/list" activeclass="active">Lista zakupów</ListItem>
                     {/*<ListItem>You are logged as {(auth.currentUser.email)}</ListItem>*/}
                     <ListItem as={NavLink} to="/settings" activeclass="active"><img src={settings}
                                                                                     alt="Settings icon"/></ListItem>

@@ -122,6 +122,7 @@ const StyledSelect = styled.select`
     transition-duration: 0.25s;
     font-weight: 300;
     background-color: ${({theme}) => theme.colors.gray};
+      text-align-last:center;
 
     // &:focus{
     //       width: 300px;
@@ -150,7 +151,7 @@ const Heading = styled.h1`
 `
 
 const Paragraph = styled.p`
-    padding: 10px;
+    padding: 15px;
 `
 
 const notify = () => {
