@@ -40,7 +40,6 @@ const MainView = () => (
                       toEdit={true}
                       shop={true}
                 />
-                <button onClick={() => auth.signOut()}>Wyloguj</button>
             </ViewWrapper>
         )}
     </AppContext.Consumer>

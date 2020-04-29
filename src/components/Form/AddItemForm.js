@@ -87,6 +87,18 @@ const Select = styled.select`
       background-color: ${({theme}) => theme.colors.gray};
   `
 
+const Heading = styled.h1`
+     //margin-top: 30px;
+     color: ${({theme}) => theme.colors.blue};
+     text-align: center;
+         display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 auto;
+      width: 75vw;
+`
+
 const categories = ["Pieczywo", "Makaron, ryż, kasze",
     "Produkty sypkie, przyprawy", "Warzywa i owoce",
     "Mięso, ryby, owoce morza", "Nabiał", "Słodycze i przekąski", "Napoje"];
@@ -134,7 +146,7 @@ class AddItemForm extends React.Component {
     render() {
         return (
             <FormWrapper>
-                <h3>Dodaj nowy produkt</h3>
+                <Heading>Sprawdź, co masz w spiżarni</Heading>
                 <Formik
                     initialValues={{
                         name: '',
