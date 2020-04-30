@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useState } from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from "../../components/Header/Header";
 import "./index.css";
@@ -10,16 +10,13 @@ import AppContext from "../../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
 import {ThemeProvider} from "styled-components";
-import {theme} from '../../theme/theme'
-// import firebase from "../../firebase/firebase";
+import {lightTheme, nightTheme} from '../../theme/theme'
 import GlobalStyle from "../../theme/GlobalStyle";
-// import * as firebase from "firebase";
 import {db} from '../../firebase/firebase'
 import {routes} from '../../components/routes/routes'
 import LoginView from "../LoginView/LoginView";
 import {AuthContext, AuthProvider} from "../../firebase/Auth";
 import PrivateRoute from "../../firebase/PrivateRoute";
-import My404Component from "../My404Component/My404Component";
 import RegisterView from "../RegisterView/RegisterView";
 
 const Root = () => {
@@ -73,7 +70,18 @@ const Root = () => {
         const res = window.confirm('Do you want to delete this item?');
         // const db = firebase.firestore();
         db.collection("foodList").doc(id).delete()
+    };
+
+    const [theme, setTheme] = useState('light');
+    const toggleTheme = () => {
+        console.log("kaczka")
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
     }
+
     const contextElements = {
         foodList: foodList,
         deleteItem: handleDelete,
@@ -81,6 +89,7 @@ const Root = () => {
         increaseQuantity: increaseQuantity,
         decreaseQuantity: decreaseQuantity,
         editName: editName,
+        toggleTheme: toggleTheme,
     };
 
 
@@ -88,7 +97,8 @@ const Root = () => {
         <AuthProvider>
             <BrowserRouter>
                 <GlobalStyle/>
-                <ThemeProvider theme={theme}>
+                {/*<ThemeProvider theme={theme}>*/}
+                <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
                     <AppContext.Provider value={contextElements}>
                         <Header/>
                         <Switch>

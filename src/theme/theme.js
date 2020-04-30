@@ -1,5 +1,4 @@
-export const theme = {
-
+export const lightTheme = {
     colors: {
         yellow: '#FDE24F',
         pink: '#FF5470',
@@ -10,7 +9,19 @@ export const theme = {
         gray: '#E5E5E5'
     },
     mobile: "767px"
-
 };
 
-export default theme;
+
+export const nightTheme = {
+    colors: {
+        yellow: '#979200',
+        pink: '#ad3a4c',
+        green: '#007460',
+        blue: '#fe0200',
+        darkblue: '#19ff17',
+        white: '#FFFFFE',
+        gray: '#E5E5E5'
+    },
+    mobile: "767px"
+};
+

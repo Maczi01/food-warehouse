@@ -2,6 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 import user from '../asstets/img/user.svg'
 import {auth} from "../firebase/firebase";
+import {useState} from "react/cjs/react.production.min";
+import {theme} from "../theme/theme";
+import context from "react-router/modules/RouterContext";
 
 
 const SettingsWrapper = styled.div`
@@ -154,66 +157,69 @@ const Paragraph = styled.p`
     padding: 15px;
 `
 
-const notify = () => {
-    // toast.success("Wylogowano!", {
-    //     position: toast.POSITION.TOP_CENTER
-    // });
-    console.log("dupa")
+
+const SettingsCard = ({toggleViewMode}) => {
+    // const {nighttheme} = theme.
+
+// export const ThemeContext = React.createContext();
+    //     const [currentTheme, setCurrentTheme] = useState();
+
+    // export const AuthProvider = ({children}) => {
+    // }
+
+    return (
+        <>
+            <Heading>Ustawienia</Heading>
+            <Button onClick={() => toggleViewMode()}>Togggggle</Button>
+            <SettingsWrapper>
+                <UserCard>
+                    <UserAvatarWrapper src={user} alt="Avatar icon"/>
+                    <UserMailWrapper>
+                        <Paragraph>Jesteś zalogowany jako {auth.currentUser.email}</Paragraph>
+                        <Button onClick={() => auth.signOut()}>Wyloguj</Button>
+                    </UserMailWrapper>
+                </UserCard>
+                <OptionsWrapper>
+                    <OptionsItem>
+                        <StyledLabel>Zmień język</StyledLabel>
+                        <StyledSelect>
+                            <option>Polski</option>
+                            <option>English</option>
+                        </StyledSelect>
+                    </OptionsItem>
+                    <OptionsItem>
+                        <StyledLabel>Tryb ciemny</StyledLabel>
+                        <StyledSelect
+
+                        >
+                            <option value="on" label="Włączony"/>
+                            <option value="off" label="Wyłączony"/>
+                        </StyledSelect>
+                    </OptionsItem>
+                    <OptionsItem>
+                        <StyledLabel>Tryb ciemny</StyledLabel>
+                        <StyledSelect>
+                            <option value="on" label="Włączony"/>
+                            <option value="off" label="Wyłączony"/>
+                        </StyledSelect>
+                    </OptionsItem>
+                    <OptionsItem>
+                        <StyledLabel htmlFor="currentQuantity">
+                            Dodaj jednostkę
+                        </StyledLabel>
+                        <StyledInput/>
+                    </OptionsItem>
+                    <OptionsItem>
+                        <StyledLabel htmlFor="currentQuantity">
+                            Dodaj kategorię
+                        </StyledLabel>
+                        <StyledInput/>
+
+                    </OptionsItem>
+                </OptionsWrapper>
+            </SettingsWrapper>
+        </>
+    )
 }
-
-const SettingsCard = () => (
-    <>
-        <Heading>Ustawienia</Heading>
-        <SettingsWrapper>
-            <UserCard>
-                <UserAvatarWrapper src={user} alt="Avatar icon"/>
-                <UserMailWrapper>
-                    <Paragraph>Jesteś zalogowany jako {auth.currentUser.email}</Paragraph>
-                    <Button onClick={() => auth.signOut()}>Wyloguj</Button>
-                </UserMailWrapper>
-            </UserCard>
-            <OptionsWrapper>
-                <OptionsItem>
-                    <StyledLabel>Zmień język</StyledLabel>
-                    <StyledSelect>
-                        <option>Polski</option>
-                        <option>English</option>
-                    </StyledSelect>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel>Tryb ciemny</StyledLabel>
-                    <StyledSelect
-
-                    >
-                        <option value="on" label="Włączony"/>
-                        <option value="off" label="Wyłączony"/>
-                    </StyledSelect>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel>Tryb ciemny</StyledLabel>
-                    <StyledSelect
-                    >
-                        <option value="on" label="Włączony"/>
-                        <option value="off" label="Wyłączony"/>
-                    </StyledSelect>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel htmlFor="currentQuantity">
-                        Dodaj jednostkę
-                    </StyledLabel>
-                    <StyledInput/>
-
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel htmlFor="currentQuantity">
-                        Dodaj kategorię
-                    </StyledLabel>
-                    <StyledInput/>
-
-                </OptionsItem>
-            </OptionsWrapper>
-        </SettingsWrapper>
-    </>
-)
 
 export default SettingsCard;

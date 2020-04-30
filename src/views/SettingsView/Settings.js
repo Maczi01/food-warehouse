@@ -1,8 +1,16 @@
 import React from 'react'
 import SettingsCard from "../../components/SettingsCard";
+import AppContext from "../../context/context";
 
 const SettingsView = () => (
-    <SettingsCard/>
+    <AppContext.Consumer>
+        {(context) => (
+            <>
+                <SettingsCard toggleViewMode={context.toggleTheme}/>
+            </>
+        )}
+    </AppContext.Consumer>
+
 )
 
 export default SettingsView;

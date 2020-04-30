@@ -11,14 +11,13 @@ var templateParams = {
 };
 
 
-
-const sendMail = () =>{
+const sendMail = () => {
     console.log("clicked")
     emailjs.init("mateusz_w_twardy_gmail_com");
     emailjs.send('mateusz_w_twardy_gmail_com', 'template_cGuzq0Bv', templateParams)
-        .then(function(response) {
+        .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
-        }, function(error) {
+        }, function (error) {
             console.log('FAILED...', error);
         });
 
@@ -26,17 +25,13 @@ const sendMail = () =>{
 const TableWrapper = styled.div`
       display: flex;
       justify-content: center;
-      //align-items: center;
       flex-direction: column;
       margin: 0 auto;
       width: 40vw;
-      //padding-top: 80px;
-    
       @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
      }
 `;
-
 
 const StyledTable = styled.table`
 padding-top: 15px;
@@ -45,33 +40,26 @@ padding-top: 15px;
   border-collapse: collapse;
   border-radius: 20px;
   @media (max-width: ${({theme}) => theme.mobile}) {
-
     margin: 0 auto;
      }
   td,
   th {
-  
-         @media (max-width: ${({theme}) => theme.mobile}) {
-      padding: 20px 20px;
+  @media (max-width: ${({theme}) => theme.mobile}) {
+          padding: 20px 20px;
      }
-  
       border: none;
       padding: 20px 50px;
       color: ${({theme}) => theme.colors.white};
       border-top: 1px solid ${({theme}) => theme.colors.blue}
- 
   }
   td {
-  
            @media (max-width: ${({theme}) => theme.mobile}) {
       padding: 20px 20px;
      }
-  
       padding: 20px 50px;
       vertical-align: top;
       color: black;
   }
-
   tbody tr {
     :nth-of-type(odd) {
       background-color: ${({theme}) => theme.colors.white};
@@ -87,13 +75,10 @@ padding-top: 15px;
 `;
 
 const ButtonContainer = styled.div`
-      margin: 20px 0 20px 0;
+      margin: 20px 20px 20px 0;
       display: flex;
       justify-content: flex-end;
 `
-
-
-
 
 const TableMarkup = ({data}) => (
     <TableWrapper>
@@ -122,15 +107,15 @@ const TableMarkup = ({data}) => (
             ))}
             </tbody>
         </StyledTable>
-        {/*<ButtonContainer>*/}
-        {/*    <ButtonIcon*/}
-        {/*        icon={print}*/}
-        {/*    />*/}
-        {/*    <ButtonIcon*/}
-        {/*        onClick={() =>sendMail()}*/}
-        {/*        icon={sms}*/}
-        {/*    />*/}
-        {/*</ButtonContainer>*/}
+        <ButtonContainer>
+            <ButtonIcon
+                icon={print}
+            />
+            <ButtonIcon
+                onClick={() => sendMail()}
+                icon={sms}
+            />
+        </ButtonContainer>
     </TableWrapper>
 );
 
