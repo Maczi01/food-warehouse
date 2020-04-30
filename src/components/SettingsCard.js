@@ -56,6 +56,22 @@ const Button = styled.button`
     color: ${({theme}) => theme.colors.white};
 `
 
+const ButtonMode = styled.button`
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 1px solid white;
+    width: 300px;
+    border-radius: 3px;
+    margin: 6px;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    transition-duration: 0.25s;
+    font-weight: 300;
+    background-color: ${({theme}) => theme.colors.gray};
+`
+
 const OptionsWrapper = styled.div`
       width: 100%;
       display: flex;
@@ -158,19 +174,12 @@ const Paragraph = styled.p`
 `
 
 
-const SettingsCard = ({toggleViewMode}) => {
-    // const {nighttheme} = theme.
-
-// export const ThemeContext = React.createContext();
-    //     const [currentTheme, setCurrentTheme] = useState();
-
-    // export const AuthProvider = ({children}) => {
-    // }
+const SettingsCard = ({toggleViewMode, darkMode}) => {
+        console.log(darkMode)
 
     return (
         <>
             <Heading>Ustawienia</Heading>
-            <Button onClick={() => toggleViewMode()}>Togggggle</Button>
             <SettingsWrapper>
                 <UserCard>
                     <UserAvatarWrapper src={user} alt="Avatar icon"/>
@@ -189,12 +198,13 @@ const SettingsCard = ({toggleViewMode}) => {
                     </OptionsItem>
                     <OptionsItem>
                         <StyledLabel>Tryb ciemny</StyledLabel>
-                        <StyledSelect
-
-                        >
-                            <option value="on" label="Włączony"/>
-                            <option value="off" label="Wyłączony"/>
-                        </StyledSelect>
+                        {/*<StyledSelect>*/}
+                        {/*    <option value="on" label="Włączony"/>*/}
+                        {/*    <option value="off" label="Wyłączony"/>*/}
+                        {/*</StyledSelect>*/}
+                        <ButtonMode onClick={() => toggleViewMode()}>
+                            {darkMode === "dark" ? "Włączony" : "Wyłączony"}
+                        </ButtonMode>
                     </OptionsItem>
                     <OptionsItem>
                         <StyledLabel>Tryb ciemny</StyledLabel>

@@ -18,6 +18,8 @@ const HeaderWrapper = styled.nav`
   height: 70px;
   background-color: ${({theme}) => theme.colors.blue};
   margin-bottom: 10px;
+      transition: all 0.5s linear;
+
 `
 
 const StyledLogoLink = styled.div`
