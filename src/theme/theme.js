@@ -8,20 +8,24 @@ export const lightTheme = {
         white: '#FFFFFE',
         gray: '#E5E5E5'
     },
-    mobile: "767px"
+    mobile: "767px",
+    backgroundColor:'#FFFFFE',
 };
 
 
 export const nightTheme = {
     colors: {
-        yellow: '#979200',
-        pink: '#ad3a4c',
-        green: '#007460',
-        blue: '#fe0200',
-        darkblue: '#19ff17',
-        white: '#FFFFFE',
+        yellow: '#ffacb7',
+        pink: '#f2a365',
+        green: '#6886c5',
+
+        blue: '#f2a365',
+        darkblue: '#222831',
+        white: '#30475e',
         gray: '#E5E5E5'
     },
-    mobile: "767px"
+    mobile: "767px",
+    backgroundColor:'#30475e',
+
 };
 

@@ -15,7 +15,9 @@ const SettingsWrapper = styled.div`
       margin: 0 auto;
       padding: 20px;
       width: 50vw;
-      //background-color: orange;
+    @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+     }
 `;
 
 const UserCard = styled.div`
@@ -70,6 +72,10 @@ const ButtonMode = styled.button`
     transition-duration: 0.25s;
     font-weight: 300;
     background-color: ${({theme}) => theme.colors.gray};
+        @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+  
+    }
 `
 
 const OptionsWrapper = styled.div`
@@ -84,6 +90,11 @@ const OptionsItem = styled.div`
       width: 100%;
       display: flex;
       justify-content: center;
+               @media (max-width: ${({theme}) => theme.mobile}) {
+          flex-direction: column;
+          border: 1px solid   ${({theme}) => theme.colors.darkblue});
+  
+    }
 `
 const StyledLabel = styled.label`
       background-color: ${({theme}) => theme.colors.blue};
@@ -98,6 +109,10 @@ const StyledLabel = styled.label`
       display: flex;
       text-decoration: none;
       align-items: center;
+          @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+  
+    }
 `
 
 const StyledInput = styled.input`
@@ -114,7 +129,10 @@ const StyledInput = styled.input`
     transition-duration: 0.25s;
     font-weight: 300;
     background-color: ${({theme}) => theme.colors.gray};
-
+          @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+  
+    }
     // &:focus{
     //       width: 300px;
     //
@@ -142,6 +160,10 @@ const StyledSelect = styled.select`
     font-weight: 300;
     background-color: ${({theme}) => theme.colors.gray};
       text-align-last:center;
+               @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+  
+    }
 
     // &:focus{
     //       width: 300px;
@@ -205,13 +227,6 @@ const SettingsCard = ({toggleViewMode, darkMode}) => {
                         <ButtonMode onClick={() => toggleViewMode()}>
                             {darkMode === "dark" ? "Włączony" : "Wyłączony"}
                         </ButtonMode>
-                    </OptionsItem>
-                    <OptionsItem>
-                        <StyledLabel>Tryb ciemny</StyledLabel>
-                        <StyledSelect>
-                            <option value="on" label="Włączony"/>
-                            <option value="off" label="Wyłączony"/>
-                        </StyledSelect>
                     </OptionsItem>
                     <OptionsItem>
                         <StyledLabel htmlFor="currentQuantity">

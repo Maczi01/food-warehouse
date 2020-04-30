@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from "../../components/Header/Header";
-import "./index.css";
+// import "./index.css";
 import MainView from '../MainView/MainView'
 import ListView from "../ListView/ListView";
 import AddView from "../AddView/AddView";
@@ -15,7 +15,7 @@ import GlobalStyle from "../../theme/GlobalStyle";
 import {db} from '../../firebase/firebase'
 import {routes} from '../../components/routes/routes'
 import LoginView from "../LoginView/LoginView";
-import {AuthContext, AuthProvider} from "../../firebase/Auth";
+import {AuthProvider} from "../../firebase/Auth";
 import PrivateRoute from "../../firebase/PrivateRoute";
 import RegisterView from "../RegisterView/RegisterView";
 
@@ -77,13 +77,11 @@ const Root = () => {
         darkMode: theme
     };
 
-
     return (
         <AuthProvider>
             <BrowserRouter>
-                <GlobalStyle/>
-                {/*<ThemeProvider theme={theme}>*/}
                 <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
+                <GlobalStyle backgroundColor={theme.backgroundColor}/>
                     <AppContext.Provider value={contextElements}>
                         <Header/>
                         <Switch>
@@ -99,7 +97,6 @@ const Root = () => {
             </BrowserRouter>
         </AuthProvider>
     );
-
 }
 
 export default Root;

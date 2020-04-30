@@ -11,6 +11,7 @@ const ViewWrapper = styled.div`
      margin: 0 auto;
      display: flex;
      flex-direction: column;
+     
      @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
      }

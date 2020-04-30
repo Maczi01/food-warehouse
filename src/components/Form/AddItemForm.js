@@ -108,20 +108,6 @@ const Select = styled.select`
     }
   `
 
-// const Heading = styled.h1`
-//      //margin-top: 30px;
-//       color: ${({theme}) => theme.colors.blue};
-//       text-align: center;
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       flex-direction: column;
-//       margin: 0 auto;
-//       padding: 10px;
-//
-//       //width: 75vw;
-// `
-
 const Heading = styled.h1`
      padding: 10px;
      color: ${({theme}) => theme.colors.blue};

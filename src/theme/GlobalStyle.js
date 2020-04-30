@@ -14,9 +14,11 @@ const GlobalStyle = createGlobalStyle`
     overflow-y: scroll;
   }
 
-  body {
+  
+    body {
     font-family: 'Fira Sans', sans-serif;
     font-size: 1.6rem;
+    background-color: ${props => props.theme.backgroundColor};
   }
 `;
 

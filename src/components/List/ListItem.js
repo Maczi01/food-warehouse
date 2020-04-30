@@ -10,6 +10,7 @@ const ItemWraper = styled.li`
     justify-content: space-between;
     margin: 10px 0;
     align-items: center;
+    color: ${({theme}) => theme.colors.blue};
     @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
         flex-direction: column;
