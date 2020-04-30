@@ -6,9 +6,13 @@ import TableMarkup from "../Table";
 
 const UlWrapper = styled.ul`
     width: 75vw;
-         padding: 0;
-    
+    padding: 0;
     margin: 40px auto 0;
+    @media (max-width: ${({theme}) => theme.mobile}) {
+       width: 100vw;
+       font-size: 10px;
+       margin: 10px auto 0;
+    }
 `
 
 const InfoWrapper = styled.h1`
@@ -31,6 +35,9 @@ const CategoryWrapper = styled.div`
     justify-content: center;
     background-color: ${({theme}) => theme.colors.blue};
     color: ${({theme}) => theme.colors.white};
+    @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+    }
 `
 
 
@@ -46,7 +53,6 @@ const List = ({items, shop, deleteItem, decreaseQuantity, increaseQuantity, edit
                                   key={item.id}
                                   deleteItem={() => deleteItem(item.id)}
                                   toEdit={toEdit}
-                                  shop={shop}
                                   decreaseQuantity={() => decreaseQuantity(item)}
                                   increaseQuantity={() => increaseQuantity(item)}
                                   editName={() => editName(item)

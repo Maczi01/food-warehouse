@@ -66,10 +66,11 @@ const Header = () => {
 
     return (
         <>
-            <HamburgerContainer>
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open}/>
-            </HamburgerContainer>
+            {currentUser ?
+                <HamburgerContainer>
+                    <Burger open={open} setOpen={setOpen}/>
+                    <Menu open={open} setOpen={setOpen}/>
+                </HamburgerContainer> : null}
             {currentUser ?
                 <HeaderWrapper>
                     <List>

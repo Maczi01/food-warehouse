@@ -37,13 +37,13 @@ const ListItem = styled.li`
   }
 `
 
-const Menu = ({open}) => {
+const Menu = ({open, setOpen}) => {
     return (
         <StyledMenu open={open}>
-            <ListItem as={NavLink} exact to="/" activeclass="active">Sprawdź zapasy</ListItem>
-            <ListItem as={NavLink} to="/add" activeclass="active">Dodaj produkt</ListItem>
-            <ListItem as={NavLink} to="/list" activeclass="active">Lista zakupów</ListItem>
-            <ListItem as={NavLink} to="/settings" activeclass="active">Ustawienia</ListItem>
+            <ListItem as={NavLink} exact to="/" activeclass="active" onClick={() => setOpen(!open)}>Sprawdź zapasy</ListItem>
+            <ListItem as={NavLink} to="/add" activeclass="active" onClick={() => setOpen(!open)}>Dodaj produkt</ListItem>
+            <ListItem as={NavLink} to="/list" activeclass="active" onClick={() => setOpen(!open)}>Lista zakupów</ListItem>
+            <ListItem as={NavLink} to="/settings" activeclass="active" onClick={() => setOpen(!open)}>Ustawienia</ListItem>
         </StyledMenu>
     )
 }

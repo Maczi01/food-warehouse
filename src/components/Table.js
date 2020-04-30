@@ -30,6 +30,7 @@ const TableWrapper = styled.div`
       flex-direction: column;
       margin: 0 auto;
       width: 40vw;
+      
 `;
 
 

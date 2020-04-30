@@ -16,7 +16,7 @@ const StyledBurger = styled.button`
   z-index: 10;
   margin: 10px  ;
   border-radius: 5px;
-  background-color: ${({theme}) => theme.colors.blue};
+  background-color: ${({theme}) => theme.colors.white};
 
   &:focus {
     outline: none;

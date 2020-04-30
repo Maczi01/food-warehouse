@@ -15,6 +15,9 @@ const FormWrapper = styled.div`
       flex-direction: column;
       margin: 0 auto;
       width: 60vw;
+       @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+     }
 `;
 
 const ButtonContainer = styled.div`
@@ -26,6 +29,11 @@ const ButtonContainer = styled.div`
 const FormItem = styled.div`
       width: 100%;
       display: flex;
+         @media (max-width: ${({theme}) => theme.mobile}) {
+          flex-direction: column;
+          border: 1px solid   ${({theme}) => theme.colors.darkblue});
+  
+    }
       //position: relative;
       //flex-shrink: 0;
 `
@@ -43,7 +51,11 @@ const StyledInput = styled.input`
     transition-duration: 0.25s;
     font-weight: 300;
     background-color: ${({theme}) => theme.colors.gray};
-
+   background-color: ${({theme}) => theme.colors.gray};
+           @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+  
+    }
     // &:focus{
     //       width: 300px;
     //
@@ -69,6 +81,10 @@ const StyledLabel = styled.label`
       display: flex;
       text-decoration: none;
       align-items: center;
+        @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+  
+    }
 `
 const Select = styled.select`
       width: 300px;
@@ -86,20 +102,41 @@ const Select = styled.select`
       outline: none;
       color: black;
       background-color: ${({theme}) => theme.colors.gray};
+           @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+  
+    }
   `
 
-const Heading = styled.h1`
-     //margin-top: 30px;
-      color: ${({theme}) => theme.colors.blue};
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin: 0 auto;
-      padding: 10px;
+// const Heading = styled.h1`
+//      //margin-top: 30px;
+//       color: ${({theme}) => theme.colors.blue};
+//       text-align: center;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       flex-direction: column;
+//       margin: 0 auto;
+//       padding: 10px;
+//
+//       //width: 75vw;
+// `
 
-      //width: 75vw;
+const Heading = styled.h1`
+     padding: 10px;
+     color: ${({theme}) => theme.colors.blue};
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     margin: 0 auto;
+     width: 75vw;
+     @media (max-width: ${({theme}) => theme.mobile}) {
+        padding: 9rem 0 1rem;
+        font-size: 26px;
+        width: 100vw;
+     }
 `
 
 const categories = ["Pieczywo", "Makaron, ryż, kasze",

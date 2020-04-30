@@ -20,12 +20,32 @@ const ListWrapper = styled.div`
       font-size: 14px;
       //height: 90vh;
       //position: fixed;
+       @media (min-width: ${({theme}) => theme.mobile}) {
+      width: 100vw;
+    }
 `;
+
+const Heading = styled.h1`
+     padding: 10px;
+     color: ${({theme}) => theme.colors.blue};
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     margin: 0 auto;
+     width: 75vw;
+     @media (max-width: ${({theme}) => theme.mobile}) {
+        padding: 9rem 0 1rem;
+        font-size: 26px;
+        width: 100vw;
+     }
+`
 
 
 const ListView = () => (
     <ListWrapper>
-        <h1>Lista zakupów</h1>
+        <Heading>Lista zakupów</Heading>
         <img src={bag} alt="shoping bag"/>
         <AppContext.Consumer>
             {(context) => (
