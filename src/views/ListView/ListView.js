@@ -20,9 +20,9 @@ const ListWrapper = styled.div`
       font-size: 14px;
       //height: 90vh;
       //position: fixed;
-       @media (min-width: ${({theme}) => theme.mobile}) {
-      width: 100vw;
-    }
+       @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+     }
 `;
 
 const Heading = styled.h1`
@@ -42,11 +42,14 @@ const Heading = styled.h1`
      }
 `
 
+const Image = styled.img`
+margin: 10px;
+`
 
 const ListView = () => (
     <ListWrapper>
         <Heading>Lista zakupów</Heading>
-        <img src={bag} alt="shoping bag"/>
+        <Image src={bag} alt="shoping bag"/>
         <AppContext.Consumer>
             {(context) => (
                 (context.foodList.length) ?

@@ -30,27 +30,46 @@ const TableWrapper = styled.div`
       flex-direction: column;
       margin: 0 auto;
       width: 40vw;
-      
+      //padding-top: 80px;
+    
+      @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+     }
 `;
 
 
 const StyledTable = styled.table`
+padding-top: 15px;
   margin: 20px;
   border: none;
   border-collapse: collapse;
   border-radius: 20px;
+  @media (max-width: ${({theme}) => theme.mobile}) {
+
+    margin: 0 auto;
+     }
   td,
   th {
-        border: none;
-        padding: 20px 50px;
-        color: ${({theme}) => theme.colors.white};
-        border-top: 1px solid ${({theme}) => theme.colors.blue}
+  
+         @media (max-width: ${({theme}) => theme.mobile}) {
+      padding: 20px 20px;
+     }
+  
+      border: none;
+      padding: 20px 50px;
+      color: ${({theme}) => theme.colors.white};
+      border-top: 1px solid ${({theme}) => theme.colors.blue}
+ 
   }
   td {
-    padding: 20px 50px;
-    vertical-align: top;
-          color: black;
-
+  
+           @media (max-width: ${({theme}) => theme.mobile}) {
+      padding: 20px 20px;
+     }
+  
+      padding: 20px 50px;
+      vertical-align: top;
+      color: black;
   }
 
   tbody tr {
@@ -63,7 +82,7 @@ const StyledTable = styled.table`
     }
   }
   thead > tr {
-          background-color: ${({theme}) => theme.colors.blue};;
+      background-color: ${({theme}) => theme.colors.blue};;
   }
 `;
 
@@ -103,15 +122,15 @@ const TableMarkup = ({data}) => (
             ))}
             </tbody>
         </StyledTable>
-        <ButtonContainer>
-            <ButtonIcon
-                icon={print}
-            />
-            <ButtonIcon
-                onClick={() =>sendMail()}
-                icon={sms}
-            />
-        </ButtonContainer>
+        {/*<ButtonContainer>*/}
+        {/*    <ButtonIcon*/}
+        {/*        icon={print}*/}
+        {/*    />*/}
+        {/*    <ButtonIcon*/}
+        {/*        onClick={() =>sendMail()}*/}
+        {/*        icon={sms}*/}
+        {/*    />*/}
+        {/*</ButtonContainer>*/}
     </TableWrapper>
 );
 
