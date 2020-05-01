@@ -15,6 +15,14 @@ const LoginContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
+          @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+                height: 100vh;
+
+        border-radius: 0;
+                //margin: 0 auto;
+
+     }
 `
 
 const StyledInput = styled.input`

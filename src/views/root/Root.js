@@ -27,8 +27,8 @@ const Root = () => {
 
     const [foodList, setFoodList] = React.useState([]);
     const [theme, setTheme] = useState('light');
-    const [locale, setLocale] = useState('en')
-    const [language, setLanguage] = useState(English)
+    const [locale, setLocale] = useState('en');
+    const [language, setLanguage] = useState(English);
 
     function changeLanguage(language) {
         setLocale(language);
@@ -54,8 +54,6 @@ const Root = () => {
         if (e.target.value === 'off') {
             setTheme('light');
         }
-        //     // changeLanguage(e.target.value);
-        //
     }
 
     const handleChange = e => {
@@ -80,11 +78,15 @@ const Root = () => {
     };
 
     const increaseQuantity = (item) => {
-        db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) + 1});
+        if (item.currentQuantity < parseInt(item.maximalQuantity)) {
+            db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) + 1});
+        }
     };
 
     const decreaseQuantity = (item) => {
-        db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});
+        if (item.currentQuantity > 0) {
+            db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});
+        }
     };
 
     const editName = (item) => {
@@ -108,7 +110,7 @@ const Root = () => {
         toggleTheme: toggleTheme,
         darkMode: theme,
         handleChange: handleChange,
-        locale:locale
+        locale: locale
     };
 
     return (

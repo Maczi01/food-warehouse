@@ -16,6 +16,9 @@ const RegisterContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
+          @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+     }
 `
 
 const StyledInput = styled.input`

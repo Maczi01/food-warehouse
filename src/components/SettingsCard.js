@@ -213,8 +213,8 @@ const SettingsCard = ({toggleViewMode, darkMode, handleChange, changeLanguage, l
                     <UserAvatarWrapper src={user} alt="Avatar icon"/>
                     <UserMailWrapper>
                         <Paragraph>
-                            <FormattedMessage id="logged as"/>
-                            {auth.currentUser.email}
+                            <FormattedMessage id="logged as" />
+                             { auth.currentUser.email}
                         </Paragraph>
                         <Button onClick={() => auth.signOut()}>
                             <FormattedMessage id="logout"/>

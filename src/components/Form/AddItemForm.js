@@ -199,8 +199,8 @@ class AddItemForm extends React.Component {
                                     placeholder=""/>
                             </FormItem>
                             <FormItem>
-                                <StyledLabel htmlFor="currentQuantity">
-                                    <FormattedMessage id="category"/>
+                                <StyledLabel>
+                                    <FormattedMessage id="choose category"/>
 
                                 </StyledLabel>
                                 <Select
@@ -214,7 +214,7 @@ class AddItemForm extends React.Component {
                                     <option label="loose products, spieces" value="loose products, spieces"/>
                                     <option label="baking" value="baking"/>
                                     <option label="vegetables and fruits" value="vegetables and fruits"/>
-                                    <option label="Mięso, ryby, owoce morza" value="meat, fiches, seafood"/>
+                                    <option label="meat, fiches, seafood" value="meat, fiches, seafood"/>
                                     <option label="dairy" value="dairy"/>
                                     <option label="sweets and snacks" value="sweets and snacks"/>
                                     <option label="bevegares" value="bevegares"/>
@@ -259,8 +259,8 @@ class AddItemForm extends React.Component {
                                     placeholder=""/>
                             </FormItem>
                             <FormItem>
-                                <StyledLabel htmlFor="maximalQuantity">
-                                    <FormattedMessage id="maximal quantity"/>
+                                <StyledLabel>
+                                    <FormattedMessage id="maximal quanitity"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={this.handleInputChange}
