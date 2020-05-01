@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from "../../components/Header/Header";
-// import "./index.css";
 import MainView from '../MainView/MainView'
 import ListView from "../ListView/ListView";
 import AddView from "../AddView/AddView";
@@ -15,20 +14,54 @@ import GlobalStyle from "../../theme/GlobalStyle";
 import {db} from '../../firebase/firebase'
 import {routes} from '../../components/routes/routes'
 import LoginView from "../LoginView/LoginView";
-import {AuthProvider} from "../../firebase/Auth";
+import {AuthProvider} from "../../providers/Auth";
 import PrivateRoute from "../../firebase/PrivateRoute";
 import RegisterView from "../RegisterView/RegisterView";
-// import i18n from '../../components/i18next'
-import LanguageProvider from "../LanguageProvider";
+import English from '../en'
+import Polish from '../pl'
+import Germany from '../de'
+import {IntlProvider} from "react-intl";
 
-const Quote = () => (
-    <h1>Hej</h1>
-)
 
 const Root = () => {
 
     const [foodList, setFoodList] = React.useState([]);
-    // const [language, setLanguage] = React.useState('en')
+    const [theme, setTheme] = useState('light');
+    const [locale, setLocale] = useState('en')
+    const [language, setLanguage] = useState(English)
+
+    function changeLanguage(language) {
+        setLocale(language);
+        switch (language) {
+            case('en'):
+                setLanguage(English)
+                break;
+            case('pl'):
+                setLanguage(Polish)
+                break;
+            default:
+                setLanguage(Germany)
+        }
+    }
+
+
+    const toggleTheme = (e) => {
+        //     // if (theme === 'light') {
+        if (e.target.value === 'on') {
+            setTheme('dark');
+        }
+        //     // else {
+        if (e.target.value === 'off') {
+            setTheme('light');
+        }
+        //     // changeLanguage(e.target.value);
+        //
+    }
+
+    const handleChange = e => {
+        changeLanguage(e.target.value);
+    };
+
 
     React.useEffect(() => {
         const unSubscribe = db.collection("foodList").onSnapshot(
@@ -64,29 +97,6 @@ const Root = () => {
         db.collection("foodList").doc(id).delete()
     };
 
-    const [theme, setTheme] = useState('light');
-
-    const toggleTheme = () => {
-        if (theme === 'light') {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
-    }
-
-    // i18n.translation = {
-    //     en: {
-    //         hello: "Welcome"
-    //     },
-    //     pl: {
-    //         hello: "Siemka"
-    //     }
-    // }
-
-    // const some = () => {
-    //     i18next.changeLanguage(setLanguage('en'))
-    // }
-
 
     const contextElements = {
         foodList: foodList,
@@ -96,18 +106,19 @@ const Root = () => {
         decreaseQuantity: decreaseQuantity,
         editName: editName,
         toggleTheme: toggleTheme,
-        darkMode: theme
+        darkMode: theme,
+        handleChange: handleChange,
+        locale:locale
     };
 
     return (
         <AuthProvider>
-            <LanguageProvider>
-                <BrowserRouter>
+            <BrowserRouter>
+                <IntlProvider locale={locale} messages={language}>
                     <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
                         <GlobalStyle backgroundColor={theme.backgroundColor}/>
                         <AppContext.Provider value={contextElements}>
                             <Header/>
-                            {/*<Quote/>*/}
                             <Switch>
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
                                 <PrivateRoute path={routes.list} component={ListView}/>
@@ -118,10 +129,11 @@ const Root = () => {
                             </Switch>
                         </AppContext.Provider>
                     </ThemeProvider>
-                </BrowserRouter>
-            </LanguageProvider>
+                </IntlProvider>
+            </BrowserRouter>
         </AuthProvider>
     );
 }
 
 export default Root;
+

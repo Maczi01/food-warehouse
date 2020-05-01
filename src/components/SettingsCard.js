@@ -5,7 +5,10 @@ import {auth} from "../firebase/firebase";
 import {useState} from "react/cjs/react.production.min";
 import {theme} from "../theme/theme";
 import context from "react-router/modules/RouterContext";
-import {FormattedMessage} from "react-intl";
+import {FormattedMessage, IntlProvider} from "react-intl";
+// import {IntlProvider, FormattedMessage} from 'react-intl'
+
+import English from "../views/en";
 
 
 const SettingsWrapper = styled.div`
@@ -197,8 +200,8 @@ const Paragraph = styled.p`
 `
 
 
-const SettingsCard = ({toggleViewMode, darkMode}) => {
-    console.log(darkMode)
+const SettingsCard = ({toggleViewMode, darkMode, handleChange, changeLanguage, language, locale}) => {
+
 
     return (
         <>
@@ -219,41 +222,46 @@ const SettingsCard = ({toggleViewMode, darkMode}) => {
                     </UserMailWrapper>
                 </UserCard>
                 <OptionsWrapper>
+
                     <OptionsItem>
                         <StyledLabel>
                             <FormattedMessage id="change language"/>
                         </StyledLabel>
-                        <StyledSelect>
-                            <option>Polski</option>
-                            <option>English</option>
+
+                        <StyledSelect onChange={handleChange} defaultValue={locale}>
+                            <option value="pl">Polski</option>
+                            <option value="en">English</option>
                         </StyledSelect>
+
                     </OptionsItem>
                     <OptionsItem>
                         <StyledLabel>
+                            {/*<StyledLabel onChange={handleSelect} defaultValue={locale}>*/}
                             <FormattedMessage id="dark mode"/>
                         </StyledLabel>
-                        {/*<StyledSelect>*/}
-                        {/*    <option value="on" label="Włączony"/>*/}
-                        {/*    <option value="off" label="Wyłączony"/>*/}
-                        {/*</StyledSelect>*/}
-                        <ButtonMode onClick={() => toggleViewMode()}>
-                            {darkMode === "dark" ? "Włączony" : "Wyłączony"}
-                        </ButtonMode>
+                        <StyledSelect onChange={toggleViewMode} defaultValue="off">
+                            <option value="on" label="Włączony"/>
+                            <option value="off" label="Wyłączony"/>
+                        </StyledSelect>
+                        {/*<ButtonMode onClick={() => toggleViewMode()}>*/}
+                        {/*    {darkMode === "dark" ? "Włączony" : "Wyłączony"}*/}
+                        {/*</ButtonMode>*/}
                     </OptionsItem>
                     <OptionsItem>
                         <StyledLabel htmlFor="currentQuantity">
-                            <FormattedMessage id="current quantity"/>
+                            <FormattedMessage id="add unit"/>
                         </StyledLabel>
                         <StyledInput/>
                     </OptionsItem>
                     <OptionsItem>
-                        <StyledLabel htmlFor="currentQuantity">
+                        <StyledLabel>
                             <FormattedMessage id="add category"/>
                         </StyledLabel>
                         <StyledInput/>
 
                     </OptionsItem>
                 </OptionsWrapper>
+                {/*<IntlProvider locale={handleChange} messages={language}/>)*/}
             </SettingsWrapper>
         </>
     )

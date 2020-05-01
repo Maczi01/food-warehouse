@@ -9,6 +9,10 @@ const SettingsView = () => (
                 <SettingsCard
                     toggleViewMode={context.toggleTheme}
                     darkMode={context.darkMode}
+                    changeLanguage={context.changeLanguage}
+                    language={context.language}
+                    locale={context.locale}
+                    handleChange={context.handleChange}
                 />
             </>
         )}

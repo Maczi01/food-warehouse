@@ -3,7 +3,7 @@ import logo from '../../asstets/img/logo.svg';
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import settings from "../../asstets/img/settings.svg";
-import {AuthContext} from "../../firebase/Auth";
+import {AuthContext} from "../../providers/Auth";
 import Menu from "../Menu";
 import Burger from "../Burger";
 import {FormattedMessage} from 'react-intl'

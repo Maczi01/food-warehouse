@@ -209,15 +209,15 @@ class AddItemForm extends React.Component {
                                     value={this.state.category}
                                     placeholder=""
                                 >
-                                    <option label="Wybierz kategorię..." value="Wybierz kategorię..."/>
-                                    <option label="Makaron ryż, kasze" value="Makaron ryż, kasze"/>
-                                    <option label="Produkty sypkie, przyprawy" value="Produkty sypkie, przyprawy"/>
-                                    <option label="Pieczywo" value="Pieczywo"/>
-                                    <option label="Warzywa i owoce" value="Warzywa i owoce"/>
-                                    <option label="Mięso, ryby, owoce morza" value="Mięso, ryby, owoce morza"/>
-                                    <option label="Nabiał" value="Nabiał"/>
-                                    <option label="Słodycze i przekąski" value="Słodycze i przekąski"/>
-                                    <option label="Napoje" value="Napoje"/>
+                                    <option label="Choose category..." value="Choose category"/>
+                                    <option label="pasta, rice, groats" value="pasta, rice, groats"/>
+                                    <option label="loose products, spieces" value="loose products, spieces"/>
+                                    <option label="baking" value="baking"/>
+                                    <option label="vegetables and fruits" value="vegetables and fruits"/>
+                                    <option label="Mięso, ryby, owoce morza" value="meat, fiches, seafood"/>
+                                    <option label="dairy" value="dairy"/>
+                                    <option label="sweets and snacks" value="sweets and snacks"/>
+                                    <option label="bevegares" value="bevegares"/>
                                 </Select>
                             </FormItem>
                             <FormItem>

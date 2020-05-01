@@ -1,7 +1,7 @@
 import React, {useCallback, useContext} from 'react';
 import styled from 'styled-components';
 import LoginForm from "../../components/Form/LoginForm";
-import {AuthContext} from "../../firebase/Auth";
+import {AuthContext} from "../../providers/Auth";
 import {auth} from '../../firebase/firebase'
 import {Redirect} from 'react-router-dom';
 import AddItemForm from "../../components/Form/AddItemForm";
