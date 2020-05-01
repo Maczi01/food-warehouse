@@ -18,10 +18,18 @@ import LoginView from "../LoginView/LoginView";
 import {AuthProvider} from "../../firebase/Auth";
 import PrivateRoute from "../../firebase/PrivateRoute";
 import RegisterView from "../RegisterView/RegisterView";
+import i18n from '../../components/i18next'
+import LanguageProvider from "../LanguageProvider";
+
+const Quote = () => (
+    <h1>Hej</h1>
+)
 
 const Root = () => {
 
     const [foodList, setFoodList] = React.useState([]);
+    // const [language, setLanguage] = React.useState('en')
+
     React.useEffect(() => {
         const unSubscribe = db.collection("foodList").onSnapshot(
             (snapshot) => {
@@ -66,6 +74,20 @@ const Root = () => {
         }
     }
 
+    i18n.translation = {
+        en: {
+            hello: "Welcome"
+        },
+        pl: {
+            hello: "Siemka"
+        }
+    }
+
+    // const some = () => {
+    //     i18next.changeLanguage(setLanguage('en'))
+    // }
+
+
     const contextElements = {
         foodList: foodList,
         deleteItem: handleDelete,
@@ -79,22 +101,25 @@ const Root = () => {
 
     return (
         <AuthProvider>
-            <BrowserRouter>
-                <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
-                <GlobalStyle backgroundColor={theme.backgroundColor}/>
-                    <AppContext.Provider value={contextElements}>
-                        <Header/>
-                        <Switch>
-                            <PrivateRoute exact path={routes.home} component={MainView}/>
-                            <PrivateRoute path={routes.list} component={ListView}/>
-                            <PrivateRoute path={routes.add} component={AddView}/>
-                            <PrivateRoute path={routes.settings} component={SettingsView}/>
-                            <Route path={routes.login} component={LoginView}/>
-                            <Route path={routes.register} component={RegisterView}/>
-                        </Switch>
-                    </AppContext.Provider>
-                </ThemeProvider>
-            </BrowserRouter>
+            <LanguageProvider>
+                <BrowserRouter>
+                    <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
+                        <GlobalStyle backgroundColor={theme.backgroundColor}/>
+                        <AppContext.Provider value={contextElements}>
+                            <Header/>
+                            <Quote/>
+                            <Switch>
+                                <PrivateRoute exact path={routes.home} component={MainView}/>
+                                <PrivateRoute path={routes.list} component={ListView}/>
+                                <PrivateRoute path={routes.add} component={AddView}/>
+                                <PrivateRoute path={routes.settings} component={SettingsView}/>
+                                <Route path={routes.login} component={LoginView}/>
+                                <Route path={routes.register} component={RegisterView}/>
+                            </Switch>
+                        </AppContext.Provider>
+                    </ThemeProvider>
+                </BrowserRouter>
+            </LanguageProvider>
         </AuthProvider>
     );
 }
