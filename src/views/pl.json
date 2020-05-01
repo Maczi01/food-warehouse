@@ -1,4 +1,7 @@
 {
   "title": "Siema",
-  "content": "co tam"
+  "content": "co tam",
+  "check inventory": "Sprawdź zapasy",
+  "add product": "Dodaj produkt",
+  "shopping list": "List zakupów"
 }

@@ -6,6 +6,7 @@ import settings from "../../asstets/img/settings.svg";
 import {AuthContext} from "../../firebase/Auth";
 import Menu from "../Menu";
 import Burger from "../Burger";
+import {FormattedMessage} from 'react-intl'
 
 const HeaderWrapper = styled.nav`
  @media (max-width: ${({theme}) => theme.mobile}) {
@@ -77,9 +78,9 @@ const Header = () => {
                 <HeaderWrapper>
                     <List>
                         <ListItem as={NavLink} exact to="/"><StyledLogoLink/></ListItem>
-                        <ListItem as={NavLink} exact to="/" activeclass="active">Sprawdź zapasy</ListItem>
-                        <ListItem as={NavLink} to="/add" activeclass="active">Dodaj produkt</ListItem>
-                        <ListItem as={NavLink} to="/list" activeclass="active">Lista zakupów</ListItem>
+                        <ListItem as={NavLink} exact to="/" activeclass="active"><FormattedMessage id="check inventory"/> </ListItem>
+                        <ListItem as={NavLink} to="/add" activeclass="active"><FormattedMessage id="add product"/></ListItem>
+                        <ListItem as={NavLink} to="/list" activeclass="active"><FormattedMessage id="shopping list"/></ListItem>
                         {/*<ListItem>You are logged as {(auth.currentUser.email)}</ListItem>*/}
                         <ListItem as={NavLink} to="/settings" activeclass="active"><img src={settings}
                                                                                         alt="Settings icon"/></ListItem>

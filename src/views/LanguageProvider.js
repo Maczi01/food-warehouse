@@ -3,6 +3,7 @@ import {IntlProvider, FormattedMessage} from 'react-intl'
 
 import English from './en'
 import Polish from './pl'
+import Germany from './de'
 
 const LanguageProvider = (props) => {
 
@@ -18,17 +19,15 @@ const LanguageProvider = (props) => {
             case('pl'):
                 setLanguage(Polish)
                 break;
+            default:
+                setLanguage(Germany)
         }
     }
 
     return (
         <IntlProvider locale={locale} messages={language}>
-            <h1><FormattedMessage
-                id="content"
-            />
                 <button onClick={() => changeLanguage('en')}> English</button>
                 <button onClick={() => changeLanguage('pl')}> Polski</button>
-            </h1>
             <div> {props.children}</div>
         </IntlProvider>)
 }

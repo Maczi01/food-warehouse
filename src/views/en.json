@@ -1,4 +1,7 @@
 {
   "title": "Hello",
-  "content": "what's up?"
+  "content": "what's up?",
+  "check inventory": "Check inventory",
+  "add product": "Add product",
+  "shopping list": "Shopping List"
 }

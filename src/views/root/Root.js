@@ -18,7 +18,7 @@ import LoginView from "../LoginView/LoginView";
 import {AuthProvider} from "../../firebase/Auth";
 import PrivateRoute from "../../firebase/PrivateRoute";
 import RegisterView from "../RegisterView/RegisterView";
-import i18n from '../../components/i18next'
+// import i18n from '../../components/i18next'
 import LanguageProvider from "../LanguageProvider";
 
 const Quote = () => (
@@ -74,14 +74,14 @@ const Root = () => {
         }
     }
 
-    i18n.translation = {
-        en: {
-            hello: "Welcome"
-        },
-        pl: {
-            hello: "Siemka"
-        }
-    }
+    // i18n.translation = {
+    //     en: {
+    //         hello: "Welcome"
+    //     },
+    //     pl: {
+    //         hello: "Siemka"
+    //     }
+    // }
 
     // const some = () => {
     //     i18next.changeLanguage(setLanguage('en'))
@@ -107,7 +107,7 @@ const Root = () => {
                         <GlobalStyle backgroundColor={theme.backgroundColor}/>
                         <AppContext.Provider value={contextElements}>
                             <Header/>
-                            <Quote/>
+                            {/*<Quote/>*/}
                             <Switch>
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
                                 <PrivateRoute path={routes.list} component={ListView}/>
