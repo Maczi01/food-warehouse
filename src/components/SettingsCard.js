@@ -5,6 +5,7 @@ import {auth} from "../firebase/firebase";
 import {useState} from "react/cjs/react.production.min";
 import {theme} from "../theme/theme";
 import context from "react-router/modules/RouterContext";
+import {FormattedMessage} from "react-intl";
 
 
 const SettingsWrapper = styled.div`
@@ -197,29 +198,40 @@ const Paragraph = styled.p`
 
 
 const SettingsCard = ({toggleViewMode, darkMode}) => {
-        console.log(darkMode)
+    console.log(darkMode)
 
     return (
         <>
-            <Heading>Ustawienia</Heading>
+            <Heading>
+                <FormattedMessage id="settings"/>
+            </Heading>
             <SettingsWrapper>
                 <UserCard>
                     <UserAvatarWrapper src={user} alt="Avatar icon"/>
                     <UserMailWrapper>
-                        <Paragraph>Jesteś zalogowany jako {auth.currentUser.email}</Paragraph>
-                        <Button onClick={() => auth.signOut()}>Wyloguj</Button>
+                        <Paragraph>
+                            <FormattedMessage id="logged as"/>
+                            {auth.currentUser.email}
+                        </Paragraph>
+                        <Button onClick={() => auth.signOut()}>
+                            <FormattedMessage id="logout"/>
+                        </Button>
                     </UserMailWrapper>
                 </UserCard>
                 <OptionsWrapper>
                     <OptionsItem>
-                        <StyledLabel>Zmień język</StyledLabel>
+                        <StyledLabel>
+                            <FormattedMessage id="change language"/>
+                        </StyledLabel>
                         <StyledSelect>
                             <option>Polski</option>
                             <option>English</option>
                         </StyledSelect>
                     </OptionsItem>
                     <OptionsItem>
-                        <StyledLabel>Tryb ciemny</StyledLabel>
+                        <StyledLabel>
+                            <FormattedMessage id="dark mode"/>
+                        </StyledLabel>
                         {/*<StyledSelect>*/}
                         {/*    <option value="on" label="Włączony"/>*/}
                         {/*    <option value="off" label="Wyłączony"/>*/}
@@ -230,13 +242,13 @@ const SettingsCard = ({toggleViewMode, darkMode}) => {
                     </OptionsItem>
                     <OptionsItem>
                         <StyledLabel htmlFor="currentQuantity">
-                            Dodaj jednostkę
+                            <FormattedMessage id="current quantity"/>
                         </StyledLabel>
                         <StyledInput/>
                     </OptionsItem>
                     <OptionsItem>
                         <StyledLabel htmlFor="currentQuantity">
-                            Dodaj kategorię
+                            <FormattedMessage id="add category"/>
                         </StyledLabel>
                         <StyledInput/>
 

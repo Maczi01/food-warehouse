@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import {FormattedMessage} from "react-intl";
 
 const StyledMenu = styled.ul`
   display: flex;
@@ -40,10 +41,18 @@ const ListItem = styled.li`
 const Menu = ({open, setOpen}) => {
     return (
         <StyledMenu open={open}>
-            <ListItem as={NavLink} exact to="/" activeclass="active" onClick={() => setOpen(!open)}>Sprawdź zapasy</ListItem>
-            <ListItem as={NavLink} to="/add" activeclass="active" onClick={() => setOpen(!open)}>Dodaj produkt</ListItem>
-            <ListItem as={NavLink} to="/list" activeclass="active" onClick={() => setOpen(!open)}>Lista zakupów</ListItem>
-            <ListItem as={NavLink} to="/settings" activeclass="active" onClick={() => setOpen(!open)}>Ustawienia</ListItem>
+            <ListItem as={NavLink} exact to="/" activeclass="active" onClick={() => setOpen(!open)}>
+                <FormattedMessage id="check inventory"/>
+            </ListItem>
+            <ListItem as={NavLink} to="/add" activeclass="active" onClick={() => setOpen(!open)}>
+                <FormattedMessage id="add product"/>
+            </ListItem>
+            <ListItem as={NavLink} to="/list" activeclass="active" onClick={() => setOpen(!open)}>
+                <FormattedMessage id="shopping list"/>
+            </ListItem>
+            <ListItem as={NavLink} to="/settings" activeclass="active" onClick={() => setOpen(!open)}>
+                <FormattedMessage id="settings"/>
+            </ListItem>
         </StyledMenu>
     )
 }

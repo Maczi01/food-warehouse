@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import bag from '../../asstets/img/bag.svg';
 import styled from "styled-components";
 import TableMarkup from "../../components/Table";
+import {FormattedMessage} from "react-intl";
 
 const ListWrapper = styled.div`
       //padding: 70px 80px 50px;
@@ -48,14 +49,18 @@ margin: 10px;
 
 const ListView = () => (
     <ListWrapper>
-        <Heading>Lista zakupów</Heading>
+        <Heading>
+            <FormattedMessage id="shopping list"/>
+        </Heading>
         <Image src={bag} alt="shoping bag"/>
         <AppContext.Consumer>
             {(context) => (
                 (context.foodList.length) ?
                     <TableMarkup data={context.foodList}/>
                     :
-                    <span>Nothing here</span>
+                    <span>
+                        <FormattedMessage id="empty list"/>
+                    </span>
             )}
         </AppContext.Consumer>
     </ListWrapper>

@@ -7,6 +7,7 @@ import decline from '../../asstets/img/decline.svg'
 import styled from "styled-components";
 import ButtonIcon from "../ButtonIcon";
 import {Link} from "react-router-dom";
+import {FormattedMessage} from 'react-intl'
 
 const FormWrapper = styled.div`
       display: flex;
@@ -188,7 +189,7 @@ class AddItemForm extends React.Component {
                         <Form autoComplete="off">
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
-                                    Nazwa produktu
+                                    <FormattedMessage id="name"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={this.handleInputChange}
@@ -199,7 +200,8 @@ class AddItemForm extends React.Component {
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
-                                    Kategoria
+                                    <FormattedMessage id="category"/>
+
                                 </StyledLabel>
                                 <Select
                                     onChange={this.handleInputChange}
@@ -220,7 +222,7 @@ class AddItemForm extends React.Component {
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
-                                    Jednostka
+                                    <FormattedMessage id="unit"/>
                                 </StyledLabel>
                                 <Select
                                     onChange={this.handleInputChange}
@@ -236,7 +238,7 @@ class AddItemForm extends React.Component {
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
-                                    Ilość w spiżarni
+                                    <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={this.handleInputChange}
@@ -247,7 +249,7 @@ class AddItemForm extends React.Component {
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="minimalQuantity">
-                                    Ilość minimalna
+                                    <FormattedMessage id="minimal quantity"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={this.handleInputChange}
@@ -258,7 +260,7 @@ class AddItemForm extends React.Component {
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="maximalQuantity">
-                                    Ilość maksymalna
+                                    <FormattedMessage id="maximal quantity"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={this.handleInputChange}

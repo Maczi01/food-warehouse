@@ -5,6 +5,7 @@ import shop from '../../asstets/img/shop.svg';
 import styled from "styled-components";
 import theme from "../../theme/theme";
 import {auth} from "../../firebase/firebase";
+import {FormattedMessage} from "react-intl";
 
 const ViewWrapper = styled.div`
      width: 75vw;
@@ -39,7 +40,9 @@ const MainView = () => (
     <AppContext.Consumer>
         {(context) => (
             <ViewWrapper>
-                <Heading>Sprawdź, co masz w spiżarni</Heading>
+                <Heading>
+                    <FormattedMessage id="what in inventory"/>
+                </Heading>
                 {/*<img src={shop} alt="Logo"/>*/}
                 <List items={context.foodList}
                       deleteItem={context.deleteItem}

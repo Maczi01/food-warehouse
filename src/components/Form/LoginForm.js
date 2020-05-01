@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from 'react'
 import {Redirect} from "react-router";
 import {Link} from "react-router-dom";
+import {FormattedMessage} from "react-intl";
 
 const LoginContainer = styled.div`
         align-items: center;
@@ -73,9 +74,15 @@ const LoginForm = ({handleLogin}) => (
             <Form onSubmit={handleLogin} autocomplete="off">
                 <StyledInput type="email" name="email" placeholder="Email"/>
                 <StyledInput type="password" name="password" placeholder="Hasło"/>
-                <Button>Zaloguj</Button>
+                <Button>
+                    <FormattedMessage id="log in"/>
+                </Button>
             </Form>
-            <span>Nie masz konta? <Link to="/register"> Zarejestruj się</Link> </span>
+            <span>
+                <FormattedMessage id="have not account"/>
+                <Link to="/register">
+                <FormattedMessage id="sign up"/>
+                </Link> </span>
         </ItemsContainer>
     </LoginContainer>
 );

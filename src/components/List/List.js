@@ -3,6 +3,7 @@ import ListItem from "./ListItem";
 import styled from "styled-components";
 import theme from "../../theme/theme";
 import TableMarkup from "../Table";
+import {FormattedMessage} from "react-intl";
 
 const UlWrapper = styled.ul`
     width: 75vw;
@@ -44,10 +45,11 @@ const CategoryWrapper = styled.div`
 const List = ({items, shop, deleteItem, decreaseQuantity, increaseQuantity, editName, toEdit}) => {
     return (
         <>
-            <CategoryWrapper>Pieczywo</CategoryWrapper>
+            <CategoryWrapper>
+                <FormattedMessage id="baking"/>
+            </CategoryWrapper>
             <UlWrapper>
                 {items.length ?
-
                     items.map(item => (
                         <ListItem {...item}
                                   key={item.id}
@@ -58,7 +60,8 @@ const List = ({items, shop, deleteItem, decreaseQuantity, increaseQuantity, edit
                                   editName={() => editName(item)
                                   }/>
                     )) :
-                    <InfoWrapper>Pusta spizarnia!
+                    <InfoWrapper>
+                        <FormattedMessage id="empty inventory"/>
                     </InfoWrapper>
                 }
             </UlWrapper>

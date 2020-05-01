@@ -4,6 +4,7 @@ import ButtonIcon from "./ButtonIcon";
 import print from "../asstets/img/print.svg";
 import sms from "../asstets/img/sms.svg";
 import emailjs from 'emailjs-com';
+import {FormattedMessage} from "react-intl";
 
 var templateParams = {
     name: 'James',
@@ -91,9 +92,15 @@ const TableMarkup = ({data}) => (
             <thead>
             <tr>
                 <th>#</th>
-                <th>Nazwa</th>
-                <th>Ilość</th>
-                <th>Jednostka</th>
+                <th>
+                    <FormattedMessage id="name"/>
+                </th>
+                <th>
+                    <FormattedMessage id="quantity"/>
+                </th>
+                <th>
+                    <FormattedMessage id="unit"/>
+                </th>
             </tr>
             </thead>
             <tbody>

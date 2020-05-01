@@ -3,6 +3,7 @@ import React from 'react'
 import {Redirect} from "react-router";
 import {withRouter} from "react-router";
 import {Link} from "react-router-dom";
+import {FormattedMessage} from "react-intl";
 
 const RegisterContainer = styled.div`
         align-items: center;
@@ -74,9 +75,15 @@ const RegisterForm = ({handleRegister}) => (
             <Form onSubmit={handleRegister} autocomplete="off">
                 <StyledInput type="email" name="email" placeholder="Email"/>
                 <StyledInput type="password" name="password" placeholder="Hasło"/>
-                <Button>Zarejestruj</Button>
+                <Button>
+                    <FormattedMessage id="sign up"/>
+                </Button>
             </Form>
-            <span>Masz już konto?<Link to="/login">Zaloguj się</Link> </span>
+            <span>
+                <FormattedMessage id="have account"/>
+                <Link to="/login">
+                <FormattedMessage id="log in"/>
+            </Link> </span>
         </ItemsContainer>
     </RegisterContainer>
 );
