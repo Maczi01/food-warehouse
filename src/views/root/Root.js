@@ -15,11 +15,10 @@ import {db} from '../../firebase/firebase'
 import {routes} from '../../components/routes/routes'
 import LoginView from "../LoginView/LoginView";
 import {AuthProvider} from "../../providers/Auth";
-import PrivateRoute from "../../firebase/PrivateRoute";
+import PrivateRoute from "../../components/routes/PrivateRoute";
 import RegisterView from "../RegisterView/RegisterView";
-import English from '../en'
-import Polish from '../pl'
-import Germany from '../de'
+import English from '../../languages/en'
+import Polish from '../../languages/pl'
 import {IntlProvider} from "react-intl";
 
 
@@ -36,21 +35,15 @@ const Root = () => {
             case('en'):
                 setLanguage(English)
                 break;
-            case('pl'):
-                setLanguage(Polish)
-                break;
             default:
-                setLanguage(Germany)
+                setLanguage(Polish)
         }
     }
 
-
     const toggleTheme = (e) => {
-        //     // if (theme === 'light') {
         if (e.target.value === 'on') {
             setTheme('dark');
         }
-        //     // else {
         if (e.target.value === 'off') {
             setTheme('light');
         }

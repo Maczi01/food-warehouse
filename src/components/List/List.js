@@ -1,8 +1,6 @@
 import React from 'react';
 import ListItem from "./ListItem";
 import styled from "styled-components";
-import theme from "../../theme/theme";
-import TableMarkup from "../Table";
 import {FormattedMessage} from "react-intl";
 
 const UlWrapper = styled.ul`
@@ -42,7 +40,7 @@ const CategoryWrapper = styled.div`
 `
 
 
-const List = ({items, shop, deleteItem, decreaseQuantity, increaseQuantity, editName, toEdit}) => {
+const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, toEdit}) => {
     return (
         <>
             <CategoryWrapper>

@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import ButtonIcon from '../components/Button/Button'
 import bag from '../asstets/img/bag.svg'
 
@@ -38,9 +36,7 @@ const StyledModalHeader = styled.div`
   height: 100%;
   background-color: orange;
   border-radius: 30px 30px 0 0;
-  //padding: 20px;
   display: flex;
-  //grid-template-columns: auto 40px;
   align-items: center;
   color: black;
   font-weight: bold;
@@ -58,7 +54,6 @@ const Modal = ({closeModalFn, children, btn, title = "title"}) => (
             <StyledModalHeader>
                 {title}
             </StyledModalHeader>
-
             <StyledContentModal>{children}
                 <ButtonIcon icon={bag} onClick={() => window.alert("pleple")}>XX</ButtonIcon>
             </StyledContentModal>

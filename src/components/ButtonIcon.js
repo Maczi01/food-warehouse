@@ -12,13 +12,6 @@ const ButtonIcon = styled.button`
   border: none;
   outline: none;
   margin-left: 10px;
-  //:hover { 
-  //  transform: scale(1.2);
-  // }
-  // :active {
-  //  transform: translateY(4px);
-  // }
-
 `;
 
 export default ButtonIcon;

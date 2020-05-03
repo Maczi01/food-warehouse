@@ -21,7 +21,6 @@ const ItemWraper = styled.li`
 const NameWrapper = styled.span`
     font-size: 14px;
     width: 100px;
-    //margin: 0 30px;
     margin: 0 auto;
     margin-bottom: 20px;;
     @media (max-width: ${({theme}) => theme.mobile}) {
@@ -38,7 +37,6 @@ const InfoWrapper = styled.span`
     margin-bottom: 20px;
     align-items: center;
     @media (max-width: ${({theme}) => theme.mobile}) {
-       //margin: 0 10px;
        font-size: 1.2rem;
        width: auto;
     }
@@ -52,13 +50,8 @@ const StyledButton = styled.img`
     justify-content: space-around;
     @media (max-width: ${({theme}) => theme.mobile}) {
         height: 30px;
-              width: auto;
-
+        width: auto;
     }
-    //:hover { transform: scale(1.05); }
-   //  :active {
-   // transform: translateY(4px);
-   //}
 `
 
 const Container = styled.div`

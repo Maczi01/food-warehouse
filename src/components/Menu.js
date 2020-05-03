@@ -26,7 +26,6 @@ const StyledMenu = styled.ul`
 const ListItem = styled.li`
   list-style: none;
   display: flex;
-  //margin: 50px;
   height: 70px;
   width: 230px;
   text-decoration: none;

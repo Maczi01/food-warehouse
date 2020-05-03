@@ -1,4 +1,3 @@
-// import {Route} from 'react-router';
 export const routes = {
     home: '/',
     list: '/list',

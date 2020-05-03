@@ -1,10 +1,7 @@
 import React from 'react';
 import List from '../../components/List/List'
 import AppContext from "../../context/context";
-import shop from '../../asstets/img/shop.svg';
 import styled from "styled-components";
-import theme from "../../theme/theme";
-import {auth} from "../../firebase/firebase";
 import {FormattedMessage} from "react-intl";
 
 const ViewWrapper = styled.div`

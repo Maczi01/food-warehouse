@@ -15,7 +15,6 @@ const ListWrapper = styled.div`
       font-size: 14px;
 `;
 
-
 const My404Component = () => (
     <ListWrapper>
         <h1>Nie ma takiej strony!!!!!!</h1>
