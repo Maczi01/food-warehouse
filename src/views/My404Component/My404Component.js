@@ -1,9 +1,6 @@
 import React from 'react';
-import AppContext from "../../context/context";
 import 'react-toastify/dist/ReactToastify.css';
-import bag from '../../asstets/img/bag.svg';
 import styled from "styled-components";
-import TableMarkup from "../../components/Table";
 
 const ListWrapper = styled.div`
       display: flex;

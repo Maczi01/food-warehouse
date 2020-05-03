@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import logo from '../../asstets/img/logo.svg';
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink, Redirect} from "react-router-dom";
 import settings from "../../asstets/img/settings.svg";
 import {AuthContext} from "../../providers/Auth";
 import Menu from "../Menu";
@@ -9,22 +9,21 @@ import Burger from "../Burger";
 import {FormattedMessage} from 'react-intl'
 
 const HeaderWrapper = styled.nav`
- @media (max-width: ${({theme}) => theme.mobile}) {
-        //background-color: ${({theme}) => theme.colors.pink};
-    display: none;
-    }
   display: flex;
-  justify-content: space-between; 
   align-items: center;
   height: 70px;
   background-color: ${({theme}) => theme.colors.blue};
-  margin-bottom: 10px;
-      transition: all 0.5s linear;
-
+  margin-bottom: 20px;
+  transition: all 0.5s linear;
+  @media (max-width: ${({theme}) => theme.mobile}) {
+    display: none;
+  }
 `
 
-const StyledLogoLink = styled.div`
+const StyledLogoLink = styled(Link)`
+    margin: 0 40px;
     display: block;
+    justify-content: flex-start;
     width: 67px;
     height: 67px;
     background-image: url(${logo});
@@ -34,32 +33,27 @@ const StyledLogoLink = styled.div`
 `;
 
 const List = styled.li`
-    @media (max-width: ${({theme}) => theme.mobile}) {
-        background-color: ${({theme}) => theme.colors.pink};
-    }
     display: flex;
-    margin: 0; 
-    padding: 0;
+    justify-content: space-between; 
 `
+
 const ListItem = styled.li`
-  list-style: none;
-  display: flex;
-  //margin: 50px;
-  height: 70px;
-  width: 230px;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  color: ${({theme}) => theme.colors.white};
-  &.active {
-    background-color: ${({theme}) => theme.colors.darkblue};
-  }
+    list-style: none;
+    display: flex;
+    height: 70px;
+    width: 230px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    color: ${({theme}) => theme.colors.white};
+    &.active {
+      background-color: ${({theme}) => theme.colors.darkblue};
+    }
 `
 
 const HamburgerContainer = styled.div`
- @media (min-width: ${({theme}) => theme.mobile}) {
-        //background-color: ${({theme}) => theme.colors.pink};
-    display: none;
+    @media (min-width: ${({theme}) => theme.mobile}) {
+      display: none;
     }
 `
 
@@ -76,10 +70,8 @@ const Header = () => {
                 </HamburgerContainer> : null}
             {currentUser ?
                 <HeaderWrapper>
+                    <StyledLogoLink to="/"/>
                     <List>
-                        <ListItem as={NavLink} exact to="/">
-                            <StyledLogoLink/>
-                        </ListItem>
                         <ListItem as={NavLink} exact to="/" activeclass="active"><
                             FormattedMessage id="check inventory"/>
                         </ListItem>
@@ -89,13 +81,11 @@ const Header = () => {
                         <ListItem as={NavLink} to="/list" activeclass="active">
                             <FormattedMessage id="shopping list"/>
                         </ListItem>
-                        {/*<ListItem>You are logged as {(auth.currentUser.email)}</ListItem>*/}
                         <ListItem as={NavLink} to="/settings" activeclass="active">
-                            <img src={settings} alt="Settings icon"/>
+                            <FormattedMessage id="settings"/>
                         </ListItem>
                     </List>
                 </HeaderWrapper> : null}
-
         </>
     )
 };
