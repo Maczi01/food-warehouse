@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import React from 'react'
-import {Redirect} from "react-router";
-import {withRouter} from "react-router";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 
@@ -16,9 +14,9 @@ const RegisterContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-          @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 100vw;
-     }
+        @media (max-width: ${({theme}) => theme.mobile}) {
+          width: 100vw;
+        }
 `
 
 const StyledInput = styled.input`
@@ -37,10 +35,10 @@ const StyledInput = styled.input`
 `
 
 const ItemsContainer = styled.div`
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
 
 const StyledTitle = styled.div`
@@ -86,7 +84,8 @@ const RegisterForm = ({handleRegister}) => (
                 <FormattedMessage id="have account"/>
                 <Link to="/login">
                 <FormattedMessage id="log in"/>
-            </Link> </span>
+            </Link>
+            </span>
         </ItemsContainer>
     </RegisterContainer>
 );

@@ -2,30 +2,22 @@ import React from 'react';
 import styled from "styled-components";
 import user from '../asstets/img/user.svg'
 import {auth} from "../firebase/firebase";
-import {useState} from "react/cjs/react.production.min";
-import {theme} from "../theme/theme";
-import context from "react-router/modules/RouterContext";
-import {FormattedMessage, IntlProvider} from "react-intl";
-// import {IntlProvider, FormattedMessage} from 'react-intl'
-
-import English from "../views/en";
+import {FormattedMessage} from "react-intl";
 
 
 const SettingsWrapper = styled.div`
       display: flex;
       justify-content: center;
-      //align-items: center;
       flex-direction: column;
       margin: 0 auto;
       padding: 20px;
       width: 50vw;
-    @media (max-width: ${({theme}) => theme.mobile}) {
+      @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
      }
 `;
 
 const UserCard = styled.div`
-      //padding-top: 10px;
       display: flex;
       justify-content: space-between;
       width: 40vw;
@@ -42,13 +34,10 @@ const UserAvatarWrapper = styled.img`
 `
 const UserMailWrapper = styled.div`
      display: flex;
-     //justify-content: center;
      align-items: center;
      flex-direction: column;
 `
 const Button = styled.button`
-    //padding: 20px 30px;
-    //margin-top: 30px;
     width: 170px;
     height: 50px;
     outline: none;
@@ -78,7 +67,6 @@ const ButtonMode = styled.button`
     background-color: ${({theme}) => theme.colors.gray};
         @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
-  
     }
 `
 
@@ -87,8 +75,6 @@ const OptionsWrapper = styled.div`
       display: flex;
       flex-direction: column;
       margin: 0 auto;
-      //justify-content: center;
-      //align-items: center;
 `
 const OptionsItem = styled.div`
       width: 100%;
@@ -113,10 +99,9 @@ const StyledLabel = styled.label`
       display: flex;
       text-decoration: none;
       align-items: center;
-          @media (max-width: ${({theme}) => theme.mobile}) {
+      @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
-  
-    }
+      }
 `
 
 const StyledInput = styled.input`
@@ -135,19 +120,7 @@ const StyledInput = styled.input`
     background-color: ${({theme}) => theme.colors.gray};
           @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
-  
     }
-    // &:focus{
-    //       width: 300px;
-    //
-    //   background-color: #bcffb8;
-    // }
-    //
-    // &:focus{
-    //   width: 300px;
-    //       background-color: ${({theme}) => theme.colors.gray};
-
-  }
 `
 const StyledSelect = styled.select`
     display: block;
@@ -166,24 +139,10 @@ const StyledSelect = styled.select`
       text-align-last:center;
                @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
-  
     }
-
-    // &:focus{
-    //       width: 300px;
-    //
-    //   background-color: #bcffb8;
-    // }
-    //
-    // &:focus{
-    //   width: 300px;
-    //       background-color: ${({theme}) => theme.colors.gray};
-
-  }
 `
 
 const Heading = styled.h1`
-     //margin-top: 30px;
      padding: 10px;
      color: ${({theme}) => theme.colors.blue};
      text-align: center;
@@ -200,71 +159,57 @@ const Paragraph = styled.p`
 `
 
 
-const SettingsCard = ({toggleViewMode, darkMode, handleChange, changeLanguage, language, locale}) => {
-
-
-    return (
-        <>
-            <Heading>
-                <FormattedMessage id="settings"/>
-            </Heading>
-            <SettingsWrapper>
-                <UserCard>
-                    <UserAvatarWrapper src={user} alt="Avatar icon"/>
-                    <UserMailWrapper>
-                        <Paragraph>
-                            <FormattedMessage id="logged as" />
-                             { auth.currentUser.email}
-                        </Paragraph>
-                        <Button onClick={() => auth.signOut()}>
-                            <FormattedMessage id="logout"/>
-                        </Button>
-                    </UserMailWrapper>
-                </UserCard>
-                <OptionsWrapper>
-
-                    <OptionsItem>
-                        <StyledLabel>
-                            <FormattedMessage id="change language"/>
-                        </StyledLabel>
-
-                        <StyledSelect onChange={handleChange} defaultValue={locale}>
-                            <option value="pl">Polski</option>
-                            <option value="en">English</option>
-                        </StyledSelect>
-
-                    </OptionsItem>
-                    <OptionsItem>
-                        <StyledLabel>
-                            {/*<StyledLabel onChange={handleSelect} defaultValue={locale}>*/}
-                            <FormattedMessage id="dark mode"/>
-                        </StyledLabel>
-                        <StyledSelect onChange={toggleViewMode} defaultValue="off">
-                            <option value="on" label="Włączony"/>
-                            <option value="off" label="Wyłączony"/>
-                        </StyledSelect>
-                        {/*<ButtonMode onClick={() => toggleViewMode()}>*/}
-                        {/*    {darkMode === "dark" ? "Włączony" : "Wyłączony"}*/}
-                        {/*</ButtonMode>*/}
-                    </OptionsItem>
-                    <OptionsItem>
-                        <StyledLabel htmlFor="currentQuantity">
-                            <FormattedMessage id="add unit"/>
-                        </StyledLabel>
-                        <StyledInput/>
-                    </OptionsItem>
-                    <OptionsItem>
-                        <StyledLabel>
-                            <FormattedMessage id="add category"/>
-                        </StyledLabel>
-                        <StyledInput/>
-
-                    </OptionsItem>
-                </OptionsWrapper>
-                {/*<IntlProvider locale={handleChange} messages={language}/>)*/}
-            </SettingsWrapper>
-        </>
-    )
-}
-
+const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
+    <>
+        <Heading>
+            <FormattedMessage id="settings"/>
+        </Heading>
+        <SettingsWrapper>
+            <UserCard>
+                <UserAvatarWrapper src={user} alt="Avatar icon"/>
+                <UserMailWrapper>
+                    <Paragraph>
+                        <FormattedMessage id="logged as"/>
+                        {auth.currentUser.email}
+                    </Paragraph>
+                    <Button onClick={() => auth.signOut()}>
+                        <FormattedMessage id="logout"/>
+                    </Button>
+                </UserMailWrapper>
+            </UserCard>
+            <OptionsWrapper>
+                <OptionsItem>
+                    <StyledLabel>
+                        <FormattedMessage id="change language"/>
+                    </StyledLabel>
+                    <StyledSelect onChange={handleChange} defaultValue={locale}>
+                        <option value="pl">Polski</option>
+                        <option value="en">English</option>
+                    </StyledSelect>
+                </OptionsItem>
+                <OptionsItem>
+                    <StyledLabel>
+                        <FormattedMessage id="dark mode"/>
+                    </StyledLabel>
+                    <StyledSelect onChange={toggleViewMode} defaultValue="off">
+                        <option value="on" label="Włączony"/>
+                        <option value="off" label="Wyłączony"/>
+                    </StyledSelect>
+                </OptionsItem>
+                <OptionsItem>
+                    <StyledLabel htmlFor="currentQuantity">
+                        <FormattedMessage id="add unit"/>
+                    </StyledLabel>
+                    <StyledInput/>
+                </OptionsItem>
+                <OptionsItem>
+                    <StyledLabel>
+                        <FormattedMessage id="add category"/>
+                    </StyledLabel>
+                    <StyledInput/>
+                </OptionsItem>
+            </OptionsWrapper>
+        </SettingsWrapper>
+    </>
+)
 export default SettingsCard;

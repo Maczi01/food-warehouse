@@ -33,10 +33,7 @@ const FormItem = styled.div`
          @media (max-width: ${({theme}) => theme.mobile}) {
           flex-direction: column;
           border: 1px solid   ${({theme}) => theme.colors.darkblue});
-  
-    }
-      //position: relative;
-      //flex-shrink: 0;
+      }
 `
 const StyledInput = styled.input`
     display: block;
@@ -52,21 +49,9 @@ const StyledInput = styled.input`
     transition-duration: 0.25s;
     font-weight: 300;
     background-color: ${({theme}) => theme.colors.gray};
-   background-color: ${({theme}) => theme.colors.gray};
-           @media (max-width: ${({theme}) => theme.mobile}) {
-          height: 50px;
-  
+    @media (max-width: ${({theme}) => theme.mobile}) {
+       height: 50px;
     }
-    // &:focus{
-    //       width: 300px;
-    //
-    //   background-color: #bcffb8;
-    // }
-    //
-    // &:focus{
-    //   width: 300px;
-    //       background-color: ${({theme}) => theme.colors.gray};
-
   }
 `
 const StyledLabel = styled.label`
@@ -82,10 +67,9 @@ const StyledLabel = styled.label`
       display: flex;
       text-decoration: none;
       align-items: center;
-        @media (max-width: ${({theme}) => theme.mobile}) {
+      @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
-  
-    }
+      }
 `
 const Select = styled.select`
       width: 300px;
@@ -103,11 +87,10 @@ const Select = styled.select`
       outline: none;
       color: black;
       background-color: ${({theme}) => theme.colors.gray};
-           @media (max-width: ${({theme}) => theme.mobile}) {
+      @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
-  
-    }
-  `
+      }
+`
 
 const Heading = styled.h1`
      padding: 10px;
@@ -118,7 +101,7 @@ const Heading = styled.h1`
      align-items: center;
      flex-direction: column;
      margin: 0 auto;
-      width: 60vw;
+     width: 60vw;
      @media (max-width: ${({theme}) => theme.mobile}) {
         padding: 9rem 0 1rem;
         font-size: 26px;
@@ -173,7 +156,9 @@ class AddItemForm extends React.Component {
     render() {
         return (
             <FormWrapper>
-                <Heading>Dodaj produkt</Heading>
+                <Heading>
+                    <FormattedMessage id="add product"/>
+                </Heading>
                 <Formik
                     initialValues={{
                         name: '',
@@ -183,8 +168,7 @@ class AddItemForm extends React.Component {
                         minimalQuantity: '',
                         maximalQuantity: ''
                     }}
-                    onSubmit={this.handleSubmitForm}
-                >
+                    onSubmit={this.handleSubmitForm}>
                     {() => (
                         <Form autoComplete="off">
                             <FormItem>
@@ -270,14 +254,12 @@ class AddItemForm extends React.Component {
                                     placeholder=""/>
                             </FormItem>
                             <ButtonContainer>
-
                                 <Link to="/register">
                                     <ButtonIcon
                                         icon={decline}
 
                                     />
                                 </Link>
-
                                 <ButtonIcon
                                     onClick={() => this.notify(this.state.name)}
                                     type="submit"

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from 'react'
-import {Redirect} from "react-router";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 
@@ -15,14 +14,11 @@ const LoginContainer = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-          @media (max-width: ${({theme}) => theme.mobile}) {
+        @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
-                height: 100vh;
-
+        height: 100vh;
         border-radius: 0;
-                //margin: 0 auto;
-
-     }
+ó     }
 `
 
 const StyledInput = styled.input`
