@@ -5,9 +5,10 @@ import {Form, Formik} from 'formik';
 import accept from '../../asstets/img/accept.svg'
 import decline from '../../asstets/img/decline.svg'
 import styled from "styled-components";
-import ButtonIcon from "../ButtonIcon";
+import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
+import {db} from '../../firebase/firebase'
 
 const FormWrapper = styled.div`
       display: flex;
@@ -134,7 +135,8 @@ class AddItemForm extends React.Component {
     };
 
     handleSubmitForm = () => {
-        const {addItem} = this.props
+        const {addItem, checkName} = this.props
+        // checkName(this.state.name);
         addItem(this.state);
         this.setState({
             id: 0,
@@ -147,11 +149,12 @@ class AddItemForm extends React.Component {
         });
     };
 
-    notify = () => {
-        toast.success("Dodano", {
+
+    notify = (name) => {
+        toast.success(`Succesfully added ${name}`, {
             position: toast.POSITION.TOP_CENTER
         });
-    }
+    };
 
     render() {
         return (
@@ -206,7 +209,7 @@ class AddItemForm extends React.Component {
                             </FormItem>
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
-                                    <FormattedMessage id="unit"/>
+                                    <FormattedMessage id="choose unit"/>
                                 </StyledLabel>
                                 <Select
                                     onChange={this.handleInputChange}
@@ -214,9 +217,9 @@ class AddItemForm extends React.Component {
                                     value={this.state.unit}
                                     placeholder=""
                                 >
-                                    <option value="Wybierz jednostkę..." label=""/>
-                                    <option value="Sztuka" label="Sztuka"/>
-                                    <option value="Litr" label="Litr"/>
+                                    <option value="Wybierz jednostkę..." label="Choose unit..."/>
+                                    <option value="Sztuka" label="Piece"/>
+                                    <option value="Litr" label="Liter"/>
                                     <option value="Kilogram" label="Kilogram"/>
                                 </Select>
                             </FormItem>
@@ -257,7 +260,6 @@ class AddItemForm extends React.Component {
                                 <Link to="/register">
                                     <ButtonIcon
                                         icon={decline}
-
                                     />
                                 </Link>
                                 <ButtonIcon
@@ -266,7 +268,7 @@ class AddItemForm extends React.Component {
                                     icon={accept}
                                 />
                             </ButtonContainer>
-                            <ToastContainer autoClose={1200}/>
+                            <ToastContainer autoClose={1400}/>
                         </Form>
                     )}
                 </Formik>

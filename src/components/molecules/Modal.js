@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonIcon from '../components/Button/Button'
-import bag from '../asstets/img/bag.svg'
+import ButtonIcon from '../atoms/Button'
+import bag from '../../asstets/img/bag.svg'
 
 const StyledModalWrapper = styled.div`
   background-color: white;

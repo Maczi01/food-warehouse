@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import user from '../asstets/img/user.svg'
-import {auth} from "../firebase/firebase";
+import user from '../../asstets/img/user.svg'
+import {auth} from "../../firebase/firebase";
 import {FormattedMessage} from "react-intl";
 
 

@@ -1,24 +1,24 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Header from "../../components/Header/Header";
-import MainView from '../MainView/MainView'
-import ListView from "../ListView/ListView";
-import AddView from "../AddView/AddView";
-import SettingsView from "../SettingsView/Settings";
-import AppContext from "../../context/context";
+import Header from "../components/molecules/Header";
+import MainView from './MainView'
+import ListView from "./ListView";
+import AddView from "./AddView";
+import SettingsView from "./Settings";
+import AppContext from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
 import {ThemeProvider} from "styled-components";
-import {lightTheme, nightTheme} from '../../theme/theme'
-import GlobalStyle from "../../theme/GlobalStyle";
-import {db} from '../../firebase/firebase'
-import {routes} from '../../components/routes/routes'
-import LoginView from "../LoginView/LoginView";
-import {AuthProvider} from "../../providers/Auth";
-import PrivateRoute from "../../components/routes/PrivateRoute";
-import RegisterView from "../RegisterView/RegisterView";
-import English from '../../languages/en'
-import Polish from '../../languages/pl'
+import {lightTheme, nightTheme} from '../theme/theme'
+import GlobalStyle from "../theme/GlobalStyle";
+import {db, toCheck} from '../firebase/firebase'
+import {routes} from '../routes/routes'
+import LoginView from "./LoginView";
+import {AuthProvider} from "../providers/Auth";
+import PrivateRoute from "../routes/PrivateRoute";
+import RegisterView from "./RegisterView";
+import English from '../languages/en'
+import Polish from '../languages/pl'
 import {IntlProvider} from "react-intl";
 
 
@@ -39,6 +39,7 @@ const Root = () => {
                 setLanguage(Polish)
         }
     }
+
 
     const toggleTheme = (e) => {
         if (e.target.value === 'on') {
@@ -103,7 +104,7 @@ const Root = () => {
         toggleTheme: toggleTheme,
         darkMode: theme,
         handleChange: handleChange,
-        locale: locale
+        locale: locale,
     };
 
     return (

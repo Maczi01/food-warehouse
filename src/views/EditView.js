@@ -1,6 +1,6 @@
 import React from 'react';
-import List from '../../components/List/List'
-import AppContext from "../../context/context";
+import List from '../components/organisms/List'
+import AppContext from "../context/context";
 
 const EditView = () => (
     <AppContext.Consumer>

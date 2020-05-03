@@ -1,6 +1,6 @@
 import React from 'react'
-import SettingsCard from "../../components/SettingsCard";
-import AppContext from "../../context/context";
+import SettingsCard from "../components/organisms/SettingsCard";
+import AppContext from "../context/context";
 
 const SettingsView = () => (
     <AppContext.Consumer>

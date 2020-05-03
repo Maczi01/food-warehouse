@@ -1,9 +1,9 @@
 import React from 'react';
-import AppContext from "../../context/context";
+import AppContext from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
-import bag from '../../asstets/img/bag.svg';
+import bag from '../asstets/img/bag.svg';
 import styled from "styled-components";
-import TableMarkup from "../../components/Table";
+import TableMarkup from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
 
 const ListWrapper = styled.div`
@@ -54,14 +54,20 @@ const ListView = () => (
         </Heading>
         <Image src={bag} alt="shoping bag"/>
         <AppContext.Consumer>
-            {(context) => (
-                (context.foodList.length) ?
-                    <TableMarkup data={context.foodList}/>
-                    :
-                    <span>
+            {(context) => {
+                const shoppingList = context.foodList.filter(item => (
+                    item.currentQuantity < item.minimalQuantity
+                ))
+                return (shoppingList.length ?
+                        <TableMarkup data={shoppingList}/>
+                        :
+                        <span>
                         <FormattedMessage id="empty list"/>
                     </span>
-            )}
+                )
+
+            }
+            }
         </AppContext.Consumer>
     </ListWrapper>
 );

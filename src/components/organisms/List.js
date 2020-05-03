@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from "./ListItem";
+import ListItem from "../molecules/ListItem";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
 
@@ -44,7 +44,7 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
     return (
         <>
             <CategoryWrapper>
-                <FormattedMessage id="baking"/>
+                {/*<FormattedMessage id="baking"/>*/}
             </CategoryWrapper>
             <UlWrapper>
                 {items.length ?

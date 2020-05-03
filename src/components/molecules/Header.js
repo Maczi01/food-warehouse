@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
 import logo from '../../asstets/img/logo.svg';
 import styled from "styled-components";
-import {Link, NavLink, Redirect} from "react-router-dom";
-import settings from "../../asstets/img/settings.svg";
+import {Link, NavLink} from "react-router-dom";
 import {AuthContext} from "../../providers/Auth";
-import Menu from "../Menu";
-import Burger from "../Burger";
+import Menu from "./Menu";
+import Burger from "../atoms/Burger";
 import {FormattedMessage} from 'react-intl'
 
 const HeaderWrapper = styled.nav`

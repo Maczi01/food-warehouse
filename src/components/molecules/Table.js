@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import ButtonIcon from "./ButtonIcon";
-import print from "../asstets/img/print.svg";
-import sms from "../asstets/img/sms.svg";
+import ButtonIcon from "../atoms/ButtonIcon";
+import print from "../../asstets/img/print.svg";
+import sms from "../../asstets/img/sms.svg";
 import emailjs from 'emailjs-com';
 import {FormattedMessage} from "react-intl";
 

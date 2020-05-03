@@ -1,8 +1,8 @@
 import React, {useCallback, useContext} from 'react';
 import styled from 'styled-components';
-import LoginForm from "../../components/Form/LoginForm";
-import {AuthContext} from "../../providers/Auth";
-import {auth} from '../../firebase/firebase'
+import LoginForm from "../components/organisms/LoginForm";
+import {AuthContext} from "../providers/Auth";
+import {auth} from '../firebase/firebase'
 import {Redirect} from 'react-router-dom';
 
 const StyledWrapper = styled.div`
@@ -36,7 +36,7 @@ const StyledHeader = styled.div`
 `;
 
 const LoginView = ({history}) => {
-
+        alert("I'm still working on this application, but if you want to try, use this data to login: test@test.com and password: tested")
         const handleLogin = useCallback(
             async event => {
                 event.preventDefault();
