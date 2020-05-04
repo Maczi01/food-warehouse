@@ -43,7 +43,7 @@ const ItemsContainer = styled.div`
       align-items: center;
 `
 
-const StyledTitle = styled.div`
+const StyledTitle = styled.h2`
     font-size: 20px;
     margin-bottom: 50px;
     letter-spacing: 5px;
@@ -66,14 +66,28 @@ const Button = styled.button`
 `
 
 const Form = styled.form`
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+`
+
+const Paragraph = styled.p`
+    font-size: 20px;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+    text-align: center;
+    opacity: 0.5;
+    width: 50vw;
 `
 
 
 const LoginForm = ({handleLogin}) => (
     <LoginContainer>
         <StyledTitle>Login</StyledTitle>
+        <Paragraph>
+            I'm still working on this application, but if you want to try, use this data<br/>
+            login: test@test.com and<br/>
+            password: tested
+        </Paragraph>
         <ItemsContainer>
             <Form onSubmit={handleLogin} autocomplete="off">
                 <StyledInput type="email" name="email" placeholder="Email"/>

@@ -192,8 +192,8 @@ const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
                         <FormattedMessage id="dark mode"/>
                     </StyledLabel>
                     <StyledSelect onChange={toggleViewMode} defaultValue="off">
-                        <option value="on" label="Włączony"/>
-                        <option value="off" label="Wyłączony"/>
+                        <option value="on" label="on"/>
+                        <option value="off" label="off"/>
                     </StyledSelect>
                 </OptionsItem>
                 <OptionsItem>

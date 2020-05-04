@@ -201,10 +201,11 @@ class AddItemForm extends React.Component {
                                     <option label="loose products, spieces" value="loose products, spieces"/>
                                     <option label="baking" value="baking"/>
                                     <option label="vegetables and fruits" value="vegetables and fruits"/>
-                                    <option label="meat, fiches, seafood" value="meat, fiches, seafood"/>
+                                    <option label="meat, fiches, seafood" value="meat, fishes, seafood"/>
                                     <option label="dairy" value="dairy"/>
                                     <option label="sweets and snacks" value="sweets and snacks"/>
                                     <option label="bevegares" value="bevegares"/>
+                                    <option label="others" value="others"/>
                                 </Select>
                             </FormItem>
                             <FormItem>

@@ -7,11 +7,6 @@ import TableMarkup from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
 
 const ListWrapper = styled.div`
-      //padding: 70px 80px 50px;
-      //top: 50%;
-      //transform: translateY(-50%);
-      //left: 0;
-      //right: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,8 +14,6 @@ const ListWrapper = styled.div`
       margin: 0 auto;
       width: 60vw;
       font-size: 14px;
-      //height: 90vh;
-      //position: fixed;
        @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
      }
@@ -41,11 +34,11 @@ const Heading = styled.h1`
         font-size: 26px;
         width: 100vw;
      }
-`
+`;
 
 const Image = styled.img`
-margin: 10px;
-`
+margin: 25px;
+`;
 
 const ListView = () => (
     <ListWrapper>
@@ -57,7 +50,7 @@ const ListView = () => (
             {(context) => {
                 const shoppingList = context.foodList.filter(item => (
                     item.currentQuantity < item.minimalQuantity
-                ))
+                ));
                 return (shoppingList.length ?
                         <TableMarkup data={shoppingList}/>
                         :
@@ -65,7 +58,6 @@ const ListView = () => (
                         <FormattedMessage id="empty list"/>
                     </span>
                 )
-
             }
             }
         </AppContext.Consumer>

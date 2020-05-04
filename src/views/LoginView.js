@@ -36,7 +36,6 @@ const StyledHeader = styled.div`
 `;
 
 const LoginView = ({history}) => {
-        alert("I'm still working on this application, but if you want to try, use this data to login: test@test.com and password: tested")
         const handleLogin = useCallback(
             async event => {
                 event.preventDefault();
@@ -45,7 +44,7 @@ const LoginView = ({history}) => {
                     await auth.signInWithEmailAndPassword(email.value, password.value);
                     history.push("/")
                 } catch (err) {
-                    console.error("Login Erroe")
+                    console.error("Login Error")
                     alert("alert");
                 }
             }, [history]
