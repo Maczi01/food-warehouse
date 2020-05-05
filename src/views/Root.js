@@ -128,7 +128,7 @@ const Root = () => {
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
                                 <PrivateRoute path={routes.list} component={ListView}/>
                                 <PrivateRoute path={routes.add} component={AddView}/>
-                                <PrivateRoute path="/edit/:id" component={EditView}/>
+                                <PrivateRoute path={routes.edit} component={EditView}/>
                                 <PrivateRoute path={routes.settings} component={SettingsView}/>
                                 <Route path={routes.login} component={LoginView}/>
                                 <Route path={routes.register} component={RegisterView}/>

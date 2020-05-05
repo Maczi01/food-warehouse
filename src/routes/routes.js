@@ -2,7 +2,7 @@ export const routes = {
     home: '/',
     list: '/list',
     add: '/add',
-    edit: '/edit',
+    edit: '/edit/:id',
     settings: '/settings',
     login: '/login',
     register: '/register'
