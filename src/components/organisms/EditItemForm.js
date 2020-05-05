@@ -128,19 +128,11 @@ class EditItemForm extends React.Component {
         unit: this.props.item.unit,
     };
 
-// state = {
-//     id: this.props.id,
-//     name: "",
-//     category: "",
-//     unit: "",
-//     currentQuantity: "",
-//     minimalQuantity: "",
-//     maximalQuantity: "",
-// };
-
-    show = () => {
-        console.log(this.state)
-    }
+    notify = (name) => {
+        toast.success(`Succesfully edited ${name}`, {
+            position: toast.POSITION.TOP_CENTER
+        });
+    };
 
     handleInputChange = e => {
         this.setState({
@@ -149,14 +141,11 @@ class EditItemForm extends React.Component {
     };
 
     handleSubmitForm = () => {
-        // console.log(this.state)
-        // console.log("kaczka")
         const {editItem} = this.props
         editItem(this.state);
     };
 
     render() {
-        this.show()
         return (
             <FormWrapper>
                 <Heading>
@@ -264,7 +253,7 @@ class EditItemForm extends React.Component {
                                     />
                                 </Link>
                                 <ButtonIcon
-                                    // onClick={() => this.notify(this.state.name)}
+                                    onClick={() => this.notify(this.state.name)}
                                     type="submit"
                                     icon={accept}
                                 />
