@@ -135,7 +135,7 @@ class AddItemForm extends React.Component {
     };
 
     handleSubmitForm = () => {
-        const {addItem, checkName} = this.props
+        const {addItem} = this.props
         // checkName(this.state.name);
         addItem(this.state);
         this.setState({

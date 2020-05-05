@@ -20,6 +20,7 @@ import RegisterView from "./RegisterView";
 import English from '../languages/en'
 import Polish from '../languages/pl'
 import {IntlProvider} from "react-intl";
+import EditView from "./EditView";
 
 
 const Root = () => {
@@ -54,6 +55,10 @@ const Root = () => {
         changeLanguage(e.target.value);
     };
 
+    const editName = (item) => {
+        const result = prompt('Change the name');
+        db.collection("foodList").doc(item.id).update({name: item.name = result})
+    }
 
     React.useEffect(() => {
         const unSubscribe = db.collection("foodList").onSnapshot(
@@ -66,10 +71,6 @@ const Root = () => {
         return unSubscribe;
     }, []);
 
-    const addItem = (newItem) => {
-        newItem.id = uuidv4();
-        db.collection("foodList").add(newItem);
-    };
 
     const increaseQuantity = (item) => {
         if (item.currentQuantity < parseInt(item.maximalQuantity)) {
@@ -83,16 +84,23 @@ const Root = () => {
         }
     };
 
-    const editName = (item) => {
-        const result = prompt('Change the name');
-        db.collection("foodList").doc(item.id).update({name: item.name = result})
-    }
-
     const handleDelete = id => {
         const res = window.confirm('Do you want to delete this item?');
         db.collection("foodList").doc(id).delete()
     };
 
+    const addItem = (newItem) => {
+        newItem.id = uuidv4();
+        db.collection("foodList").add(newItem);
+    };
+
+    const editItem = (item) => {
+        // console.log(`Let's edit ${item.id}`)
+        // console.log(`Let's edit ${item.name}`)
+        // console.log(`Let's edit ${item.category}`)
+        db.collection("foodList").doc(item.id).update({...item})
+
+    }
 
     const contextElements = {
         foodList: foodList,
@@ -101,6 +109,7 @@ const Root = () => {
         increaseQuantity: increaseQuantity,
         decreaseQuantity: decreaseQuantity,
         editName: editName,
+        editItem: editItem,
         toggleTheme: toggleTheme,
         darkMode: theme,
         handleChange: handleChange,
@@ -119,6 +128,7 @@ const Root = () => {
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
                                 <PrivateRoute path={routes.list} component={ListView}/>
                                 <PrivateRoute path={routes.add} component={AddView}/>
+                                <PrivateRoute path="/edit/:id" component={EditView}/>
                                 <PrivateRoute path={routes.settings} component={SettingsView}/>
                                 <Route path={routes.login} component={LoginView}/>
                                 <Route path={routes.register} component={RegisterView}/>

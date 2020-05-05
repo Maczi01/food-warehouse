@@ -46,6 +46,7 @@ const MainView = () => (
                       decreaseQuantity={context.decreaseQuantity}
                       increaseQuantity={context.increaseQuantity}
                       editName={context.editName}
+                      editItem={context.editItem}
                       toEdit={true}
                       shop={true}
                 />

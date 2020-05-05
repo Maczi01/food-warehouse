@@ -83,6 +83,9 @@ const Header = () => {
                         <ListItem as={NavLink} to="/settings" activeclass="active">
                             <FormattedMessage id="settings"/>
                         </ListItem>
+                        <ListItem as={NavLink} to="/edit" activeclass="active">
+                            Edit
+                        </ListItem>
                     </List>
                 </HeaderWrapper> : null}
         </>

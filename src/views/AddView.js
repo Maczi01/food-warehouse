@@ -6,7 +6,8 @@ const AddView = () => (
     <AppContext.Consumer>
         {(context) => (
             <AddItemForm addItem={context.addItem}
-                            checkName={context.checkIfAlreadyExist}
+                         edit={context.editItem}
+
             />
         )}
     </AppContext.Consumer>

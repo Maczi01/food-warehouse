@@ -85,7 +85,7 @@ const LoginForm = ({handleLogin}) => (
         <StyledTitle>Login</StyledTitle>
         <Paragraph>
             I'm still working on this application, but if you want to try, use this data<br/>
-            login: test@test.com and<br/>
+            login: test@test.com <br/>
             password: tested
         </Paragraph>
         <ItemsContainer>
@@ -100,7 +100,8 @@ const LoginForm = ({handleLogin}) => (
                 <FormattedMessage id="have not account"/>
                 <Link to="/register">
                 <FormattedMessage id="sign up"/>
-                </Link> </span>
+                </Link>
+            </span>
         </ItemsContainer>
     </LoginContainer>
 );

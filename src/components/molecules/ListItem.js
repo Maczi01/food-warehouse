@@ -4,6 +4,8 @@ import edit from "../../asstets/img/edit.svg";
 import remove from "../../asstets/img/remove.svg";
 import plus from "../../asstets/img/plus.svg";
 import minus from "../../asstets/img/minus.svg";
+import {Link} from "react-router-dom";
+import {useHistory} from "react-router";
 
 const ItemWraper = styled.li`
     display: flex;
@@ -76,25 +78,31 @@ const QuantityBarInside = styled.div`
     background-color: ${({theme}) => theme.colors.green};
 `
 
-const ListItem = ({name, children, unit, category, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem, editName, toEdit}) => (
-    <ItemWraper>
-        <Container>
-            <NameWrapper>{name}</NameWrapper>
-            <InfoWrapper>{category}</InfoWrapper>
-            <InfoWrapper>{currentQuantity} z {maximalQuantity}</InfoWrapper>
-            <InfoWrapper>{unit} </InfoWrapper>
-        </Container>
-        <QuantityBarOutside><QuantityBarInside
-            style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/></QuantityBarOutside>
-        <Container>
-            <StyledButton src={minus} onClick={decreaseQuantity}/>
-            <StyledButton src={plus} onClick={increaseQuantity}/>
-            <StyledButton src={edit} onClick={editName}/>
-            <StyledButton src={remove} onClick={deleteItem}/>
-        </Container>
-        {children}
-    </ItemWraper>
-);
+const ListItem =
+    ({id, name, children, unit, category, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem, editName, editItem, toEdit}) => {
+        const history = useHistory();
+
+        return (<ItemWraper>
+            <Container>
+                <NameWrapper>{name}</NameWrapper>
+                <InfoWrapper>{category}</InfoWrapper>
+                <InfoWrapper>{currentQuantity} z {maximalQuantity}</InfoWrapper>
+                <InfoWrapper>{unit} </InfoWrapper>
+            </Container>
+            <QuantityBarOutside><QuantityBarInside
+                style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/></QuantityBarOutside>
+            <Container>
+                <StyledButton src={minus} onClick={decreaseQuantity}/>
+                <StyledButton src={plus} onClick={increaseQuantity}/>
+                <StyledButton src={edit}
+                              onClick={() => history.push(`/edit/${id}`)}
+
+                />
+                <StyledButton src={remove} onClick={deleteItem}/>
+            </Container>
+            {children}
+        </ItemWraper>)
+    };
 
 
 export default ListItem;

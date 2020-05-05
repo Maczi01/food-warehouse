@@ -40,7 +40,7 @@ const CategoryWrapper = styled.div`
 `
 
 
-const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, toEdit}) => {
+const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, editItem, toEdit}) => {
     return (
         <>
             <CategoryWrapper>
@@ -53,10 +53,11 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
                                   key={item.id}
                                   deleteItem={() => deleteItem(item.id)}
                                   toEdit={toEdit}
+                                  editItem={editItem}
                                   decreaseQuantity={() => decreaseQuantity(item)}
                                   increaseQuantity={() => increaseQuantity(item)}
-                                  editName={() => editName(item)
-                                  }/>
+                                  editName={() => editName(item)}
+                        />
                     )) :
                     <InfoWrapper>
                         <FormattedMessage id="empty inventory"/>
