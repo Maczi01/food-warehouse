@@ -55,8 +55,8 @@ const ListView = () => (
                         <TableMarkup data={shoppingList}/>
                         :
                         <span>
-                        <FormattedMessage id="empty list"/>
-                    </span>
+                            <FormattedMessage id="empty list"/>
+                        </span>
                 )
             }
             }

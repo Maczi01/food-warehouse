@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import print from "../../asstets/img/print.svg";
 import sms from "../../asstets/img/sms.svg";
+import plus from "../../asstets/img/plus.svg";
 import emailjs from 'emailjs-com';
 import {FormattedMessage} from "react-intl";
 
@@ -114,6 +115,10 @@ const TableMarkup = ({data}) => (
             </tbody>
         </StyledTable>
         <ButtonContainer>
+            <ButtonIcon
+                onClick={() => sendMail()}
+                icon={plus}
+            />
             <ButtonIcon
                 icon={print}
             />
