@@ -6,6 +6,7 @@ import plus from "../../asstets/img/plus.svg";
 import minus from "../../asstets/img/minus.svg";
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router";
+import * as PropTypes from "prop-types";
 
 const ItemWraper = styled.li`
     display: flex;
@@ -79,7 +80,7 @@ const QuantityBarInside = styled.div`
 `
 
 const ListItem =
-    ({id, name, children, unit, category, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem, editName, editItem, toEdit}) => {
+    ({id, name, children, unit, category, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem}) => {
         const history = useHistory();
 
         return (<ItemWraper>
@@ -104,5 +105,19 @@ const ListItem =
         </ItemWraper>)
     };
 
+const NumberOrStringType = PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+
+ListItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    unit: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    maximalQuantity: NumberOrStringType.isRequired,
+    currentQuantity: NumberOrStringType,
+};
+
+ListItem.defaultProps = {
+    currentQuantity: 0,
+};
 
 export default ListItem;

@@ -55,11 +55,6 @@ const Root = () => {
         changeLanguage(e.target.value);
     };
 
-    const editName = (item) => {
-        const result = prompt('Change the name');
-        db.collection("foodList").doc(item.id).update({name: item.name = result})
-    }
-
     React.useEffect(() => {
         const unSubscribe = db.collection("foodList").onSnapshot(
             (snapshot) => {
@@ -95,10 +90,11 @@ const Root = () => {
     };
 
     const editItem = (item) => {
-        // console.log(`Let's edit ${item.id}`)
-        // console.log(`Let's edit ${item.name}`)
-        // console.log(`Let's edit ${item.category}`)
-        db.collection("foodList").doc(item.id).update({...item})
+        try {
+            db.collection("foodList").doc(item.id).update({...item})
+        } catch (e) {
+            window.alert("Nie udało się dodać!")
+        }
 
     }
 
@@ -108,7 +104,6 @@ const Root = () => {
         addItem: addItem,
         increaseQuantity: increaseQuantity,
         decreaseQuantity: decreaseQuantity,
-        editName: editName,
         editItem: editItem,
         toggleTheme: toggleTheme,
         darkMode: theme,
