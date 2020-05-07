@@ -55,7 +55,7 @@ const Modal = ({closeModalFn, children, btn, title = "title"}) => (
                 {title}
             </StyledModalHeader>
             <StyledContentModal>{children}
-                <ButtonIcon icon={bag} onClick={() => window.alert("pleple")}>XX</ButtonIcon>
+                <ButtonIcon icon={bag} onClick={() => window.alert("x")}>XX</ButtonIcon>
             </StyledContentModal>
             {btn}
         </StyledModalCard>

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
+import PropTypes from "prop-types";
+import Burger from "../atoms/Burger";
 
 const StyledMenu = styled.ul`
   display: flex;
@@ -54,6 +56,15 @@ const Menu = ({open, setOpen}) => {
             </ListItem>
         </StyledMenu>
     )
+}
+
+Menu.propTypes = {
+    open: PropTypes.bool.isRequired,
+    setOpen: PropTypes.func.isRequired,
+}
+
+Menu.defaultProps = {
+    open: false,
 }
 
 export default Menu;

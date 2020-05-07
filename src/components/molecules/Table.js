@@ -6,12 +6,13 @@ import sms from "../../asstets/img/sms.svg";
 import plus from "../../asstets/img/plus.svg";
 import emailjs from 'emailjs-com';
 import {FormattedMessage} from "react-intl";
+import PropTypes from "prop-types";
+import Menu from "./Menu";
 
-var templateParams = {
+const templateParams = {
     name: 'James',
     notes: 'Check this out!'
 };
-
 const sendMail = () => {
     console.log("clicked")
     emailjs.init("mateusz_w_twardy_gmail_com");
@@ -33,7 +34,6 @@ const TableWrapper = styled.div`
         width: 100vw;
       }
 `;
-
 const StyledTable = styled.table`
 padding-top: 15px;
   margin: 20px;
@@ -74,14 +74,13 @@ padding-top: 15px;
       background-color: ${({theme}) => theme.colors.blue};;
   }
 `;
-
 const ButtonContainer = styled.div`
       margin: 20px 20px 20px 0;
       display: flex;
       justify-content: flex-end;
 `
 
-const TableMarkup = ({data}) => (
+const Table = ({data}) => (
     <TableWrapper>
         <StyledTable>
             <colgroup>
@@ -130,4 +129,12 @@ const TableMarkup = ({data}) => (
     </TableWrapper>
 );
 
-export default TableMarkup;
+Table.propTypes = {
+    data: PropTypes.array,
+}
+
+Table.defaultProps = {
+    data: [],
+}
+
+export default Table;

@@ -4,9 +4,8 @@ import edit from "../../asstets/img/edit.svg";
 import remove from "../../asstets/img/remove.svg";
 import plus from "../../asstets/img/plus.svg";
 import minus from "../../asstets/img/minus.svg";
-import {Link} from "react-router-dom";
 import {useHistory} from "react-router";
-import * as PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const ItemWraper = styled.li`
     display: flex;

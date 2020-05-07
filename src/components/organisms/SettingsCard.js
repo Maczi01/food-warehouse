@@ -3,6 +3,8 @@ import styled from "styled-components";
 import user from '../../asstets/img/user.svg'
 import {auth} from "../../firebase/firebase";
 import {FormattedMessage} from "react-intl";
+import PropTypes from "prop-types";
+import Menu from "../molecules/Menu";
 
 
 const SettingsWrapper = styled.div`
@@ -103,7 +105,6 @@ const StyledLabel = styled.label`
           height: 50px;
       }
 `
-
 const StyledInput = styled.input`
     display: block;
     appearance: none;
@@ -141,7 +142,6 @@ const StyledSelect = styled.select`
           height: 50px;
     }
 `
-
 const Heading = styled.h1`
      padding: 10px;
      color: ${({theme}) => theme.colors.blue};
@@ -153,7 +153,6 @@ const Heading = styled.h1`
      margin: 0 auto;
      width: 75vw;
 `
-
 const Paragraph = styled.p`
     padding: 15px;
 `
@@ -211,5 +210,13 @@ const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
             </OptionsWrapper>
         </SettingsWrapper>
     </>
-)
+);
+
+SettingsCard.propTypes = {
+    toggleViewMode: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    local: PropTypes.string.isRequired,
+}
+
+
 export default SettingsCard;

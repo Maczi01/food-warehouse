@@ -8,7 +8,6 @@ import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
-import {db} from '../../firebase/firebase'
 
 const FormWrapper = styled.div`
       display: flex;

@@ -3,7 +3,7 @@ import AppContext from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../asstets/img/bag.svg';
 import styled from "styled-components";
-import TableMarkup from "../components/molecules/Table";
+import Table from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
 
 const ListWrapper = styled.div`
@@ -52,7 +52,7 @@ const ListView = () => (
                     item.currentQuantity < item.minimalQuantity
                 ));
                 return (shoppingList.length ?
-                        <TableMarkup data={shoppingList}/>
+                        <Table data={shoppingList}/>
                         :
                         <span>
                             <FormattedMessage id="empty list"/>

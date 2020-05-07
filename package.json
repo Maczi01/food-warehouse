@@ -35,6 +35,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/react": "^10.0.4",
     "babel-plugin-styled-components": "^1.10.7"
   }
 }

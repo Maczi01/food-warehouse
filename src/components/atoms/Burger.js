@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledBurger = styled.button`
   position: absolute;
@@ -54,6 +55,15 @@ const Burger = ({open, setOpen}) => {
             <div/>
         </StyledBurger>
     )
+}
+
+Burger.propTypes = {
+    open: PropTypes.bool.isRequired,
+    setOpen: PropTypes.func.isRequired,
+}
+
+Burger.defaultProps = {
+    open: false,
 }
 
 export default Burger;
