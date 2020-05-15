@@ -5,5 +5,7 @@ export const routes = {
     edit: '/edit/:id',
     settings: '/settings',
     login: '/login',
-    register: '/register'
+    register: '/register',
+    filter:'/filter',
+    parameter: 'items/:parameter'
 }

@@ -5,6 +5,8 @@ import {auth} from "../../firebase/firebase";
 import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
 import Menu from "../molecules/Menu";
+import Modal from "../molecules/Modal";
+import AppContext from "../../context/context";
 
 
 const SettingsWrapper = styled.div`
@@ -160,6 +162,8 @@ const Paragraph = styled.p`
 
 const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
     <>
+        {/*<Modal/>*/}
+
         <Heading>
             <FormattedMessage id="settings"/>
         </Heading>
@@ -215,7 +219,11 @@ const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
 SettingsCard.propTypes = {
     toggleViewMode: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
-    local: PropTypes.string.isRequired,
+    locale: PropTypes.string,
+}
+
+SettingsCard.defaultProps = {
+    locale: 'en'
 }
 
 

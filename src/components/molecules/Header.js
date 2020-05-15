@@ -74,6 +74,10 @@ const Header = () => {
                         <ListItem as={NavLink} exact to="/" activeclass="active"><
                             FormattedMessage id="check inventory"/>
                         </ListItem>
+                        <ListItem as={NavLink} to="/filter" activeclass="active">
+                            Filter
+                            {/*<FormattedMessage id="settings"/>*/}
+                        </ListItem>
                         <ListItem as={NavLink} to="/add" activeclass="active">
                             <FormattedMessage id="add product"/>
                         </ListItem>
@@ -83,6 +87,7 @@ const Header = () => {
                         <ListItem as={NavLink} to="/settings" activeclass="active">
                             <FormattedMessage id="settings"/>
                         </ListItem>
+
                     </List>
                 </HeaderWrapper> : null}
         </>

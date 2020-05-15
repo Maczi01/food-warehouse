@@ -1,15 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonIcon from '../atoms/Button'
+import ButtonIcon from "../atoms/ButtonIcon";
 import bag from '../../asstets/img/bag.svg'
+import plus from "../../asstets/img/plus.svg";
+import print from "../../asstets/img/print.svg";
+import accept from '../../asstets/img/accept.svg'
+import decline from '../../asstets/img/decline.svg'
+import {Link} from "react-router-dom";
+import {Form} from "formik";
+import {auth} from "../../firebase/firebase";
+import {FormattedMessage} from "react-intl";
 
 const StyledModalWrapper = styled.div`
   background-color: white;
   //padding: 10px;
   position: fixed;
-  top: 0;
+  top:0;
   right: 0;
   width: 100vw;
+
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: grayscale(1) blur(2px);
@@ -19,28 +28,31 @@ const StyledModalWrapper = styled.div`
   align-items: center;
 `;
 
-const StyledModalCard = styled.div`
-  width: 800px;
-  height: auto;
-  background-color: white;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 30px 60px -5px hsla(0, 0%, 0%, 0.2);
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px auto 80px;
-  justify-items: center;
-`;
+// const StyledModalHeader = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   background-color: ${({theme}) => theme.colors.blue};;
+//   border-radius: 10px 10px 0 0;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: black;
+//   font-weight: bold;
+//   font-size: 14px;
+// `;
 
-const StyledModalHeader = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: orange;
-  border-radius: 30px 30px 0 0;
+const StyledModalCard = styled.div`
+  //width: 340px;
+  height: 120px;
+  //width: 30vw;
+  //height: 40vh;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 30px 60px -5px hsla(0, 0%, 0%, 0.2);
   display: flex;
-  align-items: center;
-  color: black;
-  font-weight: bold;
-  font-size: 14px;
+  justify-content: space-between;
+  padding: 5px;
+  flex-direction: column;
 `;
 
 const StyledContentModal = styled.div`
@@ -48,16 +60,63 @@ const StyledContentModal = styled.div`
   padding: 20px;
 `;
 
-const Modal = ({closeModalFn, children, btn, title = "title"}) => (
+// const StyledTitle = styled.div`
+//   text-align: center;
+//   justify-content: center;
+// `
+
+const StyledTitle = styled.div`      
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+`
+
+const ButtonContainer = styled.div`
+    //border-top: 1px solid lightgray;
+      width: 100%;
+      //margin: 20px 0 20px 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+`
+
+const Button = styled.button`
+    width: 170px;
+    height: 50px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: ${({theme}) => theme.colors.pink};
+    color: ${({theme}) => theme.colors.white};
+`
+
+
+// const Modal = ({closeModalFn, children, btn, title = "title"}) => (
+const Modal = () => (
     <StyledModalWrapper>
         <StyledModalCard>
-            <StyledModalHeader>
-                {title}
-            </StyledModalHeader>
-            <StyledContentModal>{children}
-                <ButtonIcon icon={bag} onClick={() => window.alert("x")}>XX</ButtonIcon>
-            </StyledContentModal>
-            {btn}
+            {/*<StyledModalHeader>*/}
+            {/*{title}*/}
+            <StyledTitle>
+                Remove?
+            </StyledTitle>
+            {/*</StyledModalHeader>*/}
+            {/*<StyledContentModal>*/}
+            <ButtonContainer>
+                <Button onClick={() => auth.signOut()}>
+                    Cancel
+                </Button>
+                <Button onClick={() => auth.signOut()}>
+                    Delete
+                </Button>
+            </ButtonContainer>
+            {/*</StyledContentModal>*/}
+            {/*{btn}*/}
         </StyledModalCard>
     </StyledModalWrapper>
 );

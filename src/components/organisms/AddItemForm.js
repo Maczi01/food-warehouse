@@ -8,6 +8,7 @@ import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
+import beverages from "../../asstets/categoryIcon/beverages.svg";
 
 const FormWrapper = styled.div`
       display: flex;
@@ -196,14 +197,14 @@ class AddItemForm extends React.Component {
                                     placeholder=""
                                 >
                                     <option label="Choose category..." value="Choose category"/>
-                                    <option label="pasta, rice, groats" value="pasta, rice, groats"/>
-                                    <option label="loose products, spieces" value="loose products, spieces"/>
+                                    <option label="pasta, rice, groats" value="pasta"/>
+                                    <option label="loose products, spieces" value="spieces"/>
                                     <option label="baking" value="baking"/>
-                                    <option label="vegetables and fruits" value="vegetables and fruits"/>
-                                    <option label="meat, fiches, seafood" value="meat, fishes, seafood"/>
+                                    <option label="vegetables and fruits" value="vegetablesAndFruits"/>
+                                    <option label="meat, fiches, seafood" value="meatFishesSeafood"/>
                                     <option label="dairy" value="dairy"/>
-                                    <option label="sweets and snacks" value="sweets and snacks"/>
-                                    <option label="bevegares" value="bevegares"/>
+                                    <option label="sweets and snacks" value="sweetsAndSnacks"/>
+                                    <option label="beverages" value="beverages"/>
                                     <option label="others" value="others"/>
                                 </Select>
                             </FormItem>

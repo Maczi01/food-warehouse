@@ -3,6 +3,7 @@ import List from '../components/organisms/List'
 import AppContext from "../context/context";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
+import Button from "../components/atoms/Button";
 
 const ViewWrapper = styled.div`
      width: 75vw;
@@ -33,26 +34,42 @@ const Heading = styled.h1`
 `
 
 
-const MainView = () => (
-    <AppContext.Consumer>
-        {(context) => (
-            <ViewWrapper>
-                <Heading>
-                    <FormattedMessage id="what in inventory"/>
-                </Heading>
-                {/*<img src={shop} alt="Logo"/>*/}
-                <List items={context.foodList}
-                      deleteItem={context.deleteItem}
-                      decreaseQuantity={context.decreaseQuantity}
-                      increaseQuantity={context.increaseQuantity}
-                      editName={context.editName}
-                      editItem={context.editItem}
-                      toEdit={true}
-                      shop={true}
-                />
-            </ViewWrapper>
-        )}
-    </AppContext.Consumer>
-);
+const ZmieniToNaFilterView = ({match}) => {
+    // const {parameter} = useParams();
+    // const {parameter} = this.props.match.params
+    // const { parameter } = useParams()
+    // const {match} = {props}
+    const parameter = match.params.parameter;
+    console.log(parameter)
+    return (<AppContext.Consumer>
+            {(context) => {
+                // (
+                const newFoodList = parameter ?
+                 context.foodList.filter(item => item.category === parameter) : context.foodList
 
-export default MainView
+                return (
+                    <ViewWrapper>
+                        <Heading>
+                            <FormattedMessage id="what in inventory"/>
+                        </Heading>
+                        <List
+                            items={newFoodList}
+                            deleteItem={context.deleteItem}
+                            decreaseQuantity={context.decreaseQuantity}
+                            increaseQuantity={context.increaseQuantity}
+                            editName={context.editName}
+                            editItem={context.editItem}
+                            toEdit={true}
+                            shop={true}
+                            parameter={parameter}
+                        />
+                    </ViewWrapper>
+                )
+                // )
+            }
+            }
+        </AppContext.Consumer>
+    )
+}
+
+export default ZmieniToNaFilterView

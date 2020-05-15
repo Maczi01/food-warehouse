@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import Header from "../components/molecules/Header";
-import MainView from './MainView'
+import ZmieniToNaFilterView from './MainView'
 import ListView from "./ListView";
 import AddView from "./AddView";
 import SettingsView from "./Settings";
@@ -21,6 +21,8 @@ import English from '../languages/en'
 import Polish from '../languages/pl'
 import {IntlProvider} from "react-intl";
 import EditView from "./EditView";
+import MainView from "./FilterView";
+import {Switch} from "react-router";
 
 
 const Root = () => {
@@ -119,11 +121,13 @@ const Root = () => {
                         <AppContext.Provider value={contextElements}>
                             <Header/>
                             <Switch>
-                                <PrivateRoute exact path={routes.home} component={MainView}/>
+                                <PrivateRoute exact path={routes.home} component={ZmieniToNaFilterView}/>
+                                <PrivateRoute path={'/filter/:parameter'} component={ZmieniToNaFilterView}/>
                                 <PrivateRoute path={routes.list} component={ListView}/>
                                 <PrivateRoute path={routes.add} component={AddView}/>
                                 <PrivateRoute path={routes.edit} component={EditView}/>
                                 <PrivateRoute path={routes.settings} component={SettingsView}/>
+                                <PrivateRoute path={routes.filter} component={MainView}/>
                                 <Route path={routes.login} component={LoginView}/>
                                 <Route path={routes.register} component={RegisterView}/>
                             </Switch>

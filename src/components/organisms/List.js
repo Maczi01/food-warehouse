@@ -2,6 +2,11 @@ import React from 'react';
 import ListItem from "../molecules/ListItem";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
+import Button from "../atoms/Button";
+import {routes} from "../../routes/routes";
+import {Link, NavLink} from "react-router-dom";
+import ButtonIcon from "../atoms/ButtonIcon";
+import decline from "../../asstets/img/decline.svg";
 
 const UlWrapper = styled.ul`
     width: 75vw;
@@ -30,24 +35,32 @@ const CategoryWrapper = styled.div`
     height: 70px;
     display: flex;
     width: 75vw;
+    font-size: 20px;
     align-items: center;
     justify-content: center;
-    background-color: ${({theme}) => theme.colors.blue};
-    color: ${({theme}) => theme.colors.white};
+    background-color: ${({theme}) => theme.colors.yellow};
+    color: ${({theme}) => theme.colors.blue};
     @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
     }
 `
 
+const Paragraph = styled.p`
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+`
 
-const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, editItem, toEdit}) => {
+const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, editItem, toEdit, parameter}) => {
     return (
         <>
             <CategoryWrapper>
-                {/*<FormattedMessage id="baking"/>*/}
+                {parameter ? parameter : "All categories"}
             </CategoryWrapper>
+            <Link to={'/filter'}> <Paragraph>🡄 back to select category</Paragraph></Link>
             <UlWrapper>
-                {items.length ?
+                {
                     items.map(item => (
                         <ListItem {...item}
                                   key={item.id}
@@ -58,12 +71,11 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
                                   increaseQuantity={() => increaseQuantity(item)}
                                   editName={() => editName(item)}
                         />
-                    )) :
-                    <InfoWrapper>
-                        <FormattedMessage id="empty inventory"/>
-                    </InfoWrapper>
+                    ))
                 }
             </UlWrapper>
         </>)
 };
+
+
 export default List;
