@@ -47,6 +47,18 @@ const IconWrapper = styled.div`
     width: 200px;
     margin: 20px 5px;
     align-items: center;
+    animation: appear 0.3s ease;
+    position: relative;
+    @keyframes appear {
+      0% {
+        opacity: 0;
+        top: 35px;
+    }
+      100% {
+        opacity: 1;
+        top: 0;
+    }
+}
 ;
 `
 
@@ -93,42 +105,42 @@ const MainView = () => (
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'items/dairy'}>
+        <IconWrapper as={Link} to={'filter/dairy'}>
             <Icon src={dairy}/>
             <Paragraph>
                 Dairy
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'items/meatFishesSeafood'}>
+        <IconWrapper as={Link} to={'filter/meatFishesSeafood'}>
             <Icon src={meat}/>
             <Paragraph>
                 Meat, fiches, seafood
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'items/pasta'}>
+        <IconWrapper as={Link} to={'filter/pasta'}>
             <Icon src={pasta}/>
             <Paragraph>
                 Pasta, rice, groats
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'items/spieces'}>
+        <IconWrapper as={Link} to={'filter/spieces'}>
             <Icon src={spieces}/>
             <Paragraph>
                 Loose products, spieces
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'items/baking'}>
+        <IconWrapper as={Link} to={'filter/baking'}>
             <Icon src={sweets}/>
             <Paragraph>
                 Sweets and snacks
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'items/vegetablesAndFruits'}>
+        <IconWrapper as={Link} to={'filter/vegetablesAndFruits'}>
             <Icon
                 // onClick={() => sendMail()}
                 src={vegetables}
@@ -138,7 +150,7 @@ const MainView = () => (
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'items/others'}>
+        <IconWrapper as={Link} to={'filter/others'}>
             <Icon src={vegetables}/>
             <Paragraph>
                 Others

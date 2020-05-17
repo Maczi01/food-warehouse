@@ -24,7 +24,6 @@ import EditView from "./EditView";
 import MainView from "./FilterView";
 import {Switch} from "react-router";
 
-
 const Root = () => {
 
     const [foodList, setFoodList] = React.useState([]);
@@ -42,7 +41,6 @@ const Root = () => {
                 setLanguage(Polish)
         }
     }
-
 
     const toggleTheme = (e) => {
         if (e.target.value === 'on') {
@@ -96,7 +94,6 @@ const Root = () => {
         } catch (e) {
             window.alert("Nie udało się dodać!")
         }
-
     }
 
     const contextElements = {

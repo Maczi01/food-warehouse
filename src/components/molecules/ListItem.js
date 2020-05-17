@@ -19,6 +19,17 @@ const ItemWraper = styled.li`
         flex-direction: column;
         border: 2px solid ${({theme}) => theme.colors.blue};
     }
+     animation: appear 0.3s ease;
+    position: relative;
+    @keyframes appear {
+      0% {
+        opacity: 0;
+        top: 30px;
+    }
+      100% {
+        opacity: 1;
+        top: 0;
+    }
 `
 
 const NameWrapper = styled.span`
