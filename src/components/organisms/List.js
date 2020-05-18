@@ -2,6 +2,8 @@ import React from 'react';
 import ListItem from "../molecules/ListItem";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {FormattedMessage} from "react-intl";
+import bag from "../../asstets/img/bag.svg";
 
 const UlWrapper = styled.ul`
     width: 75vw;
@@ -47,6 +49,37 @@ const Paragraph = styled.p`
   text-decoration: none;
 `
 
+const Image = styled.img`
+margin: 25px;
+`;
+
+const Heading = styled.h1`
+     padding: 10px;
+     color: ${({theme}) => theme.colors.blue};
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     margin: 0 auto;
+      width: 60vw;
+     @media (max-width: ${({theme}) => theme.mobile}) {
+        padding: 9rem 0 1rem;
+        font-size: 26px;
+        width: 100vw;
+     }
+`;
+
+const EmptyListWrapper = styled.div`
+ display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 auto;
+      width: 60vw;
+      font-size: 14px;
+`
+
 const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, editItem, toEdit, parameter}) => {
     return (
         <>
@@ -56,17 +89,24 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
             <Link to={'/'}> <Paragraph>🡄 back to select category</Paragraph></Link>
             <UlWrapper>
                 {
-                    items.map(item => (
-                        <ListItem {...item}
-                                  key={item.id}
-                                  deleteItem={() => deleteItem(item.id)}
-                                  toEdit={toEdit}
-                                  editItem={editItem}
-                                  decreaseQuantity={() => decreaseQuantity(item)}
-                                  increaseQuantity={() => increaseQuantity(item)}
-                                  editName={() => editName(item)}
-                        />
-                    ))
+                    items.length ?
+                        items.map(item => (
+                            <ListItem {...item}
+                                      key={item.id}
+                                      deleteItem={() => deleteItem(item.id)}
+                                      toEdit={toEdit}
+                                      editItem={editItem}
+                                      decreaseQuantity={() => decreaseQuantity(item)}
+                                      increaseQuantity={() => increaseQuantity(item)}
+                                      editName={() => editName(item)}
+                            />
+                        )) :
+                        <EmptyListWrapper>
+                            <Heading>
+                                Nothing here
+                            </Heading>
+                            <Image src={bag} alt="shoping bag"/>
+                        </EmptyListWrapper>
                 }
             </UlWrapper>
         </>)

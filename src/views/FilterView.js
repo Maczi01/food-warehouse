@@ -84,7 +84,7 @@ const FilterView = () => (
             <FormattedMessage id="what in inventory"/>
         </Heading>
 
-        <IconWrapper as={Link} to={'/filter/all"'}>
+        <IconWrapper as={Link} to={'/filter/all'}>
             <Icon src={beverages}/>
             <Paragraph>
                 all items

@@ -39,8 +39,15 @@ const MainView = ({match}) => {
     console.log(parameter)
     return (<AppContext.Consumer>
             {(context) => {
-                const newFoodList = parameter === 'all' ?
-                    context.foodList.filter(item => item.category === parameter) : context.foodList;
+                let newFoodList = []
+                if (parameter === "all") {
+                    newFoodList = context.foodList
+                } else {
+                    newFoodList = context.foodList.filter(item => item.category === parameter);
+                }
+
+                // const newFoodList = parameter === 'all' ?
+                //     context.foodList.filter(item => item.category === parameter) : context.foodList;
 
                 return (
                     <ViewWrapper>
