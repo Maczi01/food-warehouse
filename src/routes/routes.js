@@ -7,5 +7,5 @@ export const routes = {
     login: '/login',
     register: '/register',
     filter:'/filter',
-    parameter: 'items/:parameter'
+    parameter: 'filter/:parameter'
 }

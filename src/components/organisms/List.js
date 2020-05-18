@@ -1,12 +1,7 @@
 import React from 'react';
 import ListItem from "../molecules/ListItem";
 import styled from "styled-components";
-import {FormattedMessage} from "react-intl";
-import Button from "../atoms/Button";
-import {routes} from "../../routes/routes";
-import {Link, NavLink} from "react-router-dom";
-import ButtonIcon from "../atoms/ButtonIcon";
-import decline from "../../asstets/img/decline.svg";
+import {Link} from "react-router-dom";
 
 const UlWrapper = styled.ul`
     width: 75vw;
@@ -56,9 +51,9 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
     return (
         <>
             <CategoryWrapper>
-                {parameter ? parameter : "All categories"}
+                {parameter === "all" ? parameter : "All categories"}
             </CategoryWrapper>
-            <Link to={'/filter'}> <Paragraph>🡄 back to select category</Paragraph></Link>
+            <Link to={'/'}> <Paragraph>🡄 back to select category</Paragraph></Link>
             <UlWrapper>
                 {
                     items.map(item => (

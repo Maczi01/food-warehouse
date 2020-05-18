@@ -11,6 +11,7 @@ import sweets from "../asstets/categoryIcon/sweets.svg";
 import vegetables from "../asstets/categoryIcon/vegetables.svg";
 import ZmieniToNaFilterView from "./MainView";
 import {Link} from "react-router-dom";
+import {routes} from "../routes/routes";
 
 const ViewWrapper = styled.div`
      width: 80vw;
@@ -75,16 +76,15 @@ const Icon = styled.img`
     margin: 0;
     width: 150px;
     height: 150px;
-  // background-image: url(${({image}) => image});
 `
 
-const MainView = () => (
+const FilterView = () => (
     <ViewWrapper>
         <Heading>
             <FormattedMessage id="what in inventory"/>
         </Heading>
 
-        <IconWrapper as={Link} to={'/'}>
+        <IconWrapper as={Link} to={'/filter/all"'}>
             <Icon src={beverages}/>
             <Paragraph>
                 all items
@@ -98,49 +98,49 @@ const MainView = () => (
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/baking'}>
+        <IconWrapper as={Link} to={'/filter/baking'}>
             <Icon src={bread}/>
             <Paragraph>
                 Baking
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/dairy'}>
+        <IconWrapper as={Link} to={'/filter/dairy'}>
             <Icon src={dairy}/>
             <Paragraph>
                 Dairy
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/meatFishesSeafood'}>
+        <IconWrapper as={Link} to={'/filter/meatFishesSeafood'}>
             <Icon src={meat}/>
             <Paragraph>
                 Meat, fiches, seafood
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/pasta'}>
+        <IconWrapper as={Link} to={'/filter/pasta'}>
             <Icon src={pasta}/>
             <Paragraph>
                 Pasta, rice, groats
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/spieces'}>
+        <IconWrapper as={Link} to={'/filter/spieces'}>
             <Icon src={spieces}/>
             <Paragraph>
                 Loose products, spieces
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/baking'}>
+        <IconWrapper as={Link} to={'/filter/baking'}>
             <Icon src={sweets}/>
             <Paragraph>
                 Sweets and snacks
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/vegetablesAndFruits'}>
+        <IconWrapper as={Link} to={'/filter/vegetablesAndFruits'}>
             <Icon
                 // onClick={() => sendMail()}
                 src={vegetables}
@@ -150,7 +150,7 @@ const MainView = () => (
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'filter/others'}>
+        <IconWrapper as={Link} to={'/filter/others'}>
             <Icon src={vegetables}/>
             <Paragraph>
                 Others
@@ -158,7 +158,6 @@ const MainView = () => (
         </IconWrapper>
 
     </ViewWrapper>
-
 );
 
-export default MainView
+export default FilterView

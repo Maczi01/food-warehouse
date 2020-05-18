@@ -34,18 +34,13 @@ const Heading = styled.h1`
 `
 
 
-const ZmieniToNaFilterView = ({match}) => {
-    // const {parameter} = useParams();
-    // const {parameter} = this.props.match.params
-    // const { parameter } = useParams()
-    // const {match} = {props}
+const MainView = ({match}) => {
     const parameter = match.params.parameter;
     console.log(parameter)
     return (<AppContext.Consumer>
             {(context) => {
-                // (
-                const newFoodList = parameter ?
-                 context.foodList.filter(item => item.category === parameter) : context.foodList
+                const newFoodList = parameter === 'all' ?
+                    context.foodList.filter(item => item.category === parameter) : context.foodList;
 
                 return (
                     <ViewWrapper>
@@ -65,11 +60,10 @@ const ZmieniToNaFilterView = ({match}) => {
                         />
                     </ViewWrapper>
                 )
-                // )
             }
             }
         </AppContext.Consumer>
     )
 }
 
-export default ZmieniToNaFilterView
+export default MainView

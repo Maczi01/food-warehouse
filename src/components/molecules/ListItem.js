@@ -6,7 +6,6 @@ import plus from "../../asstets/img/plus.svg";
 import minus from "../../asstets/img/minus.svg";
 import {useHistory} from "react-router";
 import PropTypes from "prop-types";
-import Modal from "./Modal";
 
 const ItemWraper = styled.li`
     display: flex;
