@@ -6,12 +6,12 @@ import bread from "../asstets/categoryIcon/bread.svg";
 import dairy from "../asstets/categoryIcon/dairy.svg";
 import meat from "../asstets/categoryIcon/meat.svg";
 import pasta from "../asstets/categoryIcon/pasta.svg";
+import all from "../asstets/categoryIcon/all.svg";
+import other from "../asstets/categoryIcon/other.svg";
 import spieces from "../asstets/categoryIcon/spieces.svg";
 import sweets from "../asstets/categoryIcon/sweets.svg";
 import vegetables from "../asstets/categoryIcon/vegetables.svg";
-import ZmieniToNaFilterView from "./MainView";
 import {Link} from "react-router-dom";
-import {routes} from "../routes/routes";
 
 const ViewWrapper = styled.div`
      width: 80vw;
@@ -85,7 +85,7 @@ const FilterView = () => (
         </Heading>
 
         <IconWrapper as={Link} to={'/filter/all'}>
-            <Icon src={beverages}/>
+            <Icon src={all}/>
             <Paragraph>
                 all items
             </Paragraph>
@@ -133,7 +133,7 @@ const FilterView = () => (
             </Paragraph>
         </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/baking'}>
+        <IconWrapper as={Link} to={'/filter/sweetsAndSnacks'}>
             <Icon src={sweets}/>
             <Paragraph>
                 Sweets and snacks
@@ -151,7 +151,7 @@ const FilterView = () => (
         </IconWrapper>
 
         <IconWrapper as={Link} to={'/filter/others'}>
-            <Icon src={vegetables}/>
+            <Icon src={other}/>
             <Paragraph>
                 Others
             </Paragraph>

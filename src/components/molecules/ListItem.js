@@ -100,8 +100,9 @@ const ListItem =
                 <InfoWrapper>{currentQuantity} z {maximalQuantity}</InfoWrapper>
                 <InfoWrapper>{unit} </InfoWrapper>
             </Container>
-            <QuantityBarOutside><QuantityBarInside
-                style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/></QuantityBarOutside>
+            <QuantityBarOutside>
+                <QuantityBarInside style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/>
+            </QuantityBarOutside>
             <Container>
                 <StyledButton src={minus} onClick={decreaseQuantity}/>
                 <StyledButton src={plus} onClick={increaseQuantity}/>
