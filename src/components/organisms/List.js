@@ -84,7 +84,7 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
     return (
         <>
             <CategoryWrapper>
-                {parameter === "all" ? parameter : "All categories"}
+                {parameter === "all" ? "All categories" : parameter}
             </CategoryWrapper>
             <Link to={'/'}> <Paragraph>🡄 back to select category</Paragraph></Link>
             <UlWrapper>

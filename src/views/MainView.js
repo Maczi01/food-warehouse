@@ -3,7 +3,6 @@ import List from '../components/organisms/List'
 import AppContext from "../context/context";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
-import Button from "../components/atoms/Button";
 
 const ViewWrapper = styled.div`
      width: 75vw;
@@ -33,10 +32,8 @@ const Heading = styled.h1`
      }
 `
 
-
 const MainView = ({match}) => {
     const parameter = match.params.parameter;
-    console.log(parameter)
     return (<AppContext.Consumer>
             {(context) => {
                 let newFoodList = []
@@ -45,10 +42,6 @@ const MainView = ({match}) => {
                 } else {
                     newFoodList = context.foodList.filter(item => item.category === parameter);
                 }
-
-                // const newFoodList = parameter === 'all' ?
-                //     context.foodList.filter(item => item.category === parameter) : context.foodList;
-
                 return (
                     <ViewWrapper>
                         <Heading>
