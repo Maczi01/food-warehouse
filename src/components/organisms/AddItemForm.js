@@ -8,7 +8,7 @@ import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
-import beverages from "../../asstets/categoryIcon/beverages.svg";
+import * as Yup from "yup";
 
 const FormWrapper = styled.div`
       display: flex;
@@ -36,6 +36,7 @@ const FormItem = styled.div`
           border: 1px solid   ${({theme}) => theme.colors.darkblue});
       }
 `
+
 const StyledInput = styled.input`
     display: block;
     appearance: none;
@@ -55,6 +56,27 @@ const StyledInput = styled.input`
     }
   }
 `
+
+const StyledInputError = styled.input`
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 1px solid white;
+    width: 300px;
+    border-radius: 3px;
+    margin: 6px;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    transition-duration: 0.25s;
+    font-weight: 300;
+    background-color: red;
+    @media (max-width: ${({theme}) => theme.mobile}) {
+       height: 50px;
+    }
+  }
+`
+
 const StyledLabel = styled.label`
       background-color: ${({theme}) => theme.colors.blue};
       color: ${({theme}) => theme.colors.white};
@@ -72,6 +94,7 @@ const StyledLabel = styled.label`
           height: 50px;
       }
 `
+
 const Select = styled.select`
       width: 300px;
       font-size: 18px;
@@ -171,19 +194,46 @@ class AddItemForm extends React.Component {
                         minimalQuantity: '',
                         maximalQuantity: ''
                     }}
-                    onSubmit={this.handleSubmitForm}>
-                    {() => (
+                    onSubmit={this.handleSubmitForm}
+                    validationSchema={Yup.object().shape({
+                        name: Yup.string()
+                            .max(2, "Too short!")
+                            .min(30, "Too long!")
+                            .required("Required"),
+                        currentQuantity: Yup.number()
+                            .positive("Only positive number!")
+                            .max(100),
+                        minimalQuantity: Yup.number()
+                            .positive("Only positive number!")
+                            .max(100),
+                        maximalQuantity: Yup.number()
+                            .positive("Only positive number!")
+                            .max(100),
+                    })}
+                >
+                    {({values, errors, touched, handleBlur}) => (
                         <Form autoComplete="off">
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                <StyledInput
-                                    onChange={this.handleInputChange}
-                                    name="name"
-                                    type="text"
-                                    value={this.state.name}
-                                    placeholder=""/>
+                                {errors.name && touched.name ?
+                                    <StyledInputError
+                                        onChange={this.handleInputChange}
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        onBlur={handleBlur}
+                                        value={this.state.name}
+                                        placeholder=""/> :
+                                    <StyledInput
+                                        onChange={this.handleInputChange}
+                                        name="name"
+                                        type="text"
+                                        value={this.state.name}
+                                        placeholder=""/>}
+
+
                             </FormItem>
                             <FormItem>
                                 <StyledLabel>

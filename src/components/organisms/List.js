@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import bag from "../../asstets/img/bag.svg";
+import {routes} from "../../routes/routes";
 
 const UlWrapper = styled.ul`
     width: 75vw;
@@ -103,9 +104,11 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
                         )) :
                         <EmptyListWrapper>
                             <Heading>
-                                Nothing here
+                                <Image src={bag} alt="shoping bag"/>
+                                Nothing here,
+                                <Link to={routes.add}>add something
+                                </Link>
                             </Heading>
-                            <Image src={bag} alt="shoping bag"/>
                         </EmptyListWrapper>
                 }
             </UlWrapper>
