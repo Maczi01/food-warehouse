@@ -23,13 +23,6 @@ const FormWrapper = styled.div`
      }
 `;
 
-const ErrorContainer = styled.div`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-`
-
 const ButtonContainer = styled.div`
       margin: 20px 0 20px 0;
       display: flex;
@@ -124,39 +117,10 @@ const Select = styled.select`
       }
 `;
 
-const SelectError = styled.select`
-      width: 300px;
-      font-size: 18px;
-      display: flex;
-      text-decoration: none;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      height: 60px;
-      padding-left: 5px;
-      border: 3px solid red;
-      margin: 6px;
-      text-align-last:center;
-      outline: none;
-      color: black;
-      background-color: ${({theme}) => theme.colors.gray};
-      @media (max-width: ${({theme}) => theme.mobile}) {
-          height: 50px;
-      }
-`;
-
-const InputError = styled.span`
-      width: 100px;
-      height: 30px;
-      z-index: 15;
-      background-color: #e62163;
-      color: white;
-`;
-
 const ErrorText = styled.p`
       text-align: right;
       align-items: center;
-      color: #e62163;
+      color: red;
       font-weight: bold;
       margin-right: 20px;
 `
@@ -242,15 +206,16 @@ class AddItemForm extends React.Component {
                             .required("Category is required!"),
                         currentQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .max(10, "Less than 10!")
+                            .max(Yup.ref("maximalQuantity"), "Current quantity must be lower than maximal!")
                             .required("Required"),
                         minimalQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .max(10, "Less than 10!")
+                            .max(Yup.ref("maximalQuantity"), "Minimal quantity must be lower than maximal!")
                             .required("Required"),
                         maximalQuantity: Yup.number()
                             .positive("Only positive number!")
                             .max(10, "Less than 10!")
+                            .min(Yup.ref("minimalQuantity"), "Maximal quantity must be greather than minimal!")
                             .required("Required"),
                     })}>
                     {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting}) => (
@@ -331,30 +296,31 @@ class AddItemForm extends React.Component {
                                 <ErrorText>{errors.unit}</ErrorText> : null
                             }
                             <FormItem>
-                                <StyledLabel htmlFor="currentQuantity">
-                                    <FormattedMessage id="current quantity"/>
+                                <StyledLabel>
+                                    <FormattedMessage id="maximal quanitity"/>
                                 </StyledLabel>
-                                {errors.currentQuantity && touched.currentQuantity ?
+                                {errors.maximalQuantity && touched.maximalQuantity ?
                                     <StyledInputError
                                         onChange={this.handleInputChange}
-                                        name="currentQuantity"
+                                        name="maximalQuantity"
                                         type="number"
                                         onBlur={handleBlur}
-                                        value={values.currentQuantity}
+                                        value={values.maximalQuantity}
                                         placeholder=""/>
                                     :
                                     <StyledInput
                                         onChange={this.handleInputChange}
-                                        name="currentQuantity"
+                                        name="maximalQuantity"
                                         type="number"
                                         onBlur={handleBlur}
-                                        value={values.currentQuantity}
+                                        value={values.maximalQuantity}
                                         placeholder=""/>
                                 }
                             </FormItem>
-                            {errors.currentQuantity && touched.currentQuantity ?
-                                <ErrorText>{errors.currentQuantity}</ErrorText> : null
+                            {errors.maximalQuantity && touched.maximalQuantity ?
+                                <ErrorText>{errors.maximalQuantity}</ErrorText> : null
                             }
+
                             <FormItem>
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
@@ -380,37 +346,39 @@ class AddItemForm extends React.Component {
                                 <ErrorText>{errors.minimalQuantity}</ErrorText> : null
                             }
                             <FormItem>
-                                <StyledLabel>
-                                    <FormattedMessage id="maximal quanitity"/>
+                                <StyledLabel htmlFor="currentQuantity">
+                                    <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
-                                {errors.maximalQuantity && touched.maximalQuantity ?
+                                {errors.currentQuantity && touched.currentQuantity ?
                                     <StyledInputError
                                         onChange={this.handleInputChange}
-                                        name="maximalQuantity"
+                                        name="currentQuantity"
                                         type="number"
                                         onBlur={handleBlur}
-                                        value={values.maximalQuantity}
+                                        value={values.currentQuantity}
                                         placeholder=""/>
                                     :
                                     <StyledInput
                                         onChange={this.handleInputChange}
-                                        name="maximalQuantity"
+                                        name="currentQuantity"
                                         type="number"
                                         onBlur={handleBlur}
-                                        value={values.maximalQuantity}
+                                        value={values.currentQuantity}
                                         placeholder=""/>
                                 }
                             </FormItem>
-                            {errors.maximalQuantity && touched.maximalQuantity ?
-                                <ErrorText>{errors.maximalQuantity}</ErrorText> : null
+                            {errors.currentQuantity && touched.currentQuantity ?
+                                <ErrorText>{errors.currentQuantity}</ErrorText> : null
                             }
+
+
                             <ButtonContainer>
                                 <Link to="/register">
                                     <ButtonIcon
                                         icon={decline}
                                     />
                                 </Link>
-                                {isValid ?
+                                { isValid  ?
                                     <ButtonIcon
                                         onClick={() => this.notify(this.state.name)}
                                         type="submit"
