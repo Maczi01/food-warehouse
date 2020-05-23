@@ -3,6 +3,7 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Form, Formik} from 'formik';
 import accept from '../../asstets/img/accept.svg'
+import acceptDisabled from '../../asstets/img/acceptDisabled.svg'
 import decline from '../../asstets/img/decline.svg'
 import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
@@ -16,11 +17,18 @@ const FormWrapper = styled.div`
       align-items: center;
       flex-direction: column;
       margin: 0 auto;
-      width: 60vw;
-       @media (max-width: ${({theme}) => theme.mobile}) {
+      width: 50vw;
+      @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
      }
 `;
+
+const ErrorContainer = styled.div`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+`
 
 const ButtonContainer = styled.div`
       margin: 20px 0 20px 0;
@@ -35,7 +43,7 @@ const FormItem = styled.div`
           flex-direction: column;
           border: 1px solid   ${({theme}) => theme.colors.darkblue});
       }
-`
+`;
 
 const StyledInput = styled.input`
     display: block;
@@ -55,7 +63,7 @@ const StyledInput = styled.input`
        height: 50px;
     }
   }
-`
+`;
 
 const StyledInputError = styled.input`
     display: block;
@@ -75,7 +83,7 @@ const StyledInputError = styled.input`
        height: 50px;
     }
   }
-`
+`;
 
 const StyledLabel = styled.label`
       background-color: ${({theme}) => theme.colors.blue};
@@ -93,7 +101,7 @@ const StyledLabel = styled.label`
       @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
       }
-`
+`;
 
 const Select = styled.select`
       width: 300px;
@@ -114,7 +122,15 @@ const Select = styled.select`
       @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
       }
-`
+`;
+
+const InputError = styled.span`
+      width: 100px;
+      height: 30px;
+      z-index: 15;
+      background-color: #e62163;
+      color: white;
+`;
 
 const Heading = styled.h1`
      padding: 10px;
@@ -193,33 +209,33 @@ class AddItemForm extends React.Component {
                             .required("Required"),
                         currentQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .max(10),
+                            .max(10)
+                            .required("Required"),
                         minimalQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .max(10),
+                            .max(10)
+                            .required("Required"),
                         maximalQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .max(10),
-                    })}
-                >
-                    {({values, errors, touched, handleChange, handleBlur}) => (
+                            .min(10)
+                            .required("Required"),
+                    })}>
+                    {({values, errors, touched, handleBlur}) => (
                         <Form autoComplete="off">
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
                                 {errors.name && touched.name ?
-
                                     <>
                                         <StyledInputError
                                             onChange={this.handleInputChange}
                                             name="name"
                                             type="text"
                                             value={values.name}
-                                            // onBlur={handleBlur}
                                             placeholder=""
                                         />
-                                        <div>Too long</div>
+                                        {/*<InputError>Too short!</InputError>*/}
                                     </>
                                     :
                                     <StyledInput
@@ -231,9 +247,6 @@ class AddItemForm extends React.Component {
                                         placeholder=""
                                     />
                                 }
-                                {/*{errors.name && touched.name && (*/}
-                                {/*    <div>{errors.name}</div>*/}
-                                {/*)}*/}
                             </FormItem>
                             <FormItem>
                                 <StyledLabel>
@@ -359,6 +372,7 @@ class AddItemForm extends React.Component {
                     )}
                 </Formik>
             </FormWrapper>
+
         )
     }
 }
