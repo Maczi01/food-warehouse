@@ -124,6 +124,27 @@ const Select = styled.select`
       }
 `;
 
+const SelectError = styled.select`
+      width: 300px;
+      font-size: 18px;
+      display: flex;
+      text-decoration: none;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      height: 60px;
+      padding-left: 5px;
+      border: 3px solid red;
+      margin: 6px;
+      text-align-last:center;
+      outline: none;
+      color: black;
+      background-color: ${({theme}) => theme.colors.gray};
+      @media (max-width: ${({theme}) => theme.mobile}) {
+          height: 50px;
+      }
+`;
+
 const InputError = styled.span`
       width: 100px;
       height: 30px;
@@ -131,6 +152,14 @@ const InputError = styled.span`
       background-color: #e62163;
       color: white;
 `;
+
+const ErrorText = styled.p`
+      text-align: right;
+      align-items: center;
+      color: #e62163;
+      font-weight: bold;
+      margin-right: 20px;
+`
 
 const Heading = styled.h1`
      padding: 10px;
@@ -204,23 +233,27 @@ class AddItemForm extends React.Component {
                     onSubmit={this.handleSubmitForm}
                     validationSchema={Yup.object().shape({
                         name: Yup.string()
-                            .min(2, "Too short!")
-                            .max(30, "Too long!")
+                            .min(2, "Too short, minimal 3 characters!")
+                            .max(30, "Too long, maximal 3 characters!!")
                             .required("Required"),
+                        unit: Yup.string()
+                            .required("Unit is required!"),
+                        category: Yup.string()
+                            .required("Category is required!"),
                         currentQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .max(10)
+                            .max(10, "Less than 10!")
                             .required("Required"),
                         minimalQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .max(10)
+                            .max(10, "Less than 10!")
                             .required("Required"),
                         maximalQuantity: Yup.number()
                             .positive("Only positive number!")
-                            .min(10)
+                            .max(10, "Less than 10!")
                             .required("Required"),
                     })}>
-                    {({values, errors, touched, handleBlur}) => (
+                    {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting}) => (
                         <Form autoComplete="off">
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
@@ -248,16 +281,19 @@ class AddItemForm extends React.Component {
                                     />
                                 }
                             </FormItem>
+                            {errors.name && touched.name ?
+                                <ErrorText>{errors.name}</ErrorText> : null
+                            }
                             <FormItem>
                                 <StyledLabel>
                                     <FormattedMessage id="choose category"/>
                                 </StyledLabel>
+
                                 <Select
                                     onChange={this.handleInputChange}
                                     name="category"
                                     value={values.category}
                                     onBlur={handleBlur}
-                                    placeholder=""
                                 >
                                     <option label="Choose category..." value="Choose category"/>
                                     <option label="pasta, rice, groats" value="pasta"/>
@@ -271,6 +307,9 @@ class AddItemForm extends React.Component {
                                     <option label="others" value="others"/>
                                 </Select>
                             </FormItem>
+                            {errors.category && touched.category ?
+                                <ErrorText>{errors.category}</ErrorText> : null
+                            }
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="choose unit"/>
@@ -288,6 +327,9 @@ class AddItemForm extends React.Component {
                                     <option value="Kilogram" label="Kilogram"/>
                                 </Select>
                             </FormItem>
+                            {errors.unit && touched.unit ?
+                                <ErrorText>{errors.unit}</ErrorText> : null
+                            }
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
@@ -310,6 +352,9 @@ class AddItemForm extends React.Component {
                                         placeholder=""/>
                                 }
                             </FormItem>
+                            {errors.currentQuantity && touched.currentQuantity ?
+                                <ErrorText>{errors.currentQuantity}</ErrorText> : null
+                            }
                             <FormItem>
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
@@ -330,13 +375,14 @@ class AddItemForm extends React.Component {
                                         value={values.minimalQuantity}
                                         placeholder=""/>
                                 }
-
                             </FormItem>
+                            {errors.minimalQuantity && touched.minimalQuantity ?
+                                <ErrorText>{errors.minimalQuantity}</ErrorText> : null
+                            }
                             <FormItem>
                                 <StyledLabel>
                                     <FormattedMessage id="maximal quanitity"/>
                                 </StyledLabel>
-
                                 {errors.maximalQuantity && touched.maximalQuantity ?
                                     <StyledInputError
                                         onChange={this.handleInputChange}
@@ -355,24 +401,32 @@ class AddItemForm extends React.Component {
                                         placeholder=""/>
                                 }
                             </FormItem>
+                            {errors.maximalQuantity && touched.maximalQuantity ?
+                                <ErrorText>{errors.maximalQuantity}</ErrorText> : null
+                            }
                             <ButtonContainer>
                                 <Link to="/register">
                                     <ButtonIcon
                                         icon={decline}
                                     />
                                 </Link>
-                                <ButtonIcon
-                                    onClick={() => this.notify(this.state.name)}
-                                    type="submit"
-                                    icon={accept}
-                                />
+                                {isValid ?
+                                    <ButtonIcon
+                                        onClick={() => this.notify(this.state.name)}
+                                        type="submit"
+                                        icon={accept}
+                                    />
+                                    :
+                                    <ButtonIcon
+                                        icon={acceptDisabled}
+                                    />
+                                }
                             </ButtonContainer>
                             <ToastContainer autoClose={1400}/>
                         </Form>
                     )}
                 </Formik>
             </FormWrapper>
-
         )
     }
 }
