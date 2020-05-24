@@ -18,8 +18,6 @@ const ViewWrapper = styled.div`
      margin: 0 auto;
      @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
-      
-
      }
 `
 
@@ -28,11 +26,11 @@ const GridWrapper = styled.div`
      display: flex;
      justify-content: center;
      flex-wrap: wrap;
-   @media (max-width: ${({theme}) => theme.mobile}) {
+     @media (max-width: ${({theme}) => theme.mobile}) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 100vw;
-
+        grid-column-gap: 0;
      }
 `
 
@@ -62,6 +60,10 @@ const IconWrapper = styled.div`
     align-items: center;
     animation: appear 0.3s ease;
     position: relative;
+     @media (max-width: ${({theme}) => theme.mobile}) {
+         margin: 5px;
+         width: 150px;
+     }
     @keyframes appear {
       0% {
         opacity: 0;
@@ -86,6 +88,10 @@ const Icon = styled.img`
     margin: 0;
     width: 150px;
     height: 150px;
+      @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100px;
+        height: 100px;
+     }
 `
 
 const FilterView = () => (
