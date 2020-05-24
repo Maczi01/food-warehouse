@@ -16,11 +16,23 @@ import {Link} from "react-router-dom";
 const ViewWrapper = styled.div`
      width: 80vw;
      margin: 0 auto;
+     @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+      
+
+     }
+`
+
+const GridWrapper = styled.div`
+     
      display: flex;
      justify-content: center;
      flex-wrap: wrap;
-     @media (max-width: ${({theme}) => theme.mobile}) {
+   @media (max-width: ${({theme}) => theme.mobile}) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         width: 100vw;
+
      }
 `
 
@@ -59,9 +71,7 @@ const IconWrapper = styled.div`
         opacity: 1;
         top: 0;
     }
-}
-;
-`
+};`
 
 const Paragraph = styled.p`
     margin-top: 10px;
@@ -83,80 +93,80 @@ const FilterView = () => (
         <Heading>
             <FormattedMessage id="what in inventory"/>
         </Heading>
+        <GridWrapper>
+            <IconWrapper as={Link} to={'/filter/all'}>
+                <Icon src={all}/>
+                <Paragraph>
+                    all items
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/all'}>
-            <Icon src={all}/>
-            <Paragraph>
-                all items
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/beverages'}>
+                <Icon src={beverages}/>
+                <Paragraph>
+                    Beverages
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/beverages'}>
-            <Icon src={beverages}/>
-            <Paragraph>
-                Beverages
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/baking'}>
+                <Icon src={bread}/>
+                <Paragraph>
+                    Baking
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/baking'}>
-            <Icon src={bread}/>
-            <Paragraph>
-                Baking
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/dairy'}>
+                <Icon src={dairy}/>
+                <Paragraph>
+                    Dairy
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/dairy'}>
-            <Icon src={dairy}/>
-            <Paragraph>
-                Dairy
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/meatFishesSeafood'}>
+                <Icon src={meat}/>
+                <Paragraph>
+                    Meat, fiches, seafood
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/meatFishesSeafood'}>
-            <Icon src={meat}/>
-            <Paragraph>
-                Meat, fiches, seafood
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/pasta'}>
+                <Icon src={pasta}/>
+                <Paragraph>
+                    Pasta, rice, groats
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/pasta'}>
-            <Icon src={pasta}/>
-            <Paragraph>
-                Pasta, rice, groats
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/spieces'}>
+                <Icon src={spieces}/>
+                <Paragraph>
+                    Loose products, spieces
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/spieces'}>
-            <Icon src={spieces}/>
-            <Paragraph>
-                Loose products, spieces
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/sweetsAndSnacks'}>
+                <Icon src={sweets}/>
+                <Paragraph>
+                    Sweets and snacks
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/sweetsAndSnacks'}>
-            <Icon src={sweets}/>
-            <Paragraph>
-                Sweets and snacks
-            </Paragraph>
-        </IconWrapper>
+            <IconWrapper as={Link} to={'/filter/vegetablesAndFruits'}>
+                <Icon
+                    // onClick={() => sendMail()}
+                    src={vegetables}
+                />
+                <Paragraph>
+                    Vegetables and fruits
+                </Paragraph>
+            </IconWrapper>
 
-        <IconWrapper as={Link} to={'/filter/vegetablesAndFruits'}>
-            <Icon
-                // onClick={() => sendMail()}
-                src={vegetables}
-            />
-            <Paragraph>
-                Vegetables and fruits
-            </Paragraph>
-        </IconWrapper>
-
-        <IconWrapper as={Link} to={'/filter/others'}>
-            <Icon src={other}/>
-            <Paragraph>
-                Others
-            </Paragraph>
-        </IconWrapper>
-
+            <IconWrapper as={Link} to={'/filter/others'}>
+                <Icon src={other}/>
+                <Paragraph>
+                    Others
+                </Paragraph>
+            </IconWrapper>
+        </GridWrapper>
     </ViewWrapper>
 );
 

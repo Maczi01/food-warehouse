@@ -17,7 +17,7 @@ const StyledMenu = styled.ul`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   transition: transform 0.3s ease-in-out;
 
   @media (max-width: 576px) {
