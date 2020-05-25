@@ -96,9 +96,9 @@ const ListItem =
         return (<ItemWraper>
             <Container>
                 <NameWrapper>{name}</NameWrapper>
-                <InfoWrapper>{category}</InfoWrapper>
-                <InfoWrapper>{currentQuantity} z {maximalQuantity}</InfoWrapper>
+                {/*<InfoWrapper>{category}</InfoWrapper>*/}
                 <InfoWrapper>{unit} </InfoWrapper>
+                <InfoWrapper>{currentQuantity} z {maximalQuantity}</InfoWrapper>
             </Container>
             <QuantityBarOutside>
                 <QuantityBarInside style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/>

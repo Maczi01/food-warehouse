@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Header from "../components/molecules/Header";
 import FilterView from './MainView'
@@ -26,7 +26,7 @@ import {Switch} from "react-router";
 
 const Root = () => {
 
-    const [foodList, setFoodList] = React.useState([]);
+    const [foodList, setFoodList] = useState([]);
     const [theme, setTheme] = useState('light');
     const [locale, setLocale] = useState('en');
     const [language, setLanguage] = useState(English);
@@ -55,7 +55,7 @@ const Root = () => {
         changeLanguage(e.target.value);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         const unSubscribe = db.collection("foodList").onSnapshot(
             (snapshot) => {
                 const foodListData = []

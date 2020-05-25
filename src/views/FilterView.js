@@ -22,7 +22,6 @@ const ViewWrapper = styled.div`
 `
 
 const GridWrapper = styled.div`
-     
      display: flex;
      justify-content: center;
      flex-wrap: wrap;

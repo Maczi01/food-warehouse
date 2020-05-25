@@ -330,7 +330,6 @@ class AddItemForm extends React.Component {
                                         onChange={this.handleInputChange}
                                         name="minimalQuantity"
                                         type="number"
-                                        // onBlur={handleBlur}
                                         value={values.minimalQuantity}
                                         placeholder=""/>
                                     : <StyledInput
@@ -371,14 +370,13 @@ class AddItemForm extends React.Component {
                                 <ErrorText>{errors.currentQuantity}</ErrorText> : null
                             }
 
-
                             <ButtonContainer>
                                 <Link to="/register">
                                     <ButtonIcon
                                         icon={decline}
                                     />
                                 </Link>
-                                { isValid  ?
+                                {isValid ?
                                     <ButtonIcon
                                         onClick={errors ? () => this.notify(this.state.name) : null}
                                         type="submit"
