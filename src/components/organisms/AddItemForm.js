@@ -378,7 +378,7 @@ class AddItemForm extends React.Component {
                                 </Link>
                                 {isValid ?
                                     <ButtonIcon
-                                        onClick={errors ? () => this.notify(this.state.name) : null}
+                                        onClick={ () => errors ? this.notify(this.state.name) : null}
                                         type="submit"
                                         icon={accept}
                                     />
