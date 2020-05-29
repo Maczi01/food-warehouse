@@ -1,10 +1,16 @@
 #Shopping List
 
-##Application to manage you shopping list
+##Application to manage you shopping list  <br/>
+
 [Demo - first version, very simple](https://foodwarehouse-b9pth5klm.now.sh/)
 
 
 [Demo - second version, still in progress](https://shopping-list-a16c1.web.app/)
+To login here use 
+login: test@test.com
+password: testtest
+
+It's just test data! 
 
 My first bigger project in react.
 
@@ -18,6 +24,7 @@ In settings you can change language and theme.
 You can log with mail.
 
 I used Firebase as database and to authentication.<br/>
+     
 ![screenshot](https://github.com/Maczi01/food-warehouse/blob/master/src/asstets/screenshots/SHOP1.png)<br/>
 ![screenshot](https://github.com/Maczi01/food-warehouse/blob/master/src/asstets/screenshots/SHOP2.png)<br/>
 ![screenshot](https://github.com/Maczi01/food-warehouse/blob/master/src/asstets/screenshots/SHOP3.png)
