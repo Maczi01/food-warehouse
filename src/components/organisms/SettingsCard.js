@@ -200,25 +200,19 @@ const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
                     </StyledSelect>
                 </OptionsItem>
                 <OptionsItem>
+                    <StyledLabel>
+                        Notifications
+                    </StyledLabel>
+                    <StyledSelect defaultValue="off">
+                        <option value="on" label="on"/>
+                        <option value="off" label="off"/>
+                    </StyledSelect>
+                </OptionsItem>
+                <OptionsItem>
                     <StyledLabel htmlFor="currentQuantity">
                         <FormattedMessage id="add unit"/>
                     </StyledLabel>
                     <StyledInput/>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel>
-                        <FormattedMessage id="add category"/>
-                    </StyledLabel>
-                    <StyledInput/>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel>
-                        Notifications
-                    </StyledLabel>
-                    <StyledSelect onChange={toggleViewMode} defaultValue="off">
-                        <option value="on" label="on"/>
-                        <option value="off" label="off"/>
-                    </StyledSelect>
                 </OptionsItem>
             </OptionsWrapper>
         </SettingsWrapper>

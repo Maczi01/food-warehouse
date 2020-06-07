@@ -92,10 +92,10 @@ const QuantityBarInside = styled.div`
 const ListItem =
     ({id, name, children, unit, category, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem}) => {
         const history = useHistory();
-
         return (<ItemWraper>
             <Container>
                 <NameWrapper>{name}</NameWrapper>
+                {/*TODO ustalić czy tu ma być kategoria czy nie*/}
                 {/*<InfoWrapper>{category}</InfoWrapper>*/}
                 <InfoWrapper>{unit} </InfoWrapper>
                 <InfoWrapper>{currentQuantity} z {maximalQuantity}</InfoWrapper>

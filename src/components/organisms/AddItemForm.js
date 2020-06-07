@@ -233,7 +233,6 @@ class AddItemForm extends React.Component {
                                             value={values.name}
                                             placeholder=""
                                         />
-                                        {/*<InputError>Too short!</InputError>*/}
                                     </>
                                     :
                                     <StyledInput
@@ -253,7 +252,6 @@ class AddItemForm extends React.Component {
                                 <StyledLabel>
                                     <FormattedMessage id="choose category"/>
                                 </StyledLabel>
-
                                 <Select
                                     onChange={this.handleInputChange}
                                     name="category"

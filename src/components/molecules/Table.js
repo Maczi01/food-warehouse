@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
-import print from "../../asstets/img/print.svg";
+import pdf from "../../asstets/img/pdf.svg";
 import sms from "../../asstets/img/sms.svg";
 import plus from "../../asstets/img/plus.svg";
 import emailjs from 'emailjs-com';
 import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
 import Menu from "./Menu";
+import {Doc} from "./Doc";
+
 
 const templateParams = {
     name: 'James',
@@ -24,6 +26,7 @@ const sendMail = () => {
         });
 
 }
+
 const TableWrapper = styled.div`
       display: flex;
       justify-content: center;
@@ -80,54 +83,61 @@ const ButtonContainer = styled.div`
       justify-content: flex-end;
 `
 
-const Table = ({data}) => (
-    <TableWrapper>
-        <StyledTable>
-            <colgroup>
-                <col/>
-                <col/>
-                <col/>
-            </colgroup>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>
-                    <FormattedMessage id="name"/>
-                </th>
-                <th>
-                    <FormattedMessage id="quantity"/>
-                </th>
-                <th>
-                    <FormattedMessage id="unit"/>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {data.map((item, index) => (
-                <tr key={item.id}>
-                    <td>{index + 1}</td>
-                    <td>{item.name}</td>
-                    <td>{item.maximalQuantity - item.currentQuantity}</td>
-                    <td>{item.unit}</td>
-                </tr>
-            ))}
-            </tbody>
-        </StyledTable>
-        <ButtonContainer>
-            <ButtonIcon
-                onClick={() => sendMail()}
-                icon={plus}
-            />
-            <ButtonIcon
-                icon={print}
-            />
-            <ButtonIcon
-                onClick={() => sendMail()}
-                icon={sms}
-            />
-        </ButtonContainer>
-    </TableWrapper>
-);
+
+const Table = ({data}) => {
+    return (
+        <>
+            <TableWrapper>
+                <Doc/>
+                <StyledTable>
+                    <colgroup>
+                        <col/>
+                        <col/>
+                        <col/>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            <FormattedMessage id="name"/>
+                        </th>
+                        <th>
+                            <FormattedMessage id="quantity"/>
+                        </th>
+                        <th>
+                            <FormattedMessage id="unit"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {data.map((item, index) => (
+                        <tr key={item.id}>
+                            <td>{index + 1}</td>
+                            <td>{item.name}</td>
+                            <td>{item.maximalQuantity - item.currentQuantity}</td>
+                            <td>{item.unit}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </StyledTable>
+                <ButtonContainer>
+                    <ButtonIcon
+                        onClick={() => sendMail()}
+                        icon={plus}
+                    />
+                    <Doc
+                        icon={pdf}
+                    />
+                    <ButtonIcon
+                        onClick={() => sendMail()}
+                        icon={sms}
+                    />
+                </ButtonContainer>
+            </TableWrapper>
+        </>
+    )
+}
+
 
 Table.propTypes = {
     data: PropTypes.array,

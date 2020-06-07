@@ -8,4 +8,4 @@ export const routes = {
     register: '/register',
     filter:'/filter',
     parameter: 'filter/:parameter'
-}
+};
