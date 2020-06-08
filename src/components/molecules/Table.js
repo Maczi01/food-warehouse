@@ -9,7 +9,7 @@ import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
 import Menu from "./Menu";
 import {Doc} from "./Doc";
-
+import jsPDF from "jspdf"
 
 const templateParams = {
     name: 'James',
@@ -85,10 +85,20 @@ const ButtonContainer = styled.div`
 
 
 const Table = ({data}) => {
+
+    const jsPdfGenerator = () =>{
+        const doc = new jsPDF('p', 'pt')
+        
+        doc.text(20,20, "default text");
+        doc.setFont('courier');
+        doc.save("generated.pdf");
+
+    }
+
+
     return (
         <>
             <TableWrapper>
-                <Doc/>
                 <StyledTable>
                     <colgroup>
                         <col/>
@@ -125,7 +135,8 @@ const Table = ({data}) => {
                         onClick={() => sendMail()}
                         icon={plus}
                     />
-                    <Doc
+                    <ButtonIcon
+                        onClick={() => jsPdfGenerator()}
                         icon={pdf}
                     />
                     <ButtonIcon
