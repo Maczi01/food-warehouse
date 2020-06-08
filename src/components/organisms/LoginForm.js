@@ -91,7 +91,7 @@ const LoginForm = ({handleLogin}) => (
         <ItemsContainer>
             <Form onSubmit={handleLogin} autocomplete="off">
                 <StyledInput type="email" name="email" placeholder="Email"/>
-                <StyledInput type="password" name="password" placeholder="Hasło"/>
+                <StyledInput type="password" name="password" placeholder="Password"/>
                 <Button>
                     <FormattedMessage id="log in"/>
                 </Button>
