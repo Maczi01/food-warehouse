@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import pdf from "../../asstets/img/pdf.svg";
+import pdf__inactive from "../../asstets/img/pdf__inactive.svg";
 import sms from "../../asstets/img/sms.svg";
 import plus from "../../asstets/img/plus.svg";
 import emailjs from 'emailjs-com';
@@ -10,6 +11,7 @@ import PropTypes from "prop-types";
 import Menu from "./Menu";
 import {Doc} from "./Doc";
 import jsPDF from "jspdf"
+import autoTable from "jspdf-autotable";
 
 const templateParams = {
     name: 'James',
@@ -86,13 +88,30 @@ const ButtonContainer = styled.div`
 
 const Table = ({data}) => {
 
-    const jsPdfGenerator = () =>{
-        const doc = new jsPDF('p', 'pt')
-        
-        doc.text(20,20, "default text");
-        doc.setFont('courier');
-        doc.save("generated.pdf");
+    const string = "<table><colgroup><col><col><col></colgroup><thead><tr><th>#</th><th>Name</th><th>Quantity</th><th>Unit</th></tr></thead><tbody><tr><td>1</td><td>Tomatoes</td><td>5</td><td>Kilogram</td></tr><tr><td>2</td><td>Lamb</td><td>3</td><td>Kilogram</td></tr><tr><td>3</td><td>Kola</td><td>7</td><td>Sztuka</td></tr><tr><td>4</td><td>Sugar</td><td>5</td><td>Kilogram</td></tr><tr><td>5</td><td>Cherry</td><td>4</td><td>Kilogram</td></tr></tbody></table>"
 
+    const jsPdfGenerator = () => {
+        const doc = new jsPDF('p', 'pt')
+        doc.setFont('courier');
+        const name = <FormattedMessage id="name"/>
+        const quantity = <FormattedMessage id="quantity"/>
+        const unit = <FormattedMessage id="unit"/>
+
+        const rows = [];
+        data.map(item => rows.push([item.index,
+            item.name,
+            item.maximalQuantity,
+            item.unit]))
+        ;
+        doc.autoTable({
+            head: [['index'
+                , 'name'
+                , 'quantity'
+                , 'unit'
+            ]],
+            body: rows
+        })
+        doc.save("generated.pdf");
     }
 
 
