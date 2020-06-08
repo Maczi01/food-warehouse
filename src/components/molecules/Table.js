@@ -88,26 +88,25 @@ const ButtonContainer = styled.div`
 
 const Table = ({data}) => {
 
-    const string = "<table><colgroup><col><col><col></colgroup><thead><tr><th>#</th><th>Name</th><th>Quantity</th><th>Unit</th></tr></thead><tbody><tr><td>1</td><td>Tomatoes</td><td>5</td><td>Kilogram</td></tr><tr><td>2</td><td>Lamb</td><td>3</td><td>Kilogram</td></tr><tr><td>3</td><td>Kola</td><td>7</td><td>Sztuka</td></tr><tr><td>4</td><td>Sugar</td><td>5</td><td>Kilogram</td></tr><tr><td>5</td><td>Cherry</td><td>4</td><td>Kilogram</td></tr></tbody></table>"
-
     const jsPdfGenerator = () => {
         const doc = new jsPDF('p', 'pt')
         doc.setFont('courier');
         const name = <FormattedMessage id="name"/>
         const quantity = <FormattedMessage id="quantity"/>
         const unit = <FormattedMessage id="unit"/>
-
+        doc.text(220, 30, 'Shopping list');
         const rows = [];
-        data.map(item => rows.push([item.index,
+        data.map((item, index) => rows.push([
+            index+1,
             item.name,
             item.maximalQuantity,
             item.unit]))
         ;
         doc.autoTable({
-            head: [['index'
-                , 'name'
-                , 'quantity'
-                , 'unit'
+            head: [['Index'
+                , 'Name'
+                , 'Quantity'
+                , 'Unit'
             ]],
             body: rows
         })
