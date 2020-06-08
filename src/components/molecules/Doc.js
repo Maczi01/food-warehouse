@@ -13,7 +13,7 @@ import Menu from "./Menu";
 
 const styles = StyleSheet.create({
     page: {
-        flexDirection: "row"
+        flexDirection: "column"
     },
     section: {
         flexGrow: 1
@@ -24,21 +24,74 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         margin: "0 auto",
         width: "40vw"
-}
+    },
+    styledTable: {
+        paddingTop: "15px",
+        margin: "20px",
+        border: "none",
+        borderCollapse: "collapse",
+        borderRadius: "20px",
+    }
 });
 
 const MyDocument = (
-    <Document>
+    <Document className={styles.tableWrapper}>
         <Page size="A4" style={styles.page}>
             <View style={styles.section}>
-                <Text>Hello World!</Text>
-            </View>
-            <View style={styles.section}>
-                <Text>We're inside a PDF!</Text>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Tomatoes</td>
+                        <td>5</td>
+                        <td>Kilogram</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>salt</td>
+                        <td>3</td>
+                        <td>Sztuka</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lamb</td>
+                        <td>3</td>
+                        <td>Kilogram</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Kola</td>
+                        <td>7</td>
+                        <td>Sztuka</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Sugar</td>
+                        <td>5</td>
+                        <td>Kilogram</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Cherry</td>
+                        <td>4</td>
+                        <td>Kilogram</td>
+                    </tr>
+                    */}
+                    </tbody>
+                </table>
             </View>
         </Page>
     </Document>
 );
+
 
 export const Doc = () => (
     <div>

@@ -38,7 +38,7 @@ const TableWrapper = styled.div`
       }
 `;
 const StyledTable = styled.table`
-padding-top: 15px;
+  padding-top: 15px;
   margin: 20px;
   border: none;
   border-collapse: collapse;
