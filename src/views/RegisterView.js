@@ -1,5 +1,4 @@
 import React, {useCallback, useContext} from 'react';
-import styled from 'styled-components';
 import {AuthContext} from "../providers/Auth";
 import {auth} from '../firebase/firebase'
 import {Redirect} from 'react-router-dom';

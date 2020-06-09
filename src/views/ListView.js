@@ -5,7 +5,6 @@ import bag from '../asstets/img/bag.svg';
 import styled from "styled-components";
 import Table from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
-import {useParams} from "react-router";
 
 const ListWrapper = styled.div`
       display: flex;

@@ -12,6 +12,8 @@ import Menu from "./Menu";
 import {Doc} from "./Doc";
 import jsPDF from "jspdf"
 import autoTable from "jspdf-autotable";
+import {toast, ToastContainer} from "react-toastify";
+import {Form} from "formik";
 
 const templateParams = {
     name: 'James',
@@ -97,7 +99,7 @@ const Table = ({data}) => {
         doc.text(220, 30, 'Shopping list');
         const rows = [];
         data.map((item, index) => rows.push([
-            index+1,
+            index + 1,
             item.name,
             item.maximalQuantity,
             item.unit]))
@@ -112,6 +114,12 @@ const Table = ({data}) => {
         })
         doc.save("generated.pdf");
     }
+
+    const notify = () => {
+        toast.success(`File with list succesfully saved`, {
+            position: toast.POSITION.TOP_CENTER
+        });
+    };
 
 
     return (
@@ -154,7 +162,10 @@ const Table = ({data}) => {
                         icon={plus}
                     />
                     <ButtonIcon
-                        onClick={() => jsPdfGenerator()}
+                        onClick={() => {
+                            jsPdfGenerator();
+                            notify()
+                        }}
                         icon={pdf}
                     />
                     <ButtonIcon
@@ -162,6 +173,7 @@ const Table = ({data}) => {
                         icon={sms}
                     />
                 </ButtonContainer>
+                <ToastContainer autoClose={1400}/>
             </TableWrapper>
         </>
     )
