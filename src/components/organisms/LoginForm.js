@@ -37,6 +37,20 @@ const StyledInput = styled.input`
     color: ${({theme}) => theme.colors.blue};
     opacity: 0.55;
 `
+const StyledPassword = styled.input`
+    margin-bottom: 30px;
+    padding: 2px 0;
+    padding-bottom: 5px;
+    width: 230px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1.5px solid;
+    border-bottom-color: grey;
+    font-weight: 700;
+    color: ${({theme}) => theme.colors.blue};
+    opacity: 0.55;
+`
 
 const ItemsContainer = styled.div`
       display: flex;
@@ -94,13 +108,16 @@ const Icon = styled.img`
         width: 100px;
         height: 100px;
      }
-`
+`;
+
+const PasswordWrapper = styled.div`
+    display: flex;
+`;
 
 
 const LoginForm = ({handleLogin}) => {
 
     const [type, setType] = useState(false);
-
     const inputType = () => {
         return type ? "password" : "text"
     };
@@ -116,10 +133,12 @@ const LoginForm = ({handleLogin}) => {
             <ItemsContainer>
                 <Form onSubmit={handleLogin} autocomplete="off">
                     <StyledInput type="email" name="email" placeholder="Email"/>
-                    <StyledInput type={inputType()} name="password" placeholder="Password"/>
-                    <Icon
-                        onClick={() => setType(!type)}
-                        src={type ? eye : eyeopen}/>
+                    <PasswordWrapper>
+                        <StyledPassword type={inputType()} name="password" placeholder="Password"/>
+                        <Icon
+                            onClick={() => setType(!type)}
+                            src={type ? eye : eyeopen}/>
+                    </PasswordWrapper>
                     <Button>
                         <FormattedMessage id="log in"/>
                     </Button>
