@@ -116,9 +116,10 @@ const LoginForm = ({handleLogin}) => {
             <ItemsContainer>
                 <Form onSubmit={handleLogin} autocomplete="off">
                     <StyledInput type="email" name="email" placeholder="Email"/>
-                    <StyledInput type={inputType()} name="password" placeholder="Password"/><Icon
-                    onClick={() => setType(!type)}
-                    src={eyeopen}/>
+                    <StyledInput type={inputType()} name="password" placeholder="Password"/>
+                    <Icon
+                        onClick={() => setType(!type)}
+                        src={type ? eye : eyeopen}/>
                     <Button>
                         <FormattedMessage id="log in"/>
                     </Button>
