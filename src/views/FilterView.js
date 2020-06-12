@@ -63,6 +63,7 @@ const IconWrapper = styled.div`
          margin: 5px;
          width: 150px;
      }
+  
     @keyframes appear {
       0% {
         opacity: 0;
@@ -87,6 +88,10 @@ const Icon = styled.img`
     margin: 0;
     width: 150px;
     height: 150px;
+    transition: all .6s ease 0s; 
+    :active {
+      transform: scale(0.95);
+    }
       @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100px;
         height: 100px;
@@ -102,7 +107,7 @@ const FilterView = () => (
             <IconWrapper as={Link} to={'/filter/all'}>
                 <Icon src={all}/>
                 <Paragraph>
-                    all items
+                    All categories
                 </Paragraph>
             </IconWrapper>
 

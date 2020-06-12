@@ -98,6 +98,7 @@ const Table = ({data}) => {
         const unit = <FormattedMessage id="unit"/>
         doc.text(220, 30, 'Shopping list');
         const rows = [];
+
         data.map((item, index) => rows.push([
             index + 1,
             item.name,

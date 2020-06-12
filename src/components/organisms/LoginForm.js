@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
+import eye from "../../asstets/img/eye.svg"
+import eyeopen from "../../asstets/img/eyeopen.svg"
 
 const LoginContainer = styled.div`
         align-items: center;
@@ -79,31 +81,57 @@ const Paragraph = styled.p`
     width: 50vw;
 `
 
+const Icon = styled.img`
+    justify-content: center;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    transition: all .6s ease 0s; 
+    :active {
+      transform: scale(0.95);
+    }
+      @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100px;
+        height: 100px;
+     }
+`
 
-const LoginForm = ({handleLogin}) => (
-    <LoginContainer>
-        <StyledTitle>Login</StyledTitle>
-        <Paragraph>
-            I'm still working on this application, but if you want to try, use this data<br/>
-            login: test@test.com <br/>
-            password: tested
-        </Paragraph>
-        <ItemsContainer>
-            <Form onSubmit={handleLogin} autocomplete="off">
-                <StyledInput type="email" name="email" placeholder="Email"/>
-                <StyledInput type="password" name="password" placeholder="Password"/>
-                <Button>
-                    <FormattedMessage id="log in"/>
-                </Button>
-            </Form>
-            <span>
+
+const LoginForm = ({handleLogin}) => {
+
+    const [type, setType] = useState(false);
+
+    const inputType = () => {
+        return type ? "password" : "text"
+    };
+
+    return (
+        <LoginContainer>
+            <StyledTitle>Login</StyledTitle>
+            <Paragraph>
+                I'm still working on this application, but if you want to try, use this data<br/>
+                login: test@test.com <br/>
+                password: tested
+            </Paragraph>
+            <ItemsContainer>
+                <Form onSubmit={handleLogin} autocomplete="off">
+                    <StyledInput type="email" name="email" placeholder="Email"/>
+                    <StyledInput type={inputType()} name="password" placeholder="Password"/><Icon
+                    onClick={() => setType(!type)}
+                    src={eyeopen}/>
+                    <Button>
+                        <FormattedMessage id="log in"/>
+                    </Button>
+                </Form>
+                <span>
                 <FormattedMessage id="have not account"/>
                 <Link to="/register">
                 <FormattedMessage id="sign up"/>
                 </Link>
             </span>
-        </ItemsContainer>
-    </LoginContainer>
-);
+            </ItemsContainer>
+        </LoginContainer>
+    )
+};
 
 export default LoginForm;
