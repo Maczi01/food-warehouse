@@ -215,6 +215,7 @@ const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
                     <StyledInput/>
                 </OptionsItem>
             </OptionsWrapper>
+            <Button> About...</Button>
         </SettingsWrapper>
     </>
 );

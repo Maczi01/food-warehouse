@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
-import eye from "../../asstets/img/eye.svg"
+import eyeclosed from "../../asstets/img/eyeclosed.svg"
 import eyeopen from "../../asstets/img/eyeopen.svg"
 
 const LoginContainer = styled.div`
@@ -20,8 +20,8 @@ const LoginContainer = styled.div`
         width: 100vw;
         height: 100vh;
         border-radius: 0;
-ó     }
-`
+     }
+`;
 
 const StyledInput = styled.input`
     margin-bottom: 30px;
@@ -36,7 +36,8 @@ const StyledInput = styled.input`
     font-weight: 700;
     color: ${({theme}) => theme.colors.blue};
     opacity: 0.55;
-`
+`;
+
 const StyledPassword = styled.input`
     margin-bottom: 30px;
     padding: 2px 0;
@@ -57,7 +58,7 @@ const ItemsContainer = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-`
+`;
 
 const StyledTitle = styled.h2`
     font-size: 20px;
@@ -65,7 +66,7 @@ const StyledTitle = styled.h2`
     letter-spacing: 5px;
     text-align: center;
     opacity: 0.5;
-`
+`;
 
 const Button = styled.button`
     padding: 20px 30px;
@@ -79,12 +80,12 @@ const Button = styled.button`
     cursor: pointer;
     background: ${({theme}) => theme.colors.green};
     color: grey;
-`
+`;
 
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-`
+`;
 
 const Paragraph = styled.p`
     font-size: 20px;
@@ -93,7 +94,7 @@ const Paragraph = styled.p`
     text-align: center;
     opacity: 0.5;
     width: 50vw;
-`
+`;
 
 const Icon = styled.img`
     justify-content: center;
@@ -116,11 +117,7 @@ const PasswordWrapper = styled.div`
 
 
 const LoginForm = ({handleLogin}) => {
-
     const [type, setType] = useState(false);
-    const inputType = () => {
-        return type ? "password" : "text"
-    };
 
     return (
         <LoginContainer>
@@ -134,10 +131,10 @@ const LoginForm = ({handleLogin}) => {
                 <Form onSubmit={handleLogin} autocomplete="off">
                     <StyledInput type="email" name="email" placeholder="Email"/>
                     <PasswordWrapper>
-                        <StyledPassword type={inputType()} name="password" placeholder="Password"/>
+                        <StyledPassword type={type ? "text" : "password"} name="password" placeholder="Password"/>
                         <Icon
                             onClick={() => setType(!type)}
-                            src={type ? eye : eyeopen}/>
+                            src={type ? eyeclosed : eyeopen}/>
                     </PasswordWrapper>
                     <Button>
                         <FormattedMessage id="log in"/>
