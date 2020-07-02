@@ -34,7 +34,7 @@ const StyledLogoLink = styled(Link)`
 const List = styled.li`
     display: flex;
     justify-content: space-between; 
-`
+`;
 
 const ListItem = styled.li`
     list-style: none;
@@ -48,13 +48,13 @@ const ListItem = styled.li`
     &.active {
       background-color: ${({theme}) => theme.colors.darkblue};
     }
-`
+`;
 
 const HamburgerContainer = styled.div`
     @media (min-width: ${({theme}) => theme.mobile}) {
       display: none;
     }
-`
+`;
 
 const Header = () => {
     const {currentUser} = useContext(AuthContext);
