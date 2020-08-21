@@ -2,8 +2,6 @@ import styled from "styled-components";
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
-import eyeclosed from "../../asstets/img/eyeclosed.svg";
-import eyeopen from "../../asstets/img/eyeopen.svg";
 import eyeclosed from "../../asstets/img/eyeclosed.svg"
 import eyeopen from "../../asstets/img/eyeopen.svg"
 
@@ -126,6 +124,7 @@ const RegisterForm = ({handleRegister}) => {
                     </Button>
                 </Form>
                 <span>
+                    Register!
                 <FormattedMessage id="have account"/>
                 <Link to="/login">
                 <FormattedMessage id="log in"/>
