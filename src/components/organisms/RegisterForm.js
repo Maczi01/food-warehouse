@@ -124,7 +124,7 @@ const RegisterForm = ({handleRegister}) => {
                     </Button>
                 </Form>
                 <span>
-                    Register
+                    Register new account!
                 <FormattedMessage id="have account"/>
                 <Link to="/login">
                 <FormattedMessage id="log in"/>
