@@ -1,5 +1,4 @@
 import React from 'react';
-import List from '../components/organisms/List'
 import AppContext from "../context/context";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
@@ -47,7 +46,7 @@ const MainView = ({match}) => {
                         <Heading>
                             <FormattedMessage id="what in inventory"/>
                         </Heading>
-                        <List
+                        <Li2st
                             items={newFoodList}
                             deleteItem={context.deleteItem}
                             decreaseQuantity={context.decreaseQuantity}
