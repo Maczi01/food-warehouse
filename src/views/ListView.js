@@ -20,9 +20,10 @@ const ListWrapper = styled.div`
 `;
 
 const Heading = styled.h1`
-     padding: 10px;
+     padding: 12px;
      color: ${({theme}) => theme.colors.blue};
      text-align: center;
+     
      display: flex;
      justify-content: center;
      align-items: center;
