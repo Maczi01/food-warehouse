@@ -4,7 +4,8 @@ import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
 
 const ViewWrapper = styled.div`
-     width: 75vw;
+     width: 400px;
+     height: 600px;
      margin: 0 auto;
      display: flex;
      flex-direction: column;
@@ -46,7 +47,7 @@ const MainView = ({match}) => {
                         <Heading>
                             <FormattedMessage id="what in inventory"/>
                         </Heading>
-                        <Li2st
+                        <List
                             items={newFoodList}
                             deleteItem={context.deleteItem}
                             decreaseQuantity={context.decreaseQuantity}
