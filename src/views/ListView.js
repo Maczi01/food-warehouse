@@ -5,6 +5,7 @@ import bag from '../asstets/img/bag.svg';
 import styled from "styled-components";
 import Table from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
+import MainTemplate from "../components/templates/MainTemplate";
 
 const ListWrapper = styled.div`
       display: flex;
@@ -42,7 +43,7 @@ margin: 25px;
 `;
 
 const ListView = () => (
-    <ListWrapper>
+    <MainTemplate>
         <Heading>
             <FormattedMessage id="shopping list"/>
         </Heading>
@@ -62,7 +63,7 @@ const ListView = () => (
             }
             }
         </AppContext.Consumer>
-    </ListWrapper>
+    </MainTemplate>
 )
 
 

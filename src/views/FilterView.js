@@ -12,6 +12,7 @@ import spieces from "../asstets/categoryIcon/spieces.svg";
 import sweets from "../asstets/categoryIcon/sweets.svg";
 import vegetables from "../asstets/categoryIcon/vegetables.svg";
 import {Link} from "react-router-dom";
+import MainTemplate from "../components/templates/MainTemplate";
 
 const ViewWrapper = styled.div`
      width: 80vw;
@@ -102,7 +103,7 @@ const Icon = styled.img`
 `;
 
 const FilterView = () => (
-    <ViewWrapper>
+    <MainTemplate>
         <Heading>
             <FormattedMessage id="what in inventory"/>
         </Heading>
@@ -180,7 +181,7 @@ const FilterView = () => (
                 </Paragraph>
             </IconWrapper>
         </GridWrapper>
-    </ViewWrapper>
+    </MainTemplate>
 );
 
 export default FilterView

@@ -4,7 +4,7 @@ import Header from "../components/molecules/Header";
 import FilterView from './MainView'
 import ListView from "./ListView";
 import AddView from "./AddView";
-import SettingsView from "./Settings";
+import SettingsView from "./SettingsView";
 import AppContext from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
@@ -116,7 +116,6 @@ const Root = () => {
                     <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
                         <GlobalStyle backgroundColor={theme.backgroundColor}/>
                         <AppContext.Provider value={contextElements}>
-                            <Header/>
                             <Switch>
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
                                 <PrivateRoute path={`${routes.filter}${routes.parameter}`} component={FilterView}/>

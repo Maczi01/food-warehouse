@@ -3,18 +3,19 @@ import AppContext from "../context/context";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
 import List from "../components/organisms/List";
+import MainTemplate from "../components/templates/MainTemplate";
 
-const ViewWrapper = styled.div`
-     //width: 400px;
-     height: 600px;
-     margin: 0 auto;
-     display: flex;
-     flex-direction: column;
-     
-     @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 100vw;
-     }
-`;
+// const ViewWrapper = styled.div`
+//      //width: 400px;
+//      height: 600px;
+//      margin: 0 auto;
+//      display: flex;
+//      flex-direction: column;
+//
+//      @media (max-width: ${({theme}) => theme.mobile}) {
+//         width: 100vw;
+//      }
+// `;
 
 const Heading = styled.h1`
      padding: 10px;
@@ -44,7 +45,7 @@ const MainView = ({match}) => {
                     newFoodList = context.foodList.filter(item => item.category === parameter);
                 }
                 return (
-                    <ViewWrapper>
+                    <MainTemplate>
                         <Heading>
                             <FormattedMessage id="what in inventory"/>
                         </Heading>
@@ -59,7 +60,7 @@ const MainView = ({match}) => {
                             shop={true}
                             parameter={parameter}
                         />
-                    </ViewWrapper>
+                    </MainTemplate>
                 )
             }
             }
