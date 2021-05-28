@@ -5,6 +5,7 @@ import {FormattedMessage} from "react-intl";
 import eyeclosed from "../../asstets/img/eyeclosed.svg"
 import eyeopen from "../../asstets/img/eyeopen.svg"
 import SecurityContainer from "../molecules/SecurityContainer";
+import PasswordWrapper from "../atoms/PasswordWrapper";
 
 
 
