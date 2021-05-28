@@ -1,9 +1,9 @@
-import React from 'react';
-import AppContext from "../context/context";
+import React, {useContext} from 'react';
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
 import List from "../components/organisms/List";
 import MainTemplate from "../components/templates/MainTemplate";
+import {AppContext} from "../context/context";
 
 // const ViewWrapper = styled.div`
 //      //width: 400px;
@@ -36,36 +36,32 @@ const Heading = styled.h1`
 
 const MainView = ({match}) => {
     const parameter = match.params.parameter;
-    return (<AppContext.Consumer>
-            {(context) => {
-                let newFoodList = []
-                if (parameter === "all") {
-                    newFoodList = context.foodList
-                } else {
-                    newFoodList = context.foodList.filter(item => item.category === parameter);
-                }
-                return (
-                    <MainTemplate>
-                        <Heading>
-                            <FormattedMessage id="what in inventory"/>
-                        </Heading>
-                        <List
-                            items={newFoodList}
-                            deleteItem={context.deleteItem}
-                            decreaseQuantity={context.decreaseQuantity}
-                            increaseQuantity={context.increaseQuantity}
-                            editName={context.editName}
-                            editItem={context.editItem}
-                            toEdit={true}
-                            shop={true}
-                            parameter={parameter}
-                        />
-                    </MainTemplate>
-                )
-            }
-            }
-        </AppContext.Consumer>
+    const {foodList} = useContext(AppContext);
+    let newFoodList = []
+    if (parameter === "all") {
+        newFoodList = foodList
+    } else {
+        newFoodList = foodList.filter(item => item.category === parameter);
+    }
+    return (
+        <MainTemplate>
+            <Heading>
+                <FormattedMessage id="what in inventory"/>
+            </Heading>
+            <List
+                items={newFoodList}
+                // deleteItem={context.deleteItem}
+                // decreaseQuantity={context.decreaseQuantity}
+                // increaseQuantity={context.increaseQuantity}
+                // editName={context.editName}
+                // editItem={context.editItem}
+                // toEdit={true}
+                // shop={true}
+                // parameter={parameter}
+            />
+        </MainTemplate>
     )
 };
+
 
 export default MainView

@@ -5,7 +5,7 @@ import FilterView from './MainView'
 import ListView from "./ListView";
 import AddView from "./AddView";
 import SettingsView from "./SettingsView";
-import AppContext from "../context/context";
+// import AppContext from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
 import {ThemeProvider} from "styled-components";
@@ -23,6 +23,7 @@ import {IntlProvider} from "react-intl";
 import EditView from "./EditView";
 import MainView from "./FilterView";
 import {Switch} from "react-router";
+import AppProvider from "../context/context";
 
 const Root = () => {
 
@@ -35,10 +36,10 @@ const Root = () => {
         setLocale(language);
         switch (language) {
             case('en'):
-                setLanguage(English)
+                setLanguage(English);
                 break;
             default:
-                setLanguage(Polish)
+                setLanguage(Polish);
         }
     }
 
@@ -55,16 +56,16 @@ const Root = () => {
         changeLanguage(e.target.value);
     };
 
-    useEffect(() => {
-        const unSubscribe = db.collection("foodList").onSnapshot(
-            (snapshot) => {
-                const foodListData = []
-                snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
-                setFoodList(foodListData)
-            }
-        );
-        return unSubscribe;
-    }, []);
+    // useEffect(() => {
+    //     const unSubscribe = db.collection("foodList").onSnapshot(
+    //         (snapshot) => {
+    //             const foodListData = []
+    //             snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
+    //             setFoodList(foodListData)
+    //         }
+    //     );
+    //     return unSubscribe;
+    // }, []);
 
     const increaseQuantity = (item) => {
         if (item.currentQuantity < parseInt(item.maximalQuantity)) {
@@ -115,7 +116,7 @@ const Root = () => {
                 <IntlProvider locale={locale} messages={language}>
                     <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
                         <GlobalStyle backgroundColor={theme.backgroundColor}/>
-                        <AppContext.Provider value={contextElements}>
+                        <AppProvider>
                             <Switch>
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
                                 <PrivateRoute path={`${routes.filter}${routes.parameter}`} component={FilterView}/>
@@ -126,7 +127,7 @@ const Root = () => {
                                 <Route path={routes.login} component={LoginView}/>
                                 <Route path={routes.register} component={RegisterView}/>
                             </Switch>
-                        </AppContext.Provider>
+                        </AppProvider>
                     </ThemeProvider>
                 </IntlProvider>
             </BrowserRouter>
