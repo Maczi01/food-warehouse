@@ -2,9 +2,10 @@ import React from 'react';
 import AppContext from "../context/context";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
+import List from "../components/organisms/List";
 
 const ViewWrapper = styled.div`
-     width: 400px;
+     //width: 400px;
      height: 600px;
      margin: 0 auto;
      display: flex;
@@ -13,7 +14,7 @@ const ViewWrapper = styled.div`
      @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
      }
-`
+`;
 
 const Heading = styled.h1`
      padding: 10px;
@@ -30,7 +31,7 @@ const Heading = styled.h1`
         font-size: 26px;
         width: 100vw;
      }
-`
+`;
 
 const MainView = ({match}) => {
     const parameter = match.params.parameter;
@@ -64,6 +65,6 @@ const MainView = ({match}) => {
             }
         </AppContext.Consumer>
     )
-}
+};
 
 export default MainView
