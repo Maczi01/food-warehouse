@@ -9,6 +9,9 @@ import PasswordWrapper from "../atoms/PasswordWrapper";
 import ItemsContainer from "../atoms/ItemsContainer";
 import StyledInput from "../atoms/StyledInput";
 import StyledTitle from "../atoms/StyledTitle";
+import FormIcon from "../atoms/FormIcon";
+import Paragraph from "../atoms/Paragraph";
+import ConfirmButton from "../atoms/ConfirmButton";
 
 
 
@@ -28,39 +31,12 @@ const StyledPassword = styled.input`
     opacity: 0.55;
 `
 
-
-
-
-
-
 const Form = styled.form`
     display: flex;
     flex-direction: column;
 `;
 
-const Paragraph = styled.p`
-    font-size: 20px;
-    margin-bottom: 50px;
-    letter-spacing: 5px;
-    text-align: center;
-    opacity: 0.5;
-    width: 50vw;
-`;
 
-const Icon = styled.img`
-    justify-content: center;
-    margin: 0;
-    width: 20px;
-    height: 20px;
-    transition: all .6s ease 0s; 
-    :active {
-      transform: scale(0.95);
-    }
-      @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 100px;
-        height: 100px;
-     }
-`;
 
 
 
@@ -72,16 +48,14 @@ const LoginForm = ({handleLogin}) => {
         <SecurityContainer>
             <StyledTitle>Login</StyledTitle>
             <Paragraph>
-                I'm still working on this application, but if you want to try, use this data<br/>
-                login: test@test.com <br/>
-                password: tested
+                <FormattedMessage id="Login welcome mesage"/>
             </Paragraph>
             <ItemsContainer>
                 <Form onSubmit={handleLogin} autocomplete="off">
                     <StyledInput type="email" name="email" placeholder="Email"/>
                     <PasswordWrapper>
                         <StyledPassword type={type ? "text" : "password"} name="password" placeholder="Password"/>
-                        <Icon
+                        <FormIcon
                             onClick={() => setType(!type)}
                             src={type ? eyeclosed : eyeopen}/>
                     </PasswordWrapper>

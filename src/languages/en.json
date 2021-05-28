@@ -35,5 +35,6 @@
 	"sweets": "sweets and snacks",
 	"unit": "Unit",
 	"vegetables and fruits": "vegetables and fruits",
-	"what in inventory": "Check, what you have in inventory"
+	"what in inventory": "Check, what you have in inventory",
+	"Login welcome mesage": "I'm still working on this application, but if you want to try, use this data login: test@test.com password: tested"
 }
