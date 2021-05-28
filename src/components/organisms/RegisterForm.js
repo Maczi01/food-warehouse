@@ -20,7 +20,12 @@ const RegisterForm = ({handleRegister}) => {
     const [type, setType] = useState(false);
     return (
         <SecurityContainer>
-            <StyledTitle>Login</StyledTitle>
+            <StyledTitle>
+                <FormattedMessage id="register"/>
+            </StyledTitle>
+            <Paragraph>
+                <FormattedMessage id="sign up account"/>
+            </Paragraph>
             <ItemsContainer>
                 <Form
                     onSubmit={handleRegister}
@@ -28,7 +33,9 @@ const RegisterForm = ({handleRegister}) => {
                     <StyledInput
                         type="email"
                         name="email"
-                        placeholder="Email"/>
+                        placeholder="Email"
+
+                    />
                     <PasswordWrapper>
                         <StyledPassword type={type ? "text" : "password"} name="password" placeholder="Password"/>
                         <FormIcon
@@ -40,8 +47,6 @@ const RegisterForm = ({handleRegister}) => {
                     </ConfirmButton>
                 </Form>
                 <Paragraph>
-                    Register new account! Its free!
-                    <FormattedMessage id="sign up"/>
                     <FormattedMessage id="have account"/>
                     <Link to="/login">
                         <FormattedMessage id="log in"/>

@@ -37,6 +37,9 @@
   "vegetables and fruits": "warzywa i owoce",
   "what in inventory": "Sprawdź, co masz w spiżarni",
   "Login welcome mesage": "Ciągle pracuję nad aplikacją, ale jeśli chcesz sprawdzić jej działanie użyj danych testwych: login: test@test.com hasło: tested",
-  "sign up": "Zarejestruj nowe konto za darmo!"
+  "sign up": "Zarejestruj się",
+  "sign up account": "Zarejestruj się, to proste i szybkie!!",
+  "register": "Zarejestruj",
+  "login": "Zaloguj"
 
 }

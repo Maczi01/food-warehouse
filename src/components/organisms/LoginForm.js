@@ -15,11 +15,13 @@ import ConfirmButton from "../atoms/ConfirmButton";
 import Form from "../atoms/Form";
 import StyledPassword from "../atoms/StyledPassword";
 
-const LoginForm = ({handleLogin}) => {
+const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
     const [type, setType] = useState(false);
     return (
         <SecurityContainer>
-            <StyledTitle>Login</StyledTitle>
+            <StyledTitle>
+                <FormattedMessage id="login"/>
+            </StyledTitle>
             <Paragraph>
                 <FormattedMessage id="Login welcome mesage"/>
             </Paragraph>
@@ -33,12 +35,13 @@ const LoginForm = ({handleLogin}) => {
                         placeholder="Email"/>
                     <PasswordWrapper>
                         <StyledPassword
+                            previousLoginAttemptFailed={previousLoginAttemptFailed}
                             type={type ? "text" : "password"}
                             name="password"
                             placeholder="Password"/>
                         <FormIcon
                             onClick={() => setType(!type)}
-                            src={type ? eyeclosed : eyeopen}/>
+                            src={type ? eyeopen : eyeclosed}/>
                     </PasswordWrapper>
                     <ConfirmButton>
                         <FormattedMessage id="log in"/>

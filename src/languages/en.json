@@ -37,5 +37,8 @@
 	"vegetables and fruits": "vegetables and fruits",
 	"what in inventory": "Check, what you have in inventory",
 	"Login welcome mesage": "I'm still working on this application, but if you want to try, use this data login: test@test.com password: tested",
-	"sign up": "Register new account! Its free!"
+	"sign up": "Register",
+	"sign up account": "Register, it is free and quick!",
+	"register": "Register",
+	"login": "Log in"
 }
