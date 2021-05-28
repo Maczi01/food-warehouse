@@ -2,13 +2,13 @@ node_modules
 .now
 src/firebase
 
-
+node_modules/
 /node_modules
 /.pnp
 .pnp.js
 
 /dist
-
+/.now
 
 
 # testing
@@ -23,3 +23,4 @@ src/firebase
 .env.development.local
 .env.test.local
 .env.production.local
+/node_modules/
