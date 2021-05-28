@@ -91,7 +91,7 @@ const QuantityBarInside = styled.div`
 `
 
 const ListItem =
-    ({id, name, children, unit, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem}) => {
+    ({id, name, unit, currentQuantity, maximalQuantity, decreaseQuantity, increaseQuantity, deleteItem}) => {
         const history = useHistory();
         console.log({id})
         return (
@@ -111,10 +111,8 @@ const ListItem =
                     <StyledButton src={plus} onClick={increaseQuantity}/>
                     <StyledButton src={edit}
                                   onClick={() => history.push(`/edit/${id}`)}/>
-
                     <StyledButton src={remove} onClick={deleteItem}/>
                 </Container>
-                {children}
             </ItemWraper>)
     };
 
