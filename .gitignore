@@ -9,6 +9,8 @@ node_modules/
 
 /dist
 /.now
+**/node_modules
+
 
 
 # testing
