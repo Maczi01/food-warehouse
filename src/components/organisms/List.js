@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ListItem from "../molecules/ListItem";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import bag from "../../asstets/img/bag.svg";
 import {routes} from "../../routes/routes";
+import {AppContext} from "../../context/context";
 
 const UlWrapper = styled.ul`
     width: 75vw;
@@ -81,7 +82,11 @@ const EmptyListWrapper = styled.div`
       font-size: 14px;
 `
 
-const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, editItem, toEdit, parameter}) => {
+// const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, editItem, toEdit, parameter}) => {
+const List = ({items, parameter}) => {
+
+    const {decreaseQuantity, increaseQuantity, deleteItem} = useContext(AppContext);
+
     return (
         <>
             <CategoryWrapper>
@@ -95,11 +100,11 @@ const List = ({items, deleteItem, decreaseQuantity, increaseQuantity, editName, 
                             <ListItem {...item}
                                       key={item.id}
                                       deleteItem={() => deleteItem(item.id)}
-                                      toEdit={toEdit}
-                                      editItem={editItem}
+                                      // toEdit={toEdit}
+                                      // editItem={editItem}
                                       decreaseQuantity={() => decreaseQuantity(item)}
                                       increaseQuantity={() => increaseQuantity(item)}
-                                      editName={() => editName(item)}
+                                      // editName={() => editName(item)}
                             />
                         )) :
                         <EmptyListWrapper>

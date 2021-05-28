@@ -67,48 +67,43 @@ const Root = () => {
     //     return unSubscribe;
     // }, []);
 
-    const increaseQuantity = (item) => {
-        if (item.currentQuantity < parseInt(item.maximalQuantity)) {
-            db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) + 1});
-        }
-    };
 
-    const decreaseQuantity = (item) => {
-        if (item.currentQuantity > 0) {
-            db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});
-        }
-    };
+    // const decreaseQuantity = (item) => {
+    //     if (item.currentQuantity > 0) {
+    //         db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});
+    //     }
+    // };
 
-    const handleDelete = id => {
-        const res = window.confirm('Do you want to delete this item?');
-        db.collection("foodList").doc(id).delete()
-    };
+    // const handleDelete = id => {
+    //     const res = window.confirm('Do you want to delete this item?');
+    //     db.collection("foodList").doc(id).delete()
+    // };
+    //
+    // const addItem = (newItem) => {
+    //     newItem.id = uuidv4();
+    //     db.collection("foodList").add(newItem);
+    // };
+    //
+    // const editItem = (item) => {
+    //     try {
+    //         db.collection("foodList").doc(item.id).update({...item})
+    //     } catch (e) {
+    //         window.alert("Nie udało się dodać!")
+    //     }
+    // }
 
-    const addItem = (newItem) => {
-        newItem.id = uuidv4();
-        db.collection("foodList").add(newItem);
-    };
-
-    const editItem = (item) => {
-        try {
-            db.collection("foodList").doc(item.id).update({...item})
-        } catch (e) {
-            window.alert("Nie udało się dodać!")
-        }
-    }
-
-    const contextElements = {
-        foodList: foodList,
-        deleteItem: handleDelete,
-        addItem: addItem,
-        increaseQuantity: increaseQuantity,
-        decreaseQuantity: decreaseQuantity,
-        editItem: editItem,
-        toggleTheme: toggleTheme,
-        darkMode: theme,
-        handleChange: handleChange,
-        locale: locale,
-    };
+    // const contextElements = {
+    //     foodList: foodList,
+    //     deleteItem: handleDelete,
+    //     addItem: addItem,
+    //     increaseQuantity: increaseQuantity,
+    //     decreaseQuantity: decreaseQuantity,
+    //     editItem: editItem,
+    //     toggleTheme: toggleTheme,
+    //     darkMode: theme,
+    //     handleChange: handleChange,
+    //     locale: locale,
+    // };
 
     return (
         <AuthProvider>

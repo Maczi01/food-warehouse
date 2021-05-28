@@ -37,12 +37,7 @@ const Heading = styled.h1`
 const MainView = ({match}) => {
     const parameter = match.params.parameter;
     const {foodList} = useContext(AppContext);
-    let newFoodList = []
-    if (parameter === "all") {
-        newFoodList = foodList
-    } else {
-        newFoodList = foodList.filter(item => item.category === parameter);
-    }
+    const newFoodList = parameter === "all" ? foodList : foodList.filter(item => item.category === parameter);
     return (
         <MainTemplate>
             <Heading>
@@ -57,7 +52,7 @@ const MainView = ({match}) => {
                 // editItem={context.editItem}
                 // toEdit={true}
                 // shop={true}
-                // parameter={parameter}
+                parameter={parameter}
             />
         </MainTemplate>
     )
