@@ -12,38 +12,11 @@ import StyledTitle from "../atoms/StyledTitle";
 import FormIcon from "../atoms/FormIcon";
 import Paragraph from "../atoms/Paragraph";
 import ConfirmButton from "../atoms/ConfirmButton";
-
-
-
-
-const StyledPassword = styled.input`
-    margin-bottom: 30px;
-    padding: 2px 0;
-    padding-bottom: 5px;
-    width: 230px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    border-bottom: 1.5px solid;
-    border-bottom-color: grey;
-    font-weight: 700;
-    color: ${({theme}) => theme.colors.blue};
-    opacity: 0.55;
-`
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-`;
-
-
-
-
-
+import Form from "../atoms/Form";
+import StyledPassword from "../atoms/StyledPassword";
 
 const LoginForm = ({handleLogin}) => {
     const [type, setType] = useState(false);
-
     return (
         <SecurityContainer>
             <StyledTitle>Login</StyledTitle>
