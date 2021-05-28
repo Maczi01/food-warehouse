@@ -31,10 +31,11 @@
 	"settings": "Settings",
 	"shopping list": "Shopping List",
 	"spieces": "loose products, spieces",
-	"sign up": "Sign up",
+	"sign in": "Sign up",
 	"sweets": "sweets and snacks",
 	"unit": "Unit",
 	"vegetables and fruits": "vegetables and fruits",
 	"what in inventory": "Check, what you have in inventory",
-	"Login welcome mesage": "I'm still working on this application, but if you want to try, use this data login: test@test.com password: tested"
+	"Login welcome mesage": "I'm still working on this application, but if you want to try, use this data login: test@test.com password: tested",
+	"sign up": "Register new account! Its free!"
 }

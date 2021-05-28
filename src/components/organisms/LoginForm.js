@@ -24,10 +24,18 @@ const LoginForm = ({handleLogin}) => {
                 <FormattedMessage id="Login welcome mesage"/>
             </Paragraph>
             <ItemsContainer>
-                <Form onSubmit={handleLogin} autocomplete="off">
-                    <StyledInput type="email" name="email" placeholder="Email"/>
+                <Form
+                    onSubmit={handleLogin}
+                    autocomplete="off">
+                    <StyledInput
+                        type="email"
+                        name="email"
+                        placeholder="Email"/>
                     <PasswordWrapper>
-                        <StyledPassword type={type ? "text" : "password"} name="password" placeholder="Password"/>
+                        <StyledPassword
+                            type={type ? "text" : "password"}
+                            name="password"
+                            placeholder="Password"/>
                         <FormIcon
                             onClick={() => setType(!type)}
                             src={type ? eyeclosed : eyeopen}/>
@@ -36,12 +44,12 @@ const LoginForm = ({handleLogin}) => {
                         <FormattedMessage id="log in"/>
                     </ConfirmButton>
                 </Form>
-                <span>
-                <FormattedMessage id="have not account"/>
-                <Link to="/register">
-                <FormattedMessage id="sign up"/>
-                </Link>
-            </span>
+                <Paragraph>
+                    <FormattedMessage id="have not account"/>
+                    <Link to="/register">
+                        <FormattedMessage id="sign in"/>
+                    </Link>
+                </Paragraph>
             </ItemsContainer>
         </SecurityContainer>
     )
