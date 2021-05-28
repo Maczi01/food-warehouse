@@ -3,13 +3,13 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const config = {
-    apiKey: "AIzaSyA7XwOoq9oPNa4C2e1yXC9xNx66ka5Jftw",
-    authDomain: "shopping-list-a16c1.firebaseapp.com",
-    databaseURL: "https://shopping-list-a16c1.firebaseio.com",
-    projectId: "shopping-list-a16c1",
-    storageBucket: "shopping-list-a16c1.appspot.com",
-    messagingSenderId: "771889406512",
-    appId: "1:771889406512:web:0d4f508eeeaac5fbecc3f5"
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain:process.env.REACT_APP_FIREBASE_DOMAIN ,
+    databaseURL:process.env.REACT_APP_FIREBASE_DATABASE,
+    projectId:process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId:process.env.REACT_APP_FIREBASE_SENDER_ID,
+    appId:process.env.REACT_APP_FIREBASE_APP_ID
 };
 firebase.initializeApp(config);
 
