@@ -119,7 +119,7 @@ const Root = () => {
                             <Header/>
                             <Switch>
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
-                                <PrivateRoute path={'/filter/:parameter'} component={FilterView}/>
+                                <PrivateRoute path={`${routes.filter}${routes.parameter}`} component={FilterView}/>
                                 <PrivateRoute path={routes.list} component={ListView}/>
                                 <PrivateRoute path={routes.add} component={AddView}/>
                                 <PrivateRoute path={routes.edit} component={EditView}/>

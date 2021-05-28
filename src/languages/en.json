@@ -24,7 +24,8 @@
 	"maximal quanitity": "Maximal quantity",
 	"meat and more": "meat, fishes, seafood",
 	"minimal quantity": "Minimal quantity",
-		"name": "Name",
+	"name": "Name",
+	"others": "others",
 	"pasta": "pasta, rice, groats",
 	"piece": "piece",
 	"quantity": "Quantity",
@@ -40,5 +41,7 @@
 	"sign up": "Register",
 	"sign up account": "Register, it is free and quick!",
 	"register": "Register",
-	"login": "Log in"
+	"login": "Log in",
+	"all categories": "All categories"
+
 }

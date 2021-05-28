@@ -25,6 +25,7 @@
   "meat and more": "Mięso, ryby, owoce morza",
   "minimal quantity": "Ilość minimalna",
   "name": "Nazwa",
+  "others": "Inne",
   "pasta": "makaron, ryż, kasza",
   "piece": "sztuka",
   "quantity": "Ilość",
@@ -40,6 +41,6 @@
   "sign up": "Zarejestruj się",
   "sign up account": "Zarejestruj się, to proste i szybkie!!",
   "register": "Zarejestruj",
-  "login": "Zaloguj"
-
+  "login": "Zaloguj",
+  "all categories": "Wszystkie kategorie"
 }

@@ -6,6 +6,6 @@ export const routes = {
     settings: '/settings',
     login: '/login',
     register: '/register',
-    filter:'/filter',
-    parameter: 'filter/:parameter'
+    filter:'/filter/',
+    parameter: ':parameter'
 };

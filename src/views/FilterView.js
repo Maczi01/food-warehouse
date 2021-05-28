@@ -72,8 +72,8 @@ const IconWrapper = styled.div`
       100% {
         opacity: 1;
         top: 0;
-    }
-};`
+    } 
+};`;
 
 const Paragraph = styled.p`
     margin-top: 10px;
@@ -81,7 +81,10 @@ const Paragraph = styled.p`
     font-weight: bold;
     text-align: center;
     color: ${({theme}) => theme.colors.blue};
-`
+    ::first-letter{
+        text-transform: uppercase;
+    }
+`;
 
 const Icon = styled.img`
     justify-content: center;
@@ -96,7 +99,7 @@ const Icon = styled.img`
         width: 100px;
         height: 100px;
      }
-`
+`;
 
 const FilterView = () => (
     <ViewWrapper>
@@ -107,56 +110,56 @@ const FilterView = () => (
             <IconWrapper as={Link} to={'/filter/all'}>
                 <Icon src={all}/>
                 <Paragraph>
-                    All categories
+                    <FormattedMessage id="all categories"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/beverages'}>
                 <Icon src={beverages}/>
                 <Paragraph>
-                    Beverages
+                    <FormattedMessage id="beverages"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/baking'}>
                 <Icon src={bread}/>
                 <Paragraph>
-                    Baking
+                    <FormattedMessage id="baking"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/dairy'}>
                 <Icon src={dairy}/>
                 <Paragraph>
-                    Dairy
+                    <FormattedMessage id="dairy"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/meatFishesSeafood'}>
                 <Icon src={meat}/>
                 <Paragraph>
-                    Meat, fiches, seafood
+                    <FormattedMessage id="meat and more"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/pasta'}>
                 <Icon src={pasta}/>
                 <Paragraph>
-                    Pasta, rice, groats
+                    <FormattedMessage id="pasta"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/spieces'}>
                 <Icon src={spieces}/>
                 <Paragraph>
-                    Loose products, spieces
+                    <FormattedMessage id="spieces"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/sweetsAndSnacks'}>
                 <Icon src={sweets}/>
                 <Paragraph>
-                    Sweets and snacks
+                    <FormattedMessage id="sweets"/>
                 </Paragraph>
             </IconWrapper>
 
@@ -166,14 +169,14 @@ const FilterView = () => (
                     src={vegetables}
                 />
                 <Paragraph>
-                    Vegetables and fruits
+                    <FormattedMessage id="vegetables and fruits"/>
                 </Paragraph>
             </IconWrapper>
 
             <IconWrapper as={Link} to={'/filter/others'}>
                 <Icon src={other}/>
                 <Paragraph>
-                    Others
+                    <FormattedMessage id="others"/>
                 </Paragraph>
             </IconWrapper>
         </GridWrapper>

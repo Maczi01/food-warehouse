@@ -5,15 +5,15 @@ import {FormattedMessage} from "react-intl";
 import eyeclosed from "../../asstets/img/eyeclosed.svg"
 import eyeopen from "../../asstets/img/eyeopen.svg"
 import SecurityContainer from "../molecules/SecurityContainer";
-import PasswordWrapper from "../atoms/PasswordWrapper";
-import ItemsContainer from "../atoms/ItemsContainer";
-import StyledInput from "../atoms/StyledInput";
-import StyledTitle from "../atoms/StyledTitle";
-import FormIcon from "../atoms/FormIcon";
-import Paragraph from "../atoms/Paragraph";
-import ConfirmButton from "../atoms/ConfirmButton";
-import Form from "../atoms/Form";
-import StyledPassword from "../atoms/StyledPassword";
+import PasswordWrapper from "../atoms/auth/PasswordWrapper";
+import ItemsContainer from "../atoms/auth/ItemsContainer";
+import StyledInput from "../atoms/auth/StyledInput";
+import StyledTitle from "../atoms/auth/StyledTitle";
+import FormIcon from "../atoms/auth/FormIcon";
+import Paragraph from "../atoms/auth/Paragraph";
+import ConfirmButton from "../atoms/auth/ConfirmButton";
+import Form from "../atoms/auth/Form";
+import StyledPassword from "../atoms/auth/StyledPassword";
 
 const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
     const [type, setType] = useState(false);
