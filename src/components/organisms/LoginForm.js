@@ -6,6 +6,9 @@ import eyeclosed from "../../asstets/img/eyeclosed.svg"
 import eyeopen from "../../asstets/img/eyeopen.svg"
 import SecurityContainer from "../molecules/SecurityContainer";
 import PasswordWrapper from "../atoms/PasswordWrapper";
+import ItemsContainer from "../atoms/ItemsContainer";
+import StyledInput from "../atoms/StyledInput";
+import StyledTitle from "../atoms/StyledTitle";
 
 
 
@@ -25,34 +28,10 @@ const StyledPassword = styled.input`
     opacity: 0.55;
 `
 
-const ItemsContainer = styled.div`
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-`;
 
-const StyledTitle = styled.h2`
-    font-size: 20px;
-    margin-bottom: 50px;
-    letter-spacing: 5px;
-    text-align: center;
-    opacity: 0.5;
-`;
 
-const Button = styled.button`
-    padding: 20px 30px;
-    margin: 30px;
-    outline: none;
-    border: none;
-    font-size: medium;
-    font-weight: 600;
-    letter-spacing: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    background: ${({theme}) => theme.colors.green};
-    color: grey;
-`;
+
+
 
 const Form = styled.form`
     display: flex;
@@ -106,9 +85,9 @@ const LoginForm = ({handleLogin}) => {
                             onClick={() => setType(!type)}
                             src={type ? eyeclosed : eyeopen}/>
                     </PasswordWrapper>
-                    <Button>
+                    <ConfirmButton>
                         <FormattedMessage id="log in"/>
-                    </Button>
+                    </ConfirmButton>
                 </Form>
                 <span>
                 <FormattedMessage id="have not account"/>
