@@ -11,7 +11,7 @@ import {v4 as uuidv4} from 'uuid';
 import {ThemeProvider} from "styled-components";
 import {lightTheme, nightTheme} from '../theme/theme'
 import GlobalStyle from "../theme/GlobalStyle";
-import {db} from '../firebase/firebase'
+import {db} from '../firebase/firebaseConfig'
 import {routes} from '../routes/routes'
 import LoginView from "./LoginView";
 import {AuthProvider} from "../providers/Auth";

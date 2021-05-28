@@ -1,6 +1,6 @@
 import React, {useCallback, useContext} from 'react';
 import {AuthContext} from "../providers/Auth";
-import {auth} from '../firebase/firebase'
+import {auth} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 import RegisterForm from "../components/organisms/RegisterForm";
 

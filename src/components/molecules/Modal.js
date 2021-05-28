@@ -8,7 +8,7 @@ import accept from '../../asstets/img/accept.svg'
 import decline from '../../asstets/img/decline.svg'
 import {Link} from "react-router-dom";
 import {Form} from "formik";
-import {auth} from "../../firebase/firebase";
+import {auth} from "../../firebase/firebaseConfig";
 import {FormattedMessage} from "react-intl";
 
 const StyledModalWrapper = styled.div`

@@ -2,7 +2,7 @@ import React, {useCallback, useContext} from 'react';
 import styled from 'styled-components';
 import LoginForm from "../components/organisms/LoginForm";
 import {AuthContext} from "../providers/Auth";
-import {auth} from '../firebase/firebase'
+import {auth} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 
 const StyledWrapper = styled.div`

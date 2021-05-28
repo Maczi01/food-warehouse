@@ -4,39 +4,10 @@ import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import eyeclosed from "../../asstets/img/eyeclosed.svg"
 import eyeopen from "../../asstets/img/eyeopen.svg"
+import SecurityContainer from "../molecules/SecurityContainer";
 
-const LoginContainer = styled.div`
-        align-items: center;
-        margin: 0 auto;
-        width: 60vw;
-        text-align: center;
-        background-color: ${({theme}) => theme.colors.yellow};
-        border-radius: 10px;
-        height: 80vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-     }
-`;
 
-const StyledInput = styled.input`
-    margin-bottom: 30px;
-    padding: 2px 0;
-    padding-bottom: 5px;
-    width: 250px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    border-bottom: 1.5px solid;
-    border-bottom-color: grey;
-    font-weight: 700;
-    color: ${({theme}) => theme.colors.blue};
-    opacity: 0.55;
-`;
+
 
 const StyledPassword = styled.input`
     margin-bottom: 30px;
@@ -111,16 +82,14 @@ const Icon = styled.img`
      }
 `;
 
-const PasswordWrapper = styled.div`
-    display: flex;
-`;
+
 
 
 const LoginForm = ({handleLogin}) => {
     const [type, setType] = useState(false);
 
     return (
-        <LoginContainer>
+        <SecurityContainer>
             <StyledTitle>Login</StyledTitle>
             <Paragraph>
                 I'm still working on this application, but if you want to try, use this data<br/>
@@ -147,7 +116,7 @@ const LoginForm = ({handleLogin}) => {
                 </Link>
             </span>
             </ItemsContainer>
-        </LoginContainer>
+        </SecurityContainer>
     )
 };
 
