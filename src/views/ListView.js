@@ -7,18 +7,18 @@ import Table from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
 import MainTemplate from "../components/templates/MainTemplate";
 
-const ListWrapper = styled.div`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin: 0 auto;
-      width: 58vw;
-      font-size: 14px;
-       @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 100vw;
-     }
-`;
+// const ListWrapper = styled.div`
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       flex-direction: column;
+//       margin: 0 auto;
+//       width: 58vw;
+//       font-size: 14px;
+//        @media (max-width: ${({theme}) => theme.mobile}) {
+//         width: 100vw;
+//      }
+// `;
 
 const Heading = styled.h1`
      padding: 16px;

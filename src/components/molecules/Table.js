@@ -19,8 +19,9 @@ const templateParams = {
     name: 'James',
     notes: 'Check this out!'
 };
+
 const sendMail = () => {
-    console.log("clicked")
+    console.log("clicked");
     emailjs.init("mateusz_w_twardy_gmail_com");
     emailjs.send('mateusz_w_twardy_gmail_com', 'template_cGuzq0Bv', templateParams)
         .then(function (response) {
@@ -36,9 +37,9 @@ const TableWrapper = styled.div`
       justify-content: center;
       flex-direction: column;
       margin: 0 auto;
-      width: 40vw;
+      //width: 40vw;
       @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 100vw;
+        width: 80vw;
       }
 `;
 const StyledTable = styled.table`
