@@ -5,13 +5,15 @@ import English from "../languages/en";
 import Polish from "../languages/pl";
 import {ThemeProvider} from "styled-components";
 import {lightTheme, nightTheme} from '../theme/theme'
+import {IntlProvider} from "react-intl";
+import GlobalStyle from "../theme/GlobalStyle";
 
 export const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
 
     const [foodList, setFoodList] = useState([]);
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(lightTheme);
     const [locale, setLocale] = useState('en');
     const [language, setLanguage] = useState(English);
 
@@ -28,10 +30,10 @@ const AppProvider = ({children}) => {
 
     const toggleTheme = (e) => {
         if (e.target.value === 'on') {
-            setTheme('dark');
+            setTheme(nightTheme);
         }
         if (e.target.value === 'off') {
-            setTheme('light');
+            setTheme(lightTheme);
         }
     }
 
@@ -81,9 +83,8 @@ const AppProvider = ({children}) => {
         }
     };
 
-    const context ={
+    const context = {
         foodList,
-        theme,
         locale,
         language,
         increaseQuantity,
@@ -97,7 +98,12 @@ const AppProvider = ({children}) => {
 
     return (
         <AppContext.Provider value={context}>
-            {children}
+            <IntlProvider locale={locale} messages={language}>
+                <ThemeProvider theme={theme}>
+                    <GlobalStyle backgroundColor={lightTheme.backgroundColor}/>
+                    {children}
+                </ThemeProvider>
+            </IntlProvider>
         </AppContext.Provider>
     )
 }

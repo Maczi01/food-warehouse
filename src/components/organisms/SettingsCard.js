@@ -164,7 +164,6 @@ const SettingsCard = () => {
 
         const {handleLanguageChange, toggleTheme, locale} = useContext(AppContext);
 
-
         return (
             <>
                 {/*<Modal/>*/}

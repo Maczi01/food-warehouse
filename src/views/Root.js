@@ -8,8 +8,8 @@ import SettingsView from "./SettingsView";
 // import AppContext from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
-    import {ThemeProvider} from "styled-components";
-    import {lightTheme, nightTheme} from '../theme/theme'
+import {ThemeProvider} from "styled-components";
+import {lightTheme, nightTheme} from '../theme/theme'
 import GlobalStyle from "../theme/GlobalStyle";
 import {db} from '../firebase/firebaseConfig'
 import {routes} from '../routes/routes'
@@ -27,24 +27,8 @@ import AppProvider, {AppContext} from "../context/context";
 
 const Root = () => {
 
-    // const [foodList, setFoodList] = useState([]);
-    // const {theme, locale, language} = useContext(AppContext);
-
     // const [theme, setTheme] = useState('light');
-    // const [locale, setLocale] = useState('en');
-    // const [language, setLanguage] = useState(English);
-    //
-    // function changeLanguage(language) {
-    //     setLocale(language);
-    //     switch (language) {
-    //         case('en'):
-    //             setLanguage(English);
-    //             break;
-    //         default:
-    //             setLanguage(Polish);
-    //     }
-    // }
-    //
+
     // const toggleTheme = (e) => {
     //     if (e.target.value === 'on') {
     //         setTheme('dark');
@@ -53,81 +37,25 @@ const Root = () => {
     //         setTheme('light');
     //     }
     // }
-    //
-    // const handleChange = e => {
-    //     changeLanguage(e.target.value);
-    // };
 
-    // useEffect(() => {
-    //     const unSubscribe = db.collection("foodList").onSnapshot(
-    //         (snapshot) => {
-    //             const foodListData = []
-    //             snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
-    //             setFoodList(foodListData)
-    //         }
-    //     );
-    //     return unSubscribe;
-    // }, []);
-
-
-    // const decreaseQuantity = (item) => {
-    //     if (item.currentQuantity > 0) {
-    //         db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});
-    //     }
-    // };
-
-    // const handleDelete = id => {
-    //     const res = window.confirm('Do you want to delete this item?');
-    //     db.collection("foodList").doc(id).delete()
-    // };
-    //
-    // const addItem = (newItem) => {
-    //     newItem.id = uuidv4();
-    //     db.collection("foodList").add(newItem);
-    // };
-    //
-    // const editItem = (item) => {
-    //     try {
-    //         db.collection("foodList").doc(item.id).update({...item})
-    //     } catch (e) {
-    //         window.alert("Nie udało się dodać!")
-    //     }
-    // }
-
-    // const contextElements = {
-    //     foodList: foodList,
-    //     deleteItem: handleDelete,
-    //     addItem: addItem,
-    //     increaseQuantity: increaseQuantity,
-    //     decreaseQuantity: decreaseQuantity,
-    //     editItem: editItem,
-    //     toggleTheme: toggleTheme,
-    //     darkMode: theme,
-    //     handleChange: handleChange,
-    //     locale: locale,
-    // };
+    // const {theme, locale, language} = useContext(AppContext);
 
     return (
         <AuthProvider>
-            <BrowserRouter>
-                <IntlProvider locale={"en"} messages={English}>
-                    <ThemeProvider theme={lightTheme}>
-                        <GlobalStyle backgroundColor={lightTheme.backgroundColor}/>
-                        <AppProvider>
-                            <Switch>
-                                <PrivateRoute exact path={routes.home} component={MainView}/>
-                                <PrivateRoute path={`${routes.filter}${routes.parameter}`} component={FilterView}/>
-                                <PrivateRoute path={routes.list} component={ShoppingListView}/>
-                                <PrivateRoute path={routes.add} component={AddView}/>
-                                <PrivateRoute path={routes.edit} component={EditView}/>
-                                <PrivateRoute path={routes.settings} component={SettingsView}/>
-                                <Route path={routes.login} component={LoginView}/>
-                                <Route path={routes.register} component={RegisterView}/>
-                            </Switch>
-                        </AppProvider>
-                    </ThemeProvider>
-                </IntlProvider>
-            </BrowserRouter>
+            <AppProvider>
+                <BrowserRouter>
+                    <Switch>
+                        <PrivateRoute exact path={routes.home} component={MainView}/>
+                        <PrivateRoute path={`${routes.filter}${routes.parameter}`} component={FilterView}/>
+                        <PrivateRoute path={routes.list} component={ShoppingListView}/>
+                        <PrivateRoute path={routes.add} component={AddView}/>
+                        <PrivateRoute path={routes.edit} component={EditView}/>
+                        <PrivateRoute path={routes.settings} component={SettingsView}/>
+                        <Route path={routes.login} component={LoginView}/>
+                        <Route path={routes.register} component={RegisterView}/>
+                    </Switch>
+                </BrowserRouter>
+            </AppProvider>
         </AuthProvider>
     );
 }
