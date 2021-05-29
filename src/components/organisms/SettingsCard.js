@@ -225,18 +225,4 @@ const SettingsCard = () => {
     }
 ;
 
-SettingsCard.propTypes = {
-    toggleViewMode: PropTypes.func.isRequired,
-    handleLanguageChange: PropTypes.func.isRequired,
-    locale: PropTypes.string,
-};
-
-SettingsCard.defaultProps = {
-    language: {
-        lang: English,
-        locale: "en"
-    }
-};
-
-
 export default SettingsCard;
