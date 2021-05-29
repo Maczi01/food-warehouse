@@ -1,5 +1,5 @@
-import React from 'react';
-import AppContext from "../context/context";
+import React, {useContext} from 'react';
+import {AppContext} from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../asstets/img/bag.svg';
 import styled from "styled-components";
@@ -42,30 +42,29 @@ const Image = styled.img`
 margin: 25px;
 `;
 
-const ListView = () => (
-    <MainTemplate>
-        <Heading>
-            <FormattedMessage id="shopping list"/>
-        </Heading>
-        <Image src={bag} alt="shoping bag"/>
-        <AppContext.Consumer>
-            {(context) => {
-                const shoppingList = context.foodList.filter(item => (
-                    item.currentQuantity < item.minimalQuantity
-                ));
-                return (shoppingList.length ?
-                        <Table data={shoppingList}/>
-                        :
-                        <span>
-                            <FormattedMessage id="empty list"/>
-                        </span>
-                )
+const ShoppingListView = () => {
+    const {foodList} = useContext(AppContext);
+    const shoppingList = foodList.filter(item => (
+        item.currentQuantity < item.minimalQuantity
+    ));
+    return (
+        <MainTemplate>
+            <Heading>
+                <FormattedMessage id="shopping list"/>
+            </Heading>
+            <Image src={bag} alt="shoping bag"/>
+            {
+                shoppingList.length ?
+                    <Table data={shoppingList}/>
+                    :
+                    <span>
+                        <FormattedMessage id="empty list"/>
+                    </span>
             }
-            }
-        </AppContext.Consumer>
-    </MainTemplate>
-)
+        </MainTemplate>
+    )
+};
 
 
-export default ListView;
+export default ShoppingListView;
 

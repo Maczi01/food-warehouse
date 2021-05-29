@@ -3,6 +3,7 @@ import {AuthContext} from "../providers/Auth";
 import {auth} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 import RegisterForm from "../components/organisms/RegisterForm";
+import AuthTemplate from "../components/templates/AuthTemplate";
 
 const RegisterView = ({history}) => {
         const handleRegister = useCallback(
@@ -23,7 +24,9 @@ const RegisterView = ({history}) => {
             return <Redirect to="/"/>
         }
         return (
-            <RegisterForm handleRegister={handleRegister}/>
+            <AuthTemplate>
+                <RegisterForm handleRegister={handleRegister}/>
+            </AuthTemplate>
         )
     }
 ;

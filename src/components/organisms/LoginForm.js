@@ -18,7 +18,7 @@ import StyledPassword from "../atoms/auth/StyledPassword";
 const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
     const [type, setType] = useState(false);
     return (
-        <SecurityContainer>
+        <>
             <StyledTitle>
                 <FormattedMessage id="login"/>
             </StyledTitle>
@@ -54,7 +54,7 @@ const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
                     </Link>
                 </Paragraph>
             </ItemsContainer>
-        </SecurityContainer>
+        </>
     )
 };
 

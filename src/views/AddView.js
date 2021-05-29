@@ -1,19 +1,19 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import AddItemForm from "../components/organisms/AddItemForm";
-import AppContext from "../context/context";
+import {AppContext} from "../context/context";
 import MainTemplate from "../components/templates/MainTemplate";
 
-const AddView = () => (
-    <MainTemplate>
-        <AppContext.Consumer>
-            {(context) => (
-                <AddItemForm addItem={context.addItem}
-                             edit={context.editItem}
+const AddView = () => {
+    const {editItem, addItem} = useContext(AppContext);
+    return (
+        <MainTemplate>
+            <AddItemForm addItem={addItem}
+                         edit={editItem}
 
-                />
-            )}
-        </AppContext.Consumer>
-    </MainTemplate>
-);
+            />
+            )
+        </MainTemplate>
+    )
+};
 
 export default AddView;

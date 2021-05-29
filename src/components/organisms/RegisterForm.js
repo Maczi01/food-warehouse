@@ -19,7 +19,7 @@ import Paragraph from "../atoms/auth/Paragraph";
 const RegisterForm = ({handleRegister}) => {
     const [type, setType] = useState(false);
     return (
-        <SecurityContainer>
+        <>
             <StyledTitle>
                 <FormattedMessage id="register"/>
             </StyledTitle>
@@ -53,7 +53,7 @@ const RegisterForm = ({handleRegister}) => {
                     </Link>
                 </Paragraph>
             </ItemsContainer>
-        </SecurityContainer>
+        </>
     );
 }
 export default RegisterForm;

@@ -12,13 +12,11 @@ export const lightTheme = {
     backgroundColor:'#FFFFFE',
 };
 
-
 export const nightTheme = {
     colors: {
         yellow: '#ffacb7',
         pink: '#f2a365',
         green: '#6886c5',
-
         blue: '#f2a365',
         darkblue: '#222831',
         white: '#30475e',
@@ -26,6 +24,5 @@ export const nightTheme = {
     },
     mobile: "767px",
     backgroundColor:'#30475e',
-
 };
 

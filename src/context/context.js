@@ -1,13 +1,43 @@
 import React, {useEffect, useState} from 'react';
 import {db} from "../firebase/firebaseConfig";
 import {v4 as uuidv4} from 'uuid';
+import English from "../languages/en";
+import Polish from "../languages/pl";
+import {ThemeProvider} from "styled-components";
+import {lightTheme, nightTheme} from '../theme/theme'
 
 export const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
 
     const [foodList, setFoodList] = useState([]);
+    const [theme, setTheme] = useState('light');
+    const [locale, setLocale] = useState('en');
+    const [language, setLanguage] = useState(English);
 
+    function changeLanguage(language) {
+        setLocale(language);
+        switch (language) {
+            case('en'):
+                setLanguage(English);
+                break;
+            default:
+                setLanguage(Polish);
+        }
+    }
+
+    const toggleTheme = (e) => {
+        if (e.target.value === 'on') {
+            setTheme('dark');
+        }
+        if (e.target.value === 'off') {
+            setTheme('light');
+        }
+    }
+
+    const handleLanguageChange = e => {
+        changeLanguage(e.target.value);
+    };
 
     useEffect(() => {
         const unSubscribe = db.collection("foodList").onSnapshot(
@@ -54,11 +84,16 @@ const AppProvider = ({children}) => {
 
     const context ={
         foodList,
+        theme,
+        locale,
+        language,
         increaseQuantity,
         decreaseQuantity,
         deleteItem,
         addItem,
-        editItem
+        editItem,
+        toggleTheme,
+        handleLanguageChange
     }
 
     return (

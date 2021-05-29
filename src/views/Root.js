@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Header from "../components/molecules/Header";
 import FilterView from './MainView'
-import ListView from "./ListView";
+import ShoppingListView from "./ShoppingListView";
 import AddView from "./AddView";
 import SettingsView from "./SettingsView";
 // import AppContext from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import {v4 as uuidv4} from 'uuid';
-import {ThemeProvider} from "styled-components";
-import {lightTheme, nightTheme} from '../theme/theme'
+    import {ThemeProvider} from "styled-components";
+    import {lightTheme, nightTheme} from '../theme/theme'
 import GlobalStyle from "../theme/GlobalStyle";
 import {db} from '../firebase/firebaseConfig'
 import {routes} from '../routes/routes'
@@ -23,38 +23,40 @@ import {IntlProvider} from "react-intl";
 import EditView from "./EditView";
 import MainView from "./FilterView";
 import {Switch} from "react-router";
-import AppProvider from "../context/context";
+import AppProvider, {AppContext} from "../context/context";
 
 const Root = () => {
 
-    const [foodList, setFoodList] = useState([]);
-    const [theme, setTheme] = useState('light');
-    const [locale, setLocale] = useState('en');
-    const [language, setLanguage] = useState(English);
+    // const [foodList, setFoodList] = useState([]);
+    // const {theme, locale, language} = useContext(AppContext);
 
-    function changeLanguage(language) {
-        setLocale(language);
-        switch (language) {
-            case('en'):
-                setLanguage(English);
-                break;
-            default:
-                setLanguage(Polish);
-        }
-    }
-
-    const toggleTheme = (e) => {
-        if (e.target.value === 'on') {
-            setTheme('dark');
-        }
-        if (e.target.value === 'off') {
-            setTheme('light');
-        }
-    }
-
-    const handleChange = e => {
-        changeLanguage(e.target.value);
-    };
+    // const [theme, setTheme] = useState('light');
+    // const [locale, setLocale] = useState('en');
+    // const [language, setLanguage] = useState(English);
+    //
+    // function changeLanguage(language) {
+    //     setLocale(language);
+    //     switch (language) {
+    //         case('en'):
+    //             setLanguage(English);
+    //             break;
+    //         default:
+    //             setLanguage(Polish);
+    //     }
+    // }
+    //
+    // const toggleTheme = (e) => {
+    //     if (e.target.value === 'on') {
+    //         setTheme('dark');
+    //     }
+    //     if (e.target.value === 'off') {
+    //         setTheme('light');
+    //     }
+    // }
+    //
+    // const handleChange = e => {
+    //     changeLanguage(e.target.value);
+    // };
 
     // useEffect(() => {
     //     const unSubscribe = db.collection("foodList").onSnapshot(
@@ -108,14 +110,14 @@ const Root = () => {
     return (
         <AuthProvider>
             <BrowserRouter>
-                <IntlProvider locale={locale} messages={language}>
-                    <ThemeProvider theme={theme === 'light' ? lightTheme : nightTheme}>
-                        <GlobalStyle backgroundColor={theme.backgroundColor}/>
+                <IntlProvider locale={"en"} messages={English}>
+                    <ThemeProvider theme={lightTheme}>
+                        <GlobalStyle backgroundColor={lightTheme.backgroundColor}/>
                         <AppProvider>
                             <Switch>
                                 <PrivateRoute exact path={routes.home} component={MainView}/>
                                 <PrivateRoute path={`${routes.filter}${routes.parameter}`} component={FilterView}/>
-                                <PrivateRoute path={routes.list} component={ListView}/>
+                                <PrivateRoute path={routes.list} component={ShoppingListView}/>
                                 <PrivateRoute path={routes.add} component={AddView}/>
                                 <PrivateRoute path={routes.edit} component={EditView}/>
                                 <PrivateRoute path={routes.settings} component={SettingsView}/>
