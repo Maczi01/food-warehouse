@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from "styled-components";
 import user from '../../asstets/img/user.svg'
 import {auth} from "../../firebase/firebaseConfig";
@@ -6,7 +6,7 @@ import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
 import Menu from "../molecules/Menu";
 import Modal from "../molecules/Modal";
-import AppContext from "../../context/context";
+import {AppContext} from "../../context/context";
 
 
 const SettingsWrapper = styled.div`
@@ -160,65 +160,71 @@ const Paragraph = styled.p`
 `
 
 
-const SettingsCard = ({toggleViewMode, handleChange, locale}) => (
-    <>
-        {/*<Modal/>*/}
+const SettingsCard = () => {
 
-        <Heading>
-            <FormattedMessage id="settings"/>
-        </Heading>
-        <SettingsWrapper>
-            <UserCard>
-                <UserAvatarWrapper src={user} alt="Avatar icon"/>
-                <UserMailWrapper>
-                    <Paragraph>
-                        <FormattedMessage id="logged as"/>
-                        {auth.currentUser.email}
-                    </Paragraph>
-                    <Button onClick={() => auth.signOut()}>
-                        <FormattedMessage id="logout"/>
-                    </Button>
-                </UserMailWrapper>
-            </UserCard>
-            <OptionsWrapper>
-                <OptionsItem>
-                    <StyledLabel>
-                        <FormattedMessage id="change language"/>
-                    </StyledLabel>
-                    <StyledSelect onChange={handleChange} defaultValue={locale}>
-                        <option value="pl">Polski</option>
-                        <option value="en">English</option>
-                    </StyledSelect>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel>
-                        <FormattedMessage id="dark mode"/>
-                    </StyledLabel>
-                    <StyledSelect onChange={toggleViewMode} defaultValue="off">
-                        <option value="on" label="on"/>
-                        <option value="off" label="off"/>
-                    </StyledSelect>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel>
-                        Notifications
-                    </StyledLabel>
-                    <StyledSelect defaultValue="off">
-                        <option value="on" label="on"/>
-                        <option value="off" label="off"/>
-                    </StyledSelect>
-                </OptionsItem>
-                <OptionsItem>
-                    <StyledLabel htmlFor="currentQuantity">
-                        <FormattedMessage id="add unit"/>
-                    </StyledLabel>
-                    <StyledInput/>
-                </OptionsItem>
-            </OptionsWrapper>
-            <Button> About...</Button>
-        </SettingsWrapper>
-    </>
-);
+        const {handleLanguageChange, toggleTheme, locale} = useContext(AppContext);
+
+
+        return (
+            <>
+                {/*<Modal/>*/}
+
+                <Heading>
+                    <FormattedMessage id="settings"/>
+                </Heading>
+                <SettingsWrapper>
+                    <UserCard>
+                        <UserAvatarWrapper src={user} alt="Avatar icon"/>
+                        <UserMailWrapper>
+                            <Paragraph>
+                                <FormattedMessage id="logged as"/>
+                                {auth.currentUser.email}
+                            </Paragraph>
+                            <Button onClick={() => auth.signOut()}>
+                                <FormattedMessage id="logout"/>
+                            </Button>
+                        </UserMailWrapper>
+                    </UserCard>
+                    <OptionsWrapper>
+                        <OptionsItem>
+                            <StyledLabel>
+                                <FormattedMessage id="change language"/>
+                            </StyledLabel>
+                            <StyledSelect onChange={handleLanguageChange} defaultValue={locale}>
+                                <option value="pl">Polski</option>
+                                <option value="en">English</option>
+                            </StyledSelect>
+                        </OptionsItem>
+                        <OptionsItem>
+                            <StyledLabel>
+                                <FormattedMessage id="dark mode"/>
+                            </StyledLabel>
+                            <StyledSelect onChange={toggleTheme} defaultValue="off">
+                                <option value="on" label="on"/>
+                                <option value="off" label="off"/>
+                            </StyledSelect>
+                        </OptionsItem>
+                        <OptionsItem>
+                            <StyledLabel>
+                                Notifications
+                            </StyledLabel>
+                            <StyledSelect defaultValue="off">
+                                <option value="on" label="on"/>
+                                <option value="off" label="off"/>
+                            </StyledSelect>
+                        </OptionsItem>
+                        <OptionsItem>
+                            <StyledLabel htmlFor="currentQuantity">
+                                <FormattedMessage id="add unit"/>
+                            </StyledLabel>
+                            <StyledInput/>
+                        </OptionsItem>
+                    </OptionsWrapper>
+                    <Button> About...</Button>
+                </SettingsWrapper>
+            </>)
+    }
+;
 
 SettingsCard.propTypes = {
     toggleViewMode: PropTypes.func.isRequired,

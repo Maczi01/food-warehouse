@@ -79,8 +79,7 @@ const AppProvider = ({children}) => {
         } catch (e) {
             window.alert("Nie udało się dodać!")
         }
-    }
-
+    };
 
     const context ={
         foodList,

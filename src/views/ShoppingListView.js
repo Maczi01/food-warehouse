@@ -47,6 +47,7 @@ const ShoppingListView = () => {
     const shoppingList = foodList.filter(item => (
         item.currentQuantity < item.minimalQuantity
     ));
+
     return (
         <MainTemplate>
             <Heading>
