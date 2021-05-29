@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import Menu from "../molecules/Menu";
 import Modal from "../molecules/Modal";
 import {AppContext} from "../../context/context";
+import English from "../../languages/en";
 
 
 const SettingsWrapper = styled.div`
@@ -162,7 +163,7 @@ const Paragraph = styled.p`
 
 const SettingsCard = () => {
 
-        const {handleLanguageChange, toggleTheme, locale} = useContext(AppContext);
+        const {handleLanguageChange, toggleTheme, language} = useContext(AppContext);
 
         return (
             <>
@@ -189,7 +190,7 @@ const SettingsCard = () => {
                             <StyledLabel>
                                 <FormattedMessage id="change language"/>
                             </StyledLabel>
-                            <StyledSelect onChange={handleLanguageChange} defaultValue={locale}>
+                            <StyledSelect onChange={handleLanguageChange} defaultValue={language.locale}>
                                 <option value="pl">Polski</option>
                                 <option value="en">English</option>
                             </StyledSelect>
@@ -219,7 +220,6 @@ const SettingsCard = () => {
                             <StyledInput/>
                         </OptionsItem>
                     </OptionsWrapper>
-                    <Button> About...</Button>
                 </SettingsWrapper>
             </>)
     }
@@ -227,13 +227,16 @@ const SettingsCard = () => {
 
 SettingsCard.propTypes = {
     toggleViewMode: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
+    handleLanguageChange: PropTypes.func.isRequired,
     locale: PropTypes.string,
-}
+};
 
 SettingsCard.defaultProps = {
-    locale: 'en'
-}
+    language: {
+        lang: English,
+        locale: "en"
+    }
+};
 
 
 export default SettingsCard;
