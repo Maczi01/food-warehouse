@@ -3,31 +3,25 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Form, Formik} from 'formik';
 import accept from '../../asstets/img/accept.svg'
-import acceptDisabled from '../../asstets/img/acceptDisabled.svg'
 import decline from '../../asstets/img/decline.svg'
-import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
-import * as Yup from "yup";
 import FormWrapper from "../atoms/item/FormWrapper";
 import Heading from "../atoms/item/Heading";
 import FormItem from "../molecules/Item/FormItem";
 import StyledLabel from "../atoms/item/StyledLabel";
-import StyledInputError from "../atoms/item/StyledInputError";
 import StyledInput from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/item/ErrorText";
 import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
 import {ValidationSchema} from "../../utills/ValidationSchema";
-// import {ValidationSchema} from "../../utills/ValidationSchema";
-import eyeopen from "../../asstets/img/eyeopen.svg"
 
-const categories = ["Pieczywo", "Makaron, ryż, kasze",
-    "Produkty sypkie, przyprawy", "Warzywa i owoce",
-    "Mięso, ryby, owoce morza", "Nabiał", "Słodycze i przekąski", "Napoje"];
+const categories = ["baking", "pasta",
+    "spieces", "vegetables and fruits",
+    "meat and more", "dairy", "sweets", "beverages", "others"];
 
-const units = ["sztuka", "litr", "kilogram"];
+const units = ["piece", "liter", "kilogram"];
 
 const ItemForm = ({addItem}) => {
 
@@ -66,15 +60,14 @@ const ItemForm = ({addItem}) => {
                     enableReinitialize
                     initialValues={item}
                     onSubmit={(values, {setSubmitting, resetForm}) => {
+                        //TODO: check submitting
                         setSubmitting(true);
                         handleSubmitForm(values.name);
                         setSubmitting(false);
-                        resetForm();
                     }}
                     validationSchema={ValidationSchema}
                     validateOnChange={false}
                     validateOnBlur={false}
-
                 >
                     {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting, handleSubmit}) => (
                         <Form
@@ -104,20 +97,18 @@ const ItemForm = ({addItem}) => {
                                 <StyledSelect
                                     onChange={handleInputChange}
                                     name="category"
+                                    /*TODO check default value*/
                                     value={values.category}
                                     onBlur={handleBlur}
                                     errors={errors.category && touched.category}
                                 >
-                                    <option label="Choose category..." value="Choose category"/>
-                                    <option label="pasta, rice, groats" value="pasta"/>
-                                    <option label="loose products, spieces" value="spieces"/>
-                                    <option label="baking" value="baking"/>
-                                    <option label="vegetables and fruits" value="vegetablesAndFruits"/>
-                                    <option label="meat, fiches, seafood" value="meatFishesSeafood"/>
-                                    <option label="dairy" value="dairy"/>
-                                    <option label="sweets and snacks" value="sweetsAndSnacks"/>
-                                    <option label="beverages" value="beverages"/>
-                                    <option label="others" value="others"/>
+                                    {categories.map((category) => (
+                                        <FormattedMessage
+                                            id={category}
+                                            key={category}>
+                                            {(text) => <option value={category}>{text}</option>}
+                                        </FormattedMessage>)
+                                    )}
                                 </StyledSelect>
                             </FormItem>
                             {errors.category && touched.category ?
@@ -135,10 +126,13 @@ const ItemForm = ({addItem}) => {
                                     placeholder=""
                                     errors={errors.category && touched.category}
                                 >
-                                    <option value="Wybierz jednostkę..." label="Choose unit..."/>
-                                    <option value="Sztuka" label="Piece"/>
-                                    <option value="Litr" label="Liter"/>
-                                    <option value="Kilogram" label="Kilogram"/>
+                                    {units.map((unit) => (
+                                        <FormattedMessage
+                                            id={unit}
+                                            key={unit}>
+                                            {(text) => <option value={text}>{unit}</option>}
+                                        </FormattedMessage>)
+                                    )}
                                 </StyledSelect>
                             </FormItem>
                             {errors.unit && touched.unit ?
@@ -147,7 +141,7 @@ const ItemForm = ({addItem}) => {
 
                             <FormItem>
                                 <StyledLabel htmlFor="maximalQuantity">
-                                    <FormattedMessage id="maximal quanitity"/>
+                                    <FormattedMessage id="maximal quantity"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={handleInputChange}
@@ -200,7 +194,6 @@ const ItemForm = ({addItem}) => {
                                         icon={decline}
                                     />
                                 </Link>
-
                                 <ButtonIcon
                                     type="submit"
                                     icon={accept}
