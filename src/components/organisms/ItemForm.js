@@ -14,54 +14,9 @@ import * as Yup from "yup";
 
 
 
-const FormItem = styled.div`
-      width: 100%;
-      display: flex;
-         @media (max-width: ${({theme}) => theme.mobile}) {
-          flex-direction: column;
-          border: 1px solid   ${({theme}) => theme.colors.darkblue});
-      }
-`;
 
-const StyledInput = styled.input`
-    display: block;
-    appearance: none;
-    outline: 0;
-    border: 1px solid white;
-    width: 300px;
-    border-radius: 3px;
-    margin: 6px;
-    text-align: center;
-    font-size: 18px;
-    color: black;
-    transition-duration: 0.25s;
-    font-weight: 300;
-    background-color: ${({theme}) => theme.colors.gray};
-    @media (max-width: ${({theme}) => theme.mobile}) {
-       height: 50px;
-    }
-  }
-`;
 
-const StyledInputError = styled.input`
-    display: block;
-    appearance: none;
-    outline: 0;
-    width: 300px;
-    border-radius: 3px;
-    margin: 6px;
-    text-align: center;
-    font-size: 18px;
-    color: black;
-    transition-duration: 0.25s;
-    font-weight: 300;
-    border: 3px solid red;
-    background-color: ${({theme}) => theme.colors.gray};
-    @media (max-width: ${({theme}) => theme.mobile}) {
-       height: 50px;
-    }
-  }
-`;
+
 
 const StyledLabel = styled.label`
       background-color: ${({theme}) => theme.colors.blue};
