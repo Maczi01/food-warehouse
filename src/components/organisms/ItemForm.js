@@ -21,6 +21,7 @@ import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
 import {ValidationSchema} from "../../utills/ValidationSchema";
 // import {ValidationSchema} from "../../utills/ValidationSchema";
+import eyeopen from "../../asstets/img/eyeopen.svg"
 
 const categories = ["Pieczywo", "Makaron, ryż, kasze",
     "Produkty sypkie, przyprawy", "Warzywa i owoce",
@@ -30,7 +31,7 @@ const units = ["sztuka", "litr", "kilogram"];
 
 const ItemForm = ({addItem}) => {
 
-        const [values, setValues] = useState({
+        const [item, setItem] = useState({
             name: "",
             category: "",
             unit: "",
@@ -41,35 +42,20 @@ const ItemForm = ({addItem}) => {
 
         const handleInputChange = e => {
             const {name, value} = e.target;
-            setValues({...values, [name]: value});
+            setItem({...item, [name]: value});
         };
 
-        const handleSubmitForm = () => {
-            addItem(values);
-            setValues({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
+        const handleSubmitForm = (name) => {
+            addItem(item);
+            notify(name)
+            setItem({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
         };
 
-        const notify = (name, isValid, errors) => {
-            console.log(errors);
-            console.log(isValid);
-            !isValid && errors ?
-
-                toast.error(`Couldn't add ${name}`, {
-                    position: toast.POSITION.TOP_CENTER
-
-                })
-                :
-                toast.success(`Succesfully added ${name}`, {
-                    position: toast.POSITION.TOP_CENTER
-                })
+        const notify = (name) => {
+            toast.success(`Succesfully added ${name}`, {
+                position: toast.POSITION.TOP_CENTER
+            })
         };
-
-        // const notifyError = (name, isValid) => {
-        //     toast.error(`Couldn't add ${name}`, {
-        //         position: toast.POSITION.TOP_CENTER
-        //
-        //     });
-        // };
 
         return (
             <FormWrapper>
@@ -78,14 +64,23 @@ const ItemForm = ({addItem}) => {
                 </Heading>
                 <Formik
                     enableReinitialize
-                    initialValues={values}
-                    onSubmit={handleSubmitForm}
+                    initialValues={item}
+                    onSubmit={(values, {setSubmitting, resetForm}) => {
+                        setSubmitting(true);
+                        handleSubmitForm(values.name);
+                        setSubmitting(false);
+                        resetForm();
+                    }}
                     validationSchema={ValidationSchema}
                     validateOnChange={false}
                     validateOnBlur={false}
+
                 >
-                    {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting}) => (
-                        <Form autoComplete="off">
+                    {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting, handleSubmit}) => (
+                        <Form
+                            autoComplete="off"
+                            onSubmit={handleSubmit}
+                        >
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
@@ -210,7 +205,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
-                                {errors.currentQuantity ?
+                                {errors.currentQuantity && touched.currentQuantity ?
                                     <StyledInputError
                                         onChange={handleInputChange}
                                         name="currentQuantity"
@@ -237,11 +232,9 @@ const ItemForm = ({addItem}) => {
                                         icon={decline}
                                     />
                                 </Link>
+
                                 <ButtonIcon
-                                    // onClick={() => errors ? notify(values.name) : null}
-                                    onClick={() => notify(values.name, isValid, errors)}
                                     type="submit"
-                                    disabled={isSubmitting || !isValid}
                                     icon={accept}
                                 />
                             </ButtonContainer>

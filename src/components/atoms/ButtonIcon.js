@@ -12,10 +12,10 @@ const ButtonIcon = styled.button`
   outline: none;
   margin-left: 10px;
   transition: all .6s ease 0s; 
-    :disabled{
-      background-color: yellow;
-
-    }
+    //:disabled{
+    //  background-color: yellow;
+    //
+    //}
 
   :active {
     box-shadow: 0 5px #E5E5E5;
