@@ -37,7 +37,7 @@ const ItemForm = ({addItem}) => {
             currentQuantity: 0,
             minimalQuantity: 0,
             maximalQuantity: 0
-        })
+        });
 
         const handleInputChange = e => {
             const {name, value} = e.target;
@@ -49,11 +49,27 @@ const ItemForm = ({addItem}) => {
             setValues({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
         };
 
-        const notify = (name) => {
-            toast.success(`Succesfully added ${name}`, {
-                position: toast.POSITION.TOP_CENTER
-            });
+        const notify = (name, isValid, errors) => {
+            console.log(errors);
+            console.log(isValid);
+            !isValid && errors ?
+
+                toast.error(`Couldn't add ${name}`, {
+                    position: toast.POSITION.TOP_CENTER
+
+                })
+                :
+                toast.success(`Succesfully added ${name}`, {
+                    position: toast.POSITION.TOP_CENTER
+                })
         };
+
+        // const notifyError = (name, isValid) => {
+        //     toast.error(`Couldn't add ${name}`, {
+        //         position: toast.POSITION.TOP_CENTER
+        //
+        //     });
+        // };
 
         return (
             <FormWrapper>
@@ -64,20 +80,23 @@ const ItemForm = ({addItem}) => {
                     enableReinitialize
                     initialValues={values}
                     onSubmit={handleSubmitForm}
-                    validationSchema={ValidationSchema}>
+                    validationSchema={ValidationSchema}
+                    validateOnChange={false}
+                    validateOnBlur={false}
+                >
                     {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting}) => (
                         <Form autoComplete="off">
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                {errors.name && touched.name ?
+                                {errors.name ?
                                     <StyledInputError
-                                            onChange={handleInputChange}
-                                            name="name"
-                                            type="text"
-                                            value={values.name}
-                                            placeholder=""
+                                        onChange={handleInputChange}
+                                        name="name"
+                                        type="text"
+                                        value={values.name}
+                                        placeholder=""
                                     />
                                     :
                                     <StyledInput
@@ -164,7 +183,6 @@ const ItemForm = ({addItem}) => {
                             {errors.maximalQuantity && touched.maximalQuantity ?
                                 <ErrorText>{errors.maximalQuantity}</ErrorText> : null
                             }
-
                             <FormItem>
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
@@ -192,7 +210,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
-                                {errors.currentQuantity && touched.currentQuantity ?
+                                {errors.currentQuantity ?
                                     <StyledInputError
                                         onChange={handleInputChange}
                                         name="currentQuantity"
@@ -214,24 +232,20 @@ const ItemForm = ({addItem}) => {
                                 <ErrorText>{errors.currentQuantity}</ErrorText> : null
                             }
                             <ButtonContainer>
-                                <Link to="/register">
+                                <Link to="/">
                                     <ButtonIcon
                                         icon={decline}
                                     />
                                 </Link>
-                                {isValid ?
-                                    <ButtonIcon
-                                        onClick={() => errors ? notify(values.name) : null}
-                                        type="submit"
-                                        icon={accept}
-                                    />
-                                    :
-                                    <ButtonIcon
-                                        icon={acceptDisabled}
-                                    />
-                                }
+                                <ButtonIcon
+                                    // onClick={() => errors ? notify(values.name) : null}
+                                    onClick={() => notify(values.name, isValid, errors)}
+                                    type="submit"
+                                    disabled={isSubmitting || !isValid}
+                                    icon={accept}
+                                />
                             </ButtonContainer>
-                            <ToastContainer autoClose={1400}/>
+                            <ToastContainer autoClose={2500}/>
                         </Form>
                     )}
                 </Formik>
