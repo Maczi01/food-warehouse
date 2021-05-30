@@ -144,8 +144,9 @@ const ItemForm = ({addItem}) => {
                             {errors.unit && touched.unit ?
                                 <ErrorText>{errors.unit}</ErrorText> : null
                             }
+
                             <FormItem>
-                                <StyledLabel>
+                                <StyledLabel htmlFor="maximalQuantity">
                                     <FormattedMessage id="maximal quanitity"/>
                                 </StyledLabel>
                                 <StyledInput
@@ -160,6 +161,7 @@ const ItemForm = ({addItem}) => {
                             {errors.maximalQuantity && touched.maximalQuantity ?
                                 <ErrorText>{errors.maximalQuantity}</ErrorText> : null
                             }
+
                             <FormItem>
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>

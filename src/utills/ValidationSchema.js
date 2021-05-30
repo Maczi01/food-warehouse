@@ -5,7 +5,7 @@ export const ValidationSchema =
             name: Yup.string()
                 .min(2, "Too short, minimal 3 characters!")
                 .max(30, "Too long, maximal 3 characters!!")
-                .required("Required"),
+                .required("Name is required"),
             unit: Yup.string()
                 .required("Unit is required!"),
             category: Yup.string()
