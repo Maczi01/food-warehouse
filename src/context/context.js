@@ -15,7 +15,6 @@ const AppProvider = ({children}) => {
 
     const [foodList, setFoodList] = useState([]);
     const [theme, setTheme] = useState(lightTheme);
-    // const [locale, setLocale] = useState('en');
     const [language, setLanguage] = useState(EN_language);
 
     function changeLanguage(language) {
