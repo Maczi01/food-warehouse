@@ -20,51 +20,11 @@ import * as Yup from "yup";
 
 
 
-const StyledSelect = styled.select`
-      width: 300px;
-      font-size: 18px;
-      display: flex;
-      text-decoration: none;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      height: 60px;
-      padding-left: 5px;
-      border: none;
-      margin: 6px;
-      text-align-last:center;
-      outline: none;
-      color: black;
-      background-color: ${({theme}) => theme.colors.gray};
-      @media (max-width: ${({theme}) => theme.mobile}) {
-          height: 50px;
-      }
-`;
 
-const ErrorText = styled.p`
-      text-align: right;
-      align-items: center;
-      color: red;
-      font-weight: bold;
-      margin-right: 20px;
-`
 
-const Heading = styled.h1`
-     padding: 10px;
-     color: ${({theme}) => theme.colors.blue};
-     text-align: center;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-direction: column;
-     margin: 0 auto;
-     width: 60vw;
-     @media (max-width: ${({theme}) => theme.mobile}) {
-        padding: 9rem 0 1rem;
-        font-size: 26px;
-        width: 100vw;
-     }
-`
+
+
+
 
 const categories = ["Pieczywo", "Makaron, ryż, kasze",
     "Produkty sypkie, przyprawy", "Warzywa i owoce",
