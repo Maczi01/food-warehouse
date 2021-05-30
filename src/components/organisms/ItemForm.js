@@ -10,21 +10,17 @@ import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
 import * as Yup from "yup";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import FormWrapper from "../atoms/item/FormWrapper";
+import Heading from "../atoms/item/Heading";
+import FormItem from "../molecules/Item/FormItem";
+import StyledLabel from "../atoms/item/StyledLabel";
+import StyledInputError from "../atoms/item/StyledInputError";
+import StyledInput from "../atoms/item/StyledInput";
+import ErrorText from "../atoms/item/ErrorText";
+import StyledSelect from "../atoms/item/StyledSelect";
+import ButtonContainer from "../atoms/item/ButtonContainer";
+import {ValidationSchema} from "../../utills/ValidationSchema";
+// import {ValidationSchema} from "../../utills/ValidationSchema";
 
 const categories = ["Pieczywo", "Makaron, ryż, kasze",
     "Produkty sypkie, przyprawy", "Warzywa i owoce",
@@ -34,14 +30,6 @@ const units = ["sztuka", "litr", "kilogram"];
 
 const ItemForm = ({addItem}) => {
 
-        // state = {
-        //     name: "",
-        //     category: "",
-        //     unit: "",
-        //     currentQuantity: "",
-        //     minimalQuantity: "",
-        //     maximalQuantity: "",
-        // };
         const [values, setValues] = useState({
             name: "",
             category: "",
@@ -61,7 +49,6 @@ const ItemForm = ({addItem}) => {
             setValues({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
         };
 
-
         const notify = (name) => {
             toast.success(`Succesfully added ${name}`, {
                 position: toast.POSITION.TOP_CENTER
@@ -77,29 +64,7 @@ const ItemForm = ({addItem}) => {
                     enableReinitialize
                     initialValues={values}
                     onSubmit={handleSubmitForm}
-                    validationSchema={Yup.object().shape({
-                        name: Yup.string()
-                            .min(2, "Too short, minimal 3 characters!")
-                            .max(30, "Too long, maximal 3 characters!!")
-                            .required("Required"),
-                        unit: Yup.string()
-                            .required("Unit is required!"),
-                        category: Yup.string()
-                            .required("Category is required!"),
-                        currentQuantity: Yup.number()
-                            .positive("Only positive number!")
-                            .max(Yup.ref("maximalQuantity"), "Current quantity must be lower than maximal!")
-                            .required("Required"),
-                        minimalQuantity: Yup.number()
-                            .positive("Only positive number!")
-                            .max(Yup.ref("maximalQuantity"), "Minimal quantity must be lower than maximal!")
-                            .required("Required"),
-                        maximalQuantity: Yup.number()
-                            .positive("Only positive number!")
-                            .max(10, "Less than 10!")
-                            .min(Yup.ref("minimalQuantity"), "Maximal quantity must be greather than minimal!")
-                            .required("Required"),
-                    })}>
+                    validationSchema={ValidationSchema}>
                     {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting}) => (
                         <Form autoComplete="off">
                             <FormItem>
@@ -107,26 +72,25 @@ const ItemForm = ({addItem}) => {
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
                                 {errors.name && touched.name ?
-                                    <>
-                                        <StyledInputError
+                                    <StyledInputError
                                             onChange={handleInputChange}
                                             name="name"
                                             type="text"
                                             value={values.name}
                                             placeholder=""
-                                        />
-                                    </>
+                                    />
                                     :
                                     <StyledInput
                                         onChange={handleInputChange}
                                         name="name"
                                         type="text"
                                         value={values.name}
+                                        placeholder="More than 3 characters..."
                                         onBlur={handleBlur}
-                                        placeholder=""
                                     />
                                 }
                             </FormItem>
+
                             {errors.name && touched.name ?
                                 <ErrorText>{errors.name}</ErrorText> : null
                             }
@@ -249,7 +213,6 @@ const ItemForm = ({addItem}) => {
                             {errors.currentQuantity && touched.currentQuantity ?
                                 <ErrorText>{errors.currentQuantity}</ErrorText> : null
                             }
-
                             <ButtonContainer>
                                 <Link to="/register">
                                     <ButtonIcon
@@ -276,7 +239,6 @@ const ItemForm = ({addItem}) => {
         )
     }
 ;
-
 
 export default ItemForm;
 
