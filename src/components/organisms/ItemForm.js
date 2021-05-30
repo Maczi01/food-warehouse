@@ -11,23 +11,8 @@ import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
 import * as Yup from "yup";
 
-const FormWrapper = styled.div`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin: 0 auto;
-      width: 50vw;
-      @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 100vw;
-     }
-`;
 
-const ButtonContainer = styled.div`
-      margin: 20px 0 20px 0;
-      display: flex;
-      justify-content: flex-end
-`
+
 
 const FormItem = styled.div`
       width: 100%;
