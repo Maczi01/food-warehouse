@@ -14,8 +14,10 @@ const StyledInput = styled.input`
     transition-duration: 0.25s;
     font-weight: 300;
     background-color: ${({theme}) => theme.colors.gray};
-    border: ${({errors}) => errors ? "3px solid red" : "3px solid green"};
-
+    border: ${({errors}) => errors ? "3px solid red" : "none"};
+    :focus{
+        background-color: #b1b1b1;
+    }
 
     @media (max-width: ${({theme}) => theme.mobile}) {
        height: 50px;

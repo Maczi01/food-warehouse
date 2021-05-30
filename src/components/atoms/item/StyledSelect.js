@@ -16,6 +16,10 @@ const StyledSelect = styled.select`
       outline: none;
       color: black;
       background-color: ${({theme}) => theme.colors.gray};
+      border: ${({errors}) => errors ? "3px solid red" : "none"};
+      :focus{
+          background-color: #b1b1b1;
+      }
       @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
       }

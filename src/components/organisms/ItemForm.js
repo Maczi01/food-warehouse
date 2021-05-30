@@ -85,32 +85,20 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                {/*{errors.name && touched.name?*/}
-                                    <StyledInputError
-                                        onChange={handleInputChange}
-                                        name="name"
-                                        type="text"
-                                        value={values.name}
-                                        placeholder=""
-                                        errors={errors.name && touched.name}
-                                    />
-                                {/*    :*/}
-                                {/*    <StyledInput*/}
-                                {/*        onChange={handleInputChange}*/}
-                                {/*        name="name"*/}
-                                {/*        type="text"*/}
-                                {/*        value={values.name}*/}
-                                {/*        placeholder="More than 3 characters..."*/}
-                                {/*        onBlur={handleBlur}*/}
-                                {/*    />*/}
-                                {/*}*/}
+                                <StyledInput
+                                    onChange={handleInputChange}
+                                    name="name"
+                                    type="text"
+                                    value={values.name}
+                                    placeholder=""
+                                    errors={errors.name && touched.name}
+                                />
                             </FormItem>
-
                             {errors.name && touched.name ?
                                 <ErrorText>{errors.name}</ErrorText> : null
                             }
                             <FormItem>
-                                <StyledLabel>
+                                <StyledLabel htmlFor="category">
                                     <FormattedMessage id="choose category"/>
                                 </StyledLabel>
                                 <StyledSelect
@@ -118,6 +106,7 @@ const ItemForm = ({addItem}) => {
                                     name="category"
                                     value={values.category}
                                     onBlur={handleBlur}
+                                    errors={errors.category && touched.category}
                                 >
                                     <option label="Choose category..." value="Choose category"/>
                                     <option label="pasta, rice, groats" value="pasta"/>
@@ -135,7 +124,7 @@ const ItemForm = ({addItem}) => {
                                 <ErrorText>{errors.category}</ErrorText> : null
                             }
                             <FormItem>
-                                <StyledLabel htmlFor="currentQuantity">
+                                <StyledLabel htmlFor="unit">
                                     <FormattedMessage id="choose unit"/>
                                 </StyledLabel>
                                 <StyledSelect
@@ -144,6 +133,7 @@ const ItemForm = ({addItem}) => {
                                     onBlur={handleBlur}
                                     value={values.unit}
                                     placeholder=""
+                                    errors={errors.category && touched.category}
                                 >
                                     <option value="Wybierz jednostkę..." label="Choose unit..."/>
                                     <option value="Sztuka" label="Piece"/>
@@ -158,23 +148,14 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel>
                                     <FormattedMessage id="maximal quanitity"/>
                                 </StyledLabel>
-                                {errors.maximalQuantity && touched.maximalQuantity ?
-                                    <StyledInputError
-                                        onChange={handleInputChange}
-                                        name="maximalQuantity"
-                                        type="number"
-                                        onBlur={handleBlur}
-                                        value={values.maximalQuantity}
-                                        placeholder=""/>
-                                    :
-                                    <StyledInput
-                                        onChange={handleInputChange}
-                                        name="maximalQuantity"
-                                        type="number"
-                                        onBlur={handleBlur}
-                                        value={values.maximalQuantity}
-                                        placeholder=""/>
-                                }
+                                <StyledInput
+                                    onChange={handleInputChange}
+                                    name="maximalQuantity"
+                                    type="number"
+                                    value={values.maximalQuantity}
+                                    placeholder=""
+                                    errors={errors.maximalQuantity && touched.maximalQuantity}
+                                />
                             </FormItem>
                             {errors.maximalQuantity && touched.maximalQuantity ?
                                 <ErrorText>{errors.maximalQuantity}</ErrorText> : null
@@ -183,23 +164,14 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
                                 </StyledLabel>
-                                {/*{errors.minimalQuantity && touched.minimalQuantity ?*/}
-                                    <StyledInputError
-                                        onChange={handleInputChange}
-                                        name="minimalQuantity"
-                                        type="number"
-                                        value={values.minimalQuantity}
-                                        errors={errors.minimalQuantity && touched.minimalQuantity}
-                                        placeholder=""/>
-                                    {/*: <StyledInput*/}
-                                    {/*    onChange={handleInputChange}*/}
-                                    {/*    name="minimalQuantity"*/}
-                                    {/*    type="number"*/}
-                                    {/*    onBlur={handleBlur}*/}
-                                    {/*    value={values.minimalQuantity}*/}
-                                    {/*    placeholder=""*/}
-                                    {/*/>*/}
-                                {/*}*/}
+                                <StyledInput
+                                    onChange={handleInputChange}
+                                    name="minimalQuantity"
+                                    type="number"
+                                    value={values.minimalQuantity}
+                                    placeholder=""
+                                    errors={errors.minimalQuantity && touched.minimalQuantity}
+                                />
                             </FormItem>
                             {errors.minimalQuantity && touched.minimalQuantity ?
                                 <ErrorText>{errors.minimalQuantity}</ErrorText> : null
@@ -208,23 +180,14 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
-                                {errors.currentQuantity && touched.currentQuantity ?
-                                    <StyledInputError
-                                        onChange={handleInputChange}
-                                        name="currentQuantity"
-                                        type="number"
-                                        onBlur={handleBlur}
-                                        value={values.currentQuantity}
-                                        placeholder=""/>
-                                    :
-                                    <StyledInput
-                                        onChange={handleInputChange}
-                                        name="currentQuantity"
-                                        type="number"
-                                        onBlur={handleBlur}
-                                        value={values.currentQuantity}
-                                        placeholder=""/>
-                                }
+                                <StyledInput
+                                    onChange={handleInputChange}
+                                    name="currentQuantity"
+                                    type="number"
+                                    value={values.currentQuantity}
+                                    placeholder=""
+                                    errors={errors.currentQuantity && touched.currentQuantity}
+                                />
                             </FormItem>
                             {errors.currentQuantity && touched.currentQuantity ?
                                 <ErrorText>{errors.currentQuantity}</ErrorText> : null
