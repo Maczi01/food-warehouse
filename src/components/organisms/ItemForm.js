@@ -18,25 +18,9 @@ import * as Yup from "yup";
 
 
 
-const StyledLabel = styled.label`
-      background-color: ${({theme}) => theme.colors.blue};
-      color: ${({theme}) => theme.colors.white};
-      text-align: center;
-      justify-content: center;  
-      transition: 0.2s ease-out all;
-      font-size: 18px;
-      height: 60px;
-      width: 300px;
-      margin: 6px;
-      display: flex;
-      text-decoration: none;
-      align-items: center;
-      @media (max-width: ${({theme}) => theme.mobile}) {
-          height: 50px;
-      }
-`;
 
-const Select = styled.select`
+
+const StyledSelect = styled.select`
       width: 300px;
       font-size: 18px;
       display: flex;
@@ -190,7 +174,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel>
                                     <FormattedMessage id="choose category"/>
                                 </StyledLabel>
-                                <Select
+                                <StyledSelect
                                     onChange={handleInputChange}
                                     name="category"
                                     value={values.category}
@@ -206,7 +190,7 @@ const ItemForm = ({addItem}) => {
                                     <option label="sweets and snacks" value="sweetsAndSnacks"/>
                                     <option label="beverages" value="beverages"/>
                                     <option label="others" value="others"/>
-                                </Select>
+                                </StyledSelect>
                             </FormItem>
                             {errors.category && touched.category ?
                                 <ErrorText>{errors.category}</ErrorText> : null
@@ -215,7 +199,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="choose unit"/>
                                 </StyledLabel>
-                                <Select
+                                <StyledSelect
                                     onChange={handleInputChange}
                                     name="unit"
                                     onBlur={handleBlur}
@@ -226,7 +210,7 @@ const ItemForm = ({addItem}) => {
                                     <option value="Sztuka" label="Piece"/>
                                     <option value="Litr" label="Liter"/>
                                     <option value="Kilogram" label="Kilogram"/>
-                                </Select>
+                                </StyledSelect>
                             </FormItem>
                             {errors.unit && touched.unit ?
                                 <ErrorText>{errors.unit}</ErrorText> : null
