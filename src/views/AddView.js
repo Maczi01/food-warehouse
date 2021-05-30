@@ -7,11 +7,10 @@ const AddView = () => {
     const {editItem, addItem} = useContext(AppContext);
     return (
         <MainTemplate>
-            <ItemForm addItem={addItem}
-                      edit={editItem}
-
+            <ItemForm
+                addItem={addItem}
+                edit={editItem}
             />
-            )
         </MainTemplate>
     )
 };
