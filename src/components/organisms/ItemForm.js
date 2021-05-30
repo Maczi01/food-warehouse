@@ -85,24 +85,25 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                {errors.name ?
+                                {/*{errors.name && touched.name?*/}
                                     <StyledInputError
                                         onChange={handleInputChange}
                                         name="name"
                                         type="text"
                                         value={values.name}
                                         placeholder=""
+                                        errors={errors.name && touched.name}
                                     />
-                                    :
-                                    <StyledInput
-                                        onChange={handleInputChange}
-                                        name="name"
-                                        type="text"
-                                        value={values.name}
-                                        placeholder="More than 3 characters..."
-                                        onBlur={handleBlur}
-                                    />
-                                }
+                                {/*    :*/}
+                                {/*    <StyledInput*/}
+                                {/*        onChange={handleInputChange}*/}
+                                {/*        name="name"*/}
+                                {/*        type="text"*/}
+                                {/*        value={values.name}*/}
+                                {/*        placeholder="More than 3 characters..."*/}
+                                {/*        onBlur={handleBlur}*/}
+                                {/*    />*/}
+                                {/*}*/}
                             </FormItem>
 
                             {errors.name && touched.name ?
@@ -182,21 +183,23 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
                                 </StyledLabel>
-                                {errors.minimalQuantity && touched.minimalQuantity ?
+                                {/*{errors.minimalQuantity && touched.minimalQuantity ?*/}
                                     <StyledInputError
                                         onChange={handleInputChange}
                                         name="minimalQuantity"
                                         type="number"
                                         value={values.minimalQuantity}
+                                        errors={errors.minimalQuantity && touched.minimalQuantity}
                                         placeholder=""/>
-                                    : <StyledInput
-                                        onChange={handleInputChange}
-                                        name="minimalQuantity"
-                                        type="number"
-                                        onBlur={handleBlur}
-                                        value={values.minimalQuantity}
-                                        placeholder=""/>
-                                }
+                                    {/*: <StyledInput*/}
+                                    {/*    onChange={handleInputChange}*/}
+                                    {/*    name="minimalQuantity"*/}
+                                    {/*    type="number"*/}
+                                    {/*    onBlur={handleBlur}*/}
+                                    {/*    value={values.minimalQuantity}*/}
+                                    {/*    placeholder=""*/}
+                                    {/*/>*/}
+                                {/*}*/}
                             </FormItem>
                             {errors.minimalQuantity && touched.minimalQuantity ?
                                 <ErrorText>{errors.minimalQuantity}</ErrorText> : null
