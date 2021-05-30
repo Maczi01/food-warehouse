@@ -18,7 +18,6 @@ const AppProvider = ({children}) => {
     const [language, setLanguage] = useState(EN_language);
 
     function changeLanguage(language) {
-        // setLocale(language);
         switch (language) {
             case('en'):
                 setLanguage(EN_language);

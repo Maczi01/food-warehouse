@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Form, Formik} from 'formik';
@@ -146,46 +146,44 @@ const categories = ["Pieczywo", "Makaron, ryż, kasze",
     "Produkty sypkie, przyprawy", "Warzywa i owoce",
     "Mięso, ryby, owoce morza", "Nabiał", "Słodycze i przekąski", "Napoje"];
 
-const units = ["sztuka", "litr", "kilogram"]
+const units = ["sztuka", "litr", "kilogram"];
 
-class AddItemForm extends React.Component {
+const ItemForm = ({addItem}) => {
 
-    state = {
-        name: "",
-        category: "",
-        unit: "",
-        currentQuantity: "",
-        minimalQuantity: "",
-        maximalQuantity: "",
-    };
-
-    handleInputChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    handleSubmitForm = () => {
-        const {addItem} = this.props;
-        addItem(this.state);
-        this.setState({
+        // state = {
+        //     name: "",
+        //     category: "",
+        //     unit: "",
+        //     currentQuantity: "",
+        //     minimalQuantity: "",
+        //     maximalQuantity: "",
+        // };
+        const [values, setValues] = useState({
             name: "",
-            category: '',
+            category: "",
             unit: "",
-            currentQuantity: "",
-            minimalQuantity: "",
-            maximalQuantity: "",
-        });
-    };
+            currentQuantity: 0,
+            minimalQuantity: 0,
+            maximalQuantity: 0
+        })
+
+        const handleInputChange = e => {
+            const {name, value} = e.target;
+            setValues({...values, [name]: value});
+        };
+
+        const handleSubmitForm = () => {
+            addItem(values);
+            setValues({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
+        };
 
 
-    notify = (name) => {
-        toast.success(`Succesfully added ${name}`, {
-            position: toast.POSITION.TOP_CENTER
-        });
-    };
+        const notify = (name) => {
+            toast.success(`Succesfully added ${name}`, {
+                position: toast.POSITION.TOP_CENTER
+            });
+        };
 
-    render() {
         return (
             <FormWrapper>
                 <Heading>
@@ -193,8 +191,8 @@ class AddItemForm extends React.Component {
                 </Heading>
                 <Formik
                     enableReinitialize
-                    initialValues={{...this.state}}
-                    onSubmit={this.handleSubmitForm}
+                    initialValues={values}
+                    onSubmit={handleSubmitForm}
                     validationSchema={Yup.object().shape({
                         name: Yup.string()
                             .min(2, "Too short, minimal 3 characters!")
@@ -227,7 +225,7 @@ class AddItemForm extends React.Component {
                                 {errors.name && touched.name ?
                                     <>
                                         <StyledInputError
-                                            onChange={this.handleInputChange}
+                                            onChange={handleInputChange}
                                             name="name"
                                             type="text"
                                             value={values.name}
@@ -236,7 +234,7 @@ class AddItemForm extends React.Component {
                                     </>
                                     :
                                     <StyledInput
-                                        onChange={this.handleInputChange}
+                                        onChange={handleInputChange}
                                         name="name"
                                         type="text"
                                         value={values.name}
@@ -253,7 +251,7 @@ class AddItemForm extends React.Component {
                                     <FormattedMessage id="choose category"/>
                                 </StyledLabel>
                                 <Select
-                                    onChange={this.handleInputChange}
+                                    onChange={handleInputChange}
                                     name="category"
                                     value={values.category}
                                     onBlur={handleBlur}
@@ -278,7 +276,7 @@ class AddItemForm extends React.Component {
                                     <FormattedMessage id="choose unit"/>
                                 </StyledLabel>
                                 <Select
-                                    onChange={this.handleInputChange}
+                                    onChange={handleInputChange}
                                     name="unit"
                                     onBlur={handleBlur}
                                     value={values.unit}
@@ -299,7 +297,7 @@ class AddItemForm extends React.Component {
                                 </StyledLabel>
                                 {errors.maximalQuantity && touched.maximalQuantity ?
                                     <StyledInputError
-                                        onChange={this.handleInputChange}
+                                        onChange={handleInputChange}
                                         name="maximalQuantity"
                                         type="number"
                                         onBlur={handleBlur}
@@ -307,7 +305,7 @@ class AddItemForm extends React.Component {
                                         placeholder=""/>
                                     :
                                     <StyledInput
-                                        onChange={this.handleInputChange}
+                                        onChange={handleInputChange}
                                         name="maximalQuantity"
                                         type="number"
                                         onBlur={handleBlur}
@@ -325,13 +323,13 @@ class AddItemForm extends React.Component {
                                 </StyledLabel>
                                 {errors.minimalQuantity && touched.minimalQuantity ?
                                     <StyledInputError
-                                        onChange={this.handleInputChange}
+                                        onChange={handleInputChange}
                                         name="minimalQuantity"
                                         type="number"
                                         value={values.minimalQuantity}
                                         placeholder=""/>
                                     : <StyledInput
-                                        onChange={this.handleInputChange}
+                                        onChange={handleInputChange}
                                         name="minimalQuantity"
                                         type="number"
                                         onBlur={handleBlur}
@@ -348,7 +346,7 @@ class AddItemForm extends React.Component {
                                 </StyledLabel>
                                 {errors.currentQuantity && touched.currentQuantity ?
                                     <StyledInputError
-                                        onChange={this.handleInputChange}
+                                        onChange={handleInputChange}
                                         name="currentQuantity"
                                         type="number"
                                         onBlur={handleBlur}
@@ -356,7 +354,7 @@ class AddItemForm extends React.Component {
                                         placeholder=""/>
                                     :
                                     <StyledInput
-                                        onChange={this.handleInputChange}
+                                        onChange={handleInputChange}
                                         name="currentQuantity"
                                         type="number"
                                         onBlur={handleBlur}
@@ -376,7 +374,7 @@ class AddItemForm extends React.Component {
                                 </Link>
                                 {isValid ?
                                     <ButtonIcon
-                                        onClick={ () => errors ? this.notify(this.state.name) : null}
+                                        onClick={() => errors ? notify(values.name) : null}
                                         type="submit"
                                         icon={accept}
                                     />
@@ -393,11 +391,10 @@ class AddItemForm extends React.Component {
             </FormWrapper>
         )
     }
-}
 ;
 
 
-// export default AddItemForm;
+export default ItemForm;
 
 
 
