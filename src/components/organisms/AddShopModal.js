@@ -17,7 +17,7 @@ const ModalWrapper = styled.div`
     border: 2px solid lawngreen;
 `
 
-const AddShopModal = () => (
+const AddShopModal = ({addItemToShoppintList}) => (
     <ModalWrapper>
         <ItemForm/>
     </ModalWrapper>

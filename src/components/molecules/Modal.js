@@ -97,28 +97,34 @@ const Button = styled.button`
 
 
 // const Modal = ({closeModalFn, children, btn, title = "title"}) => (
-const Modal = () => (
-    <StyledModalWrapper>
-        <StyledModalCard>
-            {/*<StyledModalHeader>*/}
-            {/*{title}*/}
-            <StyledTitle>
-                Remove?
-            </StyledTitle>
-            {/*</StyledModalHeader>*/}
-            {/*<StyledContentModal>*/}
-            <ButtonContainer>
-                <Button onClick={() => auth.signOut()}>
-                    Cancel
-                </Button>
-                <Button onClick={() => auth.signOut()}>
-                    Delete
-                </Button>
-            </ButtonContainer>
-            {/*</StyledContentModal>*/}
-            {/*{btn}*/}
-        </StyledModalCard>
-    </StyledModalWrapper>
-);
+const Modal = () => {
+
+
+        return (
+            <StyledModalWrapper>
+                <StyledModalCard>
+                    {/*<StyledModalHeader>*/}
+                    {/*{title}*/}
+                    <StyledTitle>
+                        Remove?
+                    </StyledTitle>
+                    {/*</StyledModalHeader>*/}
+                    {/*<StyledContentModal>*/}
+                    <ButtonContainer>
+                        <Button onClick={() => auth.signOut()}>
+                            Cancel
+                        </Button>
+                        <Button onClick={() => auth.signOut()}>
+                            Delete
+                        </Button>
+                    </ButtonContainer>
+                    {/*</StyledContentModal>*/}
+                    {/*{btn}*/}
+                </StyledModalCard>
+            </StyledModalWrapper>
+        )
+    }
+
+;
 
 export default Modal

@@ -46,7 +46,7 @@ margin: 25px;
 
 const ShoppingListView = () => {
     const {shoppingList, generateShoppingList} = useContext(AppContext);
-    const [showAddShopModal, setShowAddShopModal] = useState(true);
+    const [showAddShopModal, addItemToShoppintList] = useState(true);
     useEffect(() => {
         generateShoppingList();
     }, []);
@@ -59,7 +59,7 @@ const ShoppingListView = () => {
 
     return (
         <MainTemplate>
-            {showAddShopModal && <AddShopModal/>}
+            {showAddShopModal && <AddShopModal addItemToShoppintList={addItemToShoppintList}/>}
             <Heading>
                 <FormattedMessage id="shopping list"/>
             </Heading>

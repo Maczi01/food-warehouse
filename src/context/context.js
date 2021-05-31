@@ -73,7 +73,12 @@ const AppProvider = ({children}) => {
         foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
         ));
-    }
+    };
+
+    const addItemToShoppintList = (newItem) => {
+        setShoppingList(...shoppingList, newItem);
+    };
+
 
     const context = {
         generateShoppingList,
