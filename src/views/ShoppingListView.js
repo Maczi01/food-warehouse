@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {AppContext} from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../asstets/img/bag.svg';
@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Table from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
 import MainTemplate from "../components/templates/MainTemplate";
+import Modal from "../components/molecules/Modal";
+import AddShopModal from "../components/organisms/AddShopModal";
 
 // const ListWrapper = styled.div`
 //       display: flex;
@@ -44,7 +46,7 @@ margin: 25px;
 
 const ShoppingListView = () => {
     const {shoppingList, generateShoppingList} = useContext(AppContext);
-    const [show]
+    const [showAddShopModal, setShowAddShopModal] = useState(true);
     useEffect(() => {
         generateShoppingList();
     }, []);
@@ -57,6 +59,7 @@ const ShoppingListView = () => {
 
     return (
         <MainTemplate>
+            {showAddShopModal && <AddShopModal/>}
             <Heading>
                 <FormattedMessage id="shopping list"/>
             </Heading>
