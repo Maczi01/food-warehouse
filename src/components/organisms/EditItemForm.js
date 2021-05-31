@@ -18,6 +18,7 @@ import StyledInput from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/item/ErrorText";
 import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
+import {properties} from "../../utills/itemProperties";
 
 const categories = ["baking", "pasta",
     "spieces", "vegetables and fruits",
@@ -97,7 +98,7 @@ const EditItemForm = ({item, editItem}) => {
                                     onBlur={handleBlur}
                                     errors={errors.category && touched.category}
                                 >
-                                    {categories.map((category) => (
+                                    {properties.categories.map((category) => (
                                             <FormattedMessage
                                                 id={category}
                                                 key={category}>
@@ -122,7 +123,7 @@ const EditItemForm = ({item, editItem}) => {
                                     placeholder=""
                                     errors={errors.category && touched.category}
                                 >
-                                    {units.map((unit) => (
+                                    {properties.units.map((unit) => (
                                         <FormattedMessage
                                             id={unit}
                                             key={unit}>
