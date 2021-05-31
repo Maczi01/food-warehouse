@@ -45,8 +45,8 @@ margin: 25px;
 `;
 
 const ShoppingListView = () => {
-    const {shoppingList, generateShoppingList} = useContext(AppContext);
-    const [showAddShopModal, addItemToShoppintList] = useState(true);
+    const {shoppingList, addItemToShoppintList, generateShoppingList} = useContext(AppContext);
+    const [showAddShopModal, setShowAddShopModal] = useState(false);
     useEffect(() => {
         generateShoppingList();
     }, []);
@@ -59,14 +59,16 @@ const ShoppingListView = () => {
 
     return (
         <MainTemplate>
-            {showAddShopModal && <AddShopModal addItemToShoppintList={addItemToShoppintList}/>}
+            {showAddShopModal && <AddShopModal
+                setShowAddShopModal={setShowAddShopModal}
+                addItemToShoppintList={addItemToShoppintList}/>}
             <Heading>
                 <FormattedMessage id="shopping list"/>
             </Heading>
             <Image src={bag} alt="shoping bag"/>
             {
                 shoppingList.length ?
-                    <Table data={shoppingList}/>
+                    <Table data={shoppingList} setShowAddShopModal={setShowAddShopModal}/>
                     :
                     <span>
                         <FormattedMessage id="empty list"/>

@@ -89,7 +89,7 @@ const ButtonContainer = styled.div`
 `
 
 
-const Table = ({data}) => {
+const Table = ({data, setShowAddShopModal}) => {
 
     const jsPdfGenerator = () => {
         const doc = new jsPDF('p', 'pt')
@@ -160,7 +160,7 @@ const Table = ({data}) => {
                 </StyledTable>
                 <ButtonContainer>
                     <ButtonIcon
-                        onClick={() => sendMail()}
+                        onClick={() => setShowAddShopModal(prev => !prev)}
                         icon={plus}
                     />
                     <ButtonIcon

@@ -37,7 +37,7 @@ const AppProvider = ({children}) => {
     };
 
     useEffect(() => {
-       const unSubscribe =  db.collection("foodList").onSnapshot(
+        const unSubscribe = db.collection("foodList").onSnapshot(
             (snapshot) => {
                 const foodListData = [];
                 snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
@@ -70,9 +70,9 @@ const AppProvider = ({children}) => {
     };
 
     const generateShoppingList = () => {
-        foodList.filter(item => (
+        setShoppingList(foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
-        ));
+        )));
     };
 
     const addItemToShoppintList = (newItem) => {

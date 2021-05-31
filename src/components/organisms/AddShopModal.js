@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import styled from "styled-components";
 import ItemForm from "./ItemForm";
+import ShopForm from "./ShopForm";
 
 const ModalWrapper = styled.div`
     padding: 70px 80px 50px;
@@ -17,9 +18,12 @@ const ModalWrapper = styled.div`
     border: 2px solid lawngreen;
 `
 
-const AddShopModal = ({addItemToShoppintList}) => (
+const AddShopModal = ({addItemToShoppintList, setShowAddShopModal}) => (
     <ModalWrapper>
-        <ItemForm/>
+        <ShopForm
+            addItemToShoppintList={addItemToShoppintList}
+            setShowAddShopModal={setShowAddShopModal}
+        />
     </ModalWrapper>
 );
 
