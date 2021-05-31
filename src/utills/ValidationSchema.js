@@ -19,9 +19,9 @@ export const ValidationSchema =
                 .max(Yup.ref("maximalQuantity"), "Minimal quantity must be lower than maximal!")
                 .required("Required"),
             maximalQuantity: Yup.number()
+                .min(Yup.ref("minimalQuantity"), "Maximal quantity must be greather than minimal!")
                 .positive("Only positive number!")
                 .max(10, "Less than 10!")
-                .min(Yup.ref("minimalQuantity"), "Maximal quantity must be greather than minimal!")
                 .required("Required"),
         }
     );

@@ -98,11 +98,12 @@ const EditItemForm = ({item, editItem}) => {
                                     errors={errors.category && touched.category}
                                 >
                                     {categories.map((category) => (
-                                        <FormattedMessage
-                                            id={category}
-                                            key={category}>
-                                            {(text) => <option value={category}>{text}</option>}
-                                        </FormattedMessage>)
+                                            <FormattedMessage
+                                                id={category}
+                                                key={category}>
+                                                {(text) => <option value={category}>{text}</option>}
+                                            </FormattedMessage>
+                                        )
                                     )}
                                 </StyledSelect>
                             </FormItem>
@@ -167,6 +168,7 @@ const EditItemForm = ({item, editItem}) => {
                             {errors.minimalQuantity && touched.minimalQuantity ?
                                 <ErrorText>{errors.minimalQuantity}</ErrorText> : null
                             }
+
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
