@@ -6,10 +6,15 @@ import {AuthContext} from "../../providers/Auth";
 import Menu from "./Menu";
 import Burger from "../atoms/Burger";
 import {FormattedMessage} from 'react-intl'
+import {auth} from "../../firebase/firebaseConfig";
+import ButtonIcon from "../atoms/ButtonIcon";
+import accept from "../../asstets/img/accept.svg";
+import ButtonContainer from "../atoms/item/ButtonContainer";
 
 const HeaderWrapper = styled.nav`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 70px;
   background-color: ${({theme}) => theme.colors.blue};
   margin-bottom: 20px;
@@ -17,6 +22,11 @@ const HeaderWrapper = styled.nav`
   @media (max-width: ${({theme}) => theme.mobile}) {
     display: none;
   }
+`;
+
+const LinksWrapper = styled.nav`
+    display: flex;
+    justify-content: space-between; 
 `
 
 const StyledLogoLink = styled(Link)`
@@ -62,13 +72,12 @@ const Header = () => {
 
     return (
         <>
-            {currentUser ?
-                <HamburgerContainer>
-                    <Burger open={open} setOpen={setOpen}/>
-                    <Menu open={open} setOpen={setOpen}/>
-                </HamburgerContainer> : null}
-            {currentUser ?
-                <HeaderWrapper>
+            <HamburgerContainer>
+                <Burger open={open} setOpen={setOpen}/>
+                <Menu open={open} setOpen={setOpen}/>
+            </HamburgerContainer>
+            <HeaderWrapper>
+                <LinksWrapper>
                     <StyledLogoLink to="/"/>
                     <List>
                         <ListItem as={NavLink} exact to="/" activeclass="active"><
@@ -84,7 +93,14 @@ const Header = () => {
                             <FormattedMessage id="settings"/>
                         </ListItem>
                     </List>
-                </HeaderWrapper> : null}
+                </LinksWrapper>
+
+                <ButtonIcon
+                    onClick={() => auth.signOut()}
+                    type="submit"
+                    icon={accept}
+                />
+            </HeaderWrapper>
         </>
     )
 };

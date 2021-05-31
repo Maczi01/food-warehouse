@@ -213,12 +213,6 @@ const SettingsCard = () => {
                                 <option value="off" label="off"/>
                             </StyledSelect>
                         </OptionsItem>
-                        <OptionsItem>
-                            <StyledLabel htmlFor="currentQuantity">
-                                <FormattedMessage id="add unit"/>
-                            </StyledLabel>
-                            <StyledInput/>
-                        </OptionsItem>
                     </OptionsWrapper>
                 </SettingsWrapper>
             </>)

@@ -14,6 +14,7 @@ export const AppContext = React.createContext();
 const AppProvider = ({children}) => {
 
     const [foodList, setFoodList] = useState([]);
+    const [shoppingList, setShoppingList] = useState([]);
     const [theme, setTheme] = useState(lightTheme);
     const [language, setLanguage] = useState(EN_language);
 
@@ -68,7 +69,15 @@ const AppProvider = ({children}) => {
         firebase.editItem(item);
     };
 
+    const generateShoppingList = () => {
+        foodList.filter(item => (
+            item.currentQuantity < item.minimalQuantity
+        ));
+    }
+
     const context = {
+        generateShoppingList,
+        shoppingList,
         foodList,
         language,
         increaseQuantity,

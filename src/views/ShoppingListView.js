@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {AppContext} from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../asstets/img/bag.svg';
@@ -43,10 +43,17 @@ margin: 25px;
 `;
 
 const ShoppingListView = () => {
-    const {foodList} = useContext(AppContext);
-    const shoppingList = foodList.filter(item => (
-        item.currentQuantity < item.minimalQuantity
-    ));
+    const {shoppingList, generateShoppingList} = useContext(AppContext);
+    const [show]
+    useEffect(() => {
+        generateShoppingList();
+    }, []);
+
+
+    //
+    // const shoppingList = foodList.filter(item => (
+    //     item.currentQuantity < item.minimalQuantity
+    // ));
 
     return (
         <MainTemplate>
