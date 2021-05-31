@@ -17,6 +17,7 @@ import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
 import {ValidationSchema} from "../../utills/ValidationSchema";
 import {properties} from "../../utills/itemProperties";
+import * as Yup from "yup";
 
 const ShopForm = ({addItemToShoppintList, setShowAddShopModal}) => {
 
@@ -57,7 +58,23 @@ const ShopForm = ({addItemToShoppintList, setShowAddShopModal}) => {
                         handleSubmitForm(values.name);
                         setSubmitting(false);
                     }}
-                    validationSchema={ValidationSchema}
+                    validationSchema={Yup.object({
+                            name: Yup.string()
+                                .min(2, "Too short, minimal 3 characters!")
+                                .max(30, "Too long, maximal 3 characters!!")
+                                .required("Name is required!"),
+                            unit: Yup.string()
+                                .required("Unit is required!"),
+                            currentQuantity: Yup.number()
+                                .positive("Only positive number!")
+                                .max(20, "Current quantity must be lower than maximal!")
+                                .required("Required")
+                        }
+                    )
+
+
+
+                    }
                     validateOnChange={false}
                     validateOnBlur={false}
                 >
