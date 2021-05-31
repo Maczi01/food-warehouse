@@ -14,7 +14,7 @@ const ModalWrapper = styled.div`
     background-color: white;
     box-shadow: 0 20px 40px -5px rgba(#1e58ff, .3);
     position: fixed;
-
+    border: 2px solid lawngreen;
 `
 
 const AddShopModal = () => (
