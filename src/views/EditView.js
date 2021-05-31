@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {AppContext} from "../context/context";
-import EditItemForm2 from "../components/organisms/EditItemForm2";
+import EditItemForm from "../components/organisms/EditItemForm";
 import MainTemplate from "../components/templates/MainTemplate";
 
 const EditView = ({match}) => {
@@ -10,7 +10,7 @@ const EditView = ({match}) => {
 
     return (
         <MainTemplate>
-            <EditItemForm2
+            <EditItemForm
                 item={item}
                 editItem={editItem}
             />

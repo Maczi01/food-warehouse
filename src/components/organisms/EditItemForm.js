@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Form, Formik} from 'formik';
@@ -9,163 +9,198 @@ import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
 import {db} from '../../firebase/firebaseConfig'
+import FormWrapper from "../atoms/item/FormWrapper";
+import Heading from "../atoms/item/Heading";
+import {ValidationSchema} from "../../utills/ValidationSchema";
+import FormItem from "../molecules/Item/FormItem";
+import StyledLabel from "../atoms/item/StyledLabel";
+import StyledInput from "../atoms/item/StyledInput";
+import ErrorText from "../atoms/item/ErrorText";
+import StyledSelect from "../atoms/item/StyledSelect";
+import ButtonContainer from "../atoms/item/ButtonContainer";
 
-const categories = ["Pieczywo", "Makaron, ryż, kasze",
-    "Produkty sypkie, przyprawy", "Warzywa i owoce",
-    "Mięso, ryby, owoce morza", "Nabiał", "Słodycze i przekąski", "Napoje"];
+const categories = ["baking", "pasta",
+    "spieces", "vegetables and fruits",
+    "meat and more", "dairy", "sweets", "beverages", "others"];
 
-const units = ["sztuka", "litr", "kilogram"]
+const units = ["piece", "liter", "kilogram"];
 
-class EditItemForm extends React.Component {
+const EditItemForm = ({item, editItem}) => {
 
-    state = {
-        id: this.props.item.id,
-        name: this.props.item.name,
-        category: this.props.item.category,
-        currentQuantity: this.props.item.currentQuantity,
-        minimalQuantity: this.props.item.minimalQuantity,
-        maximalQuantity: this.props.item.maximalQuantity,
-        unit: this.props.item.unit,
-    };
+        const [newItem, setNewItem] = useState(item)
 
-    notify = (name) => {
-        toast.success(`Succesfully edited ${name}`, {
-            position: toast.POSITION.TOP_CENTER
-        });
-    };
+        const handleInputChange = e => {
+            const {name, value} = e.target;
+            setNewItem({...newItem, [name]: value});
+        };
 
-    handleInputChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-    };
+        const handleSubmitForm = (name) => {
+            editItem(newItem);
+            notify(name)
+            setNewItem({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
+        };
 
-    handleSubmitForm = () => {
-        const {editItem} = this.props
-        editItem(this.state);
-    };
+        const notify = (name) => {
+            toast.success(`Succesfully edited ${name}`, {
+                position: toast.POSITION.TOP_CENTER
+            })
+        };
 
-    render() {
         return (
             <FormWrapper>
                 <Heading>
-                    <FormattedMessage id="edit product"/>
+                    <FormattedMessage id="add product"/>
                 </Heading>
                 <Formik
-                    initialValues={{
-                        name: '',
-                        category: '',
-                        unit: '',
-                        currentQuantity: 0,
-                        minimalQuantity: '',
-                        maximalQuantity: ''
+                    enableReinitialize
+                    initialValues={newItem}
+                    onSubmit={(values, {setSubmitting, resetForm}) => {
+                        //TODO: check submitting
+                        setSubmitting(true);
+                        handleSubmitForm(values.name);
+                        setSubmitting(false);
                     }}
-                    onSubmit={this.handleSubmitForm}>
-                    {() => (
-                        <Form autoComplete="off">
+                    validationSchema={ValidationSchema}
+                    validateOnChange={false}
+                    validateOnBlur={false}
+                >
+                    {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting, handleSubmit}) => (
+                        <Form
+                            autoComplete="off"
+                            onSubmit={handleSubmit}
+                        >
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
                                 <StyledInput
-                                    onChange={this.handleInputChange}
+                                    onChange={handleInputChange}
                                     name="name"
                                     type="text"
-                                    value={this.state.name}
-                                    placeholder=""/>
-                            </FormItem>
-                            <FormItem>
-                                <StyledLabel>
-                                    <FormattedMessage id="choose category"/>
-
-                                </StyledLabel>
-                                <Select
-                                    onChange={this.handleInputChange}
-                                    name="category"
-                                    value={this.state.category}
+                                    value={values.name}
                                     placeholder=""
-                                >
-                                    <option label="Choose category..." value="Choose category"/>
-                                    <option label="pasta, rice, groats" value="pasta, rice, groats"/>
-                                    <option label="loose products, spieces" value="loose products, spieces"/>
-                                    <option label="baking" value="baking"/>
-                                    <option label="vegetables and fruits" value="vegetables and fruits"/>
-                                    <option label="meat, fiches, seafood" value="meat, fishes, seafood"/>
-                                    <option label="dairy" value="dairy"/>
-                                    <option label="sweets and snacks" value="sweets and snacks"/>
-                                    <option label="bevegares" value="bevegares"/>
-                                    <option label="others" value="others"/>
-                                </Select>
+                                    errors={errors.name && touched.name}
+                                />
                             </FormItem>
+                            {errors.name && touched.name ?
+                                <ErrorText>{errors.name}</ErrorText> : null
+                            }
                             <FormItem>
-                                <StyledLabel htmlFor="currentQuantity">
+                                <StyledLabel htmlFor="category">
+                                    <FormattedMessage id="choose category"/>
+                                </StyledLabel>
+                                <StyledSelect
+                                    onChange={handleInputChange}
+                                    name="category"
+                                    /*TODO check default value*/
+                                    value={values.category}
+                                    onBlur={handleBlur}
+                                    errors={errors.category && touched.category}
+                                >
+                                    {categories.map((category) => (
+                                        <FormattedMessage
+                                            id={category}
+                                            key={category}>
+                                            {(text) => <option value={category}>{text}</option>}
+                                        </FormattedMessage>)
+                                    )}
+                                </StyledSelect>
+                            </FormItem>
+                            {errors.category && touched.category ?
+                                <ErrorText>{errors.category}</ErrorText> : null
+                            }
+                            <FormItem>
+                                <StyledLabel htmlFor="unit">
                                     <FormattedMessage id="choose unit"/>
                                 </StyledLabel>
-                                <Select
-                                    onChange={this.handleInputChange}
+                                <StyledSelect
+                                    onChange={handleInputChange}
                                     name="unit"
-                                    value={this.state.unit}
+                                    onBlur={handleBlur}
+                                    value={values.unit}
                                     placeholder=""
+                                    errors={errors.category && touched.category}
                                 >
-                                    <option value="Wybierz jednostkę..." label="Choose unit..."/>
-                                    <option value="Sztuka" label="Piece"/>
-                                    <option value="Litr" label="Liter"/>
-                                    <option value="Kilogram" label="Kilogram"/>
-                                </Select>
+                                    {units.map((unit) => (
+                                        <FormattedMessage
+                                            id={unit}
+                                            key={unit}>
+                                            {(text) => <option value={text}>{unit}</option>}
+                                        </FormattedMessage>)
+                                    )}
+                                </StyledSelect>
                             </FormItem>
+                            {errors.unit && touched.unit ?
+                                <ErrorText>{errors.unit}</ErrorText> : null
+                            }
+
                             <FormItem>
-                                <StyledLabel htmlFor="currentQuantity">
-                                    <FormattedMessage id="current quantity"/>
+                                <StyledLabel htmlFor="maximalQuantity">
+                                    <FormattedMessage id="maximal quantity"/>
                                 </StyledLabel>
                                 <StyledInput
-                                    onChange={this.handleInputChange}
-                                    name="currentQuantity"
+                                    onChange={handleInputChange}
+                                    name="maximalQuantity"
                                     type="number"
-                                    value={this.state.currentQuantity}
-                                    placeholder=""/>
+                                    value={values.maximalQuantity}
+                                    placeholder=""
+                                    errors={errors.maximalQuantity && touched.maximalQuantity}
+                                />
                             </FormItem>
+                            {errors.maximalQuantity && touched.maximalQuantity ?
+                                <ErrorText>{errors.maximalQuantity}</ErrorText> : null
+                            }
+
                             <FormItem>
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
                                 </StyledLabel>
                                 <StyledInput
-                                    onChange={this.handleInputChange}
+                                    onChange={handleInputChange}
                                     name="minimalQuantity"
                                     type="number"
-                                    value={this.state.minimalQuantity}
-                                    placeholder=""/>
+                                    value={values.minimalQuantity}
+                                    placeholder=""
+                                    errors={errors.minimalQuantity && touched.minimalQuantity}
+                                />
                             </FormItem>
+                            {errors.minimalQuantity && touched.minimalQuantity ?
+                                <ErrorText>{errors.minimalQuantity}</ErrorText> : null
+                            }
                             <FormItem>
-                                <StyledLabel>
-                                    <FormattedMessage id="maximal quanitity"/>
+                                <StyledLabel htmlFor="currentQuantity">
+                                    <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
                                 <StyledInput
-                                    onChange={this.handleInputChange}
-                                    name="maximalQuantity"
+                                    onChange={handleInputChange}
+                                    name="currentQuantity"
                                     type="number"
-                                    value={this.state.maximalQuantity}
-                                    placeholder=""/>
+                                    value={values.currentQuantity}
+                                    placeholder=""
+                                    errors={errors.currentQuantity && touched.currentQuantity}
+                                />
                             </FormItem>
+                            {errors.currentQuantity && touched.currentQuantity ?
+                                <ErrorText>{errors.currentQuantity}</ErrorText> : null
+                            }
                             <ButtonContainer>
-                                <Link to="/register">
+                                <Link to="/">
                                     <ButtonIcon
                                         icon={decline}
                                     />
                                 </Link>
                                 <ButtonIcon
-                                    onClick={() => this.notify(this.state.name)}
                                     type="submit"
                                     icon={accept}
                                 />
                             </ButtonContainer>
-                            <ToastContainer autoClose={1400}/>
+                            <ToastContainer autoClose={2500}/>
                         </Form>
                     )}
                 </Formik>
             </FormWrapper>
         )
     }
-}
 ;
 
 
