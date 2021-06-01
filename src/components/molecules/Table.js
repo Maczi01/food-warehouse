@@ -158,24 +158,7 @@ const Table = ({data, setShowAddShopModal}) => {
                     ))}
                     </tbody>
                 </StyledTable>
-                <ButtonContainer>
-                    <ButtonIcon
-                        onClick={() => setShowAddShopModal(prev => !prev)}
-                        icon={plus}
-                    />
-                    <ButtonIcon
-                        onClick={() => {
-                            jsPdfGenerator();
-                            notify()
-                        }}
-                        icon={pdf}
-                    />
-                    <ButtonIcon
-                        onClick={() => sendMail()}
-                        icon={sms}
-                    />
-                </ButtonContainer>
-                <ToastContainer autoClose={1400}/>
+
             </TableWrapper>
         </>
     )
