@@ -8,6 +8,7 @@ import {IntlProvider} from "react-intl";
 import GlobalStyle from "../theme/GlobalStyle";
 import {firebase} from "../firebase/firebaseApi";
 import {EN_language, PL_language} from "../utills/language";
+import {v4 as uuidv4} from 'uuid';
 
 export const AppContext = React.createContext();
 
@@ -76,6 +77,7 @@ const AppProvider = ({children}) => {
     };
 
     const addItemToShoppintList = (newItem) => {
+        shoppingList.push(newItem);
         setShoppingList(...shoppingList, newItem);
     };
 
@@ -85,6 +87,7 @@ const AppProvider = ({children}) => {
         shoppingList,
         foodList,
         language,
+        addItemToShoppintList,
         increaseQuantity,
         decreaseQuantity,
         deleteItem,

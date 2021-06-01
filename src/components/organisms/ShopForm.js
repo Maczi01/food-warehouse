@@ -71,9 +71,6 @@ const ShopForm = ({addItemToShoppintList, setShowAddShopModal}) => {
                                 .required("Required")
                         }
                     )
-
-
-
                     }
                     validateOnChange={false}
                     validateOnBlur={false}
