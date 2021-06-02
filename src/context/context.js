@@ -55,7 +55,7 @@ const AppProvider = ({children}) => {
                 const list = [];
                 snapshot.forEach(doc => list.push({
                     ...doc.data(),
-                    currentQuantity: parseInt(doc.currentQuantity),
+                    // currentQuantity: parseInt(doc.currentQuantity),
                     id: doc.id
                 }));
                 // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
@@ -86,18 +86,10 @@ const AppProvider = ({children}) => {
     };
 
     const generateShoppingList = () => {
-        let lista = [];
-        lista = foodList.filter(item => (
+        foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
         )).forEach(item => addItemToShoppingList(item)
         )
-        //     .map(item => {
-        //     delete item.minimalQuantity;
-        //     delete item.maximalQuantity;
-        //     delete item.category;
-        // });
-        // setShoppingList(...shoppingList, list)
-        // setShoppingList(shoppingList.concat(lista));
     };
 
     const addItemToShoppingList = (newItem) => {
