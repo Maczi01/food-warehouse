@@ -89,13 +89,15 @@ const AppProvider = ({children}) => {
         let lista = [];
         lista = foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
-        )).map(item => {
-            delete item.minimalQuantity;
-            delete item.maximalQuantity;
-            delete item.category;
-        });
+        )).forEach(item => addItemToShoppingList(item)
+        )
+        //     .map(item => {
+        //     delete item.minimalQuantity;
+        //     delete item.maximalQuantity;
+        //     delete item.category;
+        // });
         // setShoppingList(...shoppingList, list)
-        shoppingList.concat(lista   );
+        // setShoppingList(shoppingList.concat(lista));
     };
 
     const addItemToShoppingList = (newItem) => {

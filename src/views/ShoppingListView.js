@@ -102,7 +102,7 @@ const ShoppingListView = () => {
                         icon={pdf}
                     />
                     <ButtonIcon
-                        onClick={() => generateShoppingList()}
+                        onClick={generateShoppingList}
                         icon={sms}
                     />
                 </ButtonContainer>
