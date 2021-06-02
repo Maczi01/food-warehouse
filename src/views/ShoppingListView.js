@@ -60,9 +60,9 @@ const Image = styled.img`
 const ShoppingListView = () => {
     const {shoppingList, addItemToShoppingList, generateShoppingList} = useContext(AppContext);
     const [showAddShopModal, setShowAddShopModal] = useState(false);
-    useEffect(() => {
-        generateShoppingList();
-    }, []);
+    // useEffect(() => {
+    //     generateShoppingList();
+    // }, []);
 
 
     //
@@ -102,7 +102,7 @@ const ShoppingListView = () => {
                         icon={pdf}
                     />
                     <ButtonIcon
-                        // onClick={() => sendMail()}
+                        onClick={() => generateShoppingList()}
                         icon={sms}
                     />
                 </ButtonContainer>

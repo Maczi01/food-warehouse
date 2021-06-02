@@ -53,9 +53,13 @@ const AppProvider = ({children}) => {
         const unSubscribe = db.collection("shoppingList").onSnapshot(
             (snapshot) => {
                 const list = [];
-                snapshot.forEach(doc => list.push({...doc.data(), id: doc.id}));
+                snapshot.forEach(doc => list.push({
+                    ...doc.data(),
+                    currentQuantity: parseInt(doc.currentQuantity),
+                    id: doc.id
+                }));
                 // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
-                setFoodList(list)
+                setShoppingList(list)
             }
         );
         return unSubscribe;
@@ -82,9 +86,16 @@ const AppProvider = ({children}) => {
     };
 
     const generateShoppingList = () => {
-        setShoppingList(foodList.filter(item => (
+        let lista = [];
+        lista = foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
-        )));
+        )).map(item => {
+            delete item.minimalQuantity;
+            delete item.maximalQuantity;
+            delete item.category;
+        });
+        // setShoppingList(...shoppingList, list)
+        shoppingList.concat(lista   );
     };
 
     const addItemToShoppingList = (newItem) => {
