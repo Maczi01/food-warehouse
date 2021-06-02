@@ -58,7 +58,7 @@ const Image = styled.img`
 `;
 
 const ShoppingListView = () => {
-    const {shoppingList, addItemToShoppintList, generateShoppingList} = useContext(AppContext);
+    const {shoppingList, addItemToShoppingList, generateShoppingList} = useContext(AppContext);
     const [showAddShopModal, setShowAddShopModal] = useState(false);
     useEffect(() => {
         generateShoppingList();
@@ -74,7 +74,7 @@ const ShoppingListView = () => {
         <MainTemplate>
             {showAddShopModal && <AddShopModal
                 setShowAddShopModal={setShowAddShopModal}
-                addItemToShoppintList={addItemToShoppintList}/>}
+                addItemToShoppingList={addItemToShoppingList}/>}
             <Heading>
                 <FormattedMessage id="shopping list"/>
             </Heading>

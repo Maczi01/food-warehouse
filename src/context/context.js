@@ -76,7 +76,7 @@ const AppProvider = ({children}) => {
         )));
     };
 
-    const addItemToShoppintList = (newItem) => {
+    const addItemToShoppingList = (newItem) => {
         shoppingList.push(newItem);
         setShoppingList(...shoppingList, newItem);
     };
@@ -87,7 +87,7 @@ const AppProvider = ({children}) => {
         shoppingList,
         foodList,
         language,
-        addItemToShoppintList,
+        addItemToShoppingList,
         increaseQuantity,
         decreaseQuantity,
         deleteItem,

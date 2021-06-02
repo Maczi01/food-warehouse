@@ -18,10 +18,10 @@ const ModalWrapper = styled.div`
     border: 2px solid lawngreen;
 `
 
-const AddShopModal = ({addItemToShoppintList, setShowAddShopModal}) => (
+const AddShopModal = ({addItemToShoppingList, setShowAddShopModal}) => (
     <ModalWrapper>
         <ShopForm
-            addItemToShoppintList={addItemToShoppintList}
+            addItemToShoppingList={addItemToShoppingList}
             setShowAddShopModal={setShowAddShopModal}
         />
     </ModalWrapper>

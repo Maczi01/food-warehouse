@@ -19,7 +19,7 @@ import {ValidationSchema} from "../../utills/ValidationSchema";
 import {properties} from "../../utills/itemProperties";
 import * as Yup from "yup";
 
-const ShopForm = ({addItemToShoppintList, setShowAddShopModal}) => {
+const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
 
         const [item, setItem] = useState({
             name: "",
@@ -33,7 +33,7 @@ const ShopForm = ({addItemToShoppintList, setShowAddShopModal}) => {
         };
 
         const handleSubmitForm = (name) => {
-            addItemToShoppintList(item);
+            addItemToShoppingList(item);
             notify(name)
             setItem({name: "", unit: "", currentQuantity: 0})
         };
