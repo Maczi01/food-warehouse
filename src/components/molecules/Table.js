@@ -14,6 +14,8 @@ import jsPDF from "jspdf"
 import autoTable from "jspdf-autotable";
 import {toast, ToastContainer} from "react-toastify";
 import {Form} from "formik";
+import remove from "../../asstets/img/remove.svg";
+
 
 const templateParams = {
     name: 'James',
@@ -86,10 +88,22 @@ const ButtonContainer = styled.div`
       margin: 20px 20px 20px 0;
       display: flex;
       justify-content: flex-end;
+`;
+
+const StyledButton = styled.img`
+    margin: 0 30px;
+    margin-bottom: 20px;
+    height: 40px;
+    width: 40px;
+    justify-content: space-around;
+    @media (max-width: ${({theme}) => theme.mobile}) {
+        height: 30px;
+        width: auto;
+    }
 `
 
 
-const Table = ({data, setShowAddShopModal}) => {
+const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
 
     const jsPdfGenerator = () => {
         const doc = new jsPDF('p', 'pt')
@@ -154,6 +168,10 @@ const Table = ({data, setShowAddShopModal}) => {
                             <td>{item.name}</td>
                             <td>{item.maximalQuantity - item.currentQuantity}</td>
                             <td>{item.unit}</td>
+                            <td>
+                                <StyledButton src={remove} onClick={() => deleteFromShoppingList(item.id)}/>
+
+                            </td>
                         </tr>
                     ))}
                     </tbody>

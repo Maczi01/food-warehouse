@@ -58,7 +58,7 @@ const Image = styled.img`
 `;
 
 const ShoppingListView = () => {
-    const {shoppingList, addItemToShoppingList, generateShoppingList} = useContext(AppContext);
+    const {shoppingList, addItemToShoppingList, generateShoppingList,deleteFromShoppingList} = useContext(AppContext);
     const [showAddShopModal, setShowAddShopModal] = useState(false);
     // useEffect(() => {
     //     generateShoppingList();
@@ -82,7 +82,11 @@ const ShoppingListView = () => {
                 <Image src={bag} alt="shoping bag"/>
                 {
                     shoppingList.length ?
-                        <Table data={shoppingList} setShowAddShopModal={setShowAddShopModal}/>
+                        <Table
+                            data={shoppingList}
+                            setShowAddShopModal={setShowAddShopModal}
+                            deleteFromShoppingList={deleteFromShoppingList}
+                        />
                         :
                         <span>
                         <FormattedMessage id="empty list"/>

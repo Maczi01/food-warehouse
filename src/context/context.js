@@ -85,11 +85,29 @@ const AppProvider = ({children}) => {
         firebase.editItem(item);
     };
 
+
+    const deleteFromShoppingList = (id) => {
+        db.collection("shoppingList").doc(id).delete();
+    };
+
     const generateShoppingList = () => {
-        foodList.filter(item => (
+        let list = [];
+        list = foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
-        )).forEach(item => addItemToShoppingList(item)
-        )
+        ));
+        list.filter(item => {
+            list.indexOf(item > 0)
+            {
+                addItemToShoppingList(item)
+            }
+        })
+        //     .filter(item => {
+        //     item.id
+        //     item.id.
+        // })
+        //
+        // forEach(item => addItemToShoppingList(item)
+        // )
     };
 
     const addItemToShoppingList = (newItem) => {
@@ -102,6 +120,7 @@ const AppProvider = ({children}) => {
         shoppingList,
         foodList,
         language,
+        deleteFromShoppingList,
         addItemToShoppingList,
         increaseQuantity,
         decreaseQuantity,
