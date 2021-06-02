@@ -95,9 +95,10 @@ const AppProvider = ({children}) => {
         list = foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
         ));
-        list.filter(item => {
-            list.indexOf(item > 0)
-            {
+
+        list.forEach(item => {
+            const index = list.indexOf(item);
+            if (index > 0) {
                 addItemToShoppingList(item)
             }
         })

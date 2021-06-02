@@ -101,6 +101,20 @@ const StyledButton = styled.img`
         width: auto;
     }
 `
+const Tr = styled.tr`
+    animation: appear 0.3s ease;
+    position: relative;
+    @keyframes appear {
+      0% {
+        opacity: 0;
+        top: 30px;
+    }
+      100% {
+        opacity: 1;
+        top: 0;
+    }
+
+`
 
 
 const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
@@ -159,24 +173,25 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                         <th>
                             <FormattedMessage id="unit"/>
                         </th>
+                        <th>
+                           Action
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     {data.map((item, index) => (
-                        <tr key={item.id}>
+                        <Tr key={item.id}>
                             <td>{index + 1}</td>
                             <td>{item.name}</td>
                             <td>{item.maximalQuantity - item.currentQuantity}</td>
                             <td>{item.unit}</td>
                             <td>
                                 <StyledButton src={remove} onClick={() => deleteFromShoppingList(item.id)}/>
-
                             </td>
-                        </tr>
+                        </Tr>
                     ))}
                     </tbody>
                 </StyledTable>
-
             </TableWrapper>
         </>
     )
