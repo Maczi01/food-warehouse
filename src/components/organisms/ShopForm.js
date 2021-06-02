@@ -147,7 +147,6 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                     icon={accept}
                                 />
                             </ButtonContainer>
-                            <ToastContainer autoClose={2500}/>
                         </Form>
                     )}
                 </Formik>

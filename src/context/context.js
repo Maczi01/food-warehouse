@@ -49,6 +49,17 @@ const AppProvider = ({children}) => {
         return unSubscribe;
     }, []);
 
+    useEffect(() => {
+        const unSubscribe = db.collection("shoppingList").onSnapshot(
+            (snapshot) => {
+                const list = [];
+                snapshot.forEach(doc => list.push({...doc.data(), id: doc.id}));
+                // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
+                setFoodList(list)
+            }
+        );
+        return unSubscribe;
+    }, []);
 
     const increaseQuantity = (item) => {
         firebase.increaseQuantity(item);
@@ -77,10 +88,9 @@ const AppProvider = ({children}) => {
     };
 
     const addItemToShoppingList = (newItem) => {
-        shoppingList.push(newItem);
-        setShoppingList(...shoppingList, newItem);
+        newItem.id = uuidv4();
+        db.collection("shoppingList").add(newItem);
     };
-
 
     const context = {
         generateShoppingList,
