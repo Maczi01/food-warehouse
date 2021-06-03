@@ -96,19 +96,36 @@ const AppProvider = ({children}) => {
             item.currentQuantity < item.minimalQuantity
         ));
 
-        list.forEach(item => {
-            const index = list.indexOf(item);
-            if (index > 0) {
-                addItemToShoppingList(item)
+        list.forEach(item=> {
+
+            for(const shop in shoppingList){
+                if(shop.name !== item.name){
+                    addItemToShoppingList(item)
+
+                }
             }
+
+            // if(shoppingList.indexOf(item.name) > 0){
+            //     addItemToShoppingList(item)
+            // }
         })
-        //     .filter(item => {
-        //     item.id
-        //     item.id.
+
+
+        // list.forEach(item => {
+        //     if (!shoppingList.includes(item.name)){
+        //         addItemToShoppingList(item)
+        //     }
         // })
+
+        // list.filter(item => list.includes(item.name) ? null : addItemToShoppingList(item) )
+
+        // list.forEach(item => {
         //
-        // forEach(item => addItemToShoppingList(item)
-        // )
+        //     const index = list.indexOf(item);
+        //     if (index > 0) {
+        //         addItemToShoppingList(item)
+        //     }
+        // })
     };
 
     const addItemToShoppingList = (newItem) => {
