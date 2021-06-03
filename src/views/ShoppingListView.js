@@ -13,6 +13,7 @@ import plus from "../asstets/img/plus.svg";
 import pdf from "../asstets/img/pdf.svg";
 import sms from "../asstets/img/sms.svg";
 import {ToastContainer} from "react-toastify";
+import { Droppable } from 'react-beautiful-dnd';
 
 const TableWrapper = styled.div`
       display: flex;
@@ -58,7 +59,7 @@ const Image = styled.img`
 `;
 
 const ShoppingListView = () => {
-    const {shoppingList, addItemToShoppingList, generateShoppingList,deleteFromShoppingList} = useContext(AppContext);
+    const {shoppingList, addItemToShoppingList, generateShoppingList, deleteFromShoppingList} = useContext(AppContext);
     const [showAddShopModal, setShowAddShopModal] = useState(false);
     // useEffect(() => {
     //     generateShoppingList();
@@ -78,20 +79,10 @@ const ShoppingListView = () => {
             <Heading>
                 <FormattedMessage id="shopping list"/>
             </Heading>
+
+
             <TableWrapper>
                 <Image src={bag} alt="shoping bag"/>
-                {
-                    shoppingList.length ?
-                        <Table
-                            data={shoppingList}
-                            setShowAddShopModal={setShowAddShopModal}
-                            deleteFromShoppingList={deleteFromShoppingList}
-                        />
-                        :
-                        <span>
-                        <FormattedMessage id="empty list"/>
-                    </span>
-                }
 
                 <ButtonContainer>
                     <ButtonIcon
@@ -110,6 +101,28 @@ const ShoppingListView = () => {
                         icon={sms}
                     />
                 </ButtonContainer>
+
+                {
+                    shoppingList.length ?
+
+                        <Droppable droppableId={1}>
+
+                        {provided => (
+                                <Table
+                                    innerRef={provided.innerRef} {...provided.droppableProps}
+                                    data={shoppingList}
+                                    setShowAddShopModal={setShowAddShopModal}
+                                    deleteFromShoppingList={deleteFromShoppingList}
+                                />)
+                            }
+                        </Droppable>
+                        :
+                        <span>
+                        <FormattedMessage id="empty list"/>
+                    </span>
+                }
+
+
                 <ToastContainer autoClose={1400}/>
             </TableWrapper>
         </MainTemplate>

@@ -16,7 +16,10 @@ import {toast, ToastContainer} from "react-toastify";
 import {Form} from "formik";
 import remove from "../../asstets/img/remove.svg";
 import removeFromShoppingList from "../../asstets/img/removeFromShoppingList.svg";
-import { DragDropContext } from 'react-beautiful-dnd';
+import {DragDropContext} from 'react-beautiful-dnd';
+import {Droppable} from 'react-beautiful-dnd';
+import {Draggable} from 'react-beautiful-dnd';
+import StyledTr from "../atoms/StyledTr";
 
 
 const templateParams = {
@@ -152,9 +155,13 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
         });
     };
 
+    const onDragEnd = () => {
+        console.log("koniec")
+    }
+
 
     return (
-        <DragDropContext>
+        <DragDropContext onDragEnd={onDragEnd}>
             <TableWrapper>
                 <StyledTable>
                     <colgroup>
@@ -175,21 +182,17 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                             <FormattedMessage id="unit"/>
                         </th>
                         <th>
-                           Action
+                            Action
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     {data.map((item, index) => (
-                        <Tr key={item.id}>
-                            <td>{index + 1}</td>
-                            <td>{item.name}</td>
-                            <td>{item.maximalQuantity - item.currentQuantity}</td>
-                            <td>{item.unit}</td>
-                            <td>
-                                <StyledButton src={removeFromShoppingList} onClick={() => deleteFromShoppingList(item.id)}/>
-                            </td>
-                        </Tr>
+                        <StyledTr
+                            item={item}
+                            index={index}
+                            deleteFromShoppingList={deleteFromShoppingList}
+                        />
                     ))}
                     </tbody>
                 </StyledTable>
