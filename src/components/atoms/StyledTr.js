@@ -17,25 +17,38 @@ const StyledTrWrapper = styled.tr`
         top: 0;
     }
 
-`
-const StyledTr = ({item, index, deleteFromShoppingList}) => (
-    <Draggable draggableId={item.id} index={index}>
-        <StyledTrWrapper key={item.id}
-                         {...provided.draggableProps}
-                         {...provided.dragHandleProps}
-                         innerRef={provided.innerRef}
+`;
 
-        >
-            <td>{index + 1}</td>
-            <td>{item.name}</td>
-            <td>{item.maximalQuantity - item.currentQuantity}</td>
-            <td>{item.unit}</td>
-            <td>
-                <StyledButton src={removeFromShoppingList}
-                              onClick={() => deleteFromShoppingList(item.id)}/>
-            </td>
-        </StyledTrWrapper>
-    </Draggable>
+const StyledButton = styled.img`
+    margin: 0 30px;
+    height: 20px;
+    width: 20px;
+    justify-content: space-around;
+    @media (max-width: ${({theme}) => theme.mobile}) {
+        height: 20px;
+        width: auto;
+    }
+`;
+
+const StyledTr = ({item, index, deleteFromShoppingList}) => (
+    /*<Draggable draggableId={item.id} index={index}>*/
+    // {provided => (
+    <StyledTrWrapper key={item.id}
+        /*{...provided.dragHandleProps}*/
+        /*{...provided.draggableProps}*/
+        // innerRef={provided.innerRef}
+    >
+        <td>{index + 1}</td>
+        <td>{item.name}</td>
+        <td>{item.maximalQuantity - item.currentQuantity}</td>
+        <td>{item.unit}</td>
+        <td>
+            <StyledButton src={removeFromShoppingList}
+                          onClick={() => deleteFromShoppingList(item.id)}/>
+        </td>
+    </StyledTrWrapper>
+    // )}
+    // </Draggable>
 )
 
 

@@ -105,17 +105,17 @@ const ShoppingListView = () => {
                 {
                     shoppingList.length ?
 
-                        <Droppable droppableId={1}>
+                        /*<Droppable droppableId={1}>*/
 
-                        {provided => (
+                        // {provided => (
                                 <Table
-                                    innerRef={provided.innerRef} {...provided.droppableProps}
+                                    // innerRef={provided.innerRef} {...provided.droppableProps}
                                     data={shoppingList}
                                     setShowAddShopModal={setShowAddShopModal}
                                     deleteFromShoppingList={deleteFromShoppingList}
-                                />)
-                            }
-                        </Droppable>
+                                />
+                            // }
+                        /*</Droppable>*/
                         :
                         <span>
                         <FormattedMessage id="empty list"/>

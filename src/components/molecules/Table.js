@@ -16,11 +16,8 @@ import {toast, ToastContainer} from "react-toastify";
 import {Form} from "formik";
 import remove from "../../asstets/img/remove.svg";
 import removeFromShoppingList from "../../asstets/img/removeFromShoppingList.svg";
-import {DragDropContext} from 'react-beautiful-dnd';
-import {Droppable} from 'react-beautiful-dnd';
-import {Draggable} from 'react-beautiful-dnd';
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import StyledTr from "../atoms/StyledTr";
-
 
 const templateParams = {
     name: 'James',
@@ -95,31 +92,6 @@ const ButtonContainer = styled.div`
       justify-content: flex-end;
 `;
 
-const StyledButton = styled.img`
-    margin: 0 30px;
-    height: 20px;
-    width: 20px;
-    justify-content: space-around;
-    @media (max-width: ${({theme}) => theme.mobile}) {
-        height: 20px;
-        width: auto;
-    }
-`
-const Tr = styled.tr`
-    animation: appear 0.3s ease;
-    position: relative;
-    @keyframes appear {
-      0% {
-        opacity: 0;
-        top: 30px;
-    }
-      100% {
-        opacity: 1;
-        top: 0;
-    }
-
-`
-
 
 const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
 
@@ -161,7 +133,8 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
 
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
+        // /*<DragDropContext onDragEnd={onDragEnd}>*/
+        <DragDropContext>
             <TableWrapper>
                 <StyledTable>
                     <colgroup>
@@ -186,18 +159,43 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {data.map((item, index) => (
-                        <StyledTr
-                            item={item}
-                            index={index}
-                            deleteFromShoppingList={deleteFromShoppingList}
-                        />
-                    ))}
-                    </tbody>
+
+                    {/*<Droppable droppableId={1}>*/}
+                    {/*    {provided => (*/}
+                    {/*<tbody  innerRef={provided.innerRef} {...provided.droppableProps}>*/}
+                    <Droppable droppableId="items">
+
+                        {(provided) => (
+                            <tbody {...provided.droppableProps} ref={provided.innerRef}>
+
+                            {data.map((item, index) => (
+                                <Draggable
+                                    key={item.id}
+                                    draggableId={item.id}
+                                    index={index}
+                                >
+                                    {(provided)=> (
+                                        <StyledTr
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            ref={provided.innerRef}
+                                            item={item}
+                                            index={index}
+                                            deleteFromShoppingList={deleteFromShoppingList}
+                                        />
+                                    )}
+                                </Draggable>
+                            ))}
+
+                            </tbody>
+                        )}
+                    </Droppable>
+
+                    {/*</Droppable>*/}
                 </StyledTable>
             </TableWrapper>
         </DragDropContext>
+        /*</DragDropContext>*/
     )
 }
 
