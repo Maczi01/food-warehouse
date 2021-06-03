@@ -96,36 +96,9 @@ const AppProvider = ({children}) => {
             item.currentQuantity < item.minimalQuantity
         ));
 
-        list.forEach(item=> {
+        let filtered = list.filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1);
+        filtered.forEach(item => addItemToShoppingList(item));
 
-            for(const shop in shoppingList){
-                if(shop.name !== item.name){
-                    addItemToShoppingList(item)
-
-                }
-            }
-
-            // if(shoppingList.indexOf(item.name) > 0){
-            //     addItemToShoppingList(item)
-            // }
-        })
-
-
-        // list.forEach(item => {
-        //     if (!shoppingList.includes(item.name)){
-        //         addItemToShoppingList(item)
-        //     }
-        // })
-
-        // list.filter(item => list.includes(item.name) ? null : addItemToShoppingList(item) )
-
-        // list.forEach(item => {
-        //
-        //     const index = list.indexOf(item);
-        //     if (index > 0) {
-        //         addItemToShoppingList(item)
-        //     }
-        // })
     };
 
     const addItemToShoppingList = (newItem) => {

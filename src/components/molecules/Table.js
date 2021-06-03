@@ -15,6 +15,8 @@ import autoTable from "jspdf-autotable";
 import {toast, ToastContainer} from "react-toastify";
 import {Form} from "formik";
 import remove from "../../asstets/img/remove.svg";
+import removeFromShoppingList from "../../asstets/img/removeFromShoppingList.svg";
+import { DragDropContext } from 'react-beautiful-dnd';
 
 
 const templateParams = {
@@ -92,12 +94,11 @@ const ButtonContainer = styled.div`
 
 const StyledButton = styled.img`
     margin: 0 30px;
-    margin-bottom: 20px;
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 20px;
     justify-content: space-around;
     @media (max-width: ${({theme}) => theme.mobile}) {
-        height: 30px;
+        height: 20px;
         width: auto;
     }
 `
@@ -153,7 +154,7 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
 
 
     return (
-        <>
+        <DragDropContext>
             <TableWrapper>
                 <StyledTable>
                     <colgroup>
@@ -186,14 +187,14 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                             <td>{item.maximalQuantity - item.currentQuantity}</td>
                             <td>{item.unit}</td>
                             <td>
-                                <StyledButton src={remove} onClick={() => deleteFromShoppingList(item.id)}/>
+                                <StyledButton src={removeFromShoppingList} onClick={() => deleteFromShoppingList(item.id)}/>
                             </td>
                         </Tr>
                     ))}
                     </tbody>
                 </StyledTable>
             </TableWrapper>
-        </>
+        </DragDropContext>
     )
 }
 
