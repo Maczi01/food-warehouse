@@ -1,22 +1,11 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import ButtonIcon from "../atoms/ButtonIcon";
-import pdf from "../../asstets/img/pdf.svg";
-import pdf__inactive from "../../asstets/img/pdf__inactive.svg";
-import sms from "../../asstets/img/sms.svg";
-import plus from "../../asstets/img/plus.svg";
 import emailjs from 'emailjs-com';
 import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
-import Menu from "./Menu";
-import {Doc} from "./Doc";
 import jsPDF from "jspdf"
-import autoTable from "jspdf-autotable";
-import {toast, ToastContainer} from "react-toastify";
-import {Form} from "formik";
-import remove from "../../asstets/img/remove.svg";
-import removeFromShoppingList from "../../asstets/img/removeFromShoppingList.svg";
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import {toast} from "react-toastify";
+import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import StyledTr from "../atoms/StyledTr";
 
 const templateParams = {
