@@ -43,9 +43,14 @@ const StyledTr = ({item, index, deleteFromShoppingList}) => (
                 <td>{item.maximalQuantity - item.currentQuantity}</td>
                 <td>{item.unit}</td>
                 <td>
+                    <input type="checkbox"/>
+                </td>
+
+                <td>
                     <StyledButton src={removeFromShoppingList}
                                   onClick={() => deleteFromShoppingList(item.id)}/>
                 </td>
+
             </StyledTrWrapper>
         )}
     </Draggable>

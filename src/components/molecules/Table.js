@@ -149,6 +149,9 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                             <FormattedMessage id="unit"/>
                         </th>
                         <th>
+                            Purchased
+                        </th>
+                        <th>
                             Action
                         </th>
                     </tr>
