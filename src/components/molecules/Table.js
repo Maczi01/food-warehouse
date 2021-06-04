@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import pdf from "../../asstets/img/pdf.svg";
@@ -95,6 +95,9 @@ const ButtonContainer = styled.div`
 
 const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
 
+
+    const [list, updateList] = useState(data);
+
     const jsPdfGenerator = () => {
         const doc = new jsPDF('p', 'pt')
         doc.setFont('courier');
@@ -127,14 +130,17 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
         });
     };
 
-    const onDragEnd = () => {
-        console.log("koniec")
+    const onDragEnd = (result) => {
+        const items = [...list]
+        const [reordered] = items.splice(result.source.index, 1)
+        items.splice(result.destination.index, 0, reordered);
+        updateList(items)
     }
 
 
     return (
         // /*<DragDropContext onDragEnd={onDragEnd}>*/
-        <DragDropContext>
+        <DragDropContext onDragEnd={onDragEnd}>
             <TableWrapper>
                 <StyledTable>
                     <colgroup>
@@ -160,42 +166,22 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                     </tr>
                     </thead>
 
-                    {/*<Droppable droppableId={1}>*/}
-                    {/*    {provided => (*/}
-                    {/*<tbody  innerRef={provided.innerRef} {...provided.droppableProps}>*/}
                     <Droppable droppableId="items">
-
                         {(provided) => (
                             <tbody {...provided.droppableProps} ref={provided.innerRef}>
-
-                            {data.map((item, index) => (
-                                <Draggable
+                            {list.map((item, index) => (
+                                <StyledTr
                                     key={item.id}
-                                    draggableId={item.id}
+                                    item={item}
                                     index={index}
-                                >
-                                    {(provided)=> (
-                                        <StyledTr
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            ref={provided.innerRef}
-                                            item={item}
-                                            index={index}
-                                            deleteFromShoppingList={deleteFromShoppingList}
-                                        />
-                                    )}
-                                </Draggable>
-                            ))}
-
-                            </tbody>
-                        )}
+                                    deleteFromShoppingList={deleteFromShoppingList}
+                                />))}
+                            {provided.placeholder}
+                            </tbody>)}
                     </Droppable>
-
-                    {/*</Droppable>*/}
                 </StyledTable>
             </TableWrapper>
         </DragDropContext>
-        /*</DragDropContext>*/
     )
 }
 
