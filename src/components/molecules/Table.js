@@ -139,7 +139,6 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
 
 
     return (
-        // /*<DragDropContext onDragEnd={onDragEnd}>*/
         <DragDropContext onDragEnd={onDragEnd}>
             <TableWrapper>
                 <StyledTable>
