@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import styled from "styled-components";
 import emailjs from 'emailjs-com';
 import {FormattedMessage} from "react-intl";
@@ -7,6 +7,7 @@ import jsPDF from "jspdf"
 import {toast} from "react-toastify";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import StyledTr from "../atoms/StyledTr";
+import {AppContext} from "../../context/context";
 
 const templateParams = {
     name: 'James',
@@ -84,8 +85,9 @@ const ButtonContainer = styled.div`
 
 const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
 
+    const {markAsPurchased} = useContext(AppContext);
 
-    const [list, updateList] = useState(data);
+    const [list, setList] = useState(data);
 
     const jsPdfGenerator = () => {
         const doc = new jsPDF('p', 'pt')
@@ -120,10 +122,10 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
     };
 
     const onDragEnd = (result) => {
-        const items = [...list]
-        const [reordered] = items.splice(result.source.index, 1)
-        items.splice(result.destination.index, 0, reordered);
-        updateList(items)
+        // const items = [...list]
+        const [reordered] = data.splice(result.source.index, 1)
+        let items = data.splice(result.destination.index, 0, reordered);
+        setList(items)
     }
 
 
@@ -148,9 +150,9 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                         <th>
                             <FormattedMessage id="unit"/>
                         </th>
-                        <th>
-                            Purchased
-                        </th>
+                        {/*<th>*/}
+                        {/*    Purchased*/}
+                        {/*</th>*/}
                         <th>
                             Action
                         </th>
@@ -160,12 +162,13 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                     <Droppable droppableId="items">
                         {(provided) => (
                             <tbody {...provided.droppableProps} ref={provided.innerRef}>
-                            {list.map((item, index) => (
+                            {data.map((item, index) => (
                                 <StyledTr
                                     key={item.id}
                                     item={item}
                                     index={index}
                                     deleteFromShoppingList={deleteFromShoppingList}
+                                    // markAsPurchased={markAsPurchased}
                                 />))}
                             {provided.placeholder}
                             </tbody>)}

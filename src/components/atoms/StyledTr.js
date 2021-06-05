@@ -28,23 +28,24 @@ const StyledButton = styled.img`
         height: 20px;
         width: auto;
     }
+    z-index: 2;
 `;
 
-const StyledTr = ({item, index, deleteFromShoppingList}) => (
-    <Draggable draggableId={item.id} index={index} >
+const StyledTr = ({item, index, deleteFromShoppingList, markAsPurchased}) => (
+    <Draggable draggableId={item.id} index={index}>
         {provided => (
             <StyledTrWrapper
                 {...provided.dragHandleProps}
                 {...provided.draggableProps}
-                 ref={provided.innerRef}
+                ref={provided.innerRef}
             >
                 <td>{index + 1}</td>
                 <td>{item.name}</td>
                 <td>{item.maximalQuantity - item.currentQuantity}</td>
                 <td>{item.unit}</td>
-                <td>
-                    <input type="checkbox"/>
-                </td>
+                {/*<td>*/}
+                {/*    <input type="checkbox" onChange={() => markAsPurchased(item)}/>*/}
+                {/*</td>*/}
 
                 <td>
                     <StyledButton src={removeFromShoppingList}

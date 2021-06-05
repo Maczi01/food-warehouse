@@ -13,7 +13,7 @@ import plus from "../asstets/img/plus.svg";
 import pdf from "../asstets/img/pdf.svg";
 import sms from "../asstets/img/sms.svg";
 import {ToastContainer} from "react-toastify";
-import { Droppable } from 'react-beautiful-dnd';
+import {Droppable} from 'react-beautiful-dnd';
 
 const TableWrapper = styled.div`
       display: flex;
@@ -21,7 +21,9 @@ const TableWrapper = styled.div`
       align-items: center;
       flex-direction: column;
       margin: 0 auto;
-      width: 58vw;
+      //width: 58vw;
+      width: 80vw;
+
       font-size: 14px;
      //   @media (max-width: ${({theme}) => theme.mobile}) {
      //    width: 100vw;
@@ -108,13 +110,13 @@ const ShoppingListView = () => {
                         /*<Droppable droppableId={1}>*/
 
                         // {provided => (
-                                <Table
-                                    // innerRef={provided.innerRef} {...provided.droppableProps}
-                                    data={shoppingList}
-                                    setShowAddShopModal={setShowAddShopModal}
-                                    deleteFromShoppingList={deleteFromShoppingList}
-                                />
-                            // }
+                        <Table
+                            // innerRef={provided.innerRef} {...provided.droppableProps}
+                            data={shoppingList}
+                            setShowAddShopModal={setShowAddShopModal}
+                            deleteFromShoppingList={deleteFromShoppingList}
+                        />
+                        // }
                         /*</Droppable>*/
                         :
                         <span>
