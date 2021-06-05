@@ -34,10 +34,10 @@ const StyledButton = styled.img`
 
 const Td = styled.td`
   padding: 10px;
-  text-decoration: ${({checked}) => checked ? "none" : "line-through"};
+  text-decoration: ${({checked}) => checked ? "line-through" : "none"};
 `
 
-const StyledTr = ({item, index, deleteFromShoppingList, markAsPurchased}) => (
+const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
     <Draggable draggableId={item.id} index={index}>
         {provided => (
             <StyledTrWrapper
@@ -47,10 +47,10 @@ const StyledTr = ({item, index, deleteFromShoppingList, markAsPurchased}) => (
             >
                 <Td checked={item.checked}>{index + 1}</Td>
                 <Td checked={item.checked}>{item.name}</Td>
-                <Td checked={item.checked}>{item.maximalQuantity - item.currentQuantity}</Td>
+                <Td checked={item.checked}>{item.currentQuantity}</Td>
                 <Td checked={item.checked}>{item.unit}</Td>
                 <Td>
-                    <input type="checkbox" onChange={() => markAsPurchased(item)}/>
+                    <input type="checkbox" onChange={() => checkItem(item)}/>
                 </Td>
 
                 <Td>

@@ -87,14 +87,26 @@ const AppProvider = ({children}) => {
 
 
     const deleteFromShoppingList = (id) => {
-        db.collection("shoppingList").doc(id).delete();
+        db.collection("shoppingList").doc(id).delete()
+            .then(
+                shoppingList.filter(item => item.id != id)
+            );
     };
 
     const generateShoppingList = () => {
         let list = [];
         list = foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
-        ));
+        )).map(item => {
+            item.currentQuantity = (parseInt(item.maximalQuantity)) - (parseInt(item.currentQuantity))
+            delete item.minimalQuantity;
+            delete item.maximalQuantity;
+            delete item.category;
+            item.checked = false;
+            return item;
+        })
+
+        ;
 
         let filtered = list.filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1);
         filtered.forEach(item => addItemToShoppingList(item));
@@ -107,14 +119,14 @@ const AppProvider = ({children}) => {
         db.collection("shoppingList").add(newItem);
     };
 
-    const markAsPurchased = (item) => {
+    const checkItem = (item) => {
         item.checked = !item.checked;
         db.collection("shoppingList").doc(item.id).update({...item});
 
     }
 
     const context = {
-        markAsPurchased,
+        checkItem,
         generateShoppingList,
         shoppingList,
         foodList,
