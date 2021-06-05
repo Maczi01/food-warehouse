@@ -103,11 +103,12 @@ const AppProvider = ({children}) => {
 
     const addItemToShoppingList = (newItem) => {
         newItem.id = uuidv4();
-        // newItem.purchased = false;
+        newItem.checked = false;
         db.collection("shoppingList").add(newItem);
     };
 
     const markAsPurchased = (item) => {
+        item.checked = !item.checked;
         db.collection("shoppingList").doc(item.id).update({...item});
 
     }

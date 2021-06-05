@@ -150,9 +150,9 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                         <th>
                             <FormattedMessage id="unit"/>
                         </th>
-                        {/*<th>*/}
-                        {/*    Purchased*/}
-                        {/*</th>*/}
+                        <th>
+                            Checked
+                        </th>
                         <th>
                             Action
                         </th>
@@ -168,7 +168,7 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                                     item={item}
                                     index={index}
                                     deleteFromShoppingList={deleteFromShoppingList}
-                                    // markAsPurchased={markAsPurchased}
+                                    markAsPurchased={markAsPurchased}
                                 />))}
                             {provided.placeholder}
                             </tbody>)}
