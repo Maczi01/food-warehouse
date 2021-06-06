@@ -87,9 +87,6 @@ const AppProvider = ({children}) => {
 
 
     const deleteFromShoppingList = () => {
-        // db.collection("shoppingList").doc(id).delete()
-        // shoppingList.filter(item => item.id != id)
-
         db.collection("shoppingList")
             .get()
             .then(res => {
@@ -110,10 +107,7 @@ const AppProvider = ({children}) => {
             delete item.category;
             item.checked = false;
             return item;
-        })
-
-        ;
-
+        });
         let filtered = list.filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1);
         filtered.forEach(item => addItemToShoppingList(item));
 
@@ -128,8 +122,7 @@ const AppProvider = ({children}) => {
     const checkItem = (item) => {
         item.checked = !item.checked;
         db.collection("shoppingList").doc(item.id).update({...item});
-
-    }
+    };
 
     const context = {
         checkItem,
