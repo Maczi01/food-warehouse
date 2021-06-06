@@ -9,7 +9,7 @@ const StyledTrWrapper = styled.tr`
     position: relative;
     //background-color: ${({theme}) => theme.colors.green};
     
-    background-color: ${({checked, theme}) => checked ? theme.colors.red : theme.colors.white};
+    background-color: ${({checked, theme}) => checked ? theme.colors.pink : theme.colors.white};
 
     //@keyframes appear {
     //  0% {
