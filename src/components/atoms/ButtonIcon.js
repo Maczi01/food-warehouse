@@ -16,7 +16,7 @@ const ButtonIcon = styled.button`
   :active {
     box-shadow: 0 5px #E5E5E5;
     transform: translateY(6px);
-}
+  }
 `;
 
 export default ButtonIcon;

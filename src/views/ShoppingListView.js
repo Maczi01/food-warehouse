@@ -63,15 +63,6 @@ const Image = styled.img`
 const ShoppingListView = () => {
     const {shoppingList, addItemToShoppingList, generateShoppingList, deleteFromShoppingList} = useContext(AppContext);
     const [showAddShopModal, setShowAddShopModal] = useState(false);
-    // useEffect(() => {
-    //     generateShoppingList();
-    // }, []);
-
-
-    //
-    // const shoppingList = foodList.filter(item => (
-    //     item.currentQuantity < item.minimalQuantity
-    // ));
 
     return (
         <MainTemplate>
@@ -97,6 +88,10 @@ const ShoppingListView = () => {
                             // notify()
                         }}
                         icon={pdf}
+                    />
+                    <ButtonIcon
+                        onClick={generateShoppingList}
+                        icon={sms}
                     />
                     <ButtonIcon
                         onClick={generateShoppingList}
