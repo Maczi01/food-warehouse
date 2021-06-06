@@ -62,6 +62,7 @@ const StyledButton = styled.img`
     margin-bottom: 20px;
     height: 40px;
     width: 40px;
+    cursor: pointer;
     justify-content: space-around;
     @media (max-width: ${({theme}) => theme.mobile}) {
         height: 30px;

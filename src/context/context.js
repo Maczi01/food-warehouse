@@ -97,8 +97,8 @@ const AppProvider = ({children}) => {
     };
 
     const generateShoppingList = () => {
-        let list = [];
-        list = foodList.filter(item => (
+        let list = [...foodList];
+        list.filter(item => (
             item.currentQuantity < item.minimalQuantity
         )).map(item => {
             item.currentQuantity = (parseInt(item.maximalQuantity)) - (parseInt(item.currentQuantity))
@@ -107,10 +107,8 @@ const AppProvider = ({children}) => {
             delete item.category;
             item.checked = false;
             return item;
-        });
-        let filtered = list.filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1);
-        filtered.forEach(item => addItemToShoppingList(item));
-
+        }).filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1)
+            .forEach(item => addItemToShoppingList(item));
     };
 
     const addItemToShoppingList = (newItem) => {
