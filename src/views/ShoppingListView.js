@@ -16,6 +16,7 @@ import {ToastContainer} from "react-toastify";
 import {Droppable} from 'react-beautiful-dnd';
 import remove from "../asstets/img/remove.svg";
 import deleteAll from "../asstets/img/deleteAll.svg";
+import generate from "../asstets/img/generate.svg";
 
 const TableWrapper = styled.div`
       display: flex;
@@ -93,12 +94,16 @@ const ShoppingListView = () => {
                     />
                     <ButtonIcon
                         onClick={generateShoppingList}
-                        icon={sms}
+                        icon={generate}
                     />
                     <ButtonIcon
                         onClick={generateShoppingList}
-                        icon={deleteAll}
+                        icon={sms}
                     />
+                    {/*<ButtonIcon*/}
+                    {/*    onClick={generateShoppingList}*/}
+                    {/*    icon={generate}*/}
+                    {/*/>*/}
                 </ButtonContainer>
                 {
                     shoppingList.length ?

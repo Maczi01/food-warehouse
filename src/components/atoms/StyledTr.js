@@ -35,6 +35,7 @@ const StyledButton = styled.img`
 const Td = styled.td`
   padding: 10px;
   text-decoration: ${({checked}) => checked ? "line-through" : "none"};
+  text-align: center; 
 `
 
 const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
