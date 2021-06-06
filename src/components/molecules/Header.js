@@ -7,9 +7,9 @@ import Menu from "./Menu";
 import Burger from "../atoms/Burger";
 import {FormattedMessage} from 'react-intl'
 import {auth} from "../../firebase/firebaseConfig";
-import ButtonIcon from "../atoms/ButtonIcon";
-import accept from "../../asstets/img/accept.svg";
+import logout from "../../asstets/img/logout.svg";
 import ButtonContainer from "../atoms/item/ButtonContainer";
+import ButtonIcon from "../atoms/ButtonIcon";
 
 const HeaderWrapper = styled.nav`
   display: flex;
@@ -66,6 +66,21 @@ const HamburgerContainer = styled.div`
     }
 `;
 
+// const ButtonIcon = styled.button`
+//   display: block;
+//   width: 100px;
+//   height: 100px;
+//   background-image: url(${({icon}) => icon});
+//   background-repeat: no-repeat;
+//   background-position: 50% 50%;
+//   background-color: transparent;
+//   border: none;
+//   outline: none;
+//   margin-left: 10px;
+//   transition: all .6s ease 0s;
+// }
+// `;
+
 const Header = () => {
     const {currentUser} = useContext(AuthContext);
     const [open, setOpen] = React.useState(false);
@@ -98,7 +113,7 @@ const Header = () => {
                 <ButtonIcon
                     onClick={() => auth.signOut()}
                     type="submit"
-                    icon={accept}
+                    icon={logout}
                 />
             </HeaderWrapper>
         </>

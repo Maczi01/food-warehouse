@@ -88,9 +88,7 @@ const AppProvider = ({children}) => {
 
     const deleteFromShoppingList = (id) => {
         db.collection("shoppingList").doc(id).delete()
-            .then(
-                shoppingList.filter(item => item.id != id)
-            );
+        shoppingList.filter(item => item.id != id)
     };
 
     const generateShoppingList = () => {
