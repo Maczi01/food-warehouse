@@ -86,9 +86,17 @@ const AppProvider = ({children}) => {
     };
 
 
-    const deleteFromShoppingList = (id) => {
-        db.collection("shoppingList").doc(id).delete()
-        shoppingList.filter(item => item.id != id)
+    const deleteFromShoppingList = () => {
+        // db.collection("shoppingList").doc(id).delete()
+        // shoppingList.filter(item => item.id != id)
+
+        db.collection("shoppingList")
+            .get()
+            .then(res => {
+                res.forEach(element => {
+                    element.ref.delete();
+                });
+            });
     };
 
     const generateShoppingList = () => {

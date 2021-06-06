@@ -1,6 +1,5 @@
 node_modules
 .now
-src/firebase
 
 node_modules/
 /node_modules

@@ -88,7 +88,7 @@ const ShoppingListView = () => {
                     <ButtonIcon
                         onClick={() => {
                             // jsPdfGenerator();
-                            // notify()
+                            // notify()`
                         }}
                         icon={pdf}
                     />
@@ -100,10 +100,10 @@ const ShoppingListView = () => {
                         onClick={generateShoppingList}
                         icon={sms}
                     />
-                    {/*<ButtonIcon*/}
-                    {/*    onClick={generateShoppingList}*/}
-                    {/*    icon={generate}*/}
-                    {/*/>*/}
+                    <ButtonIcon
+                        onClick={deleteFromShoppingList}
+                        icon={remove}
+                    />
                 </ButtonContainer>
                 {
                     shoppingList.length ?

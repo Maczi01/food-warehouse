@@ -7,6 +7,10 @@ import {Draggable} from 'react-beautiful-dnd';
 const StyledTrWrapper = styled.tr`
     animation: appear 0.3s ease;
     position: relative;
+    //background-color: ${({theme}) => theme.colors.green};
+    
+    background-color: ${({checked, theme}) => checked ? theme.colors.red : theme.colors.white};
+
     //@keyframes appear {
     //  0% {
     //    opacity: 0;
@@ -45,6 +49,7 @@ const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
                 {...provided.dragHandleProps}
                 {...provided.draggableProps}
                 ref={provided.innerRef}
+                checked={item.checked}
             >
                 <Td checked={item.checked}>{index + 1}</Td>
                 <Td checked={item.checked}>{item.name}</Td>

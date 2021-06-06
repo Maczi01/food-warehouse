@@ -63,15 +63,6 @@ const StyledTable = styled.table`
         padding: 20px 20px;
      }
   }
-  tbody tr {
-    :nth-of-type(odd) {
-      background-color: ${({theme}) => theme.colors.white};
-      color: black;
-    }
-    :hover {
-      background-color: ${({theme}) => theme.colors.green};
-    }
-  }
   thead > tr {
       background-color: ${({theme}) => theme.colors.blue};;
   }
