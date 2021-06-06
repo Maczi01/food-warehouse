@@ -14,6 +14,8 @@ import pdf from "../asstets/img/pdf.svg";
 import sms from "../asstets/img/sms.svg";
 import {ToastContainer} from "react-toastify";
 import {Droppable} from 'react-beautiful-dnd';
+import remove from "../asstets/img/remove.svg";
+import deleteAll from "../asstets/img/deleteAll.svg";
 
 const TableWrapper = styled.div`
       display: flex;
@@ -95,24 +97,16 @@ const ShoppingListView = () => {
                     />
                     <ButtonIcon
                         onClick={generateShoppingList}
-                        icon={sms}
+                        icon={deleteAll}
                     />
                 </ButtonContainer>
-
                 {
                     shoppingList.length ?
-
-                        /*<Droppable droppableId={1}>*/
-
-                        // {provided => (
                         <Table
-                            // innerRef={provided.innerRef} {...provided.droppableProps}
                             data={shoppingList}
                             setShowAddShopModal={setShowAddShopModal}
                             deleteFromShoppingList={deleteFromShoppingList}
                         />
-                        // }
-                        /*</Droppable>*/
                         :
                         <span>
                         <FormattedMessage id="empty list"/>
