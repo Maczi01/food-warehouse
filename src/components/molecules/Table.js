@@ -74,7 +74,7 @@ const ButtonContainer = styled.div`
 `;
 
 
-const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
+const Table = ({data}) => {
 
     const {checkItem} = useContext(AppContext);
 
@@ -156,7 +156,6 @@ const Table = ({data, setShowAddShopModal, deleteFromShoppingList}) => {
                                     key={item.id}
                                     item={item}
                                     index={index}
-                                    // deleteFromShoppingList={deleteFromShoppingList}
                                     checkItem={checkItem}
                                 />))}
                             {provided.placeholder}

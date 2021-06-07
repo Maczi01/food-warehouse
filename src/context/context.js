@@ -121,6 +121,7 @@ const AppProvider = ({children}) => {
     const addItemToShoppingList = (newItem) => {
         newItem.id = uuidv4();
         newItem.checked = false;
+        console.log(newItem)
         db.collection("shoppingList").add(newItem);
     };
 
