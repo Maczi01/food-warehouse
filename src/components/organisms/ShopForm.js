@@ -33,6 +33,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
         };
 
         const handleSubmitForm = (name) => {
+            console.log(name)
             addItemToShoppingList(item);
             notify(name)
             setItem({name: "", unit: "", currentQuantity: 0})
