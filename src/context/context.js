@@ -52,14 +52,14 @@ const AppProvider = ({children}) => {
     useEffect(() => {
         const unSubscribe = db.collection("shoppingList").onSnapshot(
             (snapshot) => {
-                const list = [];
-                snapshot.forEach(doc => list.push({
+                const shoppingListData = [];
+                snapshot.forEach(doc => shoppingListData.push({
                     ...doc.data(),
                     // currentQuantity: parseInt(doc.currentQuantity),
                     id: doc.id
                 }));
                 // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
-                setShoppingList(list)
+                setShoppingList(shoppingListData)
             }
         );
         return unSubscribe;
@@ -97,7 +97,8 @@ const AppProvider = ({children}) => {
     };
 
     const generateShoppingList = () => {
-        let list = [...foodList];
+        let newlist = [...foodList];
+        let list = newlist.slice();
         list.filter(item => (
             item.currentQuantity < item.minimalQuantity
         )).map(item => {

@@ -106,11 +106,14 @@ const ListItem =
                     <QuantityBarInside style={{width: `${(currentQuantity / maximalQuantity) * 100}%`}}/>
                 </QuantityBarOutside>
                 <Container>
-                    <StyledButton src={minus} onClick={decreaseQuantity}/>
-                    <StyledButton src={plus} onClick={increaseQuantity}/>
+                    <StyledButton src={minus}
+                                  onClick={decreaseQuantity}/>
+                    <StyledButton src={plus}
+                                  onClick={increaseQuantity}/>
                     <StyledButton src={edit}
                                   onClick={() => history.push(`/edit/${id}`)}/>
-                    <StyledButton src={remove} onClick={deleteItem}/>
+                    <StyledButton src={remove}
+                                  onClick={deleteItem}/>
                 </Container>
             </ItemWraper>)
     };
@@ -123,7 +126,7 @@ ListItem.propTypes = {
     unit: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     maximalQuantity: NumberOrStringType.isRequired,
-    currentQuantity: NumberOrStringType,
+    currentQuantity: NumberOrStringType.isRequired,
 };
 
 ListItem.defaultProps = {
