@@ -97,14 +97,18 @@ const AppProvider = ({children}) => {
     };
 
     const generateShoppingList = () => {
-        let newlist = [...foodList];
-        let list = newlist.slice();
-        list.filter(item => (
+        // const list = JSON.parse(JSON.stringify(...foodList));
+
+        // let newlist = [...foodList];
+        // let list = newlist.slice();
+        foodList.filter(item => (
             item.currentQuantity < item.minimalQuantity
         )).map(item => {
-            item.currentQuantity = (parseInt(item.maximalQuantity)) - (parseInt(item.currentQuantity))
+            item.neededQuantity = (parseInt(item.maximalQuantity)) - (parseInt(item.currentQuantity));
+            delete item.id;
             delete item.minimalQuantity;
             delete item.maximalQuantity;
+            delete item.currentQuantity;
             delete item.category;
             item.checked = false;
             return item;
