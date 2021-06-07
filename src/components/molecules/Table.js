@@ -131,7 +131,7 @@ const Table = ({data}) => {
                     </colgroup>
                     <thead>
                     <tr>
-                        <th>#</th>
+                        {/*<th>#</th>*/}
                         <th>
                             <FormattedMessage id="name"/>
                         </th>

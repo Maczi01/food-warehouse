@@ -50,7 +50,7 @@ const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
                 ref={provided.innerRef}
                 checked={item.checked}
             >
-                <Td checked={item.checked}>{index + 1}</Td>
+                {/*<Td checked={item.checked}>{index + 1}</Td>*/}
                 <Td checked={item.checked}>{item.name}</Td>
                 <Td checked={item.checked}>{item.neededQuantity}</Td>
                 <Td checked={item.checked}>{item.unit}</Td>

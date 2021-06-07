@@ -24,7 +24,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
         const [item, setItem] = useState({
             name: "",
             unit: "",
-            currentQuantity: 0,
+            neededQuantity: 0,
         });
 
         const handleInputChange = e => {
@@ -35,7 +35,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
         const handleSubmitForm = (name) => {
             addItemToShoppingList(item);
             notify(name)
-            setItem({name: "", unit: "", currentQuantity: 0})
+            setItem({name: "", unit: "", neededQuantity: 0})
         };
 
         const notify = (name) => {
@@ -65,7 +65,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                 .required("Name is required!"),
                             unit: Yup.string()
                                 .required("Unit is required!"),
-                            currentQuantity: Yup.number()
+                        neededQuantity: Yup.number()
                                 .positive("Only positive number!")
                                 .max(20, "Current quantity must be lower than maximal!")
                                 .required("Required")
@@ -122,20 +122,20 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                             }
 
                             <FormItem>
-                                <StyledLabel htmlFor="currentQuantity">
-                                    <FormattedMessage id="current quantity"/>
+                                <StyledLabel htmlFor="neededQuantity">
+                                    <FormattedMessage id="needed quantity"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={handleInputChange}
-                                    name="currentQuantity"
+                                    name="neededQuantity"
                                     type="number"
-                                    value={values.currentQuantity}
+                                    value={values.neededQuantity}
                                     placeholder=""
-                                    errors={errors.currentQuantity && touched.currentQuantity}
+                                    errors={errors.neededQuantity && touched.neededQuantity}
                                 />
                             </FormItem>
-                            {errors.currentQuantity && touched.currentQuantity ?
-                                <ErrorText>{errors.currentQuantity}</ErrorText> : null
+                            {errors.neededQuantity && touched.neededQuantity ?
+                                <ErrorText>{errors.neededQuantity}</ErrorText> : null
                             }
                             <ButtonContainer>
                                 <ButtonIcon
