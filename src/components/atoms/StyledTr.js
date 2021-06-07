@@ -33,7 +33,6 @@ const StyledButton = styled.img`
         height: 20px;
         width: auto;
     }
-    z-index: 2;
 `;
 
 const Td = styled.td`

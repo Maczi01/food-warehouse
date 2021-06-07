@@ -97,9 +97,6 @@ const AppProvider = ({children}) => {
     };
 
     const generateShoppingList = () => {
-        // const list = JSON.parse(JSON.stringify(...foodList));
-
-        // let list = [...foodList];
         let list = JSON.parse(JSON.stringify(foodList));
 
         // let list = newlist.slice();
