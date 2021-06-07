@@ -33,7 +33,6 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
         };
 
         const handleSubmitForm = (name) => {
-            console.log(name)
             addItemToShoppingList(item);
             notify(name)
             setItem({name: "", unit: "", currentQuantity: 0})
@@ -66,7 +65,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                 .required("Name is required!"),
                             unit: Yup.string()
                                 .required("Unit is required!"),
-                            neededQuantity: Yup.number()
+                            currentQuantity: Yup.number()
                                 .positive("Only positive number!")
                                 .max(20, "Current quantity must be lower than maximal!")
                                 .required("Required")
@@ -130,9 +129,9 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                     onChange={handleInputChange}
                                     name="currentQuantity"
                                     type="number"
-                                    value={values.neededQuantity}
+                                    value={values.currentQuantity}
                                     placeholder=""
-                                    errors={errors.neededQuantity && touched.neededQuantity}
+                                    errors={errors.currentQuantity && touched.currentQuantity}
                                 />
                             </FormItem>
                             {errors.currentQuantity && touched.currentQuantity ?
@@ -157,6 +156,3 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
 ;
 
 export default ShopForm
-
-
-
