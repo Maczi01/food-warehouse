@@ -1,6 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
-import ItemForm from "./ItemForm";
 import ShopForm from "./ShopForm";
 
 const ModalWrapper = styled.div`
@@ -11,7 +10,6 @@ const ModalWrapper = styled.div`
     right: 0;
     margin: 0 auto;
     width: 60vw;
-    //height: 90vh;
     background-color: white;
     box-shadow: 0 20px 40px -5px rgba(#1e58ff, .3);
     position: fixed;
