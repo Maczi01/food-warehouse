@@ -53,7 +53,7 @@ const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
             >
                 <Td checked={item.checked}>{index + 1}</Td>
                 <Td checked={item.checked}>{item.name}</Td>
-                <Td checked={item.checked}>{item.currentQuantity}</Td>
+                <Td checked={item.checked}>{item.neededQuantity}</Td>
                 <Td checked={item.checked}>{item.unit}</Td>
                 <Td>
                     <input type="checkbox" onChange={() => checkItem(item)}/>

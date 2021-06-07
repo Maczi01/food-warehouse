@@ -17,6 +17,7 @@ import {Droppable} from 'react-beautiful-dnd';
 import remove from "../asstets/img/remove.svg";
 import deleteAll from "../asstets/img/deleteAll.svg";
 import generate from "../asstets/img/generate.svg";
+import {db} from "../firebase/firebaseConfig";
 
 const TableWrapper = styled.div`
       display: flex;
