@@ -65,7 +65,7 @@ const Image = styled.img`
 `;
 
 const ShoppingListView = () => {
-    const {shoppingList, addItemToShoppingList, generateShoppingList, deleteFromShoppingList} = useContext(AppContext);
+    const {shoppingList, addItemToShoppingList, generateShoppingList, deleteAllFromFromShoppingList} = useContext(AppContext);
     const [showAddShopModal, setShowAddShopModal] = useState(false);
 
     return (
@@ -102,7 +102,7 @@ const ShoppingListView = () => {
                         icon={sms}
                     />
                     <ButtonIcon
-                        onClick={deleteFromShoppingList}
+                        onClick={deleteAllFromFromShoppingList}
                         icon={remove}
                     />
                 </ButtonContainer>
@@ -110,8 +110,6 @@ const ShoppingListView = () => {
                     shoppingList.length ?
                         <Table
                             data={shoppingList}
-                            setShowAddShopModal={setShowAddShopModal}
-                            deleteFromShoppingList={deleteFromShoppingList}
                         />
                         :
                         <span>

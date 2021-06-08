@@ -19,6 +19,25 @@ export const firebase = {
         newItem.id = uuidv4();
         db.collection("foodList").add(newItem);
     },
+    addItemToShoppingList: function (newItem) {
+        newItem.id = uuidv4();
+        newItem.checked = false;
+        db.collection("shoppingList").add(newItem);
+    },
+    checkOrUncheckItemOnshoppingList: function (item) {
+        item.checked = !item.checked;
+        db.collection("shoppingList").doc(item.id).update({...item});
+    },
+
+    deleteAllFromFromShoppingList: function () {
+        db.collection("shoppingList")
+            .get()
+            .then(res => {
+                res.forEach(element => {
+                    element.ref.delete();
+                });
+            });
+    },
     editItem: function (item) {
         db.collection("foodList").doc(item.id).update({...item});
     },
