@@ -77,8 +77,8 @@ const AppProvider = ({children}) => {
         firebase.deleteItem(id);
     };
 
-    const addItemToFoodList = (newItem) => {
-        firebase.addItemToFoodList(newItem);
+    const addItem = (newItem) => {
+        firebase.addItem(newItem);
     };
 
     const editItem = (item) => {
@@ -86,12 +86,22 @@ const AppProvider = ({children}) => {
     };
 
 
-    const deleteAllFromFromShoppingList = () => {
-        firebase.deleteAllFromFromShoppingList();
+    const deleteFromShoppingList = () => {
+        db.collection("shoppingList")
+            .get()
+            .then(res => {
+                res.forEach(element => {
+                    element.ref.delete();
+                });
+            });
     };
 
     const generateShoppingList = () => {
         let list = JSON.parse(JSON.stringify(foodList));
+
+        // let list = newlist.slice();
+
+
         list.filter(item => (
             item.currentQuantity < item.minimalQuantity
         )).map(item => {
@@ -102,16 +112,22 @@ const AppProvider = ({children}) => {
             delete item.currentQuantity;
             delete item.category;
             item.checked = false;
+            return item;
         }).filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1)
             .forEach(item => addItemToShoppingList(item));
+        // setShoppingList(list)
     };
 
     const addItemToShoppingList = (newItem) => {
-        firebase.addItemToShoppingList(newItem);
+        newItem.id = uuidv4();
+        newItem.checked = false;
+        console.log(newItem)
+        db.collection("shoppingList").add(newItem);
     };
 
     const checkItem = (item) => {
-        firebase.checkOrUncheckItemOnshoppingList(item);
+        item.checked = !item.checked;
+        db.collection("shoppingList").doc(item.id).update({...item});
     };
 
     const context = {
@@ -121,12 +137,12 @@ const AppProvider = ({children}) => {
         shoppingList,
         foodList,
         language,
-        deleteAllFromFromShoppingList,
+        deleteFromShoppingList,
         addItemToShoppingList,
         increaseQuantity,
         decreaseQuantity,
         deleteItem,
-        addItemToFoodList,
+        addItem,
         editItem,
         toggleTheme,
         handleLanguageChange
