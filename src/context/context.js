@@ -77,7 +77,7 @@ const AppProvider = ({children}) => {
         firebase.deleteItem(id);
     };
 
-    const addItem = (newItem) => {
+    const addItemToFoodList = (newItem) => {
         firebase.addItem(newItem);
     };
 
@@ -86,7 +86,7 @@ const AppProvider = ({children}) => {
     };
 
 
-    const deleteFromShoppingList = () => {
+    const deleteAllFromFromShoppingList = () => {
         db.collection("shoppingList")
             .get()
             .then(res => {
@@ -135,7 +135,7 @@ const AppProvider = ({children}) => {
         shoppingList,
         foodList,
         language,
-        deleteFromShoppingList,
+        deleteAllFromFromShoppingList,
         addItemToShoppingList,
         increaseQuantity,
         decreaseQuantity,

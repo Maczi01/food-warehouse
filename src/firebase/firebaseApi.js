@@ -15,7 +15,7 @@ export const firebase = {
     deleteItem: function (id) {
         db.collection("foodList").doc(id).delete();
     },
-    addItem: function (newItem) {
+    addItemToFoodList: function (newItem) {
         newItem.id = uuidv4();
         db.collection("foodList").add(newItem);
     },
