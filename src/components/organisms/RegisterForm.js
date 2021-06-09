@@ -1,16 +1,13 @@
-import styled from "styled-components";
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import eyeclosed from "../../asstets/img/eyeclosed.svg"
 import eyeopen from "../../asstets/img/eyeopen.svg"
-import SecurityContainer from "../molecules/SecurityContainer";
 import StyledTitle from "../atoms/auth/StyledTitle";
 import StyledInput from "../atoms/auth/StyledInput";
 import PasswordWrapper from "../atoms/auth/PasswordWrapper";
 import StyledPassword from "../atoms/auth/StyledPassword";
 import FormIcon from "../atoms/auth/FormIcon";
-import Button from "../atoms/Button";
 import ItemsContainer from "../atoms/auth/ItemsContainer";
 import Form from "../atoms/auth/Form";
 import ConfirmButton from "../atoms/auth/ConfirmButton";

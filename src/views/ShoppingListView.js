@@ -3,7 +3,7 @@ import {AppContext} from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../asstets/img/bag.svg';
 import styled from "styled-components";
-import Table from "../components/molecules/Table";
+import Table from "../components/organisms/Table";
 import {FormattedMessage} from "react-intl";
 import MainTemplate from "../components/templates/MainTemplate";
 import AddShopModal from "../components/organisms/AddShopModal";
