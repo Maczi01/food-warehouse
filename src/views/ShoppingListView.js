@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {AppContext} from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
 import bag from '../asstets/img/bag.svg';
@@ -6,18 +6,14 @@ import styled from "styled-components";
 import Table from "../components/molecules/Table";
 import {FormattedMessage} from "react-intl";
 import MainTemplate from "../components/templates/MainTemplate";
-import Modal from "../components/molecules/Modal";
 import AddShopModal from "../components/organisms/AddShopModal";
 import ButtonIcon from "../components/atoms/ButtonIcon";
 import plus from "../asstets/img/plus.svg";
 import pdf from "../asstets/img/pdf.svg";
 import sms from "../asstets/img/sms.svg";
 import {ToastContainer} from "react-toastify";
-import {Droppable} from 'react-beautiful-dnd';
 import remove from "../asstets/img/remove.svg";
-import deleteAll from "../asstets/img/deleteAll.svg";
 import generate from "../asstets/img/generate.svg";
-import {db} from "../firebase/firebaseConfig";
 
 const TableWrapper = styled.div`
       display: flex;
@@ -116,8 +112,6 @@ const ShoppingListView = () => {
                         <FormattedMessage id="empty list"/>
                     </span>
                 }
-
-
                 <ToastContainer autoClose={1400}/>
             </TableWrapper>
         </MainTemplate>
