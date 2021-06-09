@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import jsPDF from "jspdf"
 import {toast} from "react-toastify";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
-import StyledTr from "../atoms/StyledTr";
+import StyledTr from "../molecules/StyledTr";
 import {AppContext} from "../../context/context";
 
 const templateParams = {

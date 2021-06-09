@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const ValidationSchema =
+export const ValidationSchemaForFoodList =
     Yup.object({
             name: Yup.string()
                 .min(2, "Too short, minimal 3 characters!")

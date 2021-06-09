@@ -15,8 +15,8 @@ import StyledInput from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/item/ErrorText";
 import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
-import {ValidationSchema} from "../../utills/ValidationSchema";
 import {properties} from "../../utills/itemProperties";
+import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
 
 const ItemForm = ({addItem}) => {
 
@@ -60,7 +60,7 @@ const ItemForm = ({addItem}) => {
                         handleSubmitForm(values.name);
                         setSubmitting(false);
                     }}
-                    validationSchema={ValidationSchema}
+                    validationSchema={ValidationSchemaForFoodList}
                     validateOnChange={false}
                     validateOnBlur={false}
                 >

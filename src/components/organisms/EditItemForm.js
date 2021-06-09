@@ -11,7 +11,6 @@ import {FormattedMessage} from 'react-intl'
 import {db} from '../../firebase/firebaseConfig'
 import FormWrapper from "../atoms/item/FormWrapper";
 import Heading from "../atoms/item/Heading";
-import {ValidationSchema} from "../../utills/ValidationSchema";
 import FormItem from "../molecules/Item/FormItem";
 import StyledLabel from "../atoms/item/StyledLabel";
 import StyledInput from "../atoms/item/StyledInput";
@@ -19,6 +18,7 @@ import ErrorText from "../atoms/item/ErrorText";
 import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
 import {properties} from "../../utills/itemProperties";
+import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
 
 const categories = ["baking", "pasta",
     "spieces", "vegetables and fruits",
@@ -61,7 +61,7 @@ const EditItemForm = ({item, editItem}) => {
                         handleSubmitForm(values.name);
                         setSubmitting(false);
                     }}
-                    validationSchema={ValidationSchema}
+                    validationSchema={ValidationSchemaForFoodList}
                     validateOnChange={false}
                     validateOnBlur={false}
                 >

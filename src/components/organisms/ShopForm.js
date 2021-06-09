@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
-import {toast, ToastContainer} from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Form, Formik} from 'formik';
 import accept from '../../asstets/img/accept.svg'
 import decline from '../../asstets/img/decline.svg'
 import ButtonIcon from "../atoms/ButtonIcon";
-import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
 import FormWrapper from "../atoms/item/FormWrapper";
 import Heading from "../atoms/item/Heading";
@@ -15,9 +14,8 @@ import StyledInput from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/item/ErrorText";
 import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
-import {ValidationSchema} from "../../utills/ValidationSchema";
 import {properties} from "../../utills/itemProperties";
-import * as Yup from "yup";
+import {ValidationSchemaForShoppingList} from "../../utills/ValidationSchemaForShoppingList";
 
 const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
 
@@ -58,20 +56,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                         handleSubmitForm(values.name);
                         setSubmitting(false);
                     }}
-                    validationSchema={Yup.object({
-                            name: Yup.string()
-                                .min(2, "Too short, minimal 3 characters!")
-                                .max(30, "Too long, maximal 3 characters!!")
-                                .required("Name is required!"),
-                            unit: Yup.string()
-                                .required("Unit is required!"),
-                        neededQuantity: Yup.number()
-                                .positive("Only positive number!")
-                                .max(20, "Current quantity must be lower than maximal!")
-                                .required("Required")
-                        }
-                    )
-                    }
+                    validationSchema={ValidationSchemaForShoppingList}
                     validateOnChange={false}
                     validateOnBlur={false}
                 >
