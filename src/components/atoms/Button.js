@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-// import styles from './Button.module.scss';
-
 
 const StyledButton = styled.button`
     width: 170px;
@@ -14,8 +12,7 @@ const StyledButton = styled.button`
     cursor: pointer;
     background: ${({theme}) => theme.colors.pink};
     color: ${({theme}) => theme.colors.white};
-`
-
+`;
 
 const Button = ({children}) => (
     <StyledButton>

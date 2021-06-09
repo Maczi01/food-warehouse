@@ -113,7 +113,6 @@ const Table = ({data}) => {
     };
 
     const onDragEnd = (result) => {
-        // const items = [...list]
         const [reordered] = data.splice(result.source.index, 1)
         let items = data.splice(result.destination.index, 0, reordered);
         setList(items)
