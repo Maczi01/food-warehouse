@@ -125,7 +125,7 @@ const ItemForm = ({addItem}) => {
                                         <FormattedMessage
                                             id={unit}
                                             key={unit}>
-                                            {(text) => <option value={text}>{unit}</option>}
+                                            {(text) => <option value={unit}>{text}</option>}
                                         </FormattedMessage>)
                                     )}
                                 </StyledSelect>

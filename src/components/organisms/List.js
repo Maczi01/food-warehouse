@@ -89,9 +89,15 @@ const List = ({items, parameter}) => {
     return (
         <>
             <CategoryWrapper>
-                {parameter === "all" ? "All categories" : parameter}
+                {parameter === "all" ?
+                    <FormattedMessage id="all categories"/>
+
+                    :
+                    <FormattedMessage id={parameter}/>
+                }
             </CategoryWrapper>
-            <Link to={'/'}> <Paragraph>🡄 back to select category</Paragraph></Link>
+            <Link to={'/'}> <Paragraph>🡄 <FormattedMessage id="go back"/>
+            </Paragraph></Link>
             <UlWrapper>
                 {
                     items.length ?
