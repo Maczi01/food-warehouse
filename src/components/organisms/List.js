@@ -84,7 +84,7 @@ const EmptyListWrapper = styled.div`
 
 const List = ({items, parameter}) => {
 
-    const {decreaseQuantity, increaseQuantity, deleteItem} = useContext(AppContext);
+    const {decreaseQuantity, increaseQuantity, deleteItem, editItem} = useContext(AppContext);
 
     return (
         <>
@@ -105,11 +105,9 @@ const List = ({items, parameter}) => {
                             <ListItem {...item}
                                       key={item.id}
                                       deleteItem={() => deleteItem(item.id)}
-                                // toEdit={toEdit}
-                                // editItem={editItem}
+                                      editItem={editItem}
                                       decreaseQuantity={() => decreaseQuantity(item)}
                                       increaseQuantity={() => increaseQuantity(item)}
-                                // editName={() => editName(item)}
                             />
                         )) :
                         <EmptyListWrapper>
