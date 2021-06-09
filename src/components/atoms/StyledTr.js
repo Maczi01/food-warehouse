@@ -57,12 +57,6 @@ const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
                 <Td>
                     <input type="checkbox" onChange={() => checkItem(item)}/>
                 </Td>
-
-                {/*<Td>*/}
-                {/*    <StyledButton src={removeFromShoppingList}*/}
-                {/*                  onClick={() => deleteFromShoppingList(item.id)}/>*/}
-                {/*</Td>*/}
-
             </StyledTrWrapper>
         )}
     </Draggable>
