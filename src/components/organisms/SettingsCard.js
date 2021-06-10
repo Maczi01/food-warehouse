@@ -167,8 +167,6 @@ const SettingsCard = () => {
 
         return (
             <>
-                {/*<Modal/>*/}
-
                 <Heading>
                     <FormattedMessage id="settings"/>
                 </Heading>
