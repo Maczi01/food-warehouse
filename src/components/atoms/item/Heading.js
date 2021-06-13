@@ -14,6 +14,7 @@ const Heading = styled.h1`
         padding: 9rem 0 1rem;
         font-size: 26px;
         width: 100vw;
+        margin: 0;
      }
 `
 
