@@ -108,7 +108,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
 
                             <FormItem>
                                 <StyledLabel htmlFor="neededQuantity">
-                                    <FormattedMessage id="needed quantity"/>
+                                    <FormattedMessage id="quantity"/>
                                 </StyledLabel>
                                 <StyledInput
                                     onChange={handleInputChange}
