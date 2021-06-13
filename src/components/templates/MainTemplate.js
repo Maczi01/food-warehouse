@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Header from "../molecules/Header";
+import Navbar from "../molecules/Navbar";
 import AppContext from "../../context/context";
 import React from "react";
 
@@ -18,7 +18,7 @@ const ViewWrapper = styled.div`
 
 const MainTemplate = ({children}) => (
     <>
-        <Header/>
+        <Navbar/>
         <ViewWrapper>
             {children}
         </ViewWrapper>

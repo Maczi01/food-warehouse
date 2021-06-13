@@ -81,7 +81,7 @@ const HamburgerContainer = styled.div`
 // }
 // `;
 
-const Header = () => {
+const Navbar = () => {
     const {currentUser} = useContext(AuthContext);
     const [open, setOpen] = React.useState(false);
 
@@ -120,5 +120,5 @@ const Header = () => {
     )
 };
 
-export default Header;
+export default Navbar;
 
