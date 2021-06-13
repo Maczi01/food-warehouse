@@ -4,11 +4,11 @@ import MainTemplate from "../components/templates/MainTemplate";
 import ItemForm from "../components/organisms/ItemForm";
 
 const AddView = () => {
-    const {editItem, addItemToFoodList} = useContext(AppContext);
+    const {editItem, addItem} = useContext(AppContext);
     return (
         <MainTemplate>
             <ItemForm
-                addItem={addItemToFoodList}
+                addItem={addItem}
                 edit={editItem}
             />
         </MainTemplate>

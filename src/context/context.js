@@ -78,7 +78,7 @@ const AppProvider = ({children}) => {
     };
 
     const addItem = (newItem) => {
-        firebase.addItem(newItem);
+        firebase.addItemToFoodList(newItem);
     };
 
     const editItem = (item) => {
@@ -119,10 +119,7 @@ const AppProvider = ({children}) => {
     };
 
     const addItemToShoppingList = (newItem) => {
-        newItem.id = uuidv4();
-        newItem.checked = false;
-        console.log(newItem)
-        db.collection("shoppingList").add(newItem);
+        firebase.addItemToShoppingList(newItem);
     };
 
     const checkItem = (item) => {

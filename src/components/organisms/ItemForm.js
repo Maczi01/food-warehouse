@@ -15,8 +15,8 @@ import StyledInput from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/item/ErrorText";
 import StyledSelect from "../atoms/item/StyledSelect";
 import ButtonContainer from "../atoms/item/ButtonContainer";
-import {properties} from "../../utills/itemProperties";
 import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
+import {properties} from "../../utills/itemProperties";
 
 const ItemForm = ({addItem}) => {
 
@@ -125,7 +125,7 @@ const ItemForm = ({addItem}) => {
                                         <FormattedMessage
                                             id={unit}
                                             key={unit}>
-                                            {(text) => <option value={unit}>{text}</option>}
+                                            {(text) => <option value={text}>{unit}</option>}
                                         </FormattedMessage>)
                                     )}
                                 </StyledSelect>
@@ -204,6 +204,3 @@ const ItemForm = ({addItem}) => {
 ;
 
 export default ItemForm;
-
-
-
