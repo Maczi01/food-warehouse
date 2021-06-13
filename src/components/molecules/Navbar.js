@@ -1,14 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import logo from '../../asstets/img/logo.svg';
 import styled from "styled-components";
 import {Link, NavLink} from "react-router-dom";
-import {AuthContext} from "../../providers/Auth";
 import Menu from "./Menu";
 import Burger from "../atoms/Burger";
 import {FormattedMessage} from 'react-intl'
 import {auth} from "../../firebase/firebaseConfig";
 import logout from "../../asstets/img/logout.svg";
-import ButtonContainer from "../atoms/item/ButtonContainer";
 import ButtonIcon from "../atoms/ButtonIcon";
 
 const HeaderWrapper = styled.nav`
@@ -66,23 +64,7 @@ const HamburgerContainer = styled.div`
     }
 `;
 
-// const ButtonIcon = styled.button`
-//   display: block;
-//   width: 100px;
-//   height: 100px;
-//   background-image: url(${({icon}) => icon});
-//   background-repeat: no-repeat;
-//   background-position: 50% 50%;
-//   background-color: transparent;
-//   border: none;
-//   outline: none;
-//   margin-left: 10px;
-//   transition: all .6s ease 0s;
-// }
-// `;
-
 const Navbar = () => {
-    const {currentUser} = useContext(AuthContext);
     const [open, setOpen] = React.useState(false);
 
     return (

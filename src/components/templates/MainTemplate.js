@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Navbar from "../molecules/Navbar";
-import AppContext from "../../context/context";
 import React from "react";
 
 const ViewWrapper = styled.div`
@@ -14,7 +13,6 @@ const ViewWrapper = styled.div`
         width: 100vw;
      }
 `;
-
 
 const MainTemplate = ({children}) => (
     <>
