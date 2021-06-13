@@ -25,9 +25,9 @@ const TableWrapper = styled.div`
       width: 80vw;
 
       font-size: 14px;
-     //   @media (max-width: ${({theme}) => theme.mobile}) {
-     //    width: 100vw;
-     // }
+       @media (max-width: ${({theme}) => theme.mobile}) {
+        width: 100vw;
+     }
 `;
 
 const Heading = styled.h1`

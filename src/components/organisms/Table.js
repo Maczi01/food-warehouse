@@ -33,7 +33,7 @@ const TableWrapper = styled.div`
       margin: 0 auto;
       //width: 40vw;
       @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 80vw;
+        width: 100vw;
       }
 `;
 const StyledTable = styled.table`

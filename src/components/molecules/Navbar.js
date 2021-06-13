@@ -42,19 +42,24 @@ const StyledLogoLink = styled(Link)`
 const List = styled.li`
     display: flex;
     justify-content: space-between; 
+    align-items: center;
 `;
 
 const ListItem = styled.li`
     list-style: none;
     display: flex;
-    height: 70px;
+    height: 50px;
     width: 230px;
     text-decoration: none;
+    margin: 0 10px 0 10px;
     justify-content: center;
     align-items: center;
-    color: ${({theme}) => theme.colors.white};
+    background-color: ${({theme}) => theme.colors.yellow};
+    border-radius: 5px;
+    color: ${({theme}) => theme.colors.darkblue};
     &.active {
       background-color: ${({theme}) => theme.colors.darkblue};
+      color: ${({theme}) => theme.colors.white};
     }
 `;
 

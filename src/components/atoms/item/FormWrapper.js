@@ -8,7 +8,7 @@ const FormWrapper = styled.div`
       margin: 0 auto;
       width: 50vw;
       @media (max-width: ${({theme}) => theme.mobile}) {
-        width: 40vw;
+        width: 100vw;
      }
 `;
 

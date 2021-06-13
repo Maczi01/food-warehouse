@@ -13,6 +13,10 @@ const ButtonIcon = styled.button`
   outline: none;
   margin-left: 10px;
   transition: all .6s ease 0s; 
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px
+  }
   :active {
     box-shadow: 0 5px #E5E5E5;
     transform: translateY(6px);

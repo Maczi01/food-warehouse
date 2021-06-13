@@ -8,8 +8,8 @@ const Heading = styled.h1`
      justify-content: center;
      align-items: center;
      flex-direction: column;
-     margin: 0 auto;
-     width: 60vw;
+     //margin: 0 auto;
+     //width: 60vw;
      @media (max-width: ${({theme}) => theme.mobile}) {
         padding: 9rem 0 1rem;
         font-size: 26px;
