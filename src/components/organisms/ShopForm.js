@@ -30,9 +30,9 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
             setItem({...item, [name]: value});
         };
 
-        const handleSubmitForm = (name) => {
-            addItemToShoppingList(item);
-            notify(name)
+        const handleSubmitForm = (values) => {
+            addItemToShoppingList(values);
+            notify(values.name)
             setItem({name: "", unit: "", neededQuantity: 0})
         };
 
@@ -53,7 +53,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                     onSubmit={(values, {setSubmitting, resetForm}) => {
                         //TODO: check submitting
                         setSubmitting(true);
-                        handleSubmitForm(values.name);
+                        handleSubmitForm(values);
                         setSubmitting(false);
                     }}
                     validationSchema={ValidationSchemaForShoppingList}
@@ -70,10 +70,10 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
                                 <StyledInput
-                                    onChange={handleInputChange}
+                                    // onChange={handleInputChange}
                                     name="name"
                                     type="text"
-                                    value={values.name}
+                                    // value={values.name}
                                     placeholder=""
                                     errors={errors.name && touched.name}
                                 />

@@ -34,10 +34,10 @@ const ItemForm = ({addItem}) => {
             setItem({...item, [name]: value});
         };
 
-        const handleSubmitForm = (name) => {
-            addItem(item);
-            notify(name)
-            setItem({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
+        const handleSubmitForm = (values) => {
+            addItem(values);
+            notify(values.name)
+            // setItem({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
         };
 
         const notify = (name) => {
@@ -57,8 +57,9 @@ const ItemForm = ({addItem}) => {
                     onSubmit={(values, {setSubmitting, resetForm}) => {
                         //TODO: check submitting
                         setSubmitting(true);
-                        handleSubmitForm(values.name);
+                        handleSubmitForm(values);
                         setSubmitting(false);
+                        resetForm({});
                     }}
                     validationSchema={ValidationSchemaForFoodList}
                     validateOnChange={false}
@@ -77,7 +78,7 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="name"
                                     type="text"
-                                    value={values.name}
+                                    // value={values.name}
                                     placeholder=""
                                     errors={errors.name && touched.name}
                                 />
@@ -93,7 +94,7 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="category"
                                     /*TODO check default value*/
-                                    value={values.category}
+                                    // value={values.category}
                                     onBlur={handleBlur}
                                     errors={errors.category && touched.category}
                                 >
@@ -117,7 +118,7 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="unit"
                                     onBlur={handleBlur}
-                                    value={values.unit}
+                                    // value={values.unit}
                                     placeholder=""
                                     errors={errors.category && touched.category}
                                 >
@@ -142,7 +143,7 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="maximalQuantity"
                                     type="number"
-                                    value={values.maximalQuantity}
+                                    // value={values.maximalQuantity}
                                     placeholder=""
                                     errors={errors.maximalQuantity && touched.maximalQuantity}
                                 />
@@ -159,7 +160,7 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="minimalQuantity"
                                     type="number"
-                                    value={values.minimalQuantity}
+                                    // value={values.minimalQuantity}
                                     placeholder=""
                                     errors={errors.minimalQuantity && touched.minimalQuantity}
                                 />
@@ -175,7 +176,7 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="currentQuantity"
                                     type="number"
-                                    value={values.currentQuantity}
+                                    // value={values.currentQuantity}
                                     placeholder=""
                                     errors={errors.currentQuantity && touched.currentQuantity}
                                 />
