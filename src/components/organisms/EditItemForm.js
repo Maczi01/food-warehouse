@@ -20,12 +20,6 @@ import ButtonContainer from "../atoms/item/ButtonContainer";
 import {properties} from "../../utills/itemProperties";
 import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
 
-const categories = ["baking", "pasta",
-    "spieces", "vegetables and fruits",
-    "meat and more", "dairy", "sweets", "beverages", "others"];
-
-const units = ["piece", "liter", "kilogram"];
-
 const EditItemForm = ({item, editItem}) => {
 
         const [newItem, setNewItem] = useState(item)
