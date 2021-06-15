@@ -6,7 +6,7 @@ import MainTemplate from "../components/templates/MainTemplate";
 const EditView = ({match}) => {
     const selectedId = match.params.id;
     const {foodList, editItem} = useContext(AppContext);
-    const item = foodList.filter(item => item.id === selectedId)[0];
+    const item = foodList.find(item => item.id === selectedId);
 
     return (
         <MainTemplate>
