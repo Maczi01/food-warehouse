@@ -3,7 +3,7 @@ import ListItem from "../molecules/ListItem";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
-import bag from "../../asstets/img/bag.svg";
+import bag from "../../assets/img/bag.svg";
 import {routes} from "../../routes/routes";
 import {AppContext} from "../../context/context";
 

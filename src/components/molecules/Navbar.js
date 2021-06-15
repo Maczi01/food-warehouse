@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from '../../asstets/img/logo.svg';
+import logo from '../../assets/img/logo.svg';
 import styled from "styled-components";
 import {Link, NavLink} from "react-router-dom";
 import Menu from "./Menu";
 import Burger from "../atoms/Burger";
 import {FormattedMessage} from 'react-intl'
 import {auth} from "../../firebase/firebaseConfig";
-import logout from "../../asstets/img/logout.svg";
+import logout from "../../assets/img/logout.svg";
 import ButtonIcon from "../atoms/ButtonIcon";
 
 const HeaderWrapper = styled.nav`

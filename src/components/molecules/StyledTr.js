@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import removeFromShoppingList from "../../asstets/img/removeFromShoppingList.svg";
+import removeFromShoppingList from "../../assets/img/removeFromShoppingList.svg";
 import {Draggable} from 'react-beautiful-dnd';
 
 

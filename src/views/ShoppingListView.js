@@ -1,19 +1,19 @@
 import React, {useContext, useState} from 'react';
 import {AppContext} from "../context/context";
 import 'react-toastify/dist/ReactToastify.css';
-import bag from '../asstets/img/bag.svg';
+import bag from '../assets/img/bag.svg';
 import styled from "styled-components";
 import Table from "../components/organisms/Table";
 import {FormattedMessage} from "react-intl";
 import MainTemplate from "../components/templates/MainTemplate";
 import AddShopModal from "../components/organisms/AddShopModal";
 import ButtonIcon from "../components/atoms/ButtonIcon";
-import plus from "../asstets/img/plus.svg";
-import pdf from "../asstets/img/pdf.svg";
-import sms from "../asstets/img/sms.svg";
+import plus from "../assets/img/plus.svg";
+import pdf from "../assets/img/pdf.svg";
+import sms from "../assets/img/sms.svg";
 import {ToastContainer} from "react-toastify";
-import remove from "../asstets/img/remove.svg";
-import generate from "../asstets/img/generate.svg";
+import remove from "../assets/img/remove.svg";
+import generate from "../assets/img/generate.svg";
 
 const TableWrapper = styled.div`
       display: flex;

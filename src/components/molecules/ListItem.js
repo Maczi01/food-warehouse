@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import styled from "styled-components";
-import edit from "../../asstets/img/edit.svg";
-import remove from "../../asstets/img/remove.svg";
-import plus from "../../asstets/img/plus.svg";
-import minus from "../../asstets/img/minus.svg";
+import edit from "../../assets/img/edit.svg";
+import remove from "../../assets/img/remove.svg";
+import plus from "../../assets/img/plus.svg";
+import minus from "../../assets/img/minus.svg";
 import {useHistory} from "react-router";
 import PropTypes from "prop-types";
 import {AppContext} from "../../context/context";

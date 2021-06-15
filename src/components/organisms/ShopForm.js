@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Form, Formik} from 'formik';
-import accept from '../../asstets/img/accept.svg'
-import decline from '../../asstets/img/decline.svg'
+import accept from '../../assets/img/accept.svg'
+import decline from '../../assets/img/decline.svg'
 import ButtonIcon from "../atoms/ButtonIcon";
 import {FormattedMessage} from 'react-intl'
 import FormWrapper from "../atoms/item/FormWrapper";

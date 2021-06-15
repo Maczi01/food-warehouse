@@ -99,7 +99,6 @@ const AppProvider = ({children}) => {
     const generateShoppingList = () => {
         let list = JSON.parse(JSON.stringify(foodList));
 
-        // let list = newlist.slice();
 
 
         list.filter(item => (

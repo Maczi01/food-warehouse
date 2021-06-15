@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Form, Formik} from 'formik';
-import accept from '../../asstets/img/accept.svg'
-import decline from '../../asstets/img/decline.svg'
+import accept from '../../assets/img/accept.svg'
+import decline from '../../assets/img/decline.svg'
 import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'

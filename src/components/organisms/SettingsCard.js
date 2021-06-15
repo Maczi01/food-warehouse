@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import styled from "styled-components";
-import user from '../../asstets/img/user.svg'
+import user from '../../assets/img/user.svg'
 import {auth} from "../../firebase/firebaseConfig";
 import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
