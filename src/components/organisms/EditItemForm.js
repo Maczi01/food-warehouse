@@ -9,14 +9,14 @@ import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
 import {db} from '../../firebase/firebaseConfig'
-import FormWrapper from "../atoms/item/FormWrapper";
-import Heading from "../atoms/item/Heading";
+import FormWrapper from "../atoms/FormWrapper";
+import Heading from "../atoms/Heading";
 import FormItem from "../molecules/Item/FormItem";
-import StyledLabel from "../atoms/item/StyledLabel";
-import StyledInput from "../atoms/item/StyledInput";
-import ErrorText from "../atoms/item/ErrorText";
-import StyledSelect from "../atoms/item/StyledSelect";
-import ButtonContainer from "../atoms/item/ButtonContainer";
+import StyledLabel from "../atoms/StyledLabel";
+import StyledInputAuth from "../atoms/item/StyledInput";
+import ErrorText from "../atoms/ErrorText";
+import StyledSelect from "../atoms/StyledSelect";
+import ButtonContainer from "../atoms/ButtonContainer";
 import {properties} from "../../utills/itemProperties";
 import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
 
@@ -68,7 +68,7 @@ const EditItemForm = ({item, editItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                <StyledInput
+                                <StyledInputAuth
                                     onChange={handleInputChange}
                                     name="name"
                                     type="text"
@@ -134,7 +134,7 @@ const EditItemForm = ({item, editItem}) => {
                                 <StyledLabel htmlFor="maximalQuantity">
                                     <FormattedMessage id="maximal quantity"/>
                                 </StyledLabel>
-                                <StyledInput
+                                <StyledInputAuth
                                     onChange={handleInputChange}
                                     name="maximalQuantity"
                                     type="number"
@@ -151,7 +151,7 @@ const EditItemForm = ({item, editItem}) => {
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
                                 </StyledLabel>
-                                <StyledInput
+                                <StyledInputAuth
                                     onChange={handleInputChange}
                                     name="minimalQuantity"
                                     type="number"
@@ -168,7 +168,7 @@ const EditItemForm = ({item, editItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
-                                <StyledInput
+                                <StyledInputAuth
                                     onChange={handleInputChange}
                                     name="currentQuantity"
                                     type="number"

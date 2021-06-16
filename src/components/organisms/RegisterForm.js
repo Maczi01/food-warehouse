@@ -3,15 +3,15 @@ import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import eyeclosed from "../../assets/img/eyeclosed.svg"
 import eyeopen from "../../assets/img/eyeopen.svg"
-import StyledTitle from "../atoms/auth/StyledTitle";
-import StyledInput from "../atoms/auth/StyledInput";
-import PasswordWrapper from "../atoms/auth/PasswordWrapper";
-import StyledPassword from "../atoms/auth/StyledPassword";
-import FormIcon from "../atoms/auth/FormIcon";
-import ItemsContainer from "../atoms/auth/ItemsContainer";
-import Form from "../atoms/auth/Form";
-import ConfirmButton from "../atoms/auth/ConfirmButton";
-import Paragraph from "../atoms/auth/Paragraph";
+import StyledTitle from "../atoms/StyledTitle";
+import StyledInput from "../atoms/StyledInput";
+import PasswordWrapper from "../atoms/PasswordWrapper";
+import StyledPassword from "../atoms/StyledPassword";
+import FormIcon from "../atoms/FormIcon";
+import ItemsContainer from "../atoms/ItemsContainer";
+import Form from "../atoms/Form";
+import ConfirmButton from "../atoms/ConfirmButton";
+import Paragraph from "../atoms/Paragraph";
 
 const RegisterForm = ({handleRegister}) => {
     const [type, setType] = useState(false);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledInput = styled.input`
+const StyledInputAuth = styled.input`
     display: block;
     appearance: none;
     outline: 0;
@@ -25,4 +25,4 @@ const StyledInput = styled.input`
   }
 `;
 
-export default StyledInput;
+export default StyledInputAuth;
