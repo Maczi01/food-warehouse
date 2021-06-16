@@ -78,7 +78,6 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="name"
                                     type="text"
-                                    // value={values.name}
                                     placeholder=""
                                     errors={errors.name && touched.name}
                                 />
@@ -93,8 +92,6 @@ const ItemForm = ({addItem}) => {
                                 <StyledSelect
                                     onChange={handleInputChange}
                                     name="category"
-                                    /*TODO check default value*/
-                                    // value={values.category}
                                     onBlur={handleBlur}
                                     errors={errors.category && touched.category}
                                 >
@@ -118,7 +115,6 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="unit"
                                     onBlur={handleBlur}
-                                    // value={values.unit}
                                     placeholder=""
                                     errors={errors.category && touched.category}
                                 >
@@ -143,7 +139,6 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="maximalQuantity"
                                     type="number"
-                                    // value={values.maximalQuantity}
                                     placeholder=""
                                     errors={errors.maximalQuantity && touched.maximalQuantity}
                                 />
@@ -160,7 +155,6 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="minimalQuantity"
                                     type="number"
-                                    // value={values.minimalQuantity}
                                     placeholder=""
                                     errors={errors.minimalQuantity && touched.minimalQuantity}
                                 />
@@ -176,7 +170,6 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="currentQuantity"
                                     type="number"
-                                    // value={values.currentQuantity}
                                     placeholder=""
                                     errors={errors.currentQuantity && touched.currentQuantity}
                                 />
