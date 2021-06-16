@@ -170,6 +170,7 @@ const ItemForm = ({addItem}) => {
                                     onChange={handleInputChange}
                                     name="currentQuantity"
                                     type="number"
+                                    // value={values.currentQuantity}
                                     placeholder=""
                                     errors={errors.currentQuantity && touched.currentQuantity}
                                 />
