@@ -8,7 +8,7 @@ import ButtonIcon from "../atoms/ButtonIcon";
 import {FormattedMessage} from 'react-intl'
 import FormWrapper from "../atoms/FormWrapper";
 import Heading from "../atoms/Heading";
-import FormItem from "../molecules/Item/FormItem";
+import FormItem from "../molecules/FormItem";
 import StyledLabel from "../atoms/StyledLabel";
 import StyledInputAuth from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/ErrorText";
