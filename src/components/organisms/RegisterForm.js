@@ -4,7 +4,6 @@ import {FormattedMessage} from "react-intl";
 import eyeclosed from "../../assets/img/eyeclosed.svg"
 import eyeopen from "../../assets/img/eyeopen.svg"
 import StyledTitle from "../atoms/StyledTitle";
-import StyledInput from "../atoms/StyledInput";
 import PasswordWrapper from "../atoms/PasswordWrapper";
 import StyledPassword from "../atoms/StyledPassword";
 import FormIcon from "../atoms/FormIcon";
@@ -12,6 +11,7 @@ import ItemsContainer from "../atoms/ItemsContainer";
 import Form from "../atoms/Form";
 import ConfirmButton from "../atoms/ConfirmButton";
 import Paragraph from "../atoms/Paragraph";
+import StyledInputAuth from "../atoms/StyledInputAuth";
 
 const RegisterForm = ({handleRegister}) => {
     const [type, setType] = useState(false);
@@ -27,7 +27,7 @@ const RegisterForm = ({handleRegister}) => {
                 <Form
                     onSubmit={handleRegister}
                     autocomplete="off">
-                    <StyledInput
+                    <StyledInputAuth
                         type="email"
                         name="email"
                         placeholder="Email"

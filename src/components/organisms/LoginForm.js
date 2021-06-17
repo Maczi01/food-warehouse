@@ -5,13 +5,13 @@ import eyeclosed from "../../assets/img/eyeclosed.svg"
 import eyeopen from "../../assets/img/eyeopen.svg"
 import PasswordWrapper from "../atoms/PasswordWrapper";
 import ItemsContainer from "../atoms/ItemsContainer";
-import StyledInput from "../atoms/StyledInput";
 import StyledTitle from "../atoms/StyledTitle";
 import FormIcon from "../atoms/FormIcon";
 import Paragraph from "../atoms/Paragraph";
 import ConfirmButton from "../atoms/ConfirmButton";
 import Form from "../atoms/Form";
 import StyledPassword from "../atoms/StyledPassword";
+import StyledInputAuth from "../atoms/StyledInputAuth";
 
 const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
     const [type, setType] = useState(false);
@@ -27,7 +27,7 @@ const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
                 <Form
                     onSubmit={handleLogin}
                     autocomplete="off">
-                    <StyledInput
+                    <StyledInputAuth
                         type="email"
                         name="email"
                         placeholder="Email"/>

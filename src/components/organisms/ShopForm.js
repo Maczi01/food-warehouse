@@ -10,12 +10,12 @@ import FormWrapper from "../atoms/FormWrapper";
 import Heading from "../atoms/Heading";
 import FormItem from "../molecules/FormItem";
 import StyledLabel from "../atoms/StyledLabel";
-import StyledInputAuth from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/ErrorText";
 import StyledSelect from "../atoms/StyledSelect";
 import ButtonContainer from "../atoms/ButtonContainer";
 import {properties} from "../../utills/itemProperties";
 import {ValidationSchemaForShoppingList} from "../../utills/ValidationSchemaForShoppingList";
+import StyledInput from "../atoms/StyledInputAuth";
 
 const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
 
@@ -69,7 +69,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                <StyledInputAuth
+                                <StyledInput
                                     // onChange={handleInputChange}
                                     name="name"
                                     type="text"
@@ -110,7 +110,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                 <StyledLabel htmlFor="neededQuantity">
                                     <FormattedMessage id="quantity"/>
                                 </StyledLabel>
-                                <StyledInputAuth
+                                <StyledInput
                                     onChange={handleInputChange}
                                     name="neededQuantity"
                                     type="number"

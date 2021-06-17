@@ -11,12 +11,12 @@ import FormWrapper from "../atoms/FormWrapper";
 import Heading from "../atoms/Heading";
 import FormItem from "../molecules/FormItem";
 import StyledLabel from "../atoms/StyledLabel";
-import StyledInputAuth from "../atoms/item/StyledInput";
 import ErrorText from "../atoms/ErrorText";
 import StyledSelect from "../atoms/StyledSelect";
 import ButtonContainer from "../atoms/ButtonContainer";
 import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
 import {properties} from "../../utills/itemProperties";
+import StyledInput from "../atoms/StyledInputAuth";
 
 const ItemForm = ({addItem}) => {
 
@@ -74,7 +74,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                <StyledInputAuth
+                                <StyledInput
                                     onChange={handleInputChange}
                                     name="name"
                                     type="text"
@@ -135,7 +135,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="maximalQuantity">
                                     <FormattedMessage id="maximal quantity"/>
                                 </StyledLabel>
-                                <StyledInputAuth
+                                <StyledInput
                                     onChange={handleInputChange}
                                     name="maximalQuantity"
                                     type="number"
@@ -151,7 +151,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
                                 </StyledLabel>
-                                <StyledInputAuth
+                                <StyledInput
                                     onChange={handleInputChange}
                                     name="minimalQuantity"
                                     type="number"
@@ -166,7 +166,7 @@ const ItemForm = ({addItem}) => {
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
-                                <StyledInputAuth
+                                <StyledInput
                                     onChange={handleInputChange}
                                     name="currentQuantity"
                                     type="number"
