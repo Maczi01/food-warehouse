@@ -1,19 +1,20 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../shared/theme/theme";
 import { IntlProvider } from "react-intl";
-import { EN_language as language } from "../../language";
 import { BrowserRouter } from "react-router-dom";
-import FilterView from "./FilterView";
 
-describe("<FilterView />", () => {
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "../../../shared/theme/theme";
+import { EN_language as language } from "../../../language";
+import FlterViewComponent from "./flter-view.component.js";
+
+describe("<FlterViewComponent />", () => {
   it("correctly displays button for each category", () => {
     render(
       <ThemeProvider theme={lightTheme}>
         <IntlProvider locale={language.locale} messages={language.lang}>
           <BrowserRouter>
-            <FilterView />
+            <FlterViewComponent />
           </BrowserRouter>
         </IntlProvider>
       </ThemeProvider>

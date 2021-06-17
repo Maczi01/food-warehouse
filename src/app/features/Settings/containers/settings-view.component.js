@@ -1,8 +1,9 @@
 import React from "react";
-import SettingsCardComponent from "./components/settings-card.component";
-import {useAuth} from '../../shared/utills/Auth';
 
-const SettingsView = () => {
+import SettingsCardComponent from "../components/settings-card.component";
+import {useAuth} from '../../../shared/utills/Auth';
+
+const SettingsViewComponent = () => {
     const { auth } = useAuth();
     const currentMail = auth.currentUser.email;
     const signOut = () => auth.signOut();
@@ -10,4 +11,4 @@ const SettingsView = () => {
     return <SettingsCardComponent signOut={signOut} currentMail={currentMail}/>;
 };
 
-export default SettingsView;
+export default SettingsViewComponent;

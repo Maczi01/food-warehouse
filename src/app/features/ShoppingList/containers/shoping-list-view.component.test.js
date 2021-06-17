@@ -1,24 +1,24 @@
 import {render, screen, waitFor} from "@testing-library/react";
 import React from "react";
 import {ThemeProvider} from "styled-components";
-import {lightTheme} from "../../shared/theme/theme";
+import {lightTheme} from "../../../shared/theme/theme";
 import {IntlProvider} from "react-intl";
-import {EN_language as language} from "../../language";
+import {EN_language as language} from "../../../language";
 import {BrowserRouter} from "react-router-dom";
-import AppProvider from "../../../context/context";
-import {AuthProvider} from "../../shared/utills/Auth";
+import AppProvider from "../../../../context/context";
+import {AuthProvider} from "../../../shared/utills/Auth";
 import user from "@testing-library/user-event";
-import ItemFormComponents from "../Product/components/item-form.component";
-import ShoppingListView from "./ShoppingListView";
+import ItemFormComponents from "../../Product/components/item-form.component";
+import ShoppingListViewComponent from "./shopping-list-view.component";
 
-describe(" <ShoppingListView  />", () => {
+describe(" <ShoppingListViewComponent  />", () => {
     it("correctly call submit function with arguments", async () => {
         render(
             <AppProvider>
                 <ThemeProvider theme={lightTheme}>
                     <IntlProvider locale={language.locale} messages={language.lang}>
                         <BrowserRouter>
-                            <ShoppingListView/>
+                            <ShoppingListViewComponent/>
                         </BrowserRouter>
                     </IntlProvider>
                 </ThemeProvider>

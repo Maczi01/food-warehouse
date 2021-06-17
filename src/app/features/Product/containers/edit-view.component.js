@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../../context/context";
-import EditItemFormComponents from "./components/edit-item-form.component";
-import MainTemplate from "../../layouts/default-layout/DefaultLayout";
 
-const EditView = ({ match }) => {
+import { AppContext } from "../../../../context/context";
+import EditItemFormComponents from "../components/edit-item-form.component";
+import MainTemplate from "../../../layouts/default-layout/DefaultLayout";
+
+const EditViewComponent = ({ match }) => {
   const selectedId = match.params.id;
   const { foodList, editItem } = useContext(AppContext);
   const item = foodList.find((item) => item.id === selectedId);
@@ -15,4 +16,4 @@ const EditView = ({ match }) => {
   );
 };
 
-export default EditView;
+export default EditViewComponent;

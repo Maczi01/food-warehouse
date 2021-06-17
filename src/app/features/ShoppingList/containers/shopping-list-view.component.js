@@ -1,17 +1,17 @@
 import React, {useContext, useState} from "react";
-import {AppContext} from "../../../context/context";
+import {AppContext} from "../../../../context/context";
 import "react-toastify/dist/ReactToastify.css";
 import {FormattedMessage} from "react-intl";
 import {toast, ToastContainer} from "react-toastify";
 
-import bag from "../../shared/assets/icons/bag.svg";
+import bag from "../../../shared/assets/icons/bag.svg";
 import styled from "styled-components";
-import TableComponent from "../Inventory/components/table.component";
-import AddShopModalComponent from "./components/add-shop-modal.component";
-import {ButtonIcon} from "../../shared/ui/Button";
-import plus from "../../shared/assets/icons/plus.svg";
-import remove from "../../shared/assets/icons/remove.svg";
-import generate from "../../shared/assets/icons/generate.svg";
+import TableComponent from "../../Inventory/components/table.component";
+import AddShopModalComponent from "../components/add-shop-modal.component";
+import {ButtonIcon} from "../../../shared/ui/Button";
+import plus from "../../../shared/assets/icons/plus.svg";
+import remove from "../../../shared/assets/icons/remove.svg";
+import generate from "../../../shared/assets/icons/generate.svg";
 
 const TableWrapper = styled.div`
   display: flex;
@@ -57,7 +57,7 @@ const Image = styled.img`
   height: 150px;
 `;
 
-const ShoppingListView = () => {
+const ShoppingListViewComponent = () => {
   const {
     shoppingList,
     addItemToShoppingList,
@@ -116,4 +116,4 @@ const ShoppingListView = () => {
   );
 };
 
-export default ShoppingListView;
+export default ShoppingListViewComponent;

@@ -1,17 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../shared/theme/theme";
-import { IntlProvider } from "react-intl";
-import { EN_language as language } from "../../language";
-import { BrowserRouter } from "react-router-dom";
-import AppProvider from "../../../context/context";
-import { AuthProvider } from "../../shared/utills/Auth";
 import user from "@testing-library/user-event";
-import ListItem from "./components/ListItem";
-import List from "./components/list.component";
+import { IntlProvider } from "react-intl";
+import { BrowserRouter } from "react-router-dom";
 
-describe("<MainView/>", () => {
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "../../../shared/theme/theme";
+import { EN_language as language } from "../../../language";
+import AppProvider from "../../../../context/context";
+import { AuthProvider } from "../../../shared/utills/Auth";
+import ListItem from "../components/list-item.components";
+import List from "../components/list.component";
+
+describe("<MainViewComponent/>", () => {
   it("correctly render item with properties and buttons", async () => {
     const deleteItemMock = jest.fn();
     const decreaseQuantityMock = jest.fn();

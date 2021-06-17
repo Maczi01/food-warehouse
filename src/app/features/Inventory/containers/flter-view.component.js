@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
-import beverages from "../../shared/assets/icons/beverages.svg";
-import bread from "../../shared/assets/icons/bread.svg";
-import dairy from "../../shared/assets/icons/dairy.svg";
-import meat from "../../shared/assets/icons/meat.svg";
-import pasta from "../../shared/assets/icons/pasta.svg";
-import all from "../../shared/assets/icons/all.svg";
-import other from "../../shared/assets/icons/other.svg";
-import spieces from "../../shared/assets/icons/spieces.svg";
-import sweets from "../../shared/assets/icons/sweets.svg";
-import vegetables from "../../shared/assets/icons/vegetables.svg";
 import { Link } from "react-router-dom";
+
+import beverages from "../../../shared/assets/icons/beverages.svg";
+import bread from "../../../shared/assets/icons/bread.svg";
+import dairy from "../../../shared/assets/icons/dairy.svg";
+import meat from "../../../shared/assets/icons/meat.svg";
+import pasta from "../../../shared/assets/icons/pasta.svg";
+import all from "../../../shared/assets/icons/all.svg";
+import other from "../../../shared/assets/icons/other.svg";
+import spieces from "../../../shared/assets/icons/spieces.svg";
+import sweets from "../../../shared/assets/icons/sweets.svg";
+import vegetables from "../../../shared/assets/icons/vegetables.svg";
 
 const GridWrapper = styled.div`
   display: flex;
@@ -94,7 +95,7 @@ const Icon = styled.img`
   }
 `;
 
-const FilterView = () => (
+const FlterViewComponent = () => (
   <>
     <Heading>
       <FormattedMessage id="what in inventory" />
@@ -175,4 +176,4 @@ const FilterView = () => (
   </>
 );
 
-export default FilterView;
+export default FlterViewComponent;

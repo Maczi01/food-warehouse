@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
-import List from "./components/list.component";
-import { AppContext } from "../../../context/context";
+import List from "../components/list.component";
+import { AppContext } from "../../../../context/context";
 
 const Heading = styled.h1`
   padding: 10px;
@@ -21,7 +21,7 @@ const Heading = styled.h1`
   }
 `;
 
-const MainView = ({ match }) => {
+const MainViewComponent = ({ match }) => {
   const parameter = match.params.parameter;
   const { foodList } = useContext(AppContext);
   const newFoodList =
@@ -38,4 +38,4 @@ const MainView = ({ match }) => {
   );
 };
 
-export default MainView;
+export default MainViewComponent;

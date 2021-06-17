@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../../context/context";
 
-import ItemFormComponents from "./components/item-form.component";
-const AddView = () => {
+import { AppContext } from "../../../../context/context";
+
+import ItemFormComponents from "../components/item-form.component";
+const AddViewComponent = () => {
   const { editItem, addItem } = useContext(AppContext);
   return (
     <>
@@ -11,4 +12,4 @@ const AddView = () => {
   );
 };
 
-export default AddView;
+export default AddViewComponent;

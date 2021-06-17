@@ -2,15 +2,15 @@ import React, {useContext} from "react";
 import { Redirect, Route} from "react-router-dom";
 import { Switch } from "react-router";
 
-import FilterView from "./features/Inventory/MainView";
-import ShoppingListView from "./features/ShoppingList/ShoppingListView";
-import AddView from "./features/Product/AddView";
-import SettingsView from "./features/Settings/SettingsView";
+import FilterView from "./features/Inventory/containers/main-view.component";
+import ShoppingListViewComponent from "./features/ShoppingList/containers/shopping-list-view.component";
+import AddViewComponent from "./features/Product/containers/add-view.component";
+import SettingsViewComponent from "./features/Settings/containers/settings-view.component";
 import LoginComponent from "./features/auth/containers/login.component";
 import {UserContext} from "./shared/utills/Auth";
 import RegisterComponent from "./features/auth/containers/register.component";
-import EditView from "./features/Product/EditView";
-import MainView from "./features/Inventory/FilterView";
+import EditViewComponent from "./features/Product/containers/edit-view.component";
+import MainView from "./features/Inventory/containers/flter-view.component.js";
 import UnauthorizedLayout from './layouts/UnauthorizedLayout';
 import {DefaultLayout} from './layouts/default-layout';
 
@@ -51,10 +51,10 @@ const AuthorisedRoutes = () => {
               path={`${routes.filter}${routes.parameter}`}
               component={FilterView}
           />
-          <PrivateRoute path={routes.list} component={ShoppingListView} />
-          <PrivateRoute path={routes.add} component={AddView} />
-          <PrivateRoute path={routes.edit} component={EditView} />
-          <PrivateRoute path={routes.settings} component={SettingsView} />
+          <PrivateRoute path={routes.list} component={ShoppingListViewComponent} />
+          <PrivateRoute path={routes.add} component={AddViewComponent} />
+          <PrivateRoute path={routes.edit} component={EditViewComponent} />
+          <PrivateRoute path={routes.settings} component={SettingsViewComponent} />
         </Switch>
       </DefaultLayout>
 
