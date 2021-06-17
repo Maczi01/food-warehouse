@@ -36,7 +36,7 @@ const ItemForm = ({addItem}) => {
 
         const handleSubmitForm = (values) => {
             addItem(values);
-            notify(values.name)
+            notify(values.name);
             setItem({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
         };
 
