@@ -37,23 +37,28 @@ const AppProvider = ({children}) => {
         changeLanguage(e.target.value);
     };
 
-    useEffect(() => {
+    const unSubscribe = db.collection("foodList")
+        .onSnapshot(
+            (snapshot) => {
+                const foodListData = [];
+                snapshot.forEach(doc => foodListData.push(
+                    {...doc.data(), id: doc.id,})
+                ).;
+                const uid = auth.currentUser.uid
+                let filter = foodListData.filter(doc => {
+                    return doc.userUid === uid
+                });
+                setFoodList(filter)
+            }
+        );
 
-        const unSubscribe = db.collection("foodList")
-        // .where('userUid', '==', auth.currentUser.uid)
-            .onSnapshot(
-                (snapshot) => {
-                    const foodListData = [];
-                    snapshot.forEach(doc => foodListData.push(
-                        {...doc.data(), id: doc.id,})
-                    );
-                    console.log(auth.currentUser.uid)
-                    let filter = foodListData.filter(doc => doc.userUid == auth.currentUser.uid);
-                    setFoodList(filter)
-                }
-            );
+    useEffect(() => {
+        auth.onAuthStateChanged(userData => {
+            if (userData) {
+                unSubscribe();
+            }
+        });
         return () => {
-            // Unmouting
             unSubscribe();
         };
     }, []);
