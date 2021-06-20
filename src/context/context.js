@@ -39,38 +39,23 @@ const AppProvider = ({children}) => {
 
     useEffect(() => {
 
-        if (auth.currentUser) {
-
-            const uid = auth.currentUser.uid
-            const unSubscribe = db.collection("users")
-                .doc(uid)
-                .collection("foodList")
-                .onSnapshot(
-                    (snapshot) => {
-                        const foodListData = [];
-                        snapshot
-                            // .filter(doc => doc.uid == auth.currentUser.uid)
-                            .forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
-                        // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
-                        setFoodList(foodListData)
-                    }
-                );
-            return unSubscribe;
-        } else {
-            console.log("no")
-        }
-        // if (auth.currentUser) {
-        //     let uid = auth.currentUser.uid;
-        //     console.log(uid)
-        //     db.collection("users")
-        //         .doc(uid)
-        //         .collection("foodList")
-        //         .get()
-        //         .then(res => {
-        //             console.log(res)
-        //             setFoodList(res)
-        //         });
-        // }
+        const unSubscribe = db.collection("foodList")
+        // .where('userUid', '==', auth.currentUser.uid)
+            .onSnapshot(
+                (snapshot) => {
+                    const foodListData = [];
+                    snapshot.forEach(doc => foodListData.push(
+                        {...doc.data(), id: doc.id,})
+                    );
+                    console.log(auth.currentUser.uid)
+                    let filter = foodListData.filter(doc => doc.userUid == auth.currentUser.uid);
+                    setFoodList(filter)
+                }
+            );
+        return () => {
+            // Unmouting
+            unSubscribe();
+        };
     }, []);
 
     useEffect(() => {

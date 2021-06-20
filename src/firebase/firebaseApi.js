@@ -16,16 +16,10 @@ export const firebase = {
         db.collection("foodList").doc(id).delete();
     },
     addItemToFoodList: function (newItem) {
-        // newItem.id = uuidv4();
-        // db.collection("foodList").add(newItem);
         newItem.userUid = auth.currentUser.uid
         newItem.id = uuidv4();
         newItem.checked = false;
         db.collection("foodList").add(newItem);
-        // db.collection("users")
-        //     .doc(auth.currentUser.uid)
-        //     .collection("foodList")
-        //     .add(newItem);
     },
     addItemToShoppingList: function (newItem) {
         newItem.id = uuidv4();
