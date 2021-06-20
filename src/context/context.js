@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {db,auth} from "../firebase/firebaseConfig";
+import {db, auth} from "../firebase/firebaseConfig";
 import English from "../languages/en";
 import Polish from "../languages/pl";
 import {ThemeProvider} from "styled-components";
@@ -38,31 +38,39 @@ const AppProvider = ({children}) => {
     };
 
     useEffect(() => {
-        // const uid = auth.currentUser.uid
-        // const unSubscribe = db.collection("users")
-            // .doc(uid)
-            // .collection("foodList")
-            // .onSnapshot(
-        // const unSubscribe = db.collection(`users/${auth.currentUser.uid}/foodList`).onSnapshot(
-        const unSubscribe = db.collection("users").onSnapshot(
 
-            (snapshot) => {
-                const foodListData = [];
-                snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
-                // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
-                setFoodList(foodListData)
-            }
-        );
-        return unSubscribe;
+        if (auth.currentUser) {
 
-        // db.collection("shoppingList").doc(uid).collection("foodList")
-        //     .get()
-        //     .then(res => {
-        //         res.forEach(element => {
-        //             element.ref.delete();
+            const uid = auth.currentUser.uid
+            const unSubscribe = db.collection("users")
+                .doc(uid)
+                .collection("foodList")
+                .onSnapshot(
+                    (snapshot) => {
+                        const foodListData = [];
+                        snapshot
+                            // .filter(doc => doc.uid == auth.currentUser.uid)
+                            .forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
+                        // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
+                        setFoodList(foodListData)
+                    }
+                );
+            return unSubscribe;
+        } else {
+            console.log("no")
+        }
+        // if (auth.currentUser) {
+        //     let uid = auth.currentUser.uid;
+        //     console.log(uid)
+        //     db.collection("users")
+        //         .doc(uid)
+        //         .collection("foodList")
+        //         .get()
+        //         .then(res => {
+        //             console.log(res)
+        //             setFoodList(res)
         //         });
-        //     });
-
+        // }
     }, []);
 
     useEffect(() => {
@@ -114,7 +122,6 @@ const AppProvider = ({children}) => {
 
     const generateShoppingList = () => {
         let list = JSON.parse(JSON.stringify(foodList));
-
 
 
         list.filter(item => (

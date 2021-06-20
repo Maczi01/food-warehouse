@@ -18,14 +18,14 @@ export const firebase = {
     addItemToFoodList: function (newItem) {
         // newItem.id = uuidv4();
         // db.collection("foodList").add(newItem);
-
+        newItem.userUid = auth.currentUser.uid
         newItem.id = uuidv4();
         newItem.checked = false;
-        // db.collection("shoppingList").add(newItem);
-        db.collection("users")
-            .doc(auth.currentUser.uid)
-            .collection("foodList")
-            .add(newItem);
+        db.collection("foodList").add(newItem);
+        // db.collection("users")
+        //     .doc(auth.currentUser.uid)
+        //     .collection("foodList")
+        //     .add(newItem);
     },
     addItemToShoppingList: function (newItem) {
         newItem.id = uuidv4();

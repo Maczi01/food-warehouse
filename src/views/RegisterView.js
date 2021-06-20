@@ -32,10 +32,12 @@ const RegisterView = ({history}) => {
             const {email, password} = event.target.elements;
             auth.createUserWithEmailAndPassword(email.value, password.value)
                 // .then(cred => {
-                //     return db.collection('users').doc(cred.user.uid).set({
-                //         foodList: []
-                //     });
+                //     return db.collection('users').doc(cred.user.uid)
+                //         // .set({
+                // //         foodList: []
+                // //     });
                 // })
+
             history.push("/")
         }
 
