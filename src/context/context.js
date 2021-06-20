@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {db} from "../firebase/firebaseConfig";
 import English from "../languages/en";
 import Polish from "../languages/pl";
 import {ThemeProvider} from "styled-components";
@@ -9,6 +8,7 @@ import GlobalStyle from "../theme/GlobalStyle";
 import {firebase} from "../firebase/firebaseApi";
 import {EN_language, PL_language} from "../utills/language";
 import {v4 as uuidv4} from 'uuid';
+import {auth, db} from "./firebaseConfig";
 
 export const AppContext = React.createContext();
 
@@ -50,7 +50,8 @@ const AppProvider = ({children}) => {
     }, []);
 
     useEffect(() => {
-        const unSubscribe = db.collection("shoppingList").onSnapshot(
+        // const unSubscribe = db.collection("shoppingList").onSnapshot(
+        const unSubscribe = db.collection(`users/${auth.currentUser.uid}/foodList`).onSnapshot(
             (snapshot) => {
                 const shoppingListData = [];
                 snapshot.forEach(doc => shoppingListData.push({
@@ -98,7 +99,6 @@ const AppProvider = ({children}) => {
 
     const generateShoppingList = () => {
         let list = JSON.parse(JSON.stringify(foodList));
-
 
 
         list.filter(item => (

@@ -31,7 +31,6 @@ const RegisterForm = ({handleRegister}) => {
                         type="email"
                         name="email"
                         placeholder="Email"
-
                     />
                     <PasswordWrapper>
                         <StyledPassword type={type ? "text" : "password"} name="password" placeholder="Password"/>

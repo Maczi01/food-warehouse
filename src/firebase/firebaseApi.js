@@ -1,4 +1,4 @@
-import {db} from "./firebaseConfig";
+import {auth, db} from "./firebaseConfig";
 import {v4 as uuidv4} from 'uuid';
 
 export const firebase = {
@@ -16,8 +16,14 @@ export const firebase = {
         db.collection("foodList").doc(id).delete();
     },
     addItemToFoodList: function (newItem) {
+        // newItem.id = uuidv4();
+        // db.collection("foodList").add(newItem);
+
         newItem.id = uuidv4();
-        db.collection("foodList").add(newItem);
+        newItem.checked = false;
+        // db.collection("shoppingList").add(newItem);
+        db.collection(`users/${auth.currentUser.uid}/foodList`)
+            .add(newItem);
     },
     addItemToShoppingList: function (newItem) {
         newItem.id = uuidv4();
