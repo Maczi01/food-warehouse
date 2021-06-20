@@ -43,7 +43,7 @@ const AppProvider = ({children}) => {
                 const foodListData = [];
                 snapshot.forEach(doc => foodListData.push(
                     {...doc.data(), id: doc.id,})
-                ).;
+                );
                 const uid = auth.currentUser.uid
                 let filter = foodListData.filter(doc => {
                     return doc.userUid === uid
@@ -99,7 +99,6 @@ const AppProvider = ({children}) => {
         firebase.editItem(item);
     };
 
-
     const deleteFromShoppingList = () => {
         db.collection("shoppingList")
             .get()
@@ -112,7 +111,6 @@ const AppProvider = ({children}) => {
 
     const generateShoppingList = () => {
         let list = JSON.parse(JSON.stringify(foodList));
-
 
         list.filter(item => (
             item.currentQuantity < item.minimalQuantity
@@ -127,7 +125,6 @@ const AppProvider = ({children}) => {
             return item;
         }).filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1)
             .forEach(item => addItemToShoppingList(item));
-        // setShoppingList(list)
     };
 
     const addItemToShoppingList = (newItem) => {
