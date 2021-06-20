@@ -22,7 +22,9 @@ export const firebase = {
         newItem.id = uuidv4();
         newItem.checked = false;
         // db.collection("shoppingList").add(newItem);
-        db.collection(`users/${auth.currentUser.uid}/foodList`)
+        db.collection("users")
+            .doc(auth.currentUser.uid)
+            .collection("foodList")
             .add(newItem);
     },
     addItemToShoppingList: function (newItem) {
