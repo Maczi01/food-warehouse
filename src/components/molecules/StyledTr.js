@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import removeFromShoppingList from "../../assets/img/removeFromShoppingList.svg";
 import {Draggable} from 'react-beautiful-dnd';
 
 
@@ -10,17 +9,6 @@ const StyledTrWrapper = styled.tr`
     //background-color: ${({theme}) => theme.colors.green};
     
     background-color: ${({checked, theme}) => checked ? theme.colors.pink : theme.colors.white};
-
-    //@keyframes appear {
-    //  0% {
-    //    opacity: 0;
-    //    top: 30px;
-    //}
-    //  100% {
-    //    opacity: 1;
-    //    top: 0;
-    //}
-
 `;
 
 const StyledButton = styled.img`
@@ -41,7 +29,7 @@ const Td = styled.td`
   text-align: center; 
 `
 
-const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
+const StyledTr = ({item, index, setItemAsChecked}) => (
     <Draggable draggableId={item.id} index={index}>
         {provided => (
             <StyledTrWrapper
@@ -50,12 +38,11 @@ const StyledTr = ({item, index, deleteFromShoppingList, checkItem}) => (
                 ref={provided.innerRef}
                 checked={item.checked}
             >
-                {/*<Td checked={item.checked}>{index + 1}</Td>*/}
                 <Td checked={item.checked}>{item.name}</Td>
                 <Td checked={item.checked}>{item.neededQuantity}</Td>
                 <Td checked={item.checked}>{item.unit}</Td>
                 <Td>
-                    <input type="checkbox" onChange={() => checkItem(item)}/>
+                    <input type="checkbox" onChange={() => setItemAsChecked(item)}/>
                 </Td>
             </StyledTrWrapper>
         )}

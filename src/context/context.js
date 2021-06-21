@@ -44,7 +44,6 @@ const AppProvider = ({children}) => {
                 snapshot.forEach(doc => foodListData.push(
                     {...doc.data(), id: doc.id,})
                 );
-                // const uid = auth.currentUser.uid
                 let filter = foodListData.filter(doc => {
                     return doc.userUid === uid
                 });
@@ -134,13 +133,13 @@ const AppProvider = ({children}) => {
         firebase.addItemToShoppingList(newItem);
     };
 
-    const checkItem = (item) => {
+    const setItemAsChecked = (item) => {
         item.checked = !item.checked;
         db.collection("shoppingList").doc(item.id).update({...item});
     };
 
     const context = {
-        checkItem,
+        setItemAsChecked,
         generateShoppingList,
         shoppingList,
         foodList,

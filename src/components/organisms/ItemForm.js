@@ -16,7 +16,7 @@ import StyledSelect from "../atoms/StyledSelect";
 import ButtonContainer from "../atoms/ButtonContainer";
 import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
 import {properties} from "../../utills/itemProperties";
-import StyledInput from "../atoms/StyledInputAuth";
+import StyledInput from "../atoms/StyledInput";
 
 const ItemForm = ({addItem}) => {
 

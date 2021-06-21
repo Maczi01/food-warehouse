@@ -15,7 +15,7 @@ import StyledSelect from "../atoms/StyledSelect";
 import ButtonContainer from "../atoms/ButtonContainer";
 import {properties} from "../../utills/itemProperties";
 import {ValidationSchemaForShoppingList} from "../../utills/ValidationSchemaForShoppingList";
-import StyledInput from "../atoms/StyledInputAuth";
+import StyledInput from "../atoms/StyledInput";
 
 const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
 

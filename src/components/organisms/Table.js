@@ -76,7 +76,7 @@ const ButtonContainer = styled.div`
 
 const Table = ({data}) => {
 
-    const {checkItem} = useContext(AppContext);
+    const {setItemAsChecked} = useContext(AppContext);
 
     const [list, setList] = useState(data);
 
@@ -155,7 +155,7 @@ const Table = ({data}) => {
                                     key={item.id}
                                     item={item}
                                     index={index}
-                                    checkItem={checkItem}
+                                    setItemAsChecked={setItemAsChecked}
                                 />))}
                             {provided.placeholder}
                             </tbody>)}
