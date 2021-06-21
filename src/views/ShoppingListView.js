@@ -61,7 +61,7 @@ const Image = styled.img`
 `;
 
 const ShoppingListView = () => {
-    const {shoppingList, addItemToShoppingList, generateShoppingList, deleteFromShoppingList} = useContext(AppContext);
+    const {shoppingList, addItemToShoppingList, generateShoppingList, deleteShoppingList} = useContext(AppContext);
     const [showAddShopModal, setShowAddShopModal] = useState(false);
 
     return (
@@ -98,7 +98,7 @@ const ShoppingListView = () => {
                         icon={sms}
                     />
                     <ButtonIcon
-                        onClick={deleteFromShoppingList}
+                        onClick={deleteShoppingList}
                         icon={remove}
                     />
                 </ButtonContainer>

@@ -31,7 +31,7 @@ export const firebase = {
         db.collection("shoppingList").doc(item.id).update({...item});
     },
 
-    deleteAllFromFromShoppingList: function () {
+    deleteShoppingList: function () {
         db.collection("shoppingList")
             .get()
             .then(res => {

@@ -88,22 +88,6 @@ const AppProvider = ({children}) => {
         };
     }, []);
 
-    // useEffect(() => {
-    //     const unSubscribeShoppingList = db.collection("shoppingList").onSnapshot(
-    //         (snapshot) => {
-    //             const shoppingListData = [];
-    //             snapshot.forEach(doc => shoppingListData.push({
-    //                 ...doc.data(),
-    //                 // currentQuantity: parseInt(doc.currentQuantity),
-    //                 id: doc.id
-    //             }));
-    //             // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
-    //             setShoppingList(shoppingListData)
-    //         }
-    //     );
-    //     return unSubscribe;
-    // }, []);
-
     const increaseQuantity = (item) => {
         firebase.increaseQuantity(item);
     };
@@ -124,19 +108,12 @@ const AppProvider = ({children}) => {
         firebase.editItem(item);
     };
 
-    const deleteFromShoppingList = () => {
-        db.collection("shoppingList")
-            .get()
-            .then(res => {
-                res.forEach(element => {
-                    element.ref.delete();
-                });
-            });
+    const deleteShoppingList = () => {
+        firebase.deleteShoppingList();
     };
 
     const generateShoppingList = () => {
         let list = JSON.parse(JSON.stringify(foodList));
-
         list.filter(item => (
             item.currentQuantity < item.minimalQuantity
         )).map(item => {
@@ -147,7 +124,7 @@ const AppProvider = ({children}) => {
             delete item.currentQuantity;
             delete item.category;
             item.checked = false;
-            item.userUid = auth.currentUser.uid
+            item.userUid = auth.currentUser.uid;
             return item;
         }).filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1)
             .forEach(item => addItemToShoppingList(item));
@@ -163,13 +140,12 @@ const AppProvider = ({children}) => {
     };
 
     const context = {
-
         checkItem,
         generateShoppingList,
         shoppingList,
         foodList,
         language,
-        deleteFromShoppingList,
+        deleteShoppingList,
         addItemToShoppingList,
         increaseQuantity,
         decreaseQuantity,
@@ -178,7 +154,7 @@ const AppProvider = ({children}) => {
         editItem,
         toggleTheme,
         handleLanguageChange
-    }
+    };
 
     return (
         <AppContext.Provider value={context}>
@@ -190,7 +166,7 @@ const AppProvider = ({children}) => {
             </IntlProvider>
         </AppContext.Provider>
     )
-}
+};
 
 
 export default AppProvider;
