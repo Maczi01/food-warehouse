@@ -6,7 +6,7 @@ const StyledPassword = styled.input`
     padding-bottom: 5px;
     width: 230px;
     background-color: transparent;
-    border: ${({previousLoginAttemptFailed}) => previousLoginAttemptFailed ? "3px solid red" : "none"};
+    border: ${({error}) => error ? "3px solid red" : "none"};
     outline: none;
     border-bottom: 1.5px solid;
     border-bottom-color: grey;

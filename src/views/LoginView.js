@@ -5,9 +5,10 @@ import {AuthContext} from "../providers/Auth";
 import {auth, db} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 import AuthTemplate from "../components/templates/AuthTemplate";
+import WrongPasswordModal from "../components/organisms/WrongPasswordModal";
 
 const LoginView = ({history}) => {
-        const [previousLoginAttemptFailed, setPreviousLoginAttemptFailed] = useState(false)
+        const [error, setError] = useState(false)
         // const handleLogin = useCallback(
         //     async event => {
         //         event.preventDefault();
@@ -23,21 +24,29 @@ const LoginView = ({history}) => {
         //     }, [history]
         // );
 
-    const handleLogin = event => {
-        event.preventDefault();
-        const {email, password} = event.target.elements;
-        auth.signInWithEmailAndPassword(email.value, password.value)
-                    setPreviousLoginAttemptFailed(false);
+        const handleLogin = event => {
+            event.preventDefault();
+            const {email, password} = event.target.elements;
+            auth.signInWithEmailAndPassword(email.value, password.value)
+                .then(user => {
+                    console.log(user)
+                    setError(false);
 
-        // .then(cred => {
+                })
+                .catch(error => {
+                    setError(true);
+                })
+
+            ;
+
+            // .then(cred => {
             //     return db.collection('users').doc(cred.user.uid)
             //         .set({
             //             userMail: email.value
             //         });
             // });
-        // history.push("/")
-    }
-
+            // history.push("/")
+        }
 
 
         const {currentUser} = useContext(AuthContext);
@@ -46,9 +55,10 @@ const LoginView = ({history}) => {
         }
         return (
             <AuthTemplate>
+                {error &&<WrongPasswordModal error={error}/>}
                 <LoginForm
                     handleLogin={handleLogin}
-                    previousLoginAttemptFailed={previousLoginAttemptFailed}
+                    error={error}
                 />
             </AuthTemplate>
         )

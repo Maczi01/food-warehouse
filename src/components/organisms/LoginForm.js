@@ -13,7 +13,7 @@ import Form from "../atoms/Form";
 import StyledPassword from "../atoms/StyledPassword";
 import StyledInputAuth from "../atoms/StyledInputAuth";
 
-const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
+const LoginForm = ({handleLogin, error}) => {
     const [type, setType] = useState(false);
     return (
         <>
@@ -33,7 +33,7 @@ const LoginForm = ({handleLogin, previousLoginAttemptFailed}) => {
                         placeholder="Email"/>
                     <PasswordWrapper>
                         <StyledPassword
-                            previousLoginAttemptFailed={previousLoginAttemptFailed}
+                            error={error}
                             type={type ? "text" : "password"}
                             name="password"
                             placeholder="Password"/>
