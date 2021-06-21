@@ -37,14 +37,14 @@ const AppProvider = ({children}) => {
         changeLanguage(e.target.value);
     };
 
-    const unSubscribe = db.collection("foodList")
+    const unSubscribeFoodList = (uid) => db.collection("foodList")
         .onSnapshot(
             (snapshot) => {
                 const foodListData = [];
                 snapshot.forEach(doc => foodListData.push(
                     {...doc.data(), id: doc.id,})
                 );
-                const uid = auth.currentUser.uid
+                // const uid = auth.currentUser.uid
                 let filter = foodListData.filter(doc => {
                     return doc.userUid === uid
                 });
@@ -52,32 +52,57 @@ const AppProvider = ({children}) => {
             }
         );
 
+    const unSubscribeShoppingList = (uid) => db.collection("shoppingList")
+        .onSnapshot(
+            (snapshot) => {
+                const shoppingListData = [];
+                snapshot.forEach(doc => shoppingListData.push(
+                    {...doc.data(), id: doc.id,})
+                );
+                let filter = shoppingListData.filter(doc => {
+                    return doc.userUid === uid
+                });
+                setShoppingList(filter)
+            }
+        );
+
     useEffect(() => {
-        auth.onAuthStateChanged(userData => {
-            if (userData) {
-                unSubscribe();
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                unSubscribeFoodList(user.uid);
             }
         });
         return () => {
-            unSubscribe();
+            unSubscribeFoodList();
         };
     }, []);
 
     useEffect(() => {
-        const unSubscribe = db.collection("shoppingList").onSnapshot(
-            (snapshot) => {
-                const shoppingListData = [];
-                snapshot.forEach(doc => shoppingListData.push({
-                    ...doc.data(),
-                    // currentQuantity: parseInt(doc.currentQuantity),
-                    id: doc.id
-                }));
-                // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
-                setShoppingList(shoppingListData)
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                unSubscribeShoppingList(user.uid);
             }
-        );
-        return unSubscribe;
+        });
+        return () => {
+            unSubscribeFoodList();
+        };
     }, []);
+
+    // useEffect(() => {
+    //     const unSubscribeShoppingList = db.collection("shoppingList").onSnapshot(
+    //         (snapshot) => {
+    //             const shoppingListData = [];
+    //             snapshot.forEach(doc => shoppingListData.push({
+    //                 ...doc.data(),
+    //                 // currentQuantity: parseInt(doc.currentQuantity),
+    //                 id: doc.id
+    //             }));
+    //             // const foodListData = snapshot.map(doc => ({id: doc.id, ...doc.data()}
+    //             setShoppingList(shoppingListData)
+    //         }
+    //     );
+    //     return unSubscribe;
+    // }, []);
 
     const increaseQuantity = (item) => {
         firebase.increaseQuantity(item);
@@ -122,6 +147,7 @@ const AppProvider = ({children}) => {
             delete item.currentQuantity;
             delete item.category;
             item.checked = false;
+            item.userUid = auth.currentUser.uid
             return item;
         }).filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1)
             .forEach(item => addItemToShoppingList(item));
