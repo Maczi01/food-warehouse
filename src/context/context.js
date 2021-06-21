@@ -83,7 +83,7 @@ const AppProvider = ({children}) => {
             }
         });
         return () => {
-            unSubscribeFoodList();
+            unSubscribeShoppingList();
         };
     }, []);
 

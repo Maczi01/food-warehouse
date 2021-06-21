@@ -24,6 +24,7 @@ export const firebase = {
     addItemToShoppingList: function (newItem) {
         newItem.id = uuidv4();
         newItem.checked = false;
+        newItem.userUid = auth.currentUser.uid
         db.collection("shoppingList").add(newItem);
     },
     checkOrUncheckItemOnshoppingList: function (item) {

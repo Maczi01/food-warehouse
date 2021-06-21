@@ -70,7 +70,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
                                 <StyledInput
-                                    // onChange={handleInputChange}
+                                    onChange={handleInputChange}
                                     name="name"
                                     type="text"
                                     // value={values.name}

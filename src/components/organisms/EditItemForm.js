@@ -18,7 +18,7 @@ import StyledSelect from "../atoms/StyledSelect";
 import ButtonContainer from "../atoms/ButtonContainer";
 import {properties} from "../../utills/itemProperties";
 import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
-import StyledInput from "../atoms/StyledInputAuth";
+import StyledInput from "../atoms/StyledInput";
 
 const EditItemForm = ({item, editItem}) => {
 
