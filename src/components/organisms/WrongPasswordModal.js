@@ -24,7 +24,7 @@ const ModalWrapper = styled.div`
 
 const WrongPasswordModal = ({error}) => (
     <ModalWrapper>
-        <p>{error}</p>
+        <p>Wrong password</p>
     </ModalWrapper>
 );
 
