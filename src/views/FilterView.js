@@ -13,6 +13,7 @@ import sweets from "../assets/categoryIcon/sweets.svg";
 import vegetables from "../assets/categoryIcon/vegetables.svg";
 import {Link} from "react-router-dom";
 import MainTemplate from "../components/templates/MainTemplate";
+import FormItem from "../components/organisms/FormItem";
 
 const ViewWrapper = styled.div`
      width: 80vw;
@@ -106,6 +107,7 @@ const FilterView = () => (
     <MainTemplate>
         <Heading>
             <FormattedMessage id="what in inventory"/>
+            <FormItem/>
         </Heading>
         <GridWrapper>
             <IconWrapper as={Link} to={'/filter/all'}>
