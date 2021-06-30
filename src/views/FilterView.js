@@ -107,7 +107,6 @@ const FilterView = () => (
     <MainTemplate>
         <Heading>
             <FormattedMessage id="what in inventory"/>
-            <FormItem/>
         </Heading>
         <GridWrapper>
             <IconWrapper as={Link} to={'/filter/all'}>

@@ -1,13 +1,14 @@
 import React, {useContext} from 'react'
 import {AppContext} from "../context/context";
 import MainTemplate from "../components/templates/MainTemplate";
-import ItemForm from "../components/organisms/ItemForm";
+import FormItem from "../components/organisms/FormItem";
 
 const AddView = () => {
     const {editItem, addItem} = useContext(AppContext);
     return (
         <MainTemplate>
-            <ItemForm
+            {/*<ItemForm*/}
+            <FormItem
                 addItem={addItem}
                 edit={editItem}
             />
