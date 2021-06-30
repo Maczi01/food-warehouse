@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Form, Formik} from 'formik';
+import {Form, Field, Formik} from 'formik';
 import accept from '../../assets/img/accept.svg'
 import decline from '../../assets/img/decline.svg'
 import ButtonIcon from "../atoms/ButtonIcon";
@@ -20,24 +20,9 @@ import StyledInput from "../atoms/StyledInput";
 
 const ItemForm = ({addItem}) => {
 
-        const [item, setItem] = useState({
-            name: "",
-            category: "",
-            unit: "",
-            currentQuantity: 0,
-            minimalQuantity: 0,
-            maximalQuantity: 0
-        });
-
-        const handleInputChange = e => {
-            const {name, value} = e.target;
-            setItem({...item, [name]: value});
-        };
-
         const handleSubmitForm = (values) => {
             addItem(values);
             notify(values.name);
-            setItem({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
         };
 
         const notify = (name) => {
@@ -53,7 +38,14 @@ const ItemForm = ({addItem}) => {
                 </Heading>
                 <Formik
                     enableReinitialize
-                    initialValues={item}
+                    initialValues={{
+                        name: "",
+                        category: "",
+                        unit: "",
+                        currentQuantity: 0,
+                        minimalQuantity: 0,
+                        maximalQuantity: 0
+                    }}
                     onSubmit={(values, {setSubmitting, resetForm}) => {
                         //TODO: check submitting
                         setSubmitting(true);
@@ -65,34 +57,29 @@ const ItemForm = ({addItem}) => {
                     validateOnChange={false}
                     validateOnBlur={false}
                 >
-                    {({values, errors, touched, handleBlur, isValid, dirty, isSubmitting, handleSubmit}) => (
-                        <Form
-                            autoComplete="off"
-                            onSubmit={handleSubmit}
-                        >
+                    {({errors, touched, handleBlur, isSubmitting}) => (
+                        <Form>
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="name"/>
                                 </StyledLabel>
-                                <StyledInput
-                                    onChange={handleInputChange}
+                                <Field
                                     name="name"
                                     type="text"
                                     placeholder=""
                                     errors={errors.name && touched.name}
+                                    as={StyledInput}
                                 />
                             </FormItem>
-                            {errors.name && touched.name ?
-                                <ErrorText>{errors.name}</ErrorText> : null
-                            }
+                            {errors.name && touched.name ?<ErrorText>{errors.name}</ErrorText> : null}
                             <FormItem>
                                 <StyledLabel htmlFor="category">
                                     <FormattedMessage id="choose category"/>
                                 </StyledLabel>
-                                <StyledSelect
-                                    onChange={handleInputChange}
+                                <Field
                                     name="category"
                                     onBlur={handleBlur}
+                                    as={StyledSelect}
                                     errors={errors.category && touched.category}
                                 >
                                     {properties.categories.map((category) => (
@@ -102,21 +89,19 @@ const ItemForm = ({addItem}) => {
                                             {(text) => <option value={category}>{text}</option>}
                                         </FormattedMessage>)
                                     )}
-                                </StyledSelect>
+                                </Field>
                             </FormItem>
-                            {errors.category && touched.category ?
-                                <ErrorText>{errors.category}</ErrorText> : null
-                            }
+                            {errors.category && touched.category ? <ErrorText>{errors.category}</ErrorText> : null}
                             <FormItem>
                                 <StyledLabel htmlFor="unit">
                                     <FormattedMessage id="choose unit"/>
                                 </StyledLabel>
-                                <StyledSelect
-                                    onChange={handleInputChange}
+                                <Field
                                     name="unit"
                                     onBlur={handleBlur}
                                     placeholder=""
                                     errors={errors.category && touched.category}
+                                    as={StyledSelect}
                                 >
                                     {properties.units.map((unit) => (
                                         <FormattedMessage
@@ -125,59 +110,48 @@ const ItemForm = ({addItem}) => {
                                             {(text) => <option value={text}>{unit}</option>}
                                         </FormattedMessage>)
                                     )}
-                                </StyledSelect>
+                                </Field>
                             </FormItem>
-                            {errors.unit && touched.unit ?
-                                <ErrorText>{errors.unit}</ErrorText> : null
-                            }
-
+                            {errors.unit && touched.unit ? <ErrorText>{errors.unit}</ErrorText> : null}
                             <FormItem>
                                 <StyledLabel htmlFor="maximalQuantity">
                                     <FormattedMessage id="maximal quantity"/>
                                 </StyledLabel>
-                                <StyledInput
-                                    onChange={handleInputChange}
+                                <Field
                                     name="maximalQuantity"
                                     type="number"
                                     placeholder=""
                                     errors={errors.maximalQuantity && touched.maximalQuantity}
+                                    as={StyledInput}
                                 />
                             </FormItem>
-                            {errors.maximalQuantity && touched.maximalQuantity ?
-                                <ErrorText>{errors.maximalQuantity}</ErrorText> : null
-                            }
-
+                            {errors.maximalQuantity && touched.maximalQuantity ? <ErrorText>{errors.maximalQuantity}</ErrorText> : null}
                             <FormItem>
                                 <StyledLabel htmlFor="minimalQuantity">
                                     <FormattedMessage id="minimal quantity"/>
                                 </StyledLabel>
-                                <StyledInput
-                                    onChange={handleInputChange}
+                                <Field
                                     name="minimalQuantity"
                                     type="number"
                                     placeholder=""
                                     errors={errors.minimalQuantity && touched.minimalQuantity}
+                                    as={StyledInput}
                                 />
                             </FormItem>
-                            {errors.minimalQuantity && touched.minimalQuantity ?
-                                <ErrorText>{errors.minimalQuantity}</ErrorText> : null
-                            }
+                            {errors.minimalQuantity && touched.minimalQuantity ? <ErrorText>{errors.minimalQuantity}</ErrorText> : null }
                             <FormItem>
                                 <StyledLabel htmlFor="currentQuantity">
                                     <FormattedMessage id="current quantity"/>
                                 </StyledLabel>
-                                <StyledInput
-                                    onChange={handleInputChange}
+                                <Field
                                     name="currentQuantity"
                                     type="number"
-                                    // value={values.currentQuantity}
+                                    as={StyledInput}
                                     placeholder=""
                                     errors={errors.currentQuantity && touched.currentQuantity}
                                 />
                             </FormItem>
-                            {errors.currentQuantity && touched.currentQuantity ?
-                                <ErrorText>{errors.currentQuantity}</ErrorText> : null
-                            }
+                            {errors.currentQuantity && touched.currentQuantity ? <ErrorText>{errors.currentQuantity}</ErrorText> : null }
                             <ButtonContainer>
                                 <Link to="/">
                                     <ButtonIcon
@@ -185,6 +159,7 @@ const ItemForm = ({addItem}) => {
                                     />
                                 </Link>
                                 <ButtonIcon
+                                    disabled={isSubmitting}
                                     type="submit"
                                     icon={accept}
                                 />

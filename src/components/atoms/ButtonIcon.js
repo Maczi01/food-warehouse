@@ -21,6 +21,9 @@ const ButtonIcon = styled.button`
     box-shadow: 0 5px #E5E5E5;
     transform: translateY(6px);
   }
+  :disabled {
+    background-color: red;
+  }
 `;
 
 export default ButtonIcon;
