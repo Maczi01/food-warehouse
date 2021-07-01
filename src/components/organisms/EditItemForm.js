@@ -1,14 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Field, Form, Formik} from 'formik';
 import accept from '../../assets/img/accept.svg'
 import decline from '../../assets/img/decline.svg'
-import styled from "styled-components";
 import ButtonIcon from "../atoms/ButtonIcon";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from 'react-intl'
-import {db} from '../../firebase/firebaseConfig'
 import FormWrapper from "../atoms/FormWrapper";
 import Heading from "../atoms/Heading";
 import FormItem from "../molecules/FormItem";
@@ -22,24 +20,16 @@ import StyledInput from "../atoms/StyledInput";
 
 const EditItemForm = ({item, editItem}) => {
 
-        // const [newItem, setNewItem] = useState(item)
+    const handleSubmitForm = (values) => {
+        editItem(values);
+        notify(values.name)
+    };
 
-        // const handleInputChange = e => {
-        //     const {name, value} = e.target;
-        //     setNewItem({...newItem, [name]: value});
-        // };
-
-        const handleSubmitForm = (values) => {
-            editItem(values);
-            notify(values.name)
-            // setNewItem({name: "", category: "", unit: "", currentQuantity: 0, minimalQuantity: 0, maximalQuantity: 0})
-        };
-
-        const notify = (name) => {
-            toast.success(`Succesfully edited ${name}`, {
-                position: toast.POSITION.TOP_CENTER
-            })
-        };
+    const notify = (name) => {
+        toast.success(`Succesfully edited ${name}`, {
+            position: toast.POSITION.TOP_CENTER
+        })
+    };
 
     return (
         <FormWrapper>
@@ -73,7 +63,7 @@ const EditItemForm = ({item, editItem}) => {
                                 as={StyledInput}
                             />
                         </FormItem>
-                        {errors.name && touched.name ?<ErrorText>{errors.name}</ErrorText> : null}
+                        {errors.name && touched.name ? <ErrorText>{errors.name}</ErrorText> : null}
                         <FormItem>
                             <StyledLabel htmlFor="category">
                                 <FormattedMessage id="choose category"/>
@@ -127,7 +117,8 @@ const EditItemForm = ({item, editItem}) => {
                                 as={StyledInput}
                             />
                         </FormItem>
-                        {errors.maximalQuantity && touched.maximalQuantity ? <ErrorText>{errors.maximalQuantity}</ErrorText> : null}
+                        {errors.maximalQuantity && touched.maximalQuantity ?
+                            <ErrorText>{errors.maximalQuantity}</ErrorText> : null}
                         <FormItem>
                             <StyledLabel htmlFor="minimalQuantity">
                                 <FormattedMessage id="minimal quantity"/>
@@ -140,7 +131,8 @@ const EditItemForm = ({item, editItem}) => {
                                 as={StyledInput}
                             />
                         </FormItem>
-                        {errors.minimalQuantity && touched.minimalQuantity ? <ErrorText>{errors.minimalQuantity}</ErrorText> : null }
+                        {errors.minimalQuantity && touched.minimalQuantity ?
+                            <ErrorText>{errors.minimalQuantity}</ErrorText> : null}
                         <FormItem>
                             <StyledLabel htmlFor="currentQuantity">
                                 <FormattedMessage id="current quantity"/>
@@ -153,7 +145,8 @@ const EditItemForm = ({item, editItem}) => {
                                 errors={errors.currentQuantity && touched.currentQuantity}
                             />
                         </FormItem>
-                        {errors.currentQuantity && touched.currentQuantity ? <ErrorText>{errors.currentQuantity}</ErrorText> : null }
+                        {errors.currentQuantity && touched.currentQuantity ?
+                            <ErrorText>{errors.currentQuantity}</ErrorText> : null}
                         <ButtonContainer>
                             <Link to="/">
                                 <ButtonIcon
@@ -172,8 +165,7 @@ const EditItemForm = ({item, editItem}) => {
             </Formik>
         </FormWrapper>
     )
-    }
-;
+};
 
 
 export default EditItemForm;
