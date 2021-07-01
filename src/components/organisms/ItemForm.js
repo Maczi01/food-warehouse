@@ -47,7 +47,6 @@ const ItemForm = ({addItem}) => {
                         maximalQuantity: 0
                     }}
                     onSubmit={(values, {setSubmitting, resetForm}) => {
-                        //TODO: check submitting
                         setSubmitting(true);
                         handleSubmitForm(values);
                         setSubmitting(false);
