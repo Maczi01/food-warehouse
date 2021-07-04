@@ -11,24 +11,24 @@ import {Form} from "formik";
 
 const LoginView = () => {
         const {currentUser} = useContext(AuthContext);
-    const [error, setError] = useState(false);
+        const [error, setError] = useState(false);
 
         const handleLogin = event => {
             event.preventDefault();
             const {email, password} = event.target.elements;
             auth.signInWithEmailAndPassword(email.value, password.value)
-                .then(user => {
-                    setError(false)
+                .then(() => {
+                    setError(false);
                 })
                 .catch(error => {
-                    setError(true)
-                    notify();
+                    setError(true);
+                    notifyErrorLogin();
                     console.log(error);
                 })
             ;
         };
 
-        const notify = () => {
+        const notifyErrorLogin = () => {
             toast.error
             ("Wrong credentials", {
                 position: toast.POSITION.TOP_CENTER
@@ -38,9 +38,10 @@ const LoginView = () => {
         if (currentUser) {
             return <Redirect to="/"/>
         }
-        const removeBorder = (blur) =>{
+        const removeBorder = () => {
             setError(false)
-        }
+        };
+
         return (
             <AuthTemplate>
                 <LoginForm

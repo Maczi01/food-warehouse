@@ -1,31 +1,16 @@
-import React, {useCallback, useContext} from 'react';
+import React, {useCallback, useContext, useState} from 'react';
 import {AuthContext} from "../providers/Auth";
 import {auth} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 import RegisterForm from "../components/organisms/RegisterForm";
 import AuthTemplate from "../components/templates/AuthTemplate";
 import {db} from '../firebase/firebaseConfig'
+import {toast, ToastContainer} from "react-toastify";
+import LoginForm from "../components/organisms/LoginForm";
 
 const RegisterView = ({history}) => {
 
-        // const handleRegister = useCallback(
-        //     async event => {
-        //         event.preventDefault();
-        //         const {email, password} = event.target.elements;
-        //         try {
-        //             await auth.createUserWithEmailAndPassword(email.value, password.value)
-        //                 .then(cred => {
-        //                     return db.collection('users').doc(cred.user.uid).set({
-        //                         foodList: []
-        //                     });
-        //                 })
-        //             history.push("/")
-        //         } catch (err) {
-        //             console.error("Register Error")
-        //             alert("alert");
-        //         }
-        //     }, [history]
-        // );
+        const [error, setError] = useState(false);
 
         const handleRegister = event => {
             event.preventDefault();
@@ -35,10 +20,27 @@ const RegisterView = ({history}) => {
                     return db.collection('users').doc(cred.user.uid)
                         .set({
                             userMail: email.value
-                        });
+                        })
+                    history.push("/")
+                })
+                .catch(error => {
+                    setError(true);
+                    notifyErrorLogin(error.message);
+                    console.log(error);
                 });
-            history.push("/")
+            ;
         }
+
+        const notifyErrorLogin = (error) => {
+            toast.error
+            (error, {
+                position: toast.POSITION.TOP_CENTER
+            })
+        };
+
+        const removeBorder = () => {
+            setError(false)
+        };
 
         const {currentUser} = useContext(AuthContext);
         if (currentUser) {
@@ -46,7 +48,11 @@ const RegisterView = ({history}) => {
         }
         return (
             <AuthTemplate>
-                <RegisterForm handleRegister={handleRegister}/>
+                <RegisterForm
+                    removeBorder={removeBorder}
+                    error={error}
+                    handleRegister={handleRegister}/>
+                <ToastContainer autoClose={2500}/>
             </AuthTemplate>
         )
     }

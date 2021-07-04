@@ -13,7 +13,7 @@ import ConfirmButton from "../atoms/ConfirmButton";
 import Paragraph from "../atoms/Paragraph";
 import StyledInputAuth from "../atoms/StyledInputAuth";
 
-const RegisterForm = ({handleRegister}) => {
+const RegisterForm = ({handleRegister, removeBorder, error}) => {
     const [type, setType] = useState(false);
     return (
         <>
@@ -28,12 +28,19 @@ const RegisterForm = ({handleRegister}) => {
                     onSubmit={handleRegister}
                     autocomplete="off">
                     <StyledInputAuth
+                        onFocus={removeBorder}
+                        error={error}
                         type="email"
                         name="email"
                         placeholder="Email"
                     />
                     <PasswordWrapper>
-                        <StyledPassword type={type ? "text" : "password"} name="password" placeholder="Password"/>
+                        <StyledPassword
+                            onFocus={removeBorder}
+                            error={error}
+                            type={type ? "text" : "password"}
+                            name="password"
+                            placeholder="Password"/>
                         <FormIcon
                             onClick={() => setType(!type)}
                             src={type ? eyeclosed : eyeopen}/>
