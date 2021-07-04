@@ -1,14 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {db, auth} from "../firebase/firebaseConfig";
-import English from "../languages/en";
-import Polish from "../languages/pl";
+import {auth, db} from "../firebase/firebaseConfig";
 import {ThemeProvider} from "styled-components";
 import {lightTheme, nightTheme} from '../theme/theme'
 import {IntlProvider} from "react-intl";
 import GlobalStyle from "../theme/GlobalStyle";
 import {firebase} from "../firebase/firebaseApi";
 import {EN_language, PL_language} from "../utills/language";
-import {v4 as uuidv4} from 'uuid';
 
 export const AppContext = React.createContext();
 
