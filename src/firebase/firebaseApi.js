@@ -45,7 +45,7 @@ export const firebase = {
         db.collection("foodList").doc(item.id).update({...item});
     },
     getData: function () {
-        // db.collection("foodList").onSnapshot(
+        // db.collection("foodList").get(
         //     (snapshot) => {
         //         const foodListData = [];
         //         snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));

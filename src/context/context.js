@@ -34,38 +34,40 @@ const AppProvider = ({children}) => {
             changeLanguage(e.target.value);
         };
 
-        const unSubscribeFoodList = (uid) => db.collection("foodList")
-            .onSnapshot(
-                (snapshot) => {
-                    const foodListData = [];
-                    snapshot.forEach(doc => foodListData.push(
-                        {...doc.data(), id: doc.id,})
-                    );
-                    let filter = foodListData.filter(doc =>
-                        doc.userUid === uid
-                    );
-                    setFoodList(filter)
-                }, error => {
-                    console.log(`Problem with internet connection ${error}`)
-                }
-            )
+        const unSubscribeFoodList = (uid) => {
+                db.collection("foodList").onSnapshot(
+                    (snapshot) => {
+                        const foodListData = [];
+                        snapshot.forEach(doc => foodListData.push(
+                            {...doc.data(), id: doc.id,})
+                        );
+                        let filter = foodListData.filter(doc =>
+                            doc.userUid === uid
+                        );
+                        setFoodList(filter)
+                    }, error => {
+                        console.log(`Problem with internet connection ${error}`)
+                    }
+                )
+            }
         ;
 
-        const unSubscribeShoppingList = (uid) => db.collection("shoppingList")
-            .onSnapshot(
-                (snapshot) => {
-                    const shoppingListData = [];
-                    snapshot.forEach(doc => shoppingListData.push(
-                        {...doc.data(), id: doc.id,})
-                    );
-                    let filter = shoppingListData.filter(doc =>
-                        doc.userUid === uid
-                    );
-                    setShoppingList(filter)
-                }, error => {
-                    console.log(`Problem with internet connection ${error}`)
-                }
-            );
+        const unSubscribeShoppingList = (uid) => {
+                db.collection("shoppinglist").onSnapshot(
+                    (snapshot) => {
+                        const shoppingListData = [];
+                        snapshot.forEach(doc => shoppingListData.push(
+                            {...doc.data(), id: doc.id,})
+                        );
+                        let filter = shoppingListData.filter(doc =>
+                            doc.userUid === uid
+                        );
+                        setShoppingList(filter)
+                    }, error => {
+                        console.log(`Problem with internet connection ${error}`)
+                    })
+            }
+        ;
 
         useEffect(() => {
             auth.onAuthStateChanged((user) => {
@@ -172,3 +174,4 @@ const AppProvider = ({children}) => {
 
 
 export default AppProvider;
+
