@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 const StyledInputAuth = styled.input`
+    border: ${({error}) => error ? "3px solid red" : "none"};
+    //border: 3px solid red;
     margin-bottom: 30px;
     padding: 2px 0;
     padding-bottom: 5px;
     width: 250px;
     background-color: transparent;
-    border: none;
+    //border: none;
     outline: none;
     border-bottom: 1.5px solid;
     border-bottom-color: grey;

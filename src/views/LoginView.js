@@ -6,60 +6,50 @@ import {auth, db} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 import AuthTemplate from "../components/templates/AuthTemplate";
 import WrongPasswordModal from "../components/organisms/WrongPasswordModal";
+import {toast, ToastContainer} from "react-toastify";
+import {Form} from "formik";
 
-const LoginView = ({history}) => {
-        const [error, setError] = useState(false)
-        // const handleLogin = useCallback(
-        //     async event => {
-        //         event.preventDefault();
-        //         const {email, password} = event.target.elements;
-        //         try {
-        //             await auth.signInWithEmailAndPassword(email.value, password.value);
-        //             setPreviousLoginAttemptFailed(false);
-        //             history.push("/");
-        //         } catch (err) {
-        //             console.error("Login Error");
-        //             setPreviousLoginAttemptFailed(true);
-        //         }
-        //     }, [history]
-        // );
+const LoginView = () => {
+        const {currentUser} = useContext(AuthContext);
+    const [error, setError] = useState(false);
 
         const handleLogin = event => {
             event.preventDefault();
             const {email, password} = event.target.elements;
             auth.signInWithEmailAndPassword(email.value, password.value)
                 .then(user => {
-                    console.log(user)
-                    setError(false);
-
+                    setError(false)
                 })
                 .catch(error => {
-                    setError(true);
+                    setError(true)
+                    notify();
+                    console.log(error);
                 })
-
             ;
+        };
 
-            // .then(cred => {
-            //     return db.collection('users').doc(cred.user.uid)
-            //         .set({
-            //             userMail: email.value
-            //         });
-            // });
-            // history.push("/")
-        }
+        const notify = () => {
+            toast.error
+            ("Wrong credentials", {
+                position: toast.POSITION.TOP_CENTER
+            })
+        };
 
-
-        const {currentUser} = useContext(AuthContext);
         if (currentUser) {
             return <Redirect to="/"/>
         }
+        const removeBorder = (blur) =>{
+            setError(false)
+        }
         return (
             <AuthTemplate>
-                {error &&<WrongPasswordModal error={error}/>}
                 <LoginForm
-                    handleLogin={handleLogin}
+                    removeBorder={removeBorder}
                     error={error}
+                    handleLogin={handleLogin}
                 />
+                <ToastContainer autoClose={2500}/>
+
             </AuthTemplate>
         )
     }

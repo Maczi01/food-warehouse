@@ -13,7 +13,7 @@ import Form from "../atoms/Form";
 import StyledPassword from "../atoms/StyledPassword";
 import StyledInputAuth from "../atoms/StyledInputAuth";
 
-const LoginForm = ({handleLogin, error}) => {
+const LoginForm = ({handleLogin, error, removeBorder}) => {
     const [type, setType] = useState(false);
     return (
         <>
@@ -28,11 +28,14 @@ const LoginForm = ({handleLogin, error}) => {
                     onSubmit={handleLogin}
                     autocomplete="off">
                     <StyledInputAuth
+                        onFocus={removeBorder}
+                        error={error}
                         type="email"
                         name="email"
                         placeholder="Email"/>
                     <PasswordWrapper>
                         <StyledPassword
+                            onFocus={removeBorder}
                             error={error}
                             type={type ? "text" : "password"}
                             name="password"
@@ -52,6 +55,7 @@ const LoginForm = ({handleLogin, error}) => {
                     </Link>
                 </Paragraph>
             </ItemsContainer>
+
         </>
     )
 };
