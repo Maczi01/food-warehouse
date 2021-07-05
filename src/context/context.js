@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {auth, db} from "../firebase/firebaseConfig";
+import {db, auth} from "../firebase/firebaseConfig";
 import {ThemeProvider} from "styled-components";
 import {lightTheme, nightTheme} from '../theme/theme'
 import {IntlProvider} from "react-intl";
@@ -34,40 +34,53 @@ const AppProvider = ({children}) => {
             changeLanguage(e.target.value);
         };
 
-        const unSubscribeFoodList = (uid) => {
-                db.collection("foodList").onSnapshot(
-                    (snapshot) => {
-                        const foodListData = [];
-                        snapshot.forEach(doc => foodListData.push(
-                            {...doc.data(), id: doc.id,})
-                        );
-                        let filter = foodListData.filter(doc =>
-                            doc.userUid === uid
-                        );
-                        setFoodList(filter)
-                    }, error => {
-                        console.log(`Problem with internet connection ${error}`)
-                    }
-                )
-            }
-        ;
+        const unSubscribeFoodList = async (uid) => {
+          let data = await firebase.getData(uid);
+            setFoodList(data)
+        }
 
-        const unSubscribeShoppingList = (uid) => {
-                db.collection("shoppinglist").onSnapshot(
-                    (snapshot) => {
-                        const shoppingListData = [];
-                        snapshot.forEach(doc => shoppingListData.push(
-                            {...doc.data(), id: doc.id,})
-                        );
-                        let filter = shoppingListData.filter(doc =>
-                            doc.userUid === uid
-                        );
-                        setShoppingList(filter)
-                    }, error => {
-                        console.log(`Problem with internet connection ${error}`)
-                    })
-            }
-        ;
+
+// eeee
+//     (snapshot) => {
+//         snapshot.forEach(doc => foodListData.push(
+//             {...doc.data(), id: doc.id,})
+//         );
+//         let filter = foodListData.filter(doc => {
+//             return doc.userUid === uid
+//         });
+//         setFoodList(filter)
+//     }
+// );}
+
+
+// db.collection("foodList")
+//     .onSnapshot(
+//         (snapshot) => {
+//             const foodListData = [];
+//             snapshot.forEach(doc => foodListData.push(
+//                 {...doc.data(), id: doc.id,})
+//             );
+//             let filter = foodListData.filter(doc => {
+//                 return doc.userUid === uid
+//             });
+//             setFoodList(filter)
+//         }
+//     );
+// }
+
+        const unSubscribeShoppingList = (uid) => db.collection("shoppingList")
+            .onSnapshot(
+                (snapshot) => {
+                    const shoppingListData = [];
+                    snapshot.forEach(doc => shoppingListData.push(
+                        {...doc.data(), id: doc.id,})
+                    );
+                    let filter = shoppingListData.filter(doc => {
+                        return doc.userUid === uid
+                    });
+                    setShoppingList(filter)
+                }
+            );
 
         useEffect(() => {
             auth.onAuthStateChanged((user) => {
@@ -174,4 +187,3 @@ const AppProvider = ({children}) => {
 
 
 export default AppProvider;
-

@@ -44,15 +44,22 @@ export const firebase = {
     editItem: function (item) {
         db.collection("foodList").doc(item.id).update({...item});
     },
-    getData: function () {
-        // db.collection("foodList").get(
-        //     (snapshot) => {
-        //         const foodListData = [];
-        //         snapshot.forEach(doc => foodListData.push({...doc.data(), id: doc.id}));
-        //         return foodListData;
-        //         // setFoodList(foodListData)
-        //     }
-        // );
+    getData: async function (uid) {
+        try {
+            const ref = db.collection("foodList")
+
+            const docs = await ref.get();
+            const foodListData = [];
+            docs.forEach(doc => {
+                    foodListData.push(
+                        {...doc.data(), id: doc.id,})
+                }
+            )
+            let filter = foodListData.filter(doc => doc.userUid === uid);
+            return (filter)
+        } catch (error) {
+            console.log(error)
+        }
     },
 
 }
