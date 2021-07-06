@@ -37,6 +37,8 @@ const AppProvider = ({children}) => {
         const unSubscribeFoodList = async (uid) => {
           let data = await firebase.getData(uid);
             setFoodList(data)
+            console.log("setFoodList")
+
         }
 
 
@@ -88,10 +90,11 @@ const AppProvider = ({children}) => {
                     unSubscribeFoodList(user.uid);
                 }
             });
+            console.log("useEffect")
             return () => {
                 unSubscribeFoodList();
             };
-        }, []);
+        },[] );
 
         useEffect(() => {
             auth.onAuthStateChanged((user) => {

@@ -41,6 +41,7 @@ export const firebase = {
                 });
             });
     },
+
     editItem: function (item) {
         db.collection("foodList").doc(item.id).update({...item});
     },
