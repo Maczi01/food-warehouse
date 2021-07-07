@@ -35,39 +35,16 @@ const AppProvider = ({children}) => {
         };
 
         const subscribeFoodList = (uid) => {
-                db.collection("foodList").onSnapshot(
-                    (snapshot) => {
-                        const foodListData = [];
-                        snapshot.forEach(doc => foodListData.push(
-                            {...doc.data(), id: doc.id,})
-                        );
-                        let filter = foodListData.filter(doc =>
-                            doc.userUid === uid
-                        );
-                        setFoodList(filter)
-                    }, error => {
-                        console.log(`Problem with internet connection ${error}`)
-                    }
-                )
-            }
-        ;
+            return firebase.getData(uid, (docs) => {
+              setFoodList(docs)
+            })
+        };
 
         const subscribeShoppingList = (uid) => {
-                db.collection("shoppinglist").onSnapshot(
-                    (snapshot) => {
-                        const shoppingListData = [];
-                        snapshot.forEach(doc => shoppingListData.push(
-                            {...doc.data(), id: doc.id,})
-                        );
-                        let filter = shoppingListData.filter(doc =>
-                            doc.userUid === uid
-                        );
-                        setShoppingList(filter)
-                    }, error => {
-                        console.log(`Problem with internet connection ${error}`)
-                    })
-            }
-        ;
+            return firebase.getShoppingList(uid, (docs) => {
+              setShoppingList(docs)
+            })
+        };
 
         useEffect(() => {
             let unSubscribeFoodList = null
