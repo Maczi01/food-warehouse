@@ -1,6 +1,8 @@
 import {auth, db} from "./firebaseConfig";
 import {v4 as uuidv4} from 'uuid';
 
+
+
 export const api = {
     decreaseQuantity: function (item) {
         if (item.currentQuantity > 0) {
@@ -27,7 +29,8 @@ export const api = {
         newItem.userUid = auth.currentUser.uid
         db.collection("shoppingList").add(newItem);
     },
-    checkOrUncheckItemOnshoppingList: function (item) {
+
+    setItemAsCheckedOrUnchecked: function (item) {
         item.checked = !item.checked;
         db.collection("shoppingList").doc(item.id).update({...item});
     },
@@ -50,17 +53,18 @@ export const api = {
             .onSnapshot(snapshot => {
                     const foodListData = [];
                     snapshot.forEach(doc => foodListData.push(
-                    {...doc.data(), id: doc.id,})
-                );
-                let filter = foodListData.filter(doc => {
-                    return doc.userUid === uid
-                });
-                callback(filter)
-            }, error => {
+                        {...doc.data(), id: doc.id,})
+                    );
+                    let filter = foodListData.filter(doc => {
+                        return doc.userUid === uid
+                    });
+                    callback(filter)
+                }, error => {
                     console.error(error.message)
                 }
             )
-    },
+    }
+    ,
     getShoppingList: function (uid, callback) {
         return db.collection("shoppingList")
             .onSnapshot(snapshot => {

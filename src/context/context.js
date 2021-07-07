@@ -16,36 +16,6 @@ const AppProvider = ({children}) => {
         const [theme, setTheme] = useState(lightTheme);
         const [language, setLanguage] = useState(EN_language);
 
-        function changeLanguage(language) {
-            switch (language) {
-                case('en'):
-                    setLanguage(EN_language);
-                    break;
-                default:
-                    setLanguage(PL_language);
-            }
-        }
-
-        const toggleTheme = (e) => {
-            e.target.value === 'on' ? setTheme(nightTheme) : setTheme(lightTheme)
-        };
-
-        const handleLanguageChange = e => {
-            changeLanguage(e.target.value);
-        };
-
-        const subscribeFoodList = (uid) => {
-            return api.getFoodList(uid, docs => {
-                setFoodList(docs)
-            })
-        };
-
-        const subscribeShoppingList = (uid) => {
-            return api.getShoppingList(uid, docs => {
-                setShoppingList(docs)
-            })
-        }
-
         useEffect(() => {
             let unSubscribeFoodList = null;
             let unSubscribeShoppingList = null;
@@ -69,6 +39,35 @@ const AppProvider = ({children}) => {
             };
         }, []);
 
+        const changeLanguage = (language) => {
+            switch (language) {
+                case('en'):
+                    setLanguage(EN_language);
+                    break;
+                default:
+                    setLanguage(PL_language);
+            }
+        };
+
+        const toggleTheme = (e) => {
+            e.target.value === 'on' ? setTheme(nightTheme) : setTheme(lightTheme)
+        };
+
+        const handleLanguageChange = e => {
+            changeLanguage(e.target.value);
+        };
+
+        const subscribeFoodList = (uid) => {
+            return api.getFoodList(uid, docs => {
+                setFoodList(docs)
+            })
+        };
+
+        const subscribeShoppingList = (uid) => {
+            return api.getShoppingList(uid, docs => {
+                setShoppingList(docs)
+            })
+        };
 
         const increaseQuantity = (item) => {
             api.increaseQuantity(item);
@@ -94,7 +93,7 @@ const AppProvider = ({children}) => {
             api.deleteShoppingList();
         };
 
-        const generateShoppingList = () => {
+        const generateShoppingList = (foodList) => {
             let list = JSON.parse(JSON.stringify(foodList));
             list.filter(item => (
                 item.currentQuantity < item.minimalQuantity
@@ -117,8 +116,7 @@ const AppProvider = ({children}) => {
         };
 
         const setItemAsChecked = (item) => {
-            item.checked = !item.checked;
-            db.collection("shoppingList").doc(item.id).update({...item});
+            api.setItemAsCheckedOrUnchecked(item);
         };
 
         const context = {
