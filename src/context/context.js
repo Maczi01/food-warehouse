@@ -34,7 +34,7 @@ const AppProvider = ({children}) => {
             changeLanguage(e.target.value);
         };
 
-        const unSubscribeFoodList = (uid) => {
+        const subscribeFoodList = (uid) => {
                 db.collection("foodList").onSnapshot(
                     (snapshot) => {
                         const foodListData = [];
@@ -52,7 +52,7 @@ const AppProvider = ({children}) => {
             }
         ;
 
-        const unSubscribeShoppingList = (uid) => {
+        const subscribeShoppingList = (uid) => {
                 db.collection("shoppinglist").onSnapshot(
                     (snapshot) => {
                         const shoppingListData = [];
@@ -70,24 +70,26 @@ const AppProvider = ({children}) => {
         ;
 
         useEffect(() => {
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    unSubscribeFoodList(user.uid);
-                }
-            });
-            return () => {
-                unSubscribeFoodList();
-            };
-        }, []);
+            let unSubscribeFoodList = null
+            let unSubscribeShoppingList = null
 
-        useEffect(() => {
             auth.onAuthStateChanged((user) => {
                 if (user) {
-                    unSubscribeShoppingList(user.uid);
+                  unSubscribeFoodList = subscribeFoodList(user.uid);
+                  unSubscribeShoppingList = subscribeShoppingList(user.uid);
+                } else {
+                  unSubscribeFoodList && unSubscribeFoodList();
+                  unSubscribeShoppingList && unSubscribeShoppingList();
+                  unSubscribeFoodList = null
+                  unSubscribeShoppingList = null 
                 }
             });
+
             return () => {
-                unSubscribeShoppingList();
+              unSubscribeFoodList && unSubscribeFoodList();
+              unSubscribeShoppingList && unSubscribeShoppingList();
+              unSubscribeFoodList = null
+              unSubscribeShoppingList = null 
             };
         }, []);
 
