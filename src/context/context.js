@@ -34,25 +34,17 @@ const AppProvider = ({children}) => {
             changeLanguage(e.target.value);
         };
 
-        const unSubscribeFoodList = async (uid) => {
-          let data = await firebase.getData(uid);
-            setFoodList(data)
-            console.log("setFoodList")
+        const subscribeFoodList = (uid) => {
+            return firebase.getFoodList(uid, docs => {
+                setFoodList(docs)
+            })
+        };
 
+        const subscribeShoppingList = (uid) => {
+            return firebase.getShoppingList(uid, docs => {
+                setShoppingList(docs)
+            })
         }
-
-
-// eeee
-//     (snapshot) => {
-//         snapshot.forEach(doc => foodListData.push(
-//             {...doc.data(), id: doc.id,})
-//         );
-//         let filter = foodListData.filter(doc => {
-//             return doc.userUid === uid
-//         });
-//         setFoodList(filter)
-//     }
-// );}
 
 
 // db.collection("foodList")
@@ -85,16 +77,23 @@ const AppProvider = ({children}) => {
             );
 
         useEffect(() => {
+            let unSubscribeFoodList = null;
+            let unSubscribeShoppingList = null;
+
             auth.onAuthStateChanged((user) => {
                 if (user) {
-                    unSubscribeFoodList(user.uid);
+                    unSubscribeFoodList = subscribeFoodList(user.uid);
+                    unSubscribeShoppingList = subscribeShoppingList(user.uid)
+                } else {
+                    unSubscribeFoodList && unSubscribeFoodList();
                 }
             });
             console.log("useEffect")
             return () => {
-                unSubscribeFoodList();
+                unSubscribeFoodList && unSubscribeFoodList();
+                unSubscribeFoodList = null;
             };
-        },[] );
+        }, []);
 
         useEffect(() => {
             auth.onAuthStateChanged((user) => {

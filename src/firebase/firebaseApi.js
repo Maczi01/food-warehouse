@@ -45,22 +45,37 @@ export const firebase = {
     editItem: function (item) {
         db.collection("foodList").doc(item.id).update({...item});
     },
-    getData: async function (uid) {
-        try {
-            const ref = db.collection("foodList")
-
-            const docs = await ref.get();
-            const foodListData = [];
-            docs.forEach(doc => {
-                    foodListData.push(
-                        {...doc.data(), id: doc.id,})
+    getFoodList: function (uid, callback) {
+        return db.collection("foodList")
+            .onSnapshot(snapshot => {
+                    const foodListData = [];
+                    snapshot.forEach(doc => foodListData.push(
+                    {...doc.data(), id: doc.id,})
+                );
+                let filter = foodListData.filter(doc => {
+                    return doc.userUid === uid
+                });
+                callback(filter)
+            }, error => {
+                    console.error(error.message)
                 }
             )
-            let filter = foodListData.filter(doc => doc.userUid === uid);
-            return (filter)
-        } catch (error) {
-            console.log(error)
-        }
     },
+    getShoppingList: function (uid, callback) {
+        return db.collection("shoppingList")
+            .onSnapshot(snapshot => {
+                    const shoppingListData = [];
+                    snapshot.forEach(doc => shoppingListData.push(
+                        {...doc.data(), id: doc.id,})
+                    );
+                    let filter = shoppingListData.filter(doc => {
+                        return doc.userUid === uid
+                    });
+                    callback(filter)
+                }, error => {
+                    console.error(error.message)
+                }
+            )
+    }
 
 }
