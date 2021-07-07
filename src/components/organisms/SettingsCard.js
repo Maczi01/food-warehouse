@@ -202,15 +202,6 @@ const SettingsCard = () => {
                                 <option value="off" label="off"/>
                             </StyledSelect>
                         </OptionsItem>
-                        <OptionsItem>
-                            <StyledLabel>
-                                Notifications
-                            </StyledLabel>
-                            <StyledSelect defaultValue="off">
-                                <option value="on" label="on"/>
-                                <option value="off" label="off"/>
-                            </StyledSelect>
-                        </OptionsItem>
                     </OptionsWrapper>
                 </SettingsWrapper>
             </>)
