@@ -34,60 +34,39 @@ const AppProvider = ({children}) => {
             changeLanguage(e.target.value);
         };
 
-        const unSubscribeFoodList = (uid) => {
-                db.collection("foodList").onSnapshot(
-                    (snapshot) => {
-                        const foodListData = [];
-                        snapshot.forEach(doc => foodListData.push(
-                            {...doc.data(), id: doc.id,})
-                        );
-                        let filter = foodListData.filter(doc =>
-                            doc.userUid === uid
-                        );
-                        setFoodList(filter)
-                    }, error => {
-                        console.log(`Problem with internet connection ${error}`)
-                    }
-                )
-            }
-        ;
+        const subscribeFoodList = (uid) => {
+            return firebase.getData(uid, (docs) => {
+              setFoodList(docs)
+            })
+        };
 
-        const unSubscribeShoppingList = (uid) => {
-                db.collection("shoppinglist").onSnapshot(
-                    (snapshot) => {
-                        const shoppingListData = [];
-                        snapshot.forEach(doc => shoppingListData.push(
-                            {...doc.data(), id: doc.id,})
-                        );
-                        let filter = shoppingListData.filter(doc =>
-                            doc.userUid === uid
-                        );
-                        setShoppingList(filter)
-                    }, error => {
-                        console.log(`Problem with internet connection ${error}`)
-                    })
-            }
-        ;
+        const subscribeShoppingList = (uid) => {
+            return firebase.getShoppingList(uid, (docs) => {
+              setShoppingList(docs)
+            })
+        };
 
         useEffect(() => {
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    unSubscribeFoodList(user.uid);
-                }
-            });
-            return () => {
-                unSubscribeFoodList();
-            };
-        }, []);
+            let unSubscribeFoodList = null
+            let unSubscribeShoppingList = null
 
-        useEffect(() => {
             auth.onAuthStateChanged((user) => {
                 if (user) {
-                    unSubscribeShoppingList(user.uid);
+                  unSubscribeFoodList = subscribeFoodList(user.uid);
+                  unSubscribeShoppingList = subscribeShoppingList(user.uid);
+                } else {
+                  unSubscribeFoodList && unSubscribeFoodList();
+                  unSubscribeShoppingList && unSubscribeShoppingList();
+                  unSubscribeFoodList = null
+                  unSubscribeShoppingList = null 
                 }
             });
+
             return () => {
-                unSubscribeShoppingList();
+              unSubscribeFoodList && unSubscribeFoodList();
+              unSubscribeShoppingList && unSubscribeShoppingList();
+              unSubscribeFoodList = null
+              unSubscribeShoppingList = null 
             };
         }, []);
 
