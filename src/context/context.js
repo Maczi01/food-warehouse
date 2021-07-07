@@ -86,25 +86,18 @@ const AppProvider = ({children}) => {
                     unSubscribeShoppingList = subscribeShoppingList(user.uid)
                 } else {
                     unSubscribeFoodList && unSubscribeFoodList();
+                    unSubscribeShoppingList && unSubscribeShoppingList();
                 }
             });
             console.log("useEffect")
             return () => {
                 unSubscribeFoodList && unSubscribeFoodList();
+                unSubscribeShoppingList && unSubscribeShoppingList();
+                unSubscribeShoppingList = null;
                 unSubscribeFoodList = null;
             };
         }, []);
 
-        useEffect(() => {
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    unSubscribeShoppingList(user.uid);
-                }
-            });
-            return () => {
-                unSubscribeShoppingList();
-            };
-        }, []);
 
         const increaseQuantity = (item) => {
             firebase.increaseQuantity(item);
