@@ -1,7 +1,7 @@
 import {auth, db} from "./firebaseConfig";
 import {v4 as uuidv4} from 'uuid';
 
-export const firebase = {
+export const api = {
     decreaseQuantity: function (item) {
         if (item.currentQuantity > 0) {
             db.collection("foodList").doc(item.id).update({currentQuantity: parseInt(item.currentQuantity) - 1});

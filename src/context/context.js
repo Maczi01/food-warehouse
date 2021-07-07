@@ -4,7 +4,7 @@ import {ThemeProvider} from "styled-components";
 import {lightTheme, nightTheme} from '../theme/theme'
 import {IntlProvider} from "react-intl";
 import GlobalStyle from "../theme/GlobalStyle";
-import {firebase} from "../firebase/firebaseApi";
+import {api} from "../firebase/firebaseApi";
 import {EN_language, PL_language} from "../utills/language";
 
 export const AppContext = React.createContext();
@@ -35,92 +35,63 @@ const AppProvider = ({children}) => {
         };
 
         const subscribeFoodList = (uid) => {
-            return firebase.getFoodList(uid, docs => {
+            return api.getFoodList(uid, docs => {
                 setFoodList(docs)
             })
         };
 
         const subscribeShoppingList = (uid) => {
-            return firebase.getShoppingList(uid, docs => {
+            return api.getShoppingList(uid, docs => {
                 setShoppingList(docs)
             })
         }
 
-
-// db.collection("foodList")
-//     .onSnapshot(
-//         (snapshot) => {
-//             const foodListData = [];
-//             snapshot.forEach(doc => foodListData.push(
-//                 {...doc.data(), id: doc.id,})
-//             );
-//             let filter = foodListData.filter(doc => {
-//                 return doc.userUid === uid
-//             });
-//             setFoodList(filter)
-//         }
-//     );
-// }
-
-        const unSubscribeShoppingList = (uid) => db.collection("shoppingList")
-            .onSnapshot(
-                (snapshot) => {
-                    const shoppingListData = [];
-                    snapshot.forEach(doc => shoppingListData.push(
-                        {...doc.data(), id: doc.id,})
-                    );
-                    let filter = shoppingListData.filter(doc => {
-                        return doc.userUid === uid
-                    });
-                    setShoppingList(filter)
-                }
-            );
-
         useEffect(() => {
             let unSubscribeFoodList = null;
             let unSubscribeShoppingList = null;
-
+            const unMount = () => {
+                unSubscribeFoodList && unSubscribeFoodList();
+                unSubscribeShoppingList && unSubscribeShoppingList();
+                unSubscribeShoppingList = null;
+                unSubscribeFoodList = null;
+            }
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     unSubscribeFoodList = subscribeFoodList(user.uid);
                     unSubscribeShoppingList = subscribeShoppingList(user.uid)
                 } else {
-                    unSubscribeFoodList && unSubscribeFoodList();
-                    unSubscribeShoppingList && unSubscribeShoppingList();
+                    unMount();
                 }
             });
             console.log("useEffect")
             return () => {
-                unSubscribeFoodList && unSubscribeFoodList();
-                unSubscribeShoppingList && unSubscribeShoppingList();
-                unSubscribeShoppingList = null;
-                unSubscribeFoodList = null;
+                unMount();
             };
         }, []);
 
 
         const increaseQuantity = (item) => {
-            firebase.increaseQuantity(item);
+            api.increaseQuantity(item);
         };
 
         const decreaseQuantity = (item) => {
-            firebase.decreaseQuantity(item);
+            api.decreaseQuantity(item);
         };
 
         const deleteItem = id => {
-            firebase.deleteItem(id);
+            api.deleteItem(id);
         };
 
         const addItem = (newItem) => {
-            firebase.addItemToFoodList(newItem);
+            api.addItemToFoodList(newItem);
         };
 
         const editItem = (item) => {
-            firebase.editItem(item);
+            api.editItem(item);
         };
 
         const deleteShoppingList = () => {
-            firebase.deleteShoppingList();
+            api.deleteShoppingList();
         };
 
         const generateShoppingList = () => {
@@ -142,7 +113,7 @@ const AppProvider = ({children}) => {
         };
 
         const addItemToShoppingList = (newItem) => {
-            firebase.addItemToShoppingList(newItem);
+            api.addItemToShoppingList(newItem);
         };
 
         const setItemAsChecked = (item) => {
