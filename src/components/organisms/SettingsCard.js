@@ -3,11 +3,7 @@ import styled from "styled-components";
 import user from '../../assets/img/user.svg'
 import {auth} from "../../firebase/firebaseConfig";
 import {FormattedMessage} from "react-intl";
-import PropTypes from "prop-types";
-import Menu from "../molecules/Menu";
-import Modal from "../molecules/Modal";
 import {AppContext} from "../../context/context";
-import English from "../../languages/en";
 
 
 const SettingsWrapper = styled.div`
@@ -162,7 +158,6 @@ const Paragraph = styled.p`
 
 
 const SettingsCard = () => {
-
         const {handleLanguageChange, toggleTheme, language} = useContext(AppContext);
 
         return (

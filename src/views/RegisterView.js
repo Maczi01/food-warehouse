@@ -1,12 +1,10 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {AuthContext} from "../providers/Auth";
-import {auth} from '../firebase/firebaseConfig'
+import {auth, db} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 import RegisterForm from "../components/organisms/RegisterForm";
 import AuthTemplate from "../components/templates/AuthTemplate";
-import {db} from '../firebase/firebaseConfig'
 import {toast, ToastContainer} from "react-toastify";
-import LoginForm from "../components/organisms/LoginForm";
 
 const RegisterView = ({history}) => {
 

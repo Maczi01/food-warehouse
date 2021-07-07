@@ -1,13 +1,10 @@
-import React, {useCallback, useContext, useState} from 'react';
-import styled from 'styled-components';
+import React, {useContext, useState} from 'react';
 import LoginForm from "../components/organisms/LoginForm";
 import {AuthContext} from "../providers/Auth";
-import {auth, db} from '../firebase/firebaseConfig'
+import {auth} from '../firebase/firebaseConfig'
 import {Redirect} from 'react-router-dom';
 import AuthTemplate from "../components/templates/AuthTemplate";
-import WrongPasswordModal from "../components/organisms/WrongPasswordModal";
 import {toast, ToastContainer} from "react-toastify";
-import {Form} from "formik";
 
 const LoginView = () => {
         const {currentUser} = useContext(AuthContext);

@@ -13,7 +13,6 @@ import sweets from "../assets/categoryIcons/sweets.svg";
 import vegetables from "../assets/categoryIcons/vegetables.svg";
 import {Link} from "react-router-dom";
 import MainTemplate from "../components/templates/MainTemplate";
-// import FormItem from "../components/organisms/FormItem";
 
 const ViewWrapper = styled.div`
      width: 80vw;
