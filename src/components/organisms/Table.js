@@ -107,44 +107,39 @@ const Table = ({ data }) => {
   };
 
   return (
-      <TableWrapper>
-        <StyledTable>
-          <colgroup>
-            <col />
-            <col />
-            <col />
-          </colgroup>
-          <thead>
-            <tr>
-              {/*<th>#</th>*/}
-              <th>
-                <FormattedMessage id="name" />
-              </th>
-              <th>
-                <FormattedMessage id="quantity" />
-              </th>
-              <th>
-                <FormattedMessage id="unit" />
-              </th>
-              <th>Purchased</th>
-            </tr>
-          </thead>
-
-            {(provided) => (
-              <tbody>
-                {data.map((item, index) => (
-                  <StyledTr
-                    key={item.id}
-                    item={item}
-                    index={index}
-                    setItemAsChecked={setItemAsChecked}
-                  />
-                ))}
-                {provided.placeholder}
-              </tbody>
-            )}
-        </StyledTable>
-      </TableWrapper>
+    <TableWrapper>
+      <StyledTable>
+        <colgroup>
+          <col />
+          <col />
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>
+              <FormattedMessage id="name" />
+            </th>
+            <th>
+              <FormattedMessage id="quantity" />
+            </th>
+            <th>
+              <FormattedMessage id="unit" />
+            </th>
+            <th>Purchased</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <StyledTr
+              key={item.id}
+              item={item}
+              index={index}
+              setItemAsChecked={setItemAsChecked}
+            />
+          ))}
+        </tbody>
+      </StyledTable>
+    </TableWrapper>
   );
 };
 
