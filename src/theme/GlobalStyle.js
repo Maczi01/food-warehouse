@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     body {
     font-family: 'Fira Sans', sans-serif;
     font-size: 1.6rem;
-    background-color: ${props => props.theme.backgroundColor};
+    background-color: ${(props) => props.theme.backgroundColor};
   }
 `;
 
