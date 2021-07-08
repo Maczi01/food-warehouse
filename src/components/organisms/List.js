@@ -11,7 +11,8 @@ const UlWrapper = styled.ul`
   width: 75vw;
   padding: 0;
   margin: 40px auto 0;
-  
+   margin-bottom: 70px;
+  overflow-y: auto;
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;
     font-size: 10px;
@@ -32,6 +33,11 @@ const CategoryWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;
   }
+`;
+
+const ListWrapper = styled.div`
+  margin-bottom: 70px;
+  overflow-y: auto;
 `;
 
 const Paragraph = styled.p`

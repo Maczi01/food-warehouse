@@ -70,11 +70,6 @@ const StyledTable = styled.table`
     background-color: ${({ theme }) => theme.colors.blue};
   }
 `;
-const ButtonContainer = styled.div`
-  margin: 20px 20px 20px 0;
-  display: flex;
-  justify-content: flex-end;
-`;
 
 const Table = ({ data }) => {
   const { setItemAsChecked } = useContext(AppContext);
