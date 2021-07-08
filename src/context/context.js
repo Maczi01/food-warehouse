@@ -32,7 +32,6 @@ const AppProvider = ({ children }) => {
         unMount();
       }
     });
-    console.log("useEffect");
     return () => {
       unMount();
     };
