@@ -21,20 +21,19 @@ const TableWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  //width: 58vw;
   width: 80vw;
-
   font-size: 14px;
+  overflow-y: auto;
+
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;
   }
 `;
 
 const Heading = styled.h1`
-  padding: 16px;
+  padding: 12px;
   color: ${({ theme }) => theme.colors.blue};
   text-align: center;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,13 +48,13 @@ const Heading = styled.h1`
 `;
 
 const ButtonContainer = styled.div`
-  margin: 20px 20px 20px 0;
+  margin: 10px 20px 20px 0;
   display: flex;
   justify-content: flex-end;
 `;
 
 const Image = styled.img`
-  margin: 25px;
+  margin: 5px;
   width: 150px;
   height: 150px;
 `;
@@ -67,6 +66,7 @@ const ShoppingListView = () => {
     generateShoppingList,
     deleteShoppingList,
   } = useContext(AppContext);
+
   const [showAddShopModal, setShowAddShopModal] = useState(false);
 
   return (
@@ -82,7 +82,7 @@ const ShoppingListView = () => {
       </Heading>
 
       <TableWrapper>
-        <Image src={bag} alt="shoping bag" />
+        <Image src={bag} alt="shopping bag" />
 
         <ButtonContainer>
           <ButtonIcon

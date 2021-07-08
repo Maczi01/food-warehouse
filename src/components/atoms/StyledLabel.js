@@ -13,6 +13,7 @@ const StyledLabel = styled.label`
       display: flex;
       text-decoration: none;
       align-items: center;
+      border-radius: 10px;
       @media (max-width: ${({theme}) => theme.mobile}) {
           height: 50px;
       }
