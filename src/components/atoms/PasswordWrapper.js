@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const PasswordWrapper = styled.div`
-    display: flex;
+  display: flex;
 `;
 
 export default PasswordWrapper;

@@ -10,6 +10,7 @@ const FooterContainer = styled.div`
   color: white;
   text-align: center;
   height: 70px;
+  margin-top: 70px;
 `;
 
 const Footer = () => <FooterContainer />;

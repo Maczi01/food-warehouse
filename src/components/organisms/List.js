@@ -11,7 +11,7 @@ const UlWrapper = styled.ul`
   width: 75vw;
   padding: 0;
   margin: 40px auto 0;
-   margin-bottom: 70px;
+  //margin-bottom: 70px;
   overflow-y: auto;
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;

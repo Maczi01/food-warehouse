@@ -13,12 +13,11 @@ const StyledInputError = styled.input`
     transition-duration: 0.25s;
     font-weight: 300;
     border: 3px solid red;
-    background-color: ${({theme}) => theme.colors.gray};
-    @media (max-width: ${({theme}) => theme.mobile}) {
+    background-color: ${({ theme }) => theme.colors.gray};
+    @media (max-width: ${({ theme }) => theme.mobile}) {
        height: 50px;
     }
   }
 `;
-
 
 export default StyledInputError;
