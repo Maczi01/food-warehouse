@@ -1,30 +1,9 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import emailjs from "emailjs-com";
-import {FormattedMessage} from "react-intl";
+import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import StyledTr from "../molecules/StyledTr";
-import {AppContext} from "../../context/context";
-
-const templateParams = {
-  name: "James",
-  notes: "Check this out!",
-};
-
-const sendMail = () => {
-  console.log("clicked");
-  emailjs.init("mateusz_w_twardy_gmail_com");
-  emailjs
-    .send("mateusz_w_twardy_gmail_com", "template_cGuzq0Bv", templateParams)
-    .then(
-      function (response) {
-        console.log("SUCCESS!", response.status, response.text);
-      },
-      function (error) {
-        console.log("FAILED...", error);
-      }
-    );
-};
+import { AppContext } from "../../context/context";
 
 const TableWrapper = styled.div`
   display: flex;

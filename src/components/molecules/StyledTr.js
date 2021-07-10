@@ -15,7 +15,7 @@ const Td = styled.td`
 `;
 
 const StyledTr = ({ item, setItemAsChecked }) => (
-  <StyledTrWrapper>
+  <StyledTrWrapper checked={item.checked}>
     <Td checked={item.checked}>{item.name}</Td>
     <Td checked={item.checked}>{item.neededQuantity}</Td>
     <Td checked={item.checked}>{item.unit}</Td>
