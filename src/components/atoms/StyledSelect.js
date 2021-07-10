@@ -8,7 +8,7 @@ const StyledSelect = styled.select`
   justify-content: center;
   text-align: center;
   align-items: center;
-  height: 60px;
+  height: 45px;
   padding-left: 5px;
   border: none;
   margin: 6px;
