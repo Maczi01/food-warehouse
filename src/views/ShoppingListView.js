@@ -14,6 +14,7 @@ import sms from "../assets/img/sms.svg";
 import { ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
+import jsPDF from "jspdf";
 
 const TableWrapper = styled.div`
   display: flex;
@@ -69,6 +70,25 @@ const ShoppingListView = () => {
 
   const [showAddShopModal, setShowAddShopModal] = useState(false);
 
+  const jsPdfGenerator = () => {
+    const doc = new jsPDF("p", "pt");
+    // doc.setFont('sans-serif');
+    const name = <FormattedMessage id="name" />;
+    const quantity = <FormattedMessage id="quantity" />;
+    const unit = <FormattedMessage id="unit" />;
+    doc.text(220, 30, "Shopping list");
+    const rows = [];
+
+    shoppingList.map((item, index) =>
+      rows.push([index + 1, item.name, item.neededQuantity, item.unit])
+    );
+    doc.autoTable({
+      head: [["Index", "Name", "Quantity", "Unit"]],
+      body: rows,
+    });
+    doc.save("shopping-list.pdf");
+  };
+
   return (
     <MainTemplate>
       {showAddShopModal && (
@@ -91,7 +111,7 @@ const ShoppingListView = () => {
           />
           <ButtonIcon
             onClick={() => {
-              // jsPdfGenerator();
+              jsPdfGenerator();
               // notify()`
             }}
             icon={pdf}

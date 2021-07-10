@@ -5,7 +5,6 @@ import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import jsPDF from "jspdf";
 import { toast } from "react-toastify";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import StyledTr from "../molecules/StyledTr";
 import { AppContext } from "../../context/context";
 
@@ -75,25 +74,6 @@ const Table = ({ data }) => {
   const { setItemAsChecked } = useContext(AppContext);
 
   const [list, setList] = useState(data);
-
-  const jsPdfGenerator = () => {
-    const doc = new jsPDF("p", "pt");
-    doc.setFont("courier");
-    const name = <FormattedMessage id="name" />;
-    const quantity = <FormattedMessage id="quantity" />;
-    const unit = <FormattedMessage id="unit" />;
-    doc.text(220, 30, "Shopping list");
-    const rows = [];
-
-    data.map((item, index) =>
-      rows.push([index + 1, item.name, item.maximalQuantity, item.unit])
-    );
-    doc.autoTable({
-      head: [["Index", "Name", "Quantity", "Unit"]],
-      body: rows,
-    });
-    doc.save("generated.pdf");
-  };
 
   const notify = () => {
     toast.success(`File with list succesfully saved`, {
