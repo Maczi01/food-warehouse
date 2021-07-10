@@ -35,11 +35,6 @@ const CategoryWrapper = styled.div`
   }
 `;
 
-const ListWrapper = styled.div`
-  margin-bottom: 70px;
-  overflow-y: auto;
-`;
-
 const Paragraph = styled.p`
   margin-top: 10px;
   font-size: 18px;

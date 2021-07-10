@@ -14,14 +14,6 @@ import vegetables from "../assets/categoryIcons/vegetables.svg";
 import { Link } from "react-router-dom";
 import MainTemplate from "../components/templates/MainTemplate";
 
-const ViewWrapper = styled.div`
-  width: 80vw;
-  margin: 0 auto;
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    width: 100vw;
-  }
-`;
-
 const GridWrapper = styled.div`
   display: flex;
   justify-content: center;

@@ -52,25 +52,6 @@ const Button = styled.button`
     color: ${({theme}) => theme.colors.white};
 `
 
-const ButtonMode = styled.button`
-    display: block;
-    appearance: none;
-    outline: 0;
-    border: 1px solid white;
-    width: 300px;
-    border-radius: 3px;
-    margin: 6px;
-    text-align: center;
-    font-size: 18px;
-    color: black;
-    transition-duration: 0.25s;
-    font-weight: 300;
-    background-color: ${({theme}) => theme.colors.gray};
-        @media (max-width: ${({theme}) => theme.mobile}) {
-          height: 50px;
-    }
-`
-
 const OptionsWrapper = styled.div`
       width: 100%;
       display: flex;
@@ -104,24 +85,7 @@ const StyledLabel = styled.label`
           height: 50px;
       }
 `
-const StyledInput = styled.input`
-    display: block;
-    appearance: none;
-    outline: 0;
-    border: 1px solid white;
-    width: 300px;
-    border-radius: 3px;
-    margin: 6px;
-    text-align: center;
-    font-size: 18px;
-    color: black;
-    transition-duration: 0.25s;
-    font-weight: 300;
-    background-color: ${({theme}) => theme.colors.gray};
-          @media (max-width: ${({theme}) => theme.mobile}) {
-          height: 50px;
-    }
-`
+
 const StyledSelect = styled.select`
     display: block;
     appearance: none;

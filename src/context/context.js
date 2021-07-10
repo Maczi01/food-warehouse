@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db, auth } from "../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, nightTheme } from "../theme/theme";
 import { IntlProvider } from "react-intl";
@@ -95,20 +95,22 @@ const AppProvider = ({ children }) => {
 
   const generateShoppingList = () => {
     let list = JSON.parse(JSON.stringify(foodList));
-    list.filter(item => (
-        item.currentQuantity < item.minimalQuantity
-    )).map(item => {
-      item.neededQuantity = (parseInt(item.maximalQuantity)) - (parseInt(item.currentQuantity));
-      delete item.id;
-      delete item.minimalQuantity;
-      delete item.maximalQuantity;
-      delete item.currentQuantity;
-      delete item.category;
-      item.checked = false;
-      item.userUid = auth.currentUser.uid;
-      return item;
-    }).filter(u => shoppingList.findIndex(lu => lu.name === u.name) === -1)
-        .forEach(item => addItemToShoppingList(item));
+    list
+      .filter((item) => item.currentQuantity < item.minimalQuantity)
+      .map((item) => {
+        item.neededQuantity =
+          parseInt(item.maximalQuantity) - parseInt(item.currentQuantity);
+        delete item.id;
+        delete item.minimalQuantity;
+        delete item.maximalQuantity;
+        delete item.currentQuantity;
+        delete item.category;
+        item.checked = false;
+        item.userUid = auth.currentUser.uid;
+        return item;
+      })
+      .filter((u) => shoppingList.findIndex((lu) => lu.name === u.name) === -1)
+      .forEach((item) => addItemToShoppingList(item));
   };
 
   const addItemToShoppingList = (newItem) => {

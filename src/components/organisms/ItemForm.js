@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Form, Field, Formik} from 'formik';
+import {Field, Form, Formik} from 'formik';
 import accept from '../../assets/img/accept.svg'
 import decline from '../../assets/img/decline.svg'
 import ButtonIcon from "../atoms/ButtonIcon";

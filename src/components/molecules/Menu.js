@@ -3,7 +3,6 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
-import Burger from "../atoms/Burger";
 
 const StyledMenu = styled.ul`
   display: flex;

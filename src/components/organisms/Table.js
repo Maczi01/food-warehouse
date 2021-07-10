@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import emailjs from "emailjs-com";
-import { FormattedMessage } from "react-intl";
+import {FormattedMessage} from "react-intl";
 import PropTypes from "prop-types";
 import StyledTr from "../molecules/StyledTr";
-import { AppContext } from "../../context/context";
+import {AppContext} from "../../context/context";
 
 const templateParams = {
   name: "James",

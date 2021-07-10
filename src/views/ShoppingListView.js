@@ -14,7 +14,7 @@ import sms from "../assets/img/sms.svg";
 import { toast, ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
-import {generatePdf} from "../utills/generatePdf";
+import { generatePdf } from "../utills/generatePdf";
 
 const TableWrapper = styled.div`
   display: flex;
@@ -87,10 +87,8 @@ const ShoppingListView = () => {
       <Heading>
         <FormattedMessage id="shopping list" />
       </Heading>
-
       <TableWrapper>
         <Image src={bag} alt="shopping bag" />
-
         <ButtonContainer>
           <ButtonIcon
             onClick={() => setShowAddShopModal((prev) => !prev)}
