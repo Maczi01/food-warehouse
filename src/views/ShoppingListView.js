@@ -10,7 +10,7 @@ import AddShopModal from "../components/organisms/AddShopModal";
 import ButtonIcon from "../components/atoms/ButtonIcon";
 import plus from "../assets/img/plus.svg";
 import pdf from "../assets/img/pdf.svg";
-import sms from "../assets/img/sms.svg";
+import email from "../assets/img/email.svg";
 import { toast, ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
@@ -123,7 +123,7 @@ const ShoppingListView = () => {
             icon={pdf}
           />
           <ButtonIcon onClick={generateShoppingList} icon={generate} />
-          <ButtonIcon onClick={sendMail} icon={sms} />
+          <ButtonIcon onClick={sendMail} icon={email} />
           <ButtonIcon onClick={deleteShoppingList} icon={remove} />
         </ButtonContainer>
         {shoppingList.length ? (
