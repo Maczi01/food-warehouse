@@ -3,7 +3,6 @@ import styled from "styled-components";
 import emailjs from "emailjs-com";
 import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
-import { toast } from "react-toastify";
 import StyledTr from "../molecules/StyledTr";
 import { AppContext } from "../../context/context";
 

@@ -14,8 +14,7 @@ import sms from "../assets/img/sms.svg";
 import { toast, ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
-
-import {jsPdfGenerator} from "../utills/generatePdf";
+import {generatePdf} from "../utills/generatePdf";
 
 const TableWrapper = styled.div`
   display: flex;
@@ -99,7 +98,7 @@ const ShoppingListView = () => {
           />
           <ButtonIcon
             onClick={() => {
-              jsPdfGenerator(shoppingList);
+              generatePdf(shoppingList);
               notify();
             }}
             icon={pdf}
