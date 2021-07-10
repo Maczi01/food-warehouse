@@ -45,6 +45,6 @@
 	"register": "Register",
 	"login": "Log in",
 	"all categories": "All categories",
-	"go back": "Go back to select category"
-
+	"go back": "Go back to select category",
+	"pdf saved": "File with list succesfully saved"
 }

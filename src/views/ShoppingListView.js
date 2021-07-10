@@ -11,10 +11,11 @@ import ButtonIcon from "../components/atoms/ButtonIcon";
 import plus from "../assets/img/plus.svg";
 import pdf from "../assets/img/pdf.svg";
 import sms from "../assets/img/sms.svg";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
-import jsPDF from "jspdf";
+
+import {jsPdfGenerator} from "../utills/generatePdf";
 
 const TableWrapper = styled.div`
   display: flex;
@@ -70,23 +71,10 @@ const ShoppingListView = () => {
 
   const [showAddShopModal, setShowAddShopModal] = useState(false);
 
-  const jsPdfGenerator = () => {
-    const doc = new jsPDF("p", "pt");
-    // doc.setFont('sans-serif');
-    const name = <FormattedMessage id="name" />;
-    const quantity = <FormattedMessage id="quantity" />;
-    const unit = <FormattedMessage id="unit" />;
-    doc.text(220, 30, "Shopping list");
-    const rows = [];
-
-    shoppingList.map((item, index) =>
-      rows.push([index + 1, item.name, item.neededQuantity, item.unit])
-    );
-    doc.autoTable({
-      head: [["Index", "Name", "Quantity", "Unit"]],
-      body: rows,
+  const notify = () => {
+    toast.success(<FormattedMessage id="pdf saved" />, {
+      position: toast.POSITION.TOP_CENTER,
     });
-    doc.save("shopping-list.pdf");
   };
 
   return (
@@ -111,8 +99,8 @@ const ShoppingListView = () => {
           />
           <ButtonIcon
             onClick={() => {
-              jsPdfGenerator();
-              // notify()`
+              jsPdfGenerator(shoppingList);
+              notify();
             }}
             icon={pdf}
           />
