@@ -9,6 +9,7 @@ export const api = {
         .update({ currentQuantity: parseInt(item.currentQuantity) - 1 });
     }
   },
+
   increaseQuantity: function (item) {
     if (item.currentQuantity < parseInt(item.maximalQuantity)) {
       db.collection("foodList")
@@ -16,15 +17,18 @@ export const api = {
         .update({ currentQuantity: parseInt(item.currentQuantity) + 1 });
     }
   },
+
   deleteItem: function (id) {
     db.collection("foodList").doc(id).delete();
   },
+
   addItemToFoodList: function (newItem) {
     newItem.userUid = auth.currentUser.uid;
     newItem.id = uuidv4();
     newItem.checked = false;
     db.collection("foodList").add(newItem);
   },
+
   addItemToShoppingList: function (newItem) {
     newItem.id = uuidv4();
     newItem.checked = false;
@@ -54,6 +58,7 @@ export const api = {
       .doc(item.id)
       .update({ ...item });
   },
+
   getFoodList: function (uid, callback) {
     return db.collection("foodList").onSnapshot(
       (snapshot) => {
@@ -71,6 +76,7 @@ export const api = {
       }
     );
   },
+
   getShoppingList: function (uid, callback) {
     return db.collection("shoppingList").onSnapshot(
       (snapshot) => {
@@ -87,5 +93,25 @@ export const api = {
         console.error(error.message);
       }
     );
+  },
+
+  generateShoppingList: function generateShoppingList(foodList, shoppingList) {
+    let list = JSON.parse(JSON.stringify(foodList));
+    list
+      .filter((item) => item.currentQuantity < item.minimalQuantity)
+      .map((item) => {
+        item.neededQuantity =
+          parseInt(item.maximalQuantity) - parseInt(item.currentQuantity);
+        delete item.id;
+        delete item.minimalQuantity;
+        delete item.maximalQuantity;
+        delete item.currentQuantity;
+        delete item.category;
+        item.checked = false;
+        item.userUid = auth.currentUser.uid;
+        return item;
+      })
+      .filter((u) => shoppingList.findIndex((lu) => lu.name === u.name) === -1)
+      .forEach((item) => api.addItemToShoppingList(item));
   },
 };
