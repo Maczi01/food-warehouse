@@ -159,7 +159,6 @@ const FilterView = () => (
 
       <IconWrapper as={Link} to={"/filter/vegetablesAndFruits"}>
         <Icon
-          // onClick={() => sendMail()}
           src={vegetables}
         />
         <Paragraph>
