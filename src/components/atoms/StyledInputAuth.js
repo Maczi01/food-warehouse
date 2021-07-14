@@ -16,3 +16,4 @@ const StyledInputAuth = styled.input`
 `;
 
 export default StyledInputAuth;
+

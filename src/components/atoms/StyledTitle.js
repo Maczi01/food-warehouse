@@ -9,3 +9,4 @@ const StyledTitle = styled.h2`
 `;
 
 export default StyledTitle;
+

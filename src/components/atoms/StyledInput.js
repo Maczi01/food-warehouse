@@ -26,3 +26,4 @@ const StyledInput = styled.input`
 `;
 
 export default StyledInput;
+

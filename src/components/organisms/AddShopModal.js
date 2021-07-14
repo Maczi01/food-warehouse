@@ -17,7 +17,6 @@ const ModalWrapper = styled.div`
     z-index: 99;
       @media (max-width: ${({theme}) => theme.mobile}) {
         width: 100vw;
-        //height: 100%;
         position: page;  
      }
 `

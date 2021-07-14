@@ -10,3 +10,4 @@ const Paragraph = styled.p`
 `;
 
 export default Paragraph;
+

@@ -78,7 +78,6 @@ const ShoppingListView = () => {
   };
 
   const sendMail = () => {
-    console.log("clicked");
     send("service_f7v4etr", "template_shxs0hn", templateParams, "user_uviETfNt24HSxnGImeDWe"
         )
         .then(
@@ -140,3 +139,6 @@ const ShoppingListView = () => {
 };
 
 export default ShoppingListView;
+
+
+
