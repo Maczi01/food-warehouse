@@ -15,7 +15,7 @@ import { toast, ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
 import { generatePdf } from "../utills/generatePdf";
-import {send} from "emailjs-com";
+import { send } from "emailjs-com";
 
 const TableWrapper = styled.div`
   display: flex;
@@ -71,25 +71,6 @@ const ShoppingListView = () => {
 
   const [showAddShopModal, setShowAddShopModal] = useState(false);
 
-  const templateParams = {
-    from_name: 'mateusz.w.twardy@gmail.com',
-    message: 'message',
-    to_name: 'mateusz.w.twardy@gmail.com',
-  };
-
-  const sendMail = () => {
-    send("service_f7v4etr", "template_shxs0hn", templateParams, "user_uviETfNt24HSxnGImeDWe"
-        )
-        .then(
-            function (response) {
-              console.log("SUCCESS!", response.status, response.text);
-            },
-            function (error) {
-              console.log("FAILED...", error);
-            }
-        );
-  };
-
   const notify = () => {
     toast.success(<FormattedMessage id="pdf saved" />, {
       position: toast.POSITION.TOP_CENTER,
@@ -122,7 +103,6 @@ const ShoppingListView = () => {
             icon={pdf}
           />
           <ButtonIcon onClick={generateShoppingList} icon={generate} />
-          <ButtonIcon onClick={sendMail} icon={email} />
           <ButtonIcon onClick={deleteShoppingList} icon={remove} />
         </ButtonContainer>
         {shoppingList.length ? (
@@ -139,6 +119,3 @@ const ShoppingListView = () => {
 };
 
 export default ShoppingListView;
-
-
-

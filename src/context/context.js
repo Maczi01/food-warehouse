@@ -20,6 +20,8 @@ const AppProvider = ({ children }) => {
     let unSubscribeShoppingList = null;
 
     const unMount = () => {
+      //dać tu zwykły if!!!
+      //control flow
       unSubscribeFoodList && unSubscribeFoodList();
       unSubscribeShoppingList && unSubscribeShoppingList();
       unSubscribeShoppingList = null;
