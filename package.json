@@ -35,12 +35,13 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^10.0.4",
     "babel-plugin-styled-components": "^1.10.7",
-    "prettier": "^2.3.2",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0"
+    "eslint-plugin-promise": "^5.1.0",
+    "prettier": "^2.3.2"
   }
 }

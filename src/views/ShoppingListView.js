@@ -15,7 +15,6 @@ import { toast, ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
 import { generatePdf } from "../utills/generatePdf";
-import { send } from "emailjs-com";
 
 const TableWrapper = styled.div`
   display: flex;
