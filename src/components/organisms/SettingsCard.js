@@ -4,6 +4,8 @@ import user from "../../assets/img/user.svg";
 import { auth } from "../../firebase/firebaseConfig";
 import { FormattedMessage } from "react-intl";
 import { AppContext } from "../../context/context";
+import StyledLabel from "../atoms/StyledLabel";
+import StyledSelect from "../atoms/StyledSelect";
 
 const SettingsWrapper = styled.div`
   display: flex;
@@ -67,43 +69,7 @@ const OptionsItem = styled.div`
   
     }
 `;
-const StyledLabel = styled.label`
-  background-color: ${({ theme }) => theme.colors.blue};
-  color: ${({ theme }) => theme.colors.white};
-  text-align: center;
-  justify-content: center;
-  transition: 0.2s ease-out all;
-  font-size: 18px;
-  height: 70px;
-  width: 300px;
-  margin: 6px;
-  display: flex;
-  text-decoration: none;
-  align-items: center;
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    height: 50px;
-  }
-`;
 
-const StyledSelect = styled.select`
-  display: block;
-  appearance: none;
-  outline: 0;
-  border: 1px solid white;
-  width: 300px;
-  border-radius: 3px;
-  margin: 6px;
-  text-align: center;
-  font-size: 18px;
-  color: black;
-  transition-duration: 0.25s;
-  font-weight: 300;
-  background-color: ${({ theme }) => theme.colors.gray};
-  text-align-last: center;
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    height: 50px;
-  }
-`;
 const Heading = styled.h1`
   padding: 10px;
   color: ${({ theme }) => theme.colors.blue};

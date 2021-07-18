@@ -10,7 +10,6 @@ import AddShopModal from "../components/organisms/AddShopModal";
 import ButtonIcon from "../components/atoms/ButtonIcon";
 import plus from "../assets/img/plus.svg";
 import pdf from "../assets/img/pdf.svg";
-import email from "../assets/img/email.svg";
 import { toast, ToastContainer } from "react-toastify";
 import remove from "../assets/img/remove.svg";
 import generate from "../assets/img/generate.svg";
@@ -93,16 +92,26 @@ const ShoppingListView = () => {
           <ButtonIcon
             onClick={() => setShowAddShopModal((prev) => !prev)}
             icon={plus}
+            data-testid="showModal"
           />
           <ButtonIcon
             onClick={() => {
               generatePdf(shoppingList);
               notify();
             }}
+            data-testid="generatePdf"
             icon={pdf}
           />
-          <ButtonIcon onClick={generateShoppingList} icon={generate} />
-          <ButtonIcon onClick={deleteShoppingList} icon={remove} />
+          <ButtonIcon
+            onClick={generateShoppingList}
+            icon={generate}
+            data-testid="generateList"
+          />
+          <ButtonIcon
+              onClick={deleteShoppingList}
+              icon={remove}
+              data-testid="deleteList"
+          />
         </ButtonContainer>
         {shoppingList.length ? (
           <Table data={shoppingList} />

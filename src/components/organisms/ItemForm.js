@@ -67,6 +67,7 @@ const ItemForm = ({ addItem }) => {
                 placeholder=""
                 errors={errors.name && touched.name}
                 as={StyledInput}
+                data-testid="name"
               />
             </FormItem>
             {errors.name && touched.name ? (
@@ -81,6 +82,7 @@ const ItemForm = ({ addItem }) => {
                 onBlur={handleBlur}
                 as={StyledSelect}
                 errors={errors.category && touched.category}
+                data-testid="category"
               >
                 {properties.categories.map((category) => (
                   <FormattedMessage id={category} key={category}>
@@ -102,6 +104,7 @@ const ItemForm = ({ addItem }) => {
                 placeholder=""
                 errors={errors.category && touched.category}
                 as={StyledSelect}
+                data-testid="unit"
               >
                 {properties.units.map((unit) => (
                   <FormattedMessage id={unit} key={unit}>
@@ -123,6 +126,7 @@ const ItemForm = ({ addItem }) => {
                 placeholder=""
                 errors={errors.maximalQuantity && touched.maximalQuantity}
                 as={StyledInput}
+                data-testid="maximalQuantity"
               />
             </FormItem>
             {errors.maximalQuantity && touched.maximalQuantity ? (
@@ -138,6 +142,7 @@ const ItemForm = ({ addItem }) => {
                 placeholder=""
                 errors={errors.minimalQuantity && touched.minimalQuantity}
                 as={StyledInput}
+                data-testid="minimalQuantity"
               />
             </FormItem>
             {errors.minimalQuantity && touched.minimalQuantity ? (
@@ -153,6 +158,7 @@ const ItemForm = ({ addItem }) => {
                 as={StyledInput}
                 placeholder=""
                 errors={errors.currentQuantity && touched.currentQuantity}
+                data-testid="currentQuantity"
               />
             </FormItem>
             {errors.currentQuantity && touched.currentQuantity ? (
