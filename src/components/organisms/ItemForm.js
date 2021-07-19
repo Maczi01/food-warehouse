@@ -1,12 +1,12 @@
 import React from "react";
-import {toast, ToastContainer} from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {Field, Form, Formik} from "formik";
+import { Field, Form, Formik } from "formik";
 import accept from "../../assets/img/accept.svg";
 import decline from "../../assets/img/decline.svg";
 import ButtonIcon from "../atoms/ButtonIcon";
-import {Link} from "react-router-dom";
-import {FormattedMessage} from "react-intl";
+import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import FormWrapper from "../atoms/FormWrapper";
 import Heading from "../atoms/Heading";
 import FormItem from "../molecules/FormItem";
@@ -14,8 +14,8 @@ import StyledLabel from "../atoms/StyledLabel";
 import ErrorText from "../atoms/ErrorText";
 import StyledSelect from "../atoms/StyledSelect";
 import ButtonContainer from "../atoms/ButtonContainer";
-import {ValidationSchemaForFoodList} from "../../utills/ValidationSchemaForFoodList";
-import {properties} from "../../utills/itemProperties";
+import { ValidationSchemaForFoodList } from "../../utills/ValidationSchemaForFoodList";
+import { properties } from "../../utills/itemProperties";
 import StyledInput from "../atoms/StyledInput";
 
 const ItemForm = ({ addItem }) => {
@@ -168,7 +168,12 @@ const ItemForm = ({ addItem }) => {
               <Link to="/">
                 <ButtonIcon icon={decline} />
               </Link>
-              <ButtonIcon disabled={isSubmitting} type="submit" icon={accept} />
+              <ButtonIcon
+                disabled={isSubmitting}
+                type="submit"
+                icon={accept}
+                data-testid="accept"
+              />
             </ButtonContainer>
             <ToastContainer autoClose={2500} />
           </Form>
