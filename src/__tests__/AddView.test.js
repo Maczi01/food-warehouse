@@ -10,7 +10,7 @@ import { AuthProvider } from "../providers/Auth";
 import user from "@testing-library/user-event";
 import ItemForm from "../components/organisms/ItemForm";
 
-describe("Test Add product form tests, ", () => {
+describe("Add product form tests, ", () => {
   it("correctly call submit function", async () => {
     const onSubmitMock = jest.fn();
     render(
