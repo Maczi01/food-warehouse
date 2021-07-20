@@ -6,6 +6,7 @@ import { FormattedMessage } from "react-intl";
 import bag from "../../assets/img/bag.svg";
 import { routes } from "../../routes/routes";
 import { AppContext } from "../../context/context";
+import PropTypes from "prop-types";
 
 const UlWrapper = styled.ul`
   width: 75vw;
@@ -75,7 +76,6 @@ const EmptyListWrapper = styled.div`
 const List = ({ items, parameter }) => {
   const { decreaseQuantity, increaseQuantity, deleteItem, editItem } =
     useContext(AppContext);
-
   return (
     <>
       <CategoryWrapper>
@@ -115,6 +115,16 @@ const List = ({ items, parameter }) => {
       </UlWrapper>
     </>
   );
+};
+
+List.propTypes = {
+  items: PropTypes.array,
+  parameter: PropTypes.string.isRequired,
+};
+
+List.defaultProps = {
+  items: [],
+  parameter: "all",
 };
 
 export default List;

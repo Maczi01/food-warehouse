@@ -6,6 +6,7 @@ import plus from "../../assets/img/plus.svg";
 import minus from "../../assets/img/minus.svg";
 import { useHistory } from "react-router";
 import PropTypes from "prop-types";
+import { Field } from "formik";
 
 const ItemWraper = styled.li`
     display: flex;
@@ -117,10 +118,26 @@ const ListItem = ({
         />
       </QuantityBarOutside>
       <Container>
-        <StyledButton src={minus} onClick={decreaseQuantity} />
-        <StyledButton src={plus} onClick={increaseQuantity} />
-        <StyledButton src={edit} onClick={() => history.push(`/edit/${id}`)} />
-        <StyledButton src={remove} onClick={deleteItem} />
+        <StyledButton
+          src={minus}
+          onClick={decreaseQuantity}
+          data-testid="decreaseQuantity"
+        />
+        <StyledButton
+          src={plus}
+          onClick={increaseQuantity}
+          data-testid="increaseQuantity"
+        />
+        <StyledButton
+          src={edit}
+          onClick={() => history.push(`/edit/${id}`)}
+          data-testid="edit"
+        />
+        <StyledButton
+            src={remove}
+            onClick={deleteItem}
+            data-testid="deleteItem"
+        />
       </Container>
     </ItemWraper>
   );
