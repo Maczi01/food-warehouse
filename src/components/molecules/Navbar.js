@@ -78,20 +78,38 @@ const Navbar = () => {
                 <Burger open={open} setOpen={setOpen}/>
                 <Menu open={open} setOpen={setOpen}/>
             </HamburgerContainer>
-            <HeaderWrapper>
+            <HeaderWrapper
+                data-testid="navbarBackground"
+            >
                 <LinksWrapper>
                     <StyledLogoLink to="/"/>
                     <List>
-                        <ListItem as={NavLink} exact to="/" activeclass="active"><
+                        <ListItem as={NavLink}
+                                  exact to="/"
+                                  activeclass="active"
+                                  data-testid="checkInventory"
+                        ><
                             FormattedMessage id="check inventory"/>
                         </ListItem>
-                        <ListItem as={NavLink} to="/add" activeclass="active">
+                        <ListItem as={NavLink}
+                                  to="/add"
+                                  activeclass="active"
+                                  data-testid="addProduct"
+                        >
                             <FormattedMessage id="add product"/>
                         </ListItem>
-                        <ListItem as={NavLink} to="/list" activeclass="active">
+                        <ListItem as={NavLink}
+                                  to="/list"
+                                  activeclass="active"
+                                  data-testid="shoppingList"
+                        >
                             <FormattedMessage id="shopping list"/>
                         </ListItem>
-                        <ListItem as={NavLink} to="/settings" activeclass="active">
+                        <ListItem as={NavLink}
+                                  to="/settings"
+                                  activeclass="active"
+                                  data-testid="settings"
+                        >
                             <FormattedMessage id="settings"/>
                         </ListItem>
                     </List>
