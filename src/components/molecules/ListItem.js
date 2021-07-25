@@ -131,7 +131,7 @@ const ListItem = ({
         <StyledButton
           src={edit}
           onClick={() => history.push(`/edit/${id}`)}
-          data-testid="edit"
+          data-testid="editItem"
         />
         <StyledButton
             src={remove}

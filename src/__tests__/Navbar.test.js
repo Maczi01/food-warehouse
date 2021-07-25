@@ -23,7 +23,9 @@ describe("Navbar tests, ", () => {
       </AppProvider>
     );
 
-    const checkInventoryButton = screen.getByTestId("checkInventory");
+    // const checkInventoryButton = screen.getByTestId("checkInventory");
+    const checkInventoryButton = screen.getByText("Check inventory");
+
     const addProductButton = screen.getByTestId("addProduct");
     const shoppingListButton = screen.getByTestId("shoppingList");
     const settingsButton = screen.getByTestId("settings");
