@@ -103,8 +103,8 @@ describe("Items view list", () => {
         {
             name: "Chocolate",
             category: "sweets",
-            maximalQuantity: 3,
-            minimalQuantity: 3,
+            maximalQuantity: 5,
+            minimalQuantity: 5,
             currentQuantity: 0,
             id: "sYdF4BxIKWDE4XQr9Q7u",
             unit: "liter"
@@ -124,10 +124,8 @@ describe("Items view list", () => {
               </AppProvider>
           </AuthProvider>
       );
-  //
-  //
-      const arrayElements = screen.getAllByTestId("decreaseQuantity")[0];
 
+      const arrayElements = screen.getAllByTestId("decreaseQuantity")[0];
       expect(arrayElements).toHaveLength(2);
   //     console.log(inputName)
   //     // const inputCategory = screen.getByTestId("category");
