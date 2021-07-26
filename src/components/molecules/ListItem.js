@@ -104,7 +104,9 @@ const ListItem = ({
 }) => {
   const history = useHistory();
   return (
-    <ItemWraper>
+    <ItemWraper
+        data-testid="item"
+    >
       <Container>
         <NameWrapper>{name}</NameWrapper>
         <InfoWrapper>{unit} </InfoWrapper>
