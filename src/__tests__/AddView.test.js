@@ -94,7 +94,7 @@ describe("Add product form tests, ", () => {
     );
   });
 
-  it("correctly show error message when number is too bit", async () => {
+  it("correctly show error message when number is too big", async () => {
     const onSubmitMock = jest.fn();
     render(
       <AuthProvider>

@@ -8,7 +8,6 @@ import { BrowserRouter } from "react-router-dom";
 import AppProvider from "../context/context";
 import { AuthProvider } from "../providers/Auth";
 import user from "@testing-library/user-event";
-import List from "../components/organisms/List";
 import ListItem from "../components/molecules/ListItem";
 
 describe("Items view list", () => {
