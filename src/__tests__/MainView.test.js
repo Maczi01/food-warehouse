@@ -80,7 +80,7 @@ describe("Items view list", () => {
         minimalQuantity: 3,
         currentQuantity: 0,
         id: "h6y0w72woJCIgWdoxQ7G",
-        unit: "liter"
+        unit: "liter",
       },
       {
         name: "Chocolate",
@@ -89,7 +89,7 @@ describe("Items view list", () => {
         minimalQuantity: 3,
         currentQuantity: 0,
         id: "sYdF4BxIKWDE4XQr9Q7u",
-        unit: "liter"
+        unit: "liter",
       },
       {
         name: "Marshmallows",
@@ -98,29 +98,26 @@ describe("Items view list", () => {
         minimalQuantity: 2,
         currentQuantity: 1,
         id: "sYdF4BxVFOKP4XQr9Q7u",
-        unit: "liter"
-      }
+        unit: "liter",
+      },
     ];
 
     render(
-        <AuthProvider>
-          <AppProvider>
-            <ThemeProvider theme={lightTheme}>
-              <IntlProvider locale={language.locale} messages={language.lang}>
-                <BrowserRouter>
-                  <List items={items} parameter={"all"}/>
-                </BrowserRouter>
-              </IntlProvider>
-            </ThemeProvider>
-          </AppProvider>
-        </AuthProvider>
+      <AuthProvider>
+        <AppProvider>
+          <ThemeProvider theme={lightTheme}>
+            <IntlProvider locale={language.locale} messages={language.lang}>
+              <BrowserRouter>
+                <List items={items} parameter={"all"} />
+              </BrowserRouter>
+            </IntlProvider>
+          </ThemeProvider>
+        </AppProvider>
+      </AuthProvider>
     );
 
     const allItems = screen.getAllByTestId("decreaseQuantity");
 
     expect(allItems).toHaveLength(3);
-
   });
-
-
 });
