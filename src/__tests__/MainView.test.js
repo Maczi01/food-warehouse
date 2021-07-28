@@ -12,7 +12,7 @@ import ListItem from "../components/molecules/ListItem";
 import List from "../components/organisms/List";
 
 describe("Items view list", () => {
-  it("correctly call functions on item", async () => {
+  it("correctly render item", async () => {
     const deleteItemMock = jest.fn();
     const decreaseQuantityMock = jest.fn();
     const increaseQuantityMock = jest.fn();
@@ -29,37 +29,69 @@ describe("Items view list", () => {
     };
 
     render(
-      <AuthProvider>
-        <AppProvider>
-          <ThemeProvider theme={lightTheme}>
-            <IntlProvider locale={language.locale} messages={language.lang}>
-              <BrowserRouter>
-                <ListItem
-                  {...item}
-                  editItem={editItemMock}
-                  deleteItem={deleteItemMock}
-                  decreaseQuantity={decreaseQuantityMock}
-                  increaseQuantity={increaseQuantityMock}
-                />
-              </BrowserRouter>
-            </IntlProvider>
-          </ThemeProvider>
-        </AppProvider>
-      </AuthProvider>
+      <ThemeProvider theme={lightTheme}>
+        <ListItem
+          {...item}
+          editItem={editItemMock}
+          deleteItem={deleteItemMock}
+          decreaseQuantity={decreaseQuantityMock}
+          increaseQuantity={increaseQuantityMock}
+        />
+      </ThemeProvider>
+    );
+
+    const itemName = screen.getByText("Wine");
+    const itemUnit = screen.getByText("liter");
+    const decreaseQuantityIcon = screen.getByTestId("decreaseQuantity");
+    const increaseQuantityIcon = screen.getByTestId("increaseQuantity");
+    const editItemIcon = screen.getByTestId("editItem");
+    const deleteItemIcon = screen.getByTestId("deleteItem");
+
+    expect(itemName).toBeInTheDocument();
+    expect(itemUnit).toBeInTheDocument();
+    expect(decreaseQuantityIcon).toBeInTheDocument();
+    expect(increaseQuantityIcon).toBeInTheDocument();
+    expect(editItemIcon).toBeInTheDocument();
+    expect(deleteItemIcon).toBeInTheDocument();
+  });
+
+  it("correctly works item functions", async () => {
+    const deleteItemMock = jest.fn();
+    const decreaseQuantityMock = jest.fn();
+    const increaseQuantityMock = jest.fn();
+    const editItemMock = jest.fn();
+
+    const item = {
+      name: "Wine",
+      category: "beverages",
+      maximalQuantity: 3,
+      minimalQuantity: 3,
+      currentQuantity: 0,
+      id: "h6y0w72woJCIgWdoxQ7G",
+      unit: "liter",
+    };
+
+    render(
+      <ThemeProvider theme={lightTheme}>
+        <BrowserRouter>
+          <ListItem
+            {...item}
+            editItem={editItemMock}
+            deleteItem={deleteItemMock}
+            decreaseQuantity={decreaseQuantityMock}
+            increaseQuantity={increaseQuantityMock}
+          />
+        </BrowserRouter>
+      </ThemeProvider>
     );
 
     const decreaseQuantityButton = screen.getByTestId("decreaseQuantity");
     const increaseQuantityButton = screen.getByTestId("increaseQuantity");
     const deleteItemButton = screen.getByTestId("deleteItem");
-    const editItemButton = screen.getByTestId("editItem");
 
     user.click(decreaseQuantityButton);
     user.click(increaseQuantityButton);
     user.click(deleteItemButton);
-    user.click(editItemButton);
-
-    expect(editItemMock).toBeCalled();
-    expect(editItemMock).toHaveBeenCalledTimes(1);
 
     expect(increaseQuantityMock).toBeCalled();
     expect(increaseQuantityMock).toHaveBeenCalledTimes(1);

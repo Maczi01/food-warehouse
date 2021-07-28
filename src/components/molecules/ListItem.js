@@ -108,9 +108,9 @@ const ListItem = ({
         data-testid="item"
     >
       <Container>
-        <NameWrapper>{name}</NameWrapper>
-        <InfoWrapper>{unit} </InfoWrapper>
-        <InfoWrapper>
+        <NameWrapper data-testid="itemName">{name}</NameWrapper>
+        <InfoWrapper data-testid="itemUnit">{unit} </InfoWrapper>
+        <InfoWrapper data-testid="itemQuantities">
           {currentQuantity} z {maximalQuantity}
         </InfoWrapper>
       </Container>
