@@ -5,7 +5,6 @@ import {Link, NavLink} from "react-router-dom";
 import Menu from "./Menu";
 import Burger from "../atoms/Burger";
 import {FormattedMessage} from 'react-intl'
-import {auth} from "../../firebase/firebaseConfig";
 import logout from "../../assets/img/logout.svg";
 import ButtonIcon from "../atoms/ButtonIcon";
 
@@ -69,7 +68,7 @@ const HamburgerContainer = styled.div`
     }
 `;
 
-const Navbar = () => {
+const Navbar = ({signOut}) => {
     const [open, setOpen] = React.useState(false);
 
     return (
@@ -116,9 +115,10 @@ const Navbar = () => {
                 </LinksWrapper>
 
                 <ButtonIcon
-                    onClick={() => auth.signOut()}
+                    onClick={signOut}
                     type="submit"
                     icon={logout}
+                    data-testid="logout"
                 />
             </HeaderWrapper>
         </>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Navbar from "../molecules/Navbar";
 import React from "react";
 import Footer from "../molecules/Footer";
+import { auth } from "../../firebase/firebaseConfig";
 
 const ViewWrapper = styled.div`
   width: 80vw;
@@ -15,12 +16,15 @@ const ViewWrapper = styled.div`
   }
 `;
 
-const MainTemplate = ({ children }) => (
-  <>
-    <Navbar />
-    <ViewWrapper>{children}</ViewWrapper>
-    <Footer />
-  </>
-);
+const MainTemplate = ({ children }) => {
+  const signOut = () => auth.signOut();
+  return (
+    <>
+      <Navbar signOut={signOut}/>
+      <ViewWrapper>{children}</ViewWrapper>
+      <Footer />
+    </>
+  );
+};
 
 export default MainTemplate;

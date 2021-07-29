@@ -11,7 +11,7 @@ import user from "@testing-library/user-event";
 import ItemForm from "../components/organisms/ItemForm";
 
 describe("Add product form tests, ", () => {
-  it("correctly call submit function", async () => {
+  it("correctly call submit function with arguments", async () => {
     const onSubmitMock = jest.fn();
     render(
       <AuthProvider>
@@ -57,7 +57,7 @@ describe("Add product form tests, ", () => {
     );
   });
 
-  it("correctly show error message when field is not filled and do not submit form", async () => {
+  it("correctly show error message when field is not filled", async () => {
     const onSubmitMock = jest.fn();
     render(
       <AuthProvider>
