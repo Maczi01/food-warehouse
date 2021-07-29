@@ -15,7 +15,6 @@ describe("Navbar tests, ", () => {
       <AppProvider>
         <ThemeProvider theme={lightTheme}>
           <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
-            s
             <BrowserRouter>
               <Navbar />
             </BrowserRouter>
@@ -41,15 +40,13 @@ describe("Navbar tests, ", () => {
     const logoutMock = jest.fn();
 
     render(
-      <AppProvider>
-        <ThemeProvider theme={lightTheme}>
-          <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
-            <BrowserRouter>
-              <Navbar />
-            </BrowserRouter>
-          </IntlProvider>
-        </ThemeProvider>
-      </AppProvider>
+      <ThemeProvider theme={lightTheme}>
+        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
+          <BrowserRouter>
+            <Navbar signOut={logoutMock} />
+          </BrowserRouter>
+        </IntlProvider>
+      </ThemeProvider>
     );
 
     const logoutButton = screen.getByTestId("logout");
