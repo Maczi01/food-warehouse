@@ -86,6 +86,7 @@ const QuantityBarOutside = styled.div`
     margin-bottom: 10px;
   }
 `;
+
 const QuantityBarInside = styled.div`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.green};
