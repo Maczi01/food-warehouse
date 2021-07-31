@@ -4,9 +4,8 @@ import edit from "../../assets/img/edit.svg";
 import remove from "../../assets/img/remove.svg";
 import plus from "../../assets/img/plus.svg";
 import minus from "../../assets/img/minus.svg";
-import { useHistory } from "react-router";
+import {useHistory} from "react-router";
 import PropTypes from "prop-types";
-import { Field } from "formik";
 
 const ItemWraper = styled.li`
     display: flex;

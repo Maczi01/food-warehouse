@@ -114,6 +114,7 @@ const SettingsCard = ({ signOut, currentMail }) => {
             <StyledSelect
               onChange={handleLanguageChange}
               defaultValue={language.locale}
+              data-testid="language"
             >
               <option value="pl">Polski</option>
               <option value="en">English</option>
