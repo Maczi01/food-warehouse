@@ -101,7 +101,7 @@ const SettingsCard = ({ signOut, currentMail }) => {
               <FormattedMessage id="logged as" />
               {currentMail}
             </Paragraph>
-            <Button onClick={() => signOut()}>
+            <Button onClick={() => signOut()} data-testid="signOut">
               <FormattedMessage id="logout" />
             </Button>
           </UserMailWrapper>
