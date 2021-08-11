@@ -67,7 +67,7 @@ describe("<Navbar/>", () => {
         </IntlProvider>
       </ThemeProvider>
     );
-
+    //TODO
     const logoutButton = screen.getByTestId("burgerButton");
     // user.click(logoutButton);
     //

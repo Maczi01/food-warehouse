@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import ShopForm from "./ShopForm";
+import ButtonIcon from "../atoms/ButtonIcon";
 
 const ModalWrapper = styled.div`
     padding: 0 80px 50px;
@@ -26,6 +27,7 @@ const AddShopModal = ({addItemToShoppingList, setShowAddShopModal}) => (
         <ShopForm
             addItemToShoppingList={addItemToShoppingList}
             setShowAddShopModal={setShowAddShopModal}
+            data-testid="modal"
         />
     </ModalWrapper>
 );

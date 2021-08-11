@@ -12,7 +12,7 @@ import ListItem from "../components/molecules/ListItem";
 import List from "../components/organisms/List";
 
 describe("<MainView/>", () => {
-  it("correctly render item", async () => {
+  it("correctly render item with properties and buttons", async () => {
     const deleteItemMock = jest.fn();
     const decreaseQuantityMock = jest.fn();
     const increaseQuantityMock = jest.fn();
@@ -103,7 +103,7 @@ describe("<MainView/>", () => {
     expect(deleteItemMock).toHaveBeenCalledTimes(1);
   });
 
-  it("correctly generate list with three items", async () => {
+  it("correctly generate list with three given items", async () => {
     const items = [
       {
         name: "Wine",

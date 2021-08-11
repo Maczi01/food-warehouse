@@ -121,10 +121,15 @@ const SettingsCard = ({ signOut, currentMail }) => {
             </StyledSelect>
           </OptionsItem>
           <OptionsItem>
-            <StyledLabel>
+            <StyledLabel data-testid="label"
+            >
               <FormattedMessage id="dark mode" />
             </StyledLabel>
-            <StyledSelect onChange={toggleTheme} defaultValue="off">
+            <StyledSelect
+                onChange={toggleTheme}
+                defaultValue="off"
+                data-testid="theme"
+            >
               <option value="on" label="on" />
               <option value="off" label="off" />
             </StyledSelect>
