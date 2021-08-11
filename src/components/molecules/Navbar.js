@@ -74,7 +74,7 @@ const Navbar = ({signOut}) => {
     return (
         <>
             <HamburgerContainer>
-                <Burger open={open} setOpen={setOpen}/>
+                <Burger open={open} setOpen={setOpen} />
                 <Menu open={open} setOpen={setOpen}/>
             </HamburgerContainer>
             <HeaderWrapper

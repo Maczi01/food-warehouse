@@ -11,7 +11,7 @@ import user from "@testing-library/user-event";
 import ItemForm from "../components/organisms/ItemForm";
 import SettingsCard from "../components/organisms/SettingsCard";
 
-describe("Add product form tests, ", () => {
+describe("<SettginsView/>", () => {
   it("correctly call sign out function", async () => {
     const signOutMock = jest.fn();
     render(

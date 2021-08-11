@@ -9,7 +9,7 @@ import { EN_language } from "../utills/language";
 import React from "react";
 import user from "@testing-library/user-event";
 
-describe("Navbar tests, ", () => {
+describe("<Navbar/>", () => {
   it("correctly render Navbar with navigation buttons", () => {
     render(
       <AppProvider>
@@ -36,7 +36,7 @@ describe("Navbar tests, ", () => {
     expect(backgroundColor).toHaveStyle("background: #00214D");
   });
 
-  it("correctly call lougout function", () => {
+  it("correctly call logout function", () => {
     const logoutMock = jest.fn();
 
     render(
@@ -54,5 +54,24 @@ describe("Navbar tests, ", () => {
 
     expect(logoutMock).toBeCalled();
     expect(logoutMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("correctly call show menu after click burger button", () => {
+
+    render(
+      <ThemeProvider theme={lightTheme}>
+        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
+          <BrowserRouter>
+            <Navbar />
+          </BrowserRouter>
+        </IntlProvider>
+      </ThemeProvider>
+    );
+
+    const logoutButton = screen.getByTestId("burgerButton");
+    // user.click(logoutButton);
+    //
+    // expect(logoutMock).toBeCalled();
+    // expect(logoutMock).toHaveBeenCalledTimes(1);
   });
 });

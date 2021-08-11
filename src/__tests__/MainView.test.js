@@ -11,7 +11,7 @@ import user from "@testing-library/user-event";
 import ListItem from "../components/molecules/ListItem";
 import List from "../components/organisms/List";
 
-describe("Items view list", () => {
+describe("<MainView/>", () => {
   it("correctly render item", async () => {
     const deleteItemMock = jest.fn();
     const decreaseQuantityMock = jest.fn();

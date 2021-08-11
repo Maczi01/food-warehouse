@@ -7,7 +7,7 @@ import { EN_language as language } from "../utills/language";
 import { BrowserRouter } from "react-router-dom";
 import FilterView from "../views/FilterView";
 
-describe("Categories filter view ", () => {
+describe("<FilterView />", () => {
   it("correctly displays button for each category", () => {
     render(
       <ThemeProvider theme={lightTheme}>
