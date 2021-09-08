@@ -22,6 +22,7 @@ const ShopForm = ({addItemToShoppingList, setShowAddShopModal}) => {
     const handleSubmitForm = (values) => {
         addItemToShoppingList(values);
         notify(values.name)
+        console.log(`adding ${values}`)
     };
 
     const notify = (name) => {

@@ -10,6 +10,7 @@ const ViewWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 70px;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;
