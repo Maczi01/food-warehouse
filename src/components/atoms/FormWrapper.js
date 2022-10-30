@@ -6,7 +6,6 @@ const FormWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  width: 50vw;
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;
   }

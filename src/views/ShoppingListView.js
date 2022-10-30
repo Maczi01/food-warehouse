@@ -95,14 +95,6 @@ const ShoppingListView = () => {
             data-testid="showModal"
           />
           <ButtonIcon
-            onClick={() => {
-              generatePdf(shoppingList);
-              notify();
-            }}
-            data-testid="generatePdf"
-            icon={pdf}
-          />
-          <ButtonIcon
             onClick={generateShoppingList}
             icon={generate}
             data-testid="generateList"
