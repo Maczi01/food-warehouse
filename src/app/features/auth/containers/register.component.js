@@ -1,23 +1,22 @@
 import React, {useContext, useState} from "react";
-import {useAuth, UserContext} from "../../../shared/utills/Auth";
 import {Redirect} from "react-router-dom";
-import RegisterFormComponent from "../components/register-form.component";
 import {toast, ToastContainer} from "react-toastify";
+
+import { useAuth, UserContext} from "../../../shared/utills/Auth";
+import RegisterFormComponent from "../components/register-form.component";
+import {useHttpClient} from '../../../shared/utills/http-client';
 
 const RegisterComponent = ({history}) => {
     const [error, setError] = useState(false);
-    const {auth, db} = useAuth();
+    const {auth} = useAuth();
+    const client = useHttpClient();
     const handleRegister = (event) => {
         event.preventDefault();
         const {email, password} = event.target.elements;
         auth
             .createUserWithEmailAndPassword(email.value, password.value)
-            .then((cred) => {
-                return db.collection("users").doc(cred.user.uid).set({
-                    userMail: email.value,
-                });
-                history.push("/");
-            })
+            .then((cred) => client.create('users', {userMail: email.value}))
+            .then(() => {history.push("/");})
             .catch((error) => {
                 setError(true);
                 notifyErrorLogin(error.message);

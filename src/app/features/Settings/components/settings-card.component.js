@@ -1,9 +1,8 @@
-import React, {useContext} from "react";
+import React from "react";
 import styled from "styled-components";
 import {FormattedMessage} from "react-intl";
 
 import user from "../../../shared/assets/icons/user.svg";
-import {AppContext} from "../../../../context/context";
 import {StyledLabel} from "../../../shared/ui/Form";
 import {StyledSelect} from "../../../shared/ui/Select";
 import {useTheme} from '../../../shared/theme/theme';

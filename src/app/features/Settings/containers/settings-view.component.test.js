@@ -2,7 +2,7 @@ import {render, screen, waitFor} from "@testing-library/react";
 import React from "react";
 import {ThemeProvider} from "styled-components";
 import {lightTheme} from "../../../shared/theme/theme";
-import AppProvider from "../../../../context/context";
+import AppProvider from "../../../services/services";
 import user from "@testing-library/user-event";
 import SettingsCardComponent from "../components/settings-card.component";
 

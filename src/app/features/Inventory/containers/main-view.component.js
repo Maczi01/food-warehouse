@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { FormattedMessage } from "react-intl";
+import {FormattedMessage} from "react-intl";
 import List from "../components/list.component";
-import { AppContext } from "../../../../context/context";
+import {useInventory} from '../../../services/inventory.store';
 
 const Heading = styled.h1`
   padding: 10px;
@@ -23,11 +23,11 @@ const Heading = styled.h1`
 
 const MainViewComponent = ({ match }) => {
   const parameter = match.params.parameter;
-  const { foodList } = useContext(AppContext);
+  const { state } = useInventory()
   const newFoodList =
     parameter === "all"
-      ? foodList
-      : foodList.filter((item) => item.category === parameter);
+      ? state.inventory
+      : state.inventory.filter((item) => item.category === parameter);
   return (
     <>
       <Heading>

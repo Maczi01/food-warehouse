@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightTheme } from "../../../shared/theme/theme";
 import { EN_language as language } from "../../../language";
-import AppProvider from "../../../../context/context";
+import AppProvider from "../../../services/services";
 import { AuthProvider } from "../../../shared/utills/Auth";
 import ListItem from "../components/list-item.components";
 import List from "../components/list.component";

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import StyledTr from "./styled-tr.component";
-import { AppContext } from "../../../../context/context";
+import {useStoppingListStore} from '../../../services/shopping-list.store';
 
 const TableWrapper = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const StyledTable = styled.table`
 `;
 
 const Table = ({ data }) => {
-  const { setItemAsChecked } = useContext(AppContext);
+  const { toggleItem } = useStoppingListStore();
 
   return (
     <TableWrapper>
@@ -78,7 +78,7 @@ const Table = ({ data }) => {
               key={item.id}
               item={item}
               index={index}
-              setItemAsChecked={setItemAsChecked}
+              setItemAsChecked={toggleItem}
             />
           ))}
         </tbody>

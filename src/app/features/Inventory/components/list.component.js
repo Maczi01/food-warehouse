@@ -5,9 +5,9 @@ import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 
 import bag from "../../../shared/assets/icons/bag.svg";
-import { AppContext } from "../../../../context/context";
 import ListItem from './list-item.components';
 import {routes} from '../../../Routes';
+import {useInventory} from '../../../services/inventory.store';
 
 const UlWrapper = styled.ul`
   width: 75vw;
@@ -75,8 +75,8 @@ const EmptyListWrapper = styled.div`
 `;
 
 const List = ({ items, parameter }) => {
-  const { decreaseQuantity, increaseQuantity, deleteItem, editItem } =
-    useContext(AppContext);
+  const { increaseQuantity, decreaseQuantity, deleteItem, editItem } = useInventory()
+
   return (
     <>
       <CategoryWrapper>

@@ -5,7 +5,7 @@ import {lightTheme} from "../../../shared/theme/theme";
 import {IntlProvider} from "react-intl";
 import {EN_language as language} from "../../../language";
 import {BrowserRouter} from "react-router-dom";
-import AppProvider from "../../../../context/context";
+import AppProvider from "../../../services/services";
 import {AuthProvider} from "../../../shared/utills/Auth";
 import user from "@testing-library/user-event";
 import ItemFormComponents from "../components/item-form.component";

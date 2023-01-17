@@ -3,7 +3,7 @@ import { lightTheme } from "../../../shared/theme/theme";
 import Navbar from "./Navbar";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
-import AppProvider from "../../../../context/context";
+import AppProvider from "../../../services/services";
 import { IntlProvider } from "react-intl";
 import { EN_language } from "../../../language";
 import React from "react";
