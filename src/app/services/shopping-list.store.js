@@ -3,10 +3,12 @@ import {useEffect, useState} from 'react';
 import {getHttpClient} from '../shared/utills/http-client';
 import {ShoppingListService} from './shopping-list.service';
 import {getAuth} from '../shared/utills/Auth';
+import {InventoryService} from './inventory.service';
 
 const collectionName = "shoppingList";
 
 export class ShoppingListStore {
+    static instance = null;
     api;
     state = {
         shoppingList: [],
@@ -15,13 +17,13 @@ export class ShoppingListStore {
 
     constructor(api) {
         this.api = api;
-        getAuth().onAuthStateChanged((user) => {
-            if (user) {
-                this.getByUser(user.uid);
-            } else {
-                this.onShoppingListUpdate([])
-            }
-        });
+    }
+
+    static getInstance = () => {
+        if (!ShoppingListStore.instance) {
+            ShoppingListStore.instance = new ShoppingListStore(new ShoppingListService());
+        }
+        return ShoppingListStore.instance;
     }
 
     onShoppingListUpdate = (shoppingList) => {
@@ -40,8 +42,9 @@ export class ShoppingListStore {
 
     addItem = (item) => {
         return this.api.create(item).then((response) => {
-            this.getForCurrentUser()
-            return response;
+            return this.getForCurrentUser().then(() => {
+                return response;
+            })
         });
     }
 
@@ -51,13 +54,19 @@ export class ShoppingListStore {
             checked: !item.checked
         }
         return this.api.update(newItem).then((response) => {
-            this.getForCurrentUser()
-            return response;
+            return this.getForCurrentUser().then(() => {
+                return response;
+            })
         });
     }
 
     clearList = () => {
-        return getHttpClient().clear(collectionName);
+        return getHttpClient().clear(collectionName)
+            .then((response) => {
+                return this.getForCurrentUser().then(() => {
+                    return response;
+                })
+            });
     }
 
     getByUser = (userId) => {
@@ -78,29 +87,33 @@ export class ShoppingListStore {
     }
 
     generateShoppingList = (inventory) => {
-        return this.getByUser(getAuth().currentUser.uid).then((shoppingList) => {
-            // let list = JSON.parse(JSON.stringify(inventory));
-            (inventory || [])
-                .filter((item) => item.currentQuantity < item.minimalQuantity)
-                .map((item) => {
-                    item.neededQuantity =
-                        parseInt(item.maximalQuantity) - parseInt(item.currentQuantity);
-                    delete item.id;
-                    delete item.minimalQuantity;
-                    delete item.maximalQuantity;
-                    delete item.currentQuantity;
-                    delete item.category;
-                    item.checked = false;
-                    item.userUid = getAuth().currentUser.uid;
-                    return item;
+        return this.clearList().then(() => {
+            return this.getByUser(getAuth().currentUser.uid).then((shoppingList) => {
+                const newShoppingList = (inventory || [])
+                    .filter((item) => item.currentQuantity < item.minimalQuantity)
+                    .map((item) => {
+                        const newItem = {
+                            ...item,
+                        }
+                        newItem.neededQuantity =
+                            parseInt(item.maximalQuantity) - parseInt(item.currentQuantity);
+                        delete newItem.id;
+                        delete newItem.minimalQuantity;
+                        delete newItem.maximalQuantity;
+                        delete newItem.currentQuantity;
+                        delete newItem.category;
+                        newItem.checked = false;
+                        newItem.userUid = getAuth().currentUser.uid;
+                        return newItem;
+                    })
+                    .filter((u) => (shoppingList ? shoppingList : []).findIndex((lu) => lu.name === u.name) === -1)
+                return Promise.all(newShoppingList.map((item) => this.addItem(item)));
+            }).then((response) => {
+                return this.getForCurrentUser().then(() => {
+                    return response;
                 })
-                .filter((u) => (shoppingList ? shoppingList : []).findIndex((lu) => lu.name === u.name) === -1)
-                .forEach((item) => this.api.create(item));
-        }).then((response) => {
-            this.getForCurrentUser()
-            return response;
-        });
-
+            });
+        })
     }
 
     getForCurrentUser = () => {
@@ -109,12 +122,10 @@ export class ShoppingListStore {
 }
 
 export const useStoppingListStore = () => {
-    const [state, setState] = useState({shoppingList: []});
-    const [shoppingList] = useState(() => new ShoppingListStore(new ShoppingListService()));
+    const [shoppingList] = useState(() => ShoppingListStore.getInstance());
+    const [state, setState] = useState(() => shoppingList.state);
     useEffect(() => {
         const callback = (shoppingList) => setState({shoppingList: shoppingList});
-
-
         shoppingList.addListener(callback);
         return () => {
             shoppingList.removeListener(callback)

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import "react-toastify/dist/ReactToastify.css";
 import {FormattedMessage} from "react-intl";
 import {toast, ToastContainer} from "react-toastify";
@@ -59,20 +59,20 @@ const Image = styled.img`
 `;
 
 const ShoppingListViewComponent = () => {
-    const {state: inventoryState} = useInventory()
-    const {state, addItem, clearList, generateShoppingList} = useStoppingListStore()
+    const {state: inventoryState, getForCurrentUser: loadInventory} = useInventory();
+    const {state, addItem, clearList, generateShoppingList, getForCurrentUser: loadShoppingList} = useStoppingListStore();
+    const [showAddShopModal, setShowAddShopModal] = useState(false);
 
     const handleGenerateShoppingList = useCallback(() => {
+        console.log('inventory:', inventoryState.inventory)
         generateShoppingList(inventoryState.inventory);
     }, [generateShoppingList, inventoryState.inventory])
 
-    const [showAddShopModal, setShowAddShopModal] = useState(false);
-
-    const notify = () => {
-        toast.success(<FormattedMessage id="pdf saved"/>, {
-            position: toast.POSITION.TOP_CENTER,
-        });
-    };
+    console.log(inventoryState.inventory)
+    useEffect(() => {
+        loadInventory();
+        loadShoppingList();
+    }, []);
 
     return (
         <>

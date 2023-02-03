@@ -15,11 +15,11 @@ const App = () => {
     return (
         <BrowserRouter>
             <AuthProvider auth={auth}>
-                    <TranslationProvider defaultLanguage="en" languages={availableLanguages}>
-                        <ThemeProvider>
-                            <Routes/>
-                        </ThemeProvider>
-                    </TranslationProvider>
+                <TranslationProvider defaultLanguage="en" languages={availableLanguages}>
+                    <ThemeProvider>
+                        <Routes/>
+                    </ThemeProvider>
+                </TranslationProvider>
             </AuthProvider>
         </BrowserRouter>
     );

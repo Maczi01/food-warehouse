@@ -5,6 +5,8 @@ import {useInventory} from '../../../services/inventory.store';
 const AddViewComponent = () => {
 
   const { editItem, addItem } = useInventory();
+
+
   return (
     <>
       <ItemFormComponents addItem={addItem} edit={editItem} />
