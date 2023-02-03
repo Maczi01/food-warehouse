@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { routes } from '../../../Routes';
+import { routes } from '../../../routes.component';
 import { useInventory } from '../../../services/inventory.store';
 import bag from '../../../shared/assets/icons/bag.svg';
 import ListItem from './list-item.components';

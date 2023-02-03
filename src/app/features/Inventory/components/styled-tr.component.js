@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -29,8 +29,8 @@ const StyledTr = ({ item, setItemAsChecked }) => (
 );
 
 StyledTr.propTypes = {
-    item: PropTypes.object.isRequired,
-    setItemAsChecked: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+  setItemAsChecked: PropTypes.func.isRequired,
 };
 
 export default StyledTr;

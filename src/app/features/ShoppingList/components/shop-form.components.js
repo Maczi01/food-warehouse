@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from 'formik';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -12,8 +12,8 @@ import { ErrorText, FormItem, FormWrapper, StyledLabel } from '../../../shared/u
 import { StyledInput } from '../../../shared/ui/Input';
 import { Heading } from '../../../shared/ui/Page';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { ValidationSchemaForShoppingList } from '../../../shared/utills/ValidationSchemaForShoppingList';
-import { properties } from '../../../shared/utills/itemProperties';
+import { properties } from '../../../shared/utills/item-properties';
+import { ShoppingListSchema } from '../../../shared/utills/shopping-list.schema';
 
 const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
   const handleSubmitForm = (values) => {
@@ -45,7 +45,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
           setSubmitting(false);
           resetForm({});
         }}
-        validationSchema={ValidationSchemaForShoppingList}
+        validationSchema={ShoppingListSchema}
         validateOnChange={false}
         validateOnBlur={false}
       >
@@ -121,8 +121,8 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
 };
 
 ShopForm.propTypes = {
-    addItemToShoppingList: PropTypes.func,
-    setShowAddShopModal: PropTypes.func,
+  addItemToShoppingList: PropTypes.func,
+  setShowAddShopModal: PropTypes.func,
 };
 
 export default ShopForm;

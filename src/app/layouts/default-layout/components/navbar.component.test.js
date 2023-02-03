@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import { EN_language } from '../../../language';
 import AppProvider from '../../../services/services';
 import { lightTheme } from '../../../shared/theme/theme';
-import Navbar from './Navbar';
+import Navbar from './navbar.component';
 
 describe('<Navbar/>', () => {
   it('correctly render Navbar with navigation buttons', () => {

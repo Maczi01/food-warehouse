@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link, NavLink } from 'react-router-dom';
@@ -8,7 +8,7 @@ import logo from '../../../shared/assets/icons/logo.svg';
 import logout from '../../../shared/assets/icons/logout.svg';
 import { Burger } from '../../../shared/ui/Burger';
 import { ButtonIcon } from '../../../shared/ui/Button';
-import Menu from './Menu';
+import Menu from './menu.component';
 
 const HeaderWrapper = styled.nav`
   display: flex;

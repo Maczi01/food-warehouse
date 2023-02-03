@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
@@ -47,7 +47,7 @@ const MainViewComponent = ({ match }) => {
 };
 
 MainViewComponent.propTypes = {
-    match: PropTypes.object,
+  match: PropTypes.object,
 };
 
 export default MainViewComponent;

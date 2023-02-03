@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -23,7 +23,7 @@ const SecurityContainer = styled.div`
 const UnauthorizedLayout = ({ children }) => <SecurityContainer>{children}</SecurityContainer>;
 
 UnauthorizedLayout.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default UnauthorizedLayout;

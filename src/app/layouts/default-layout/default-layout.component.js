@@ -1,18 +1,17 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-import { useAuth } from '../../shared/utills/Auth';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
+import { useAuth } from '../../shared/utills/auth';
+import Footer from './components/footer.component';
+import Navbar from './components/navbar.component';
 
 const ViewWrapper = styled.div`
   width: 80vw;
   height: 600px;
-  margin: 0 auto;
+  margin: 0 auto 70px auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 70px;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;
@@ -32,7 +31,7 @@ const DefaultLayout = ({ children }) => {
 };
 
 DefaultLayout.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default DefaultLayout;

@@ -1,3 +1,3 @@
-import StyledSelect from './StyledSelect';
+import StyledSelect from './styled-select.component';
 
 export { StyledSelect };

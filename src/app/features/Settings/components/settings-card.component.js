@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
@@ -7,7 +7,7 @@ import user from '../../../shared/assets/icons/user.svg';
 import { useTheme } from '../../../shared/theme/theme';
 import { StyledLabel } from '../../../shared/ui/Form';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { useLanguage } from '../../../shared/utills/Translation';
+import { useLanguage } from '../../../shared/utills/translation';
 
 const SettingsWrapper = styled.div`
   display: flex;

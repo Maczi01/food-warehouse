@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
 import { ThemeProvider as DefaultThemeProvider } from 'styled-components';
 
-import GlobalStyle from './GlobalStyle';
+import GlobalStyle from './global-style.component';
 
 export const lightTheme = {
   colors: {

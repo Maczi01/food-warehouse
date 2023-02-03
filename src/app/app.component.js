@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import Routes from './Routes';
 import { HttpClientAdapter, auth } from './firebase.config';
 import { availableLanguages } from './language';
+import Routes from './routes.component';
 import { ThemeProvider } from './shared/theme/theme';
-import { AuthProvider } from './shared/utills/Auth';
-import { TranslationProvider } from './shared/utills/Translation';
+import { AuthProvider } from './shared/utills/auth';
 import { initializeHttpClient } from './shared/utills/http-client';
+import { TranslationProvider } from './shared/utills/translation';
 
 initializeHttpClient(new HttpClientAdapter());
 
