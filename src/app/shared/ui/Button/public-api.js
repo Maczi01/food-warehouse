@@ -1,8 +1,6 @@
-import Button from "./Button";
-import ConfirmButton from "./ConfirmButton";
-import ButtonIcon from "./ButtonIcon";
-import ButtonContainer from "./ButtonContainer";
+import Button from './Button';
+import ButtonContainer from './ButtonContainer';
+import ButtonIcon from './ButtonIcon';
+import ConfirmButton from './ConfirmButton';
 
-export {
-    Button, ButtonIcon, ButtonContainer, ConfirmButton
-}
+export { Button, ButtonIcon, ButtonContainer, ConfirmButton };

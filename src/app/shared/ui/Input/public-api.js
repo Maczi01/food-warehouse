@@ -1,7 +1,7 @@
-import PasswordWrapper from "./PasswordWrapper";
-import StyledPassword from "./StyledPassword";
-import StyledInput from "./StyledInput";
-import StyledInputAuth from "./StyledInputAuth";
-import StyledInputError from "./StyledInputError";
+import PasswordWrapper from './PasswordWrapper';
+import StyledInput from './StyledInput';
+import StyledInputAuth from './StyledInputAuth';
+import StyledInputError from './StyledInputError';
+import StyledPassword from './StyledPassword';
 
 export { PasswordWrapper, StyledPassword, StyledInput, StyledInputAuth, StyledInputError };

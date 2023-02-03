@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledLabel = styled.label`
   background-color: ${({ theme }) => theme.colors.blue};
@@ -20,4 +20,3 @@ const StyledLabel = styled.label`
 `;
 
 export default StyledLabel;
-

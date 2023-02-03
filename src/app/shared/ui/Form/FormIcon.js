@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FormIcon = styled.img`
   justify-content: center;
@@ -16,6 +16,3 @@ const FormIcon = styled.img`
 `;
 
 export default FormIcon;
-
-
-

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledSelect = styled.select`
   width: 300px;
@@ -17,7 +17,7 @@ const StyledSelect = styled.select`
   color: black;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.gray};
-  border: ${({ errors }) => (errors ? "3px solid red" : "none")};
+  border: ${({ errors }) => (errors ? '3px solid red' : 'none')};
   :focus {
     background-color: #b1b1b1;
   }
@@ -27,4 +27,3 @@ const StyledSelect = styled.select`
 `;
 
 export default StyledSelect;
-

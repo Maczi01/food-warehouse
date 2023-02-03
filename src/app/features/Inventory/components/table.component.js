@@ -1,9 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { FormattedMessage } from "react-intl";
-import PropTypes from "prop-types";
-import StyledTr from "./styled-tr.component";
-import {useStoppingListStore} from '../../../services/shopping-list.store';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
+
+import { useStoppingListStore } from '../../../services/shopping-list.store';
+import StyledTr from './styled-tr.component';
 
 const TableWrapper = styled.div`
   display: flex;
@@ -61,13 +62,13 @@ const Table = ({ data }) => {
         <thead>
           <tr>
             <th>
-              <FormattedMessage id="name" />
+              <FormattedMessage id={'name'} />
             </th>
             <th>
-              <FormattedMessage id="quantity" />
+              <FormattedMessage id={'quantity'} />
             </th>
             <th>
-              <FormattedMessage id="unit" />
+              <FormattedMessage id={'unit'} />
             </th>
             <th>Purchased</th>
           </tr>

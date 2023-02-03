@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
-import LoginFormComponent from "../components/login-form.component";
-import {useAuth} from "../../../shared/utills/Auth";
-import { Redirect } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { useAuth } from '../../../shared/utills/Auth';
+import LoginFormComponent from '../components/login-form.component';
 
 const LoginComponent = () => {
   const { auth, currentUser } = useAuth();
@@ -25,13 +25,13 @@ const LoginComponent = () => {
   };
 
   const notifyErrorLogin = () => {
-    toast.error("Wrong credentials", {
+    toast.error('Wrong credentials', {
       position: toast.POSITION.TOP_CENTER,
     });
   };
 
   if (currentUser) {
-    return <Redirect to="/" />;
+    return <Redirect to={'/'} />;
   }
   const removeBorder = () => {
     setError(false);

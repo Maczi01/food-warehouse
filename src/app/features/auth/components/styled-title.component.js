@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledTitle = styled.h2`
   font-size: 20px;
@@ -9,4 +9,3 @@ const StyledTitle = styled.h2`
 `;
 
 export default StyledTitle;
-

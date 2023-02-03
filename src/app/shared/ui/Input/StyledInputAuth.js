@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledInputAuth = styled.input`
-  border: ${({ error }) => (error ? "3px solid red" : "none")};
+  border: ${({ error }) => (error ? '3px solid red' : 'none')};
   margin-bottom: 30px;
   padding: 2px 0;
   padding-bottom: 5px;
@@ -16,4 +16,3 @@ const StyledInputAuth = styled.input`
 `;
 
 export default StyledInputAuth;
-

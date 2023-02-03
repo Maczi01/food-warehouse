@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FormItem = styled.div`
       width: 100%;
       display: flex;
-         @media (max-width: ${({theme}) => theme.mobile}) {
+         @media (max-width: ${({ theme }) => theme.mobile}) {
           flex-direction: column;
-          border: 1px solid   ${({theme}) => theme.colors.darkblue});
+          border: 1px solid   ${({ theme }) => theme.colors.darkblue});
       }
 `;
 

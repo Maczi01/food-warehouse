@@ -1,2 +1,2 @@
 import '@testing-library/jest-dom';
-import "mutationobserver-shim"
+import 'mutationobserver-shim';

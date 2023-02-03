@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ConfirmButton = styled.button`
   padding: 20px 30px;
@@ -15,5 +15,3 @@ const ConfirmButton = styled.button`
 `;
 
 export default ConfirmButton;
-
-

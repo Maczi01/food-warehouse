@@ -1,32 +1,32 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
-import user from "@testing-library/user-event";
-import { IntlProvider } from "react-intl";
-import { BrowserRouter } from "react-router-dom";
+import { render, screen } from '@testing-library/react';
+import user from '@testing-library/user-event';
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../../../shared/theme/theme";
-import { EN_language as language } from "../../../language";
-import AppProvider from "../../../services/services";
-import { AuthProvider } from "../../../shared/utills/Auth";
-import ListItem from "../components/list-item.components";
-import List from "../components/list.component";
+import { EN_language as language } from '../../../language';
+import AppProvider from '../../../services/services';
+import { lightTheme } from '../../../shared/theme/theme';
+import { AuthProvider } from '../../../shared/utills/Auth';
+import ListItem from '../components/list-item.components';
+import List from '../components/list.component';
 
-describe("<MainViewComponent/>", () => {
-  it("correctly render item with properties and buttons", async () => {
+describe('<MainViewComponent/>', () => {
+  it('correctly render item with properties and buttons', async () => {
     const deleteItemMock = jest.fn();
     const decreaseQuantityMock = jest.fn();
     const increaseQuantityMock = jest.fn();
     const editItemMock = jest.fn();
 
     const item = {
-      name: "Wine",
-      category: "beverages",
+      name: 'Wine',
+      category: 'beverages',
       maximalQuantity: 3,
       minimalQuantity: 3,
       currentQuantity: 0,
-      id: "h6y0w72woJCIgWdoxQ7G",
-      unit: "liter",
+      id: 'h6y0w72woJCIgWdoxQ7G',
+      unit: 'liter',
     };
 
     render(
@@ -41,12 +41,12 @@ describe("<MainViewComponent/>", () => {
       </ThemeProvider>
     );
 
-    const itemName = screen.getByText("Wine");
-    const itemUnit = screen.getByText("liter");
-    const decreaseQuantityIcon = screen.getByTestId("decreaseQuantity");
-    const increaseQuantityIcon = screen.getByTestId("increaseQuantity");
-    const editItemIcon = screen.getByTestId("editItem");
-    const deleteItemIcon = screen.getByTestId("deleteItem");
+    const itemName = screen.getByText('Wine');
+    const itemUnit = screen.getByText('liter');
+    const decreaseQuantityIcon = screen.getByTestId('decreaseQuantity');
+    const increaseQuantityIcon = screen.getByTestId('increaseQuantity');
+    const editItemIcon = screen.getByTestId('editItem');
+    const deleteItemIcon = screen.getByTestId('deleteItem');
 
     expect(itemName).toBeInTheDocument();
     expect(itemUnit).toBeInTheDocument();
@@ -56,20 +56,20 @@ describe("<MainViewComponent/>", () => {
     expect(deleteItemIcon).toBeInTheDocument();
   });
 
-  it("correctly works item functions", async () => {
+  it('correctly works item functions', async () => {
     const deleteItemMock = jest.fn();
     const decreaseQuantityMock = jest.fn();
     const increaseQuantityMock = jest.fn();
     const editItemMock = jest.fn();
 
     const item = {
-      name: "Wine",
-      category: "beverages",
+      name: 'Wine',
+      category: 'beverages',
       maximalQuantity: 3,
       minimalQuantity: 3,
       currentQuantity: 0,
-      id: "h6y0w72woJCIgWdoxQ7G",
-      unit: "liter",
+      id: 'h6y0w72woJCIgWdoxQ7G',
+      unit: 'liter',
     };
 
     render(
@@ -86,9 +86,9 @@ describe("<MainViewComponent/>", () => {
       </ThemeProvider>
     );
 
-    const decreaseQuantityButton = screen.getByTestId("decreaseQuantity");
-    const increaseQuantityButton = screen.getByTestId("increaseQuantity");
-    const deleteItemButton = screen.getByTestId("deleteItem");
+    const decreaseQuantityButton = screen.getByTestId('decreaseQuantity');
+    const increaseQuantityButton = screen.getByTestId('increaseQuantity');
+    const deleteItemButton = screen.getByTestId('deleteItem');
 
     user.click(decreaseQuantityButton);
     user.click(increaseQuantityButton);
@@ -104,34 +104,34 @@ describe("<MainViewComponent/>", () => {
     expect(deleteItemMock).toHaveBeenCalledTimes(1);
   });
 
-  it("correctly generate list with three given items", async () => {
+  it('correctly generate list with three given items', async () => {
     const items = [
       {
-        name: "Wine",
-        category: "beverages",
+        name: 'Wine',
+        category: 'beverages',
         maximalQuantity: 3,
         minimalQuantity: 3,
         currentQuantity: 0,
-        id: "h6y0w72woJCIgWdoxQ7G",
-        unit: "liter",
+        id: 'h6y0w72woJCIgWdoxQ7G',
+        unit: 'liter',
       },
       {
-        name: "Chocolate",
-        category: "sweets",
+        name: 'Chocolate',
+        category: 'sweets',
         maximalQuantity: 3,
         minimalQuantity: 3,
         currentQuantity: 0,
-        id: "sYdF4BxIKWDE4XQr9Q7u",
-        unit: "liter",
+        id: 'sYdF4BxIKWDE4XQr9Q7u',
+        unit: 'liter',
       },
       {
-        name: "Marshmallows",
-        category: "sweets",
+        name: 'Marshmallows',
+        category: 'sweets',
         maximalQuantity: 5,
         minimalQuantity: 2,
         currentQuantity: 1,
-        id: "sYdF4BxVFOKP4XQr9Q7u",
-        unit: "liter",
+        id: 'sYdF4BxVFOKP4XQr9Q7u',
+        unit: 'liter',
       },
     ];
 
@@ -139,9 +139,15 @@ describe("<MainViewComponent/>", () => {
       <AuthProvider>
         <AppProvider>
           <ThemeProvider theme={lightTheme}>
-            <IntlProvider locale={language.locale} messages={language.lang}>
+            <IntlProvider
+              locale={language.locale}
+              messages={language.lang}
+            >
               <BrowserRouter>
-                <List items={items} parameter={"all"} />
+                <List
+                  items={items}
+                  parameter={'all'}
+                />
               </BrowserRouter>
             </IntlProvider>
           </ThemeProvider>
@@ -149,7 +155,7 @@ describe("<MainViewComponent/>", () => {
       </AuthProvider>
     );
 
-    const allItems = screen.getAllByTestId("decreaseQuantity");
+    const allItems = screen.getAllByTestId('decreaseQuantity');
 
     expect(allItems).toHaveLength(3);
   });

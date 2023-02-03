@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ErrorText = styled.p`
   text-align: right;
@@ -9,5 +9,3 @@ const ErrorText = styled.p`
 `;
 
 export default ErrorText;
-
-

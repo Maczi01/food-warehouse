@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledInput = styled.input`
     display: block;
@@ -13,7 +13,7 @@ const StyledInput = styled.input`
     transition-duration: 0.25s;
     font-weight: 300;
     background-color: ${({ theme }) => theme.colors.gray};
-    border: ${({ errors }) => (errors ? "3px solid red" : "none")};
+    border: ${({ errors }) => (errors ? '3px solid red' : 'none')};
     border-radius: 10px;
     :focus{
         background-color: #b1b1b1;
@@ -26,4 +26,3 @@ const StyledInput = styled.input`
 `;
 
 export default StyledInput;
-
