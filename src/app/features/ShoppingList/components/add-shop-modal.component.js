@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -35,8 +35,8 @@ const AddShopModal = ({ addItemToShoppingList, setShowAddShopModal }) => (
 );
 
 AddShopModal.propTypes = {
-    addItemToShoppingList: PropTypes.func,
-    setShowAddShopModal: PropTypes.func,
+  addItemToShoppingList: PropTypes.func,
+  setShowAddShopModal: PropTypes.func,
 };
 
 export default AddShopModal;

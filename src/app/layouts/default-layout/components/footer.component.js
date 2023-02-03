@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FooterContainer = styled.div`
+const Container = styled.div`
   position: fixed;
   left: 0;
   bottom: 0;
@@ -13,6 +13,6 @@ const FooterContainer = styled.div`
   margin-top: 70px;
 `;
 
-const Footer = () => <FooterContainer />;
+const Footer = () => <Container />;
 
 export default Footer;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getAuth } from '../shared/utills/Auth';
+import { getAuth } from '../shared/utills/auth';
 import { getHttpClient } from '../shared/utills/http-client';
 import { ShoppingListService } from './shopping-list.service';
 

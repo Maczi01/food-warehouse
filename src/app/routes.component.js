@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { Switch } from 'react-router';
 import { Redirect, Route } from 'react-router-dom';
@@ -11,9 +11,9 @@ import SettingsViewComponent from './features/Settings/containers/settings-view.
 import ShoppingListViewComponent from './features/ShoppingList/containers/shopping-list-view.component';
 import LoginComponent from './features/auth/containers/login.component';
 import RegisterComponent from './features/auth/containers/register.component';
-import UnauthorizedLayout from './layouts/UnauthorizedLayout';
 import { DefaultLayout } from './layouts/default-layout';
-import { UserContext } from './shared/utills/Auth';
+import UnauthorizedLayout from './layouts/unauthorized-layout.component';
+import { UserContext } from './shared/utills/auth';
 
 export const routes = {
   home: '/',

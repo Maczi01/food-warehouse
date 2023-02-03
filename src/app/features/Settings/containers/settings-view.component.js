@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAuth } from '../../../shared/utills/Auth';
+import { useAuth } from '../../../shared/utills/auth';
 import SettingsCardComponent from '../components/settings-card.component';
 
 const SettingsViewComponent = () => {

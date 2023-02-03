@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { getAuth } from '../shared/utills/Auth';
+import { getAuth } from '../shared/utills/auth';
 import { getHttpClient } from '../shared/utills/http-client';
 
 const collectionName = 'shoppingList';

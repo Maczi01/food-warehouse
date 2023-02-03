@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getAuth } from '../shared/utills/Auth';
+import { getAuth } from '../shared/utills/auth';
 import { InventoryService } from './inventory.service';
 
 export class InventoryStore {

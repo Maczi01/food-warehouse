@@ -1,3 +1,3 @@
-import Burger from './Burger';
+import Burger from './burger.component';
 
 export { Burger };

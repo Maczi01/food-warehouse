@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { UserContext, useAuth } from '../../../shared/utills/Auth';
+import { UserContext, useAuth } from '../../../shared/utills/auth';
 import { useHttpClient } from '../../../shared/utills/http-client';
 import RegisterFormComponent from '../components/register-form.component';
 

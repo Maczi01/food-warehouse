@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const ValidationSchemaForShoppingList = Yup.object({
+export const ShoppingListSchema = Yup.object({
   name: Yup.string()
     .min(2, 'Too short, minimal 3 characters!')
     .max(30, 'Too long, maximal 3 characters!!')

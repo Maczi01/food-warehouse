@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import { EN_language as language } from '../../../language';
 import AppProvider from '../../../services/services';
 import { lightTheme } from '../../../shared/theme/theme';
-import { AuthProvider } from '../../../shared/utills/Auth';
+import { AuthProvider } from '../../../shared/utills/auth';
 import ItemFormComponents from '../components/item-form.component';
 
 describe('<AddViewComponent />', () => {

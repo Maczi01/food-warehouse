@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from 'formik';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
@@ -13,8 +13,8 @@ import { ErrorText, FormItem, FormWrapper, StyledLabel } from '../../../shared/u
 import { StyledInput } from '../../../shared/ui/Input';
 import { Heading } from '../../../shared/ui/Page';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { ValidationSchemaForFoodList } from '../../../shared/utills/ValidationSchemaForFoodList';
-import { properties } from '../../../shared/utills/itemProperties';
+import { FoodListSchema } from '../../../shared/utills/food-list.schema';
+import { properties } from '../../../shared/utills/item-properties';
 
 const EditItemForm = ({ item, editItem }) => {
   const handleSubmitForm = (values) => {
@@ -42,7 +42,7 @@ const EditItemForm = ({ item, editItem }) => {
           setSubmitting(false);
           resetForm({});
         }}
-        validationSchema={ValidationSchemaForFoodList}
+        validationSchema={FoodListSchema}
         validateOnChange={false}
         validateOnBlur={false}
       >
@@ -162,8 +162,8 @@ const EditItemForm = ({ item, editItem }) => {
 };
 
 EditItemForm.propTypes = {
-    item: PropTypes.object,
-    editItem: PropTypes.func,
+  item: PropTypes.object,
+  editItem: PropTypes.func,
 };
 
 export default EditItemForm;

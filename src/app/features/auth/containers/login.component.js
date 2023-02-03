@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { useAuth } from '../../../shared/utills/Auth';
+import { useAuth } from '../../../shared/utills/auth';
 import LoginFormComponent from '../components/login-form.component';
 
 const LoginComponent = () => {

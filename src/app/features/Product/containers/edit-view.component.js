@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import MainTemplate from '../../../layouts/default-layout/DefaultLayout';
+import MainTemplate from '../../../layouts/default-layout/default-layout.component';
 import { useInventory } from '../../../services/inventory.store';
 import EditItemFormComponents from '../components/edit-item-form.component';
 
@@ -21,7 +21,7 @@ const EditViewComponent = ({ match }) => {
 };
 
 EditViewComponent.propTypes = {
-    match: PropTypes.object,
+  match: PropTypes.object,
 };
 
 export default EditViewComponent;

@@ -1,3 +1,3 @@
-import Heading from './Heading';
+import Heading from './heading.component';
 
 export { Heading };
