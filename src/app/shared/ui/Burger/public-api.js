@@ -1,3 +1,3 @@
-import Burger from './Burger' 
+import Burger from './Burger';
 
-export { Burger }
+export { Burger };

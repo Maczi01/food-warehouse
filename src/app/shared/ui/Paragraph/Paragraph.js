@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Paragraph = styled.p`
   font-size: 20px;
@@ -10,4 +10,3 @@ const Paragraph = styled.p`
 `;
 
 export default Paragraph;
-

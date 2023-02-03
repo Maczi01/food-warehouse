@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Heading = styled.h1`
   padding: 10px;
@@ -17,5 +17,3 @@ const Heading = styled.h1`
 `;
 
 export default Heading;
-
-

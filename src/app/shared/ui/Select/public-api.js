@@ -1,3 +1,3 @@
-import StyledSelect from './StyledSelect'
+import StyledSelect from './StyledSelect';
 
-export {StyledSelect}
+export { StyledSelect };

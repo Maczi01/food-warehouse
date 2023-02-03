@@ -1,3 +1,1 @@
-export {
-    initializeHttpClient, getHttpClient, useHttpClient
-} from './http-client';
+export { initializeHttpClient, getHttpClient, useHttpClient } from './http-client';

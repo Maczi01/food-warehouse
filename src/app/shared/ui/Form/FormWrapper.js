@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FormWrapper = styled.div`
   display: flex;
@@ -12,5 +12,3 @@ const FormWrapper = styled.div`
 `;
 
 export default FormWrapper;
-
-

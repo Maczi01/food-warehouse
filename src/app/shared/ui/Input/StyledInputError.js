@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledInputError = styled.input`
     display: block;
@@ -21,4 +21,3 @@ const StyledInputError = styled.input`
 `;
 
 export default StyledInputError;
-

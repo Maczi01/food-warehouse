@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import bag from "../../../shared/assets/icons/bag.svg";
+import { routes } from '../../../Routes';
+import { useInventory } from '../../../services/inventory.store';
+import bag from '../../../shared/assets/icons/bag.svg';
 import ListItem from './list-item.components';
-import {routes} from '../../../Routes';
-import {useInventory} from '../../../services/inventory.store';
 
 const UlWrapper = styled.ul`
   width: 75vw;
@@ -75,21 +75,17 @@ const EmptyListWrapper = styled.div`
 `;
 
 const List = ({ items, parameter }) => {
-  const { increaseQuantity, decreaseQuantity, deleteItem, editItem } = useInventory()
+  const { increaseQuantity, decreaseQuantity, deleteItem, editItem } = useInventory();
 
   return (
     <>
       <CategoryWrapper>
-        {parameter === "all" ? (
-          <FormattedMessage id="all categories" />
-        ) : (
-          <FormattedMessage id={parameter} />
-        )}
+        {parameter === 'all' ? <FormattedMessage id={'all categories'} /> : <FormattedMessage id={parameter} />}
       </CategoryWrapper>
-      <Link to={"/"}>
-        {" "}
+      <Link to={'/'}>
+        {' '}
         <Paragraph>
-          🡄 <FormattedMessage id="go back" />
+          🡄 <FormattedMessage id={'go back'} />
         </Paragraph>
       </Link>
       <UlWrapper>
@@ -107,7 +103,10 @@ const List = ({ items, parameter }) => {
         ) : (
           <EmptyListWrapper>
             <Heading>
-              <Image src={bag} alt="shoping bag" />
+              <Image
+                src={bag}
+                alt={'shoping bag'}
+              />
               Nothing here,
               <Link to={routes.add}>add something</Link>
             </Heading>
@@ -125,7 +124,7 @@ List.propTypes = {
 
 List.defaultProps = {
   items: [],
-  parameter: "all",
+  parameter: 'all',
 };
 
 export default List;

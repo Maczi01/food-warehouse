@@ -1,13 +1,13 @@
-import English from "../assets/i18n/en.json";
-import Polish from "../assets/i18n/pl.json";
+import English from '../assets/i18n/en.json';
+import Polish from '../assets/i18n/pl.json';
 
 export const PL_language = {
   lang: Polish,
-  locale: "pl",
+  locale: 'pl',
 };
 export const EN_language = {
   lang: English,
-  locale: "en",
+  locale: 'en',
 };
 
 export const availableLanguages = [PL_language, EN_language];

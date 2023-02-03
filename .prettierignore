@@ -1,0 +1,11 @@
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
+
+/.eslintrc.json
+/commitlint.config.js
+/package.json
+/azure-pipelines.yml
+/pipelines/azure-build.template.yml
+/pipelines/azure-deploy.template.yml

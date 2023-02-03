@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ButtonIcon = styled.button`
   cursor: pointer;
@@ -27,5 +27,3 @@ const ButtonIcon = styled.button`
 `;
 
 export default ButtonIcon;
-
-

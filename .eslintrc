@@ -1,44 +1,91 @@
 {
-  "extends": [
-    "react-app",
-    "standard",
-    "plugin:react/recommended"
-  ],
-  "rules": {
-    "react/jsx-curly-spacing": [
-      "warn",
-      "never",
-      {
-        "allowMultiline": true
+  "root": true,
+  "ignorePatterns": ["node_modules/", "*.svg", "*.json"],
+  "plugins": ["ordered-imports", "react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    }
+  },
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true
+  },
+  "parser": "@babel/eslint-parser",
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["eslint:recommended", "plugin:react/recommended"],
+      "rules": {
+        "react/jsx-curly-spacing": [
+          "warn",
+          "never",
+          {
+            "allowMultiline": true
+          }
+        ],
+        "react/jsx-curly-brace-presence": [
+          "warn",
+          {
+            "props": "always",
+            "children": "never"
+          }
+        ],
+        "react/jsx-max-props-per-line": ["warn"],
+        "react/jsx-indent": ["warn", 2],
+        "react/jsx-indent-props": ["warn", 2],
+        "react/jsx-closing-tag-location": ["warn"],
+        "react/jsx-closing-bracket-location": ["warn"],
+        "react/jsx-first-prop-new-line": ["warn", "multiline"],
+        "ordered-imports/ordered-imports": [
+          "error",
+          {
+            "group-ordering": [
+              {
+                "name": "relative dir",
+                "match": "^[.].*",
+                "order": 2
+              },
+              {
+                "name": "node_modules",
+                "match": ".*",
+                "order": 1
+              }
+            ]
+          }
+        ],
+        "no-console": "warn"
       }
-    ],
-    "react/jsx-curly-brace-presence": [
-      "warn",
-      {
-        "props": "always",
-        "children": "never"
+    },
+    {
+      "files": ["*.spec.js", "*.spec.jsx"],
+      "extends": [
+        "plugin:jest/recommended"
+      ],
+      "rules": {
+        "jest/consistent-test-it": "error",
+        "jest/max-nested-describe": ["error", { "max": 3 } ],
+        "jest/no-alias-methods": "error",
+        "jest/no-duplicate-hooks": "error",
+        "jest/no-hooks": [ "error", { "allow": ["afterAll"] } ],
+        "jest/no-if": "error",
+        "jest/no-test-return-statement": "error",
+        "jest/require-top-level-describe": [ "error", { "maxNumberOfTopLevelDescribes": 1 } ],
+        "jest/expect-expect": [
+          "error",
+          {
+            "assertFunctionNames": ["expect", "m.expect", "helpers.expectObservable"],
+            "additionalTestBlockFunctions": []
+          }
+        ],
+        "prefer-const": "off"
       }
-    ],
-    "react/jsx-max-props-per-line": [
-      "warn"
-    ],
-    "react/jsx-indent": [
-      "warn",
-      2
-    ],
-    "react/jsx-indent-props": [
-      "warn",
-      2
-    ],
-    "react/jsx-closing-tag-location": [
-      "warn"
-    ],
-    "react/jsx-closing-bracket-location": [
-      "warn"
-    ],
-    "react/jsx-first-prop-new-line": [
-      "warn",
-      "multiline"
-    ]
-  }
+    }
+  ]
 }

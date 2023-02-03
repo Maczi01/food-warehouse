@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
   margin: 10px 0 10px 0;
@@ -7,5 +7,3 @@ const ButtonContainer = styled.div`
 `;
 
 export default ButtonContainer;
-
-

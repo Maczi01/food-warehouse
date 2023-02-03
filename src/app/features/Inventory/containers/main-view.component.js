@@ -1,8 +1,10 @@
-import React, {useEffect} from "react";
-import styled from "styled-components";
-import {FormattedMessage} from "react-intl";
-import List from "../components/list.component";
-import {useInventory} from '../../../services/inventory.store';
+import PropTypes from "prop-types";
+import React, { useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
+
+import { useInventory } from '../../../services/inventory.store';
+import List from '../components/list.component';
 
 const Heading = styled.h1`
   padding: 10px;
@@ -26,21 +28,26 @@ const MainViewComponent = ({ match }) => {
   const { state, getForCurrentUser } = useInventory();
 
   useEffect(() => {
-      getForCurrentUser();
-  },[])
-  console.log({state})
+    getForCurrentUser();
+  }, []);
+
   const newFoodList =
-    parameter === "all"
-      ? state.inventory
-      : state.inventory.filter((item) => item.category === parameter);
+    parameter === 'all' ? state.inventory : state.inventory.filter((item) => item.category === parameter);
   return (
     <>
       <Heading>
-        <FormattedMessage id="what in inventory" />
+        <FormattedMessage id={'what in inventory'} />
       </Heading>
-      <List items={newFoodList} parameter={parameter} />
+      <List
+        items={newFoodList}
+        parameter={parameter}
+      />
     </>
   );
+};
+
+MainViewComponent.propTypes = {
+    match: PropTypes.object,
 };
 
 export default MainViewComponent;

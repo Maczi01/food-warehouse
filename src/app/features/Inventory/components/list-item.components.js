@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import {useHistory} from "react-router";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useHistory } from 'react-router';
+import styled from 'styled-components';
 
-import edit from "../../../shared/assets/icons/edit.svg";
-import remove from "../../../shared/assets/icons/remove.svg";
-import plus from "../../../shared/assets/icons/plus.svg";
-import minus from "../../../shared/assets/icons/minus.svg";
+import edit from '../../../shared/assets/icons/edit.svg';
+import minus from '../../../shared/assets/icons/minus.svg';
+import plus from '../../../shared/assets/icons/plus.svg';
+import remove from '../../../shared/assets/icons/remove.svg';
 
 const ItemWraper = styled.li`
     display: flex;
@@ -105,57 +105,53 @@ const ListItem = ({
 }) => {
   const history = useHistory();
   return (
-    <ItemWraper
-        data-testid="item"
-    >
+    <ItemWraper data-testid={'item'}>
       <Container>
-        <NameWrapper data-testid="itemName">{name}</NameWrapper>
-        <InfoWrapper data-testid="itemUnit">{unit} </InfoWrapper>
-        <InfoWrapper data-testid="itemQuantities">
+        <NameWrapper data-testid={'itemName'}>{name}</NameWrapper>
+        <InfoWrapper data-testid={'itemUnit'}>{unit} </InfoWrapper>
+        <InfoWrapper data-testid={'itemQuantities'}>
           {currentQuantity} z {maximalQuantity}
         </InfoWrapper>
       </Container>
       <QuantityBarOutside>
-        <QuantityBarInside
-          style={{ width: `${(currentQuantity / maximalQuantity) * 100}%` }}
-        />
+        <QuantityBarInside style={{ width: `${(currentQuantity / maximalQuantity) * 100}%` }} />
       </QuantityBarOutside>
       <Container>
         <StyledButton
           src={minus}
           onClick={decreaseQuantity}
-          data-testid="decreaseQuantity"
+          data-testid={'decreaseQuantity'}
         />
         <StyledButton
           src={plus}
           onClick={increaseQuantity}
-          data-testid="increaseQuantity"
+          data-testid={'increaseQuantity'}
         />
         <StyledButton
           src={edit}
           onClick={() => history.push(`/edit/${id}`)}
-          data-testid="editItem"
+          data-testid={'editItem'}
         />
         <StyledButton
-            src={remove}
-            onClick={deleteItem}
-            data-testid="deleteItem"
+          src={remove}
+          onClick={deleteItem}
+          data-testid={'deleteItem'}
         />
       </Container>
     </ItemWraper>
   );
 };
 
-const NumberOrStringType = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.number,
-]);
+const NumberOrStringType = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 ListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   unit: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
+  deleteItem: PropTypes.func.isRequired,
+  decreaseQuantity: NumberOrStringType.isRequired,
+  increaseQuantity: NumberOrStringType.isRequired,
   maximalQuantity: NumberOrStringType.isRequired,
   currentQuantity: NumberOrStringType.isRequired,
 };

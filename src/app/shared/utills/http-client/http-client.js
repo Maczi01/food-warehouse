@@ -1,12 +1,12 @@
 let instance;
 export const initializeHttpClient = (client) => {
-    instance = client
-}
+  instance = client;
+};
 
 export const getHttpClient = () => {
-    return instance
-}
+  return instance;
+};
 
 export const useHttpClient = () => {
-    return getHttpClient();
-}
+  return getHttpClient();
+};

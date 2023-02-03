@@ -1,18 +1,18 @@
-import React, {useCallback, useEffect, useState} from "react";
-import "react-toastify/dist/ReactToastify.css";
-import {FormattedMessage} from "react-intl";
-import {toast, ToastContainer} from "react-toastify";
+import React, { useCallback, useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
 
-import bag from "../../../shared/assets/icons/bag.svg";
-import styled from "styled-components";
-import TableComponent from "../../Inventory/components/table.component";
-import AddShopModalComponent from "../components/add-shop-modal.component";
-import {ButtonIcon} from "../../../shared/ui/Button";
-import plus from "../../../shared/assets/icons/plus.svg";
-import remove from "../../../shared/assets/icons/remove.svg";
-import generate from "../../../shared/assets/icons/generate.svg";
-import {useStoppingListStore} from '../../../services/shopping-list.store';
-import {useInventory} from '../../../services/inventory.store';
+import { useInventory } from '../../../services/inventory.store';
+import { useStoppingListStore } from '../../../services/shopping-list.store';
+import bag from '../../../shared/assets/icons/bag.svg';
+import generate from '../../../shared/assets/icons/generate.svg';
+import plus from '../../../shared/assets/icons/plus.svg';
+import remove from '../../../shared/assets/icons/remove.svg';
+import { ButtonIcon } from '../../../shared/ui/Button';
+import TableComponent from '../../Inventory/components/table.component';
+import AddShopModalComponent from '../components/add-shop-modal.component';
 
 const TableWrapper = styled.div`
   display: flex;
@@ -24,14 +24,14 @@ const TableWrapper = styled.div`
   font-size: 14px;
   overflow-y: auto;
 
-  @media (max-width: ${({theme}) => theme.mobile}) {
+  @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100vw;
   }
 `;
 
 const Heading = styled.h1`
   padding: 12px;
-  color: ${({theme}) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.blue};
   text-align: center;
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@ const Heading = styled.h1`
   flex-direction: column;
   margin: 0 auto;
   width: 60vw;
-  @media (max-width: ${({theme}) => theme.mobile}) {
+  @media (max-width: ${({ theme }) => theme.mobile}) {
     padding: 9rem 0 1rem;
     font-size: 26px;
     width: 100vw;
@@ -59,62 +59,69 @@ const Image = styled.img`
 `;
 
 const ShoppingListViewComponent = () => {
-    const {state: inventoryState, getForCurrentUser: loadInventory} = useInventory();
-    const {state, addItem, clearList, generateShoppingList, getForCurrentUser: loadShoppingList} = useStoppingListStore();
-    const [showAddShopModal, setShowAddShopModal] = useState(false);
+  const { state: inventoryState, getForCurrentUser: loadInventory } = useInventory();
+  const {
+    state,
+    addItem,
+    clearList,
+    generateShoppingList,
+    getForCurrentUser: loadShoppingList,
+  } = useStoppingListStore();
+  const [showAddShopModal, setShowAddShopModal] = useState(false);
 
-    const handleGenerateShoppingList = useCallback(() => {
-        console.log('inventory:', inventoryState.inventory)
-        generateShoppingList(inventoryState.inventory);
-    }, [generateShoppingList, inventoryState.inventory])
+  const handleGenerateShoppingList = useCallback(() => {
+    generateShoppingList(inventoryState.inventory);
+  }, [generateShoppingList, inventoryState.inventory]);
 
-    console.log(inventoryState.inventory)
-    useEffect(() => {
-        loadInventory();
-        loadShoppingList();
-    }, []);
+  useEffect(() => {
+    loadInventory();
+    loadShoppingList();
+  }, []);
 
-    return (
-        <>
-            {showAddShopModal && (
-                <AddShopModalComponent
-                    setShowAddShopModal={setShowAddShopModal}
-                    addItemToShoppingList={addItem}
-                />
-            )}
-            <Heading>
-                <FormattedMessage id="shopping list"/>
-            </Heading>
-            <TableWrapper>
-                <Image src={bag} alt="shopping bag"/>
-                <ButtonContainer>
-                    <ButtonIcon
-                        onClick={() => setShowAddShopModal((prev) => !prev)}
-                        icon={plus}
-                        data-testid="showModal"
-                    />
-                    <ButtonIcon
-                        onClick={handleGenerateShoppingList}
-                        icon={generate}
-                        data-testid="generateList"
-                    />
-                    <ButtonIcon
-                        onClick={clearList}
-                        icon={remove}
-                        data-testid="deleteList"
-                    />
-                </ButtonContainer>
-                {state.shoppingList.length ? (
-                    <TableComponent data={state.shoppingList}/>
-                ) : (
-                    <span>
-            <FormattedMessage id="empty list"/>
+  return (
+    <>
+      {showAddShopModal && (
+        <AddShopModalComponent
+          setShowAddShopModal={setShowAddShopModal}
+          addItemToShoppingList={addItem}
+        />
+      )}
+      <Heading>
+        <FormattedMessage id={'shopping list'} />
+      </Heading>
+      <TableWrapper>
+        <Image
+          src={bag}
+          alt={'shopping bag'}
+        />
+        <ButtonContainer>
+          <ButtonIcon
+            onClick={() => setShowAddShopModal((prev) => !prev)}
+            icon={plus}
+            data-testid={'showModal'}
+          />
+          <ButtonIcon
+            onClick={handleGenerateShoppingList}
+            icon={generate}
+            data-testid={'generateList'}
+          />
+          <ButtonIcon
+            onClick={clearList}
+            icon={remove}
+            data-testid={'deleteList'}
+          />
+        </ButtonContainer>
+        {state.shoppingList.length ? (
+          <TableComponent data={state.shoppingList} />
+        ) : (
+          <span>
+            <FormattedMessage id={'empty list'} />
           </span>
-                )}
-                <ToastContainer autoClose={1400}/>
-            </TableWrapper>
-        </>
-    );
+        )}
+        <ToastContainer autoClose={1400} />
+      </TableWrapper>
+    </>
+  );
 };
 
 export default ShoppingListViewComponent;

@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import PropTypes from "prop-types";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledButton = styled.button`
   width: 170px;
@@ -16,5 +17,8 @@ const StyledButton = styled.button`
 
 const Button = ({ children }) => <StyledButton>{children}</StyledButton>;
 
-export default Button;
+Button.propTypes = {
+    children: PropTypes.node,
+};
 
+export default Button;
