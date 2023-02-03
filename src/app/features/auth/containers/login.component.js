@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { useAuth } from '../../../shared/utills/auth';
@@ -31,7 +31,7 @@ const LoginComponent = () => {
   };
 
   if (currentUser) {
-    return <Redirect to={'/'} />;
+    return <Navigate to={'/'} />;
   }
   const removeBorder = () => {
     setError(false);

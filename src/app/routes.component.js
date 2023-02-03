@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { Switch } from 'react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Navigate, Routes } from 'react-router';
+import { Route } from 'react-router-dom';
 
 import MainView from './features/Inventory/containers/flter-view.component.js';
 import FilterView from './features/Inventory/containers/main-view.component';
@@ -27,84 +27,92 @@ export const routes = {
   parameter: ':parameter',
 };
 
-const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
+const PrivateRoute = ({ children }) => {
   const { currentUser } = useContext(UserContext);
-  return (
-    <Route
-      {...rest}
-      render={(routeProps) => (currentUser ? <RouteComponent {...routeProps} /> : <Redirect to={'/login'} />)}
-    />
-  );
+
+  if (!currentUser) {
+    return <Navigate to={'/login'} />;
+  }
+
+  return <DefaultLayout>{children}</DefaultLayout>;
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.element,
+  children: PropTypes.element,
 };
 
-const AuthorisedRoutes = () => {
+const AppRoutes = () => {
   return (
-    <DefaultLayout>
-      <Switch>
-        <PrivateRoute
+    <Routes>
+      <Route
+        path={routes.login}
+        element={
+          <UnauthorizedLayout>
+            <LoginComponent />
+          </UnauthorizedLayout>
+        }
+      />
+      <Route
+        path={routes.register}
+        element={
+          <UnauthorizedLayout>
+            <RegisterComponent />
+          </UnauthorizedLayout>
+        }
+      />
+      <Route path={'/'}>
+        <Route
           exact
           path={routes.home}
-          component={MainView}
+          element={
+            <PrivateRoute>
+              <MainView />
+            </PrivateRoute>
+          }
         />
-        <PrivateRoute
+        <Route
           path={`${routes.filter}${routes.parameter}`}
-          component={FilterView}
+          element={
+            <PrivateRoute>
+              <FilterView />
+            </PrivateRoute>
+          }
         />
-        <PrivateRoute
+        <Route
           path={routes.list}
-          component={ShoppingListViewComponent}
+          element={
+            <PrivateRoute>
+              <ShoppingListViewComponent />
+            </PrivateRoute>
+          }
         />
-        <PrivateRoute
+        <Route
           path={routes.add}
-          component={AddViewComponent}
+          element={
+            <PrivateRoute>
+              <AddViewComponent />
+            </PrivateRoute>
+          }
         />
-        <PrivateRoute
+        <Route
           path={routes.edit}
-          component={EditViewComponent}
+          element={
+            <PrivateRoute>
+              <EditViewComponent />
+            </PrivateRoute>
+          }
         />
-        <PrivateRoute
+        <Route
           path={routes.settings}
-          component={SettingsViewComponent}
+          element={
+            <PrivateRoute>
+              <SettingsViewComponent />
+            </PrivateRoute>
+          }
         />
-      </Switch>
-    </DefaultLayout>
+      </Route>
+    </Routes>
   );
 };
 
-const UnauthorizedRoutes = () => {
-  return (
-    <UnauthorizedLayout>
-      <Switch>
-        <Route
-          path={routes.login}
-          component={LoginComponent}
-        />
-        <Route
-          path={routes.register}
-          component={RegisterComponent}
-        />
-      </Switch>
-    </UnauthorizedLayout>
-  );
-};
-
-const Routes = () => {
-  return (
-    <Switch>
-      <Route
-        path={[routes.register, routes.login]}
-        component={UnauthorizedRoutes}
-      />
-      <Route
-        path={'*'}
-        component={AuthorisedRoutes}
-      />
-    </Switch>
-  );
-};
-
-export default Routes;
+export default AppRoutes;

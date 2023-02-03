@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { getAuth } from '../shared/utills/auth';
 import { InventoryService } from './inventory.service';
@@ -25,7 +25,7 @@ export class InventoryStore {
 
   onInventoryUpdate = (inventory) => {
     this.state = { ...this.state, inventory: inventory ? inventory : [] };
-    this.callbacks.forEach((callback) => callback(this.state.inventory));
+    this.callbacks.forEach((callback) => callback()(this.state.inventory));
   };
 
   addListener = (callback) => {
@@ -89,10 +89,9 @@ export class InventoryStore {
       .then((snapshot) => {
         const foodListData = [];
         snapshot.forEach((doc) => foodListData.push({ ...doc.data(), id: doc.id }));
-        let filter = foodListData.filter((doc) => {
+        return foodListData.filter((doc) => {
           return doc.userUid === userId;
         });
-        return filter;
       })
       .then((inventory) => {
         this.onInventoryUpdate(inventory);
@@ -104,10 +103,10 @@ export class InventoryStore {
 }
 
 export const useInventory = () => {
-  const [inventoryStore] = useState(() => InventoryStore.getInstance());
+  const inventoryStore = useMemo(() => InventoryStore.getInstance());
   const [state, setState] = useState(() => inventoryStore.state);
   useEffect(() => {
-    const callback = (inventory) => {
+    const callback = () => (inventory) => {
       setState({ inventory: inventory });
     };
     inventoryStore.addListener(callback);

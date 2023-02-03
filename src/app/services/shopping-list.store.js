@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { getAuth } from '../shared/utills/auth';
 import { getHttpClient } from '../shared/utills/http-client';
@@ -27,7 +27,7 @@ export class ShoppingListStore {
 
   onShoppingListUpdate = (shoppingList) => {
     this.state = { ...this.state, shoppingList: shoppingList ? shoppingList : [] };
-    this.callbacks.forEach((callback) => callback(this.state.shoppingList));
+    this.callbacks.forEach((callback) => callback()(this.state.shoppingList));
   };
 
   addListener = (callback) => {
@@ -75,10 +75,9 @@ export class ShoppingListStore {
       .then((snapshot) => {
         const foodListData = [];
         snapshot.forEach((doc) => foodListData.push({ ...doc.data(), id: doc.id }));
-        let filter = foodListData.filter((doc) => {
+        return foodListData.filter((doc) => {
           return doc.userUid === userId;
         });
-        return filter;
       })
       .then((shoppingList) => {
         this.onShoppingListUpdate(shoppingList);
@@ -122,14 +121,17 @@ export class ShoppingListStore {
 }
 
 export const useStoppingListStore = () => {
-  const [shoppingList] = useState(() => ShoppingListStore.getInstance());
+  const shoppingList = useMemo(() => ShoppingListStore.getInstance());
   const [state, setState] = useState(() => shoppingList.state);
   useEffect(() => {
-    const callback = (shoppingList) => setState({ shoppingList: shoppingList });
+    const callback = () => (shoppingList) => {
+      setState({ shoppingList: shoppingList });
+    };
     shoppingList.addListener(callback);
     return () => {
       shoppingList.removeListener(callback);
     };
   }, [shoppingList, setState]);
+
   return { ...shoppingList, state };
 };

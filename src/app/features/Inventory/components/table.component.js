@@ -74,14 +74,16 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
-            <StyledTr
-              key={item.id}
-              item={item}
-              index={index}
-              setItemAsChecked={toggleItem}
-            />
-          ))}
+          {data &&
+            data.length &&
+            data.map((item, index) => (
+              <StyledTr
+                key={item.id}
+                item={item}
+                index={index}
+                setItemAsChecked={toggleItem}
+              />
+            ))}
         </tbody>
       </StyledTable>
     </TableWrapper>
