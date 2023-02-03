@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import MainTemplate from '../../../layouts/default-layout/default-layout.component';
 import { useInventory } from '../../../services/inventory.store';
 import EditItemFormComponents from '../components/edit-item-form.component';
 
-const EditViewComponent = ({ match }) => {
-  const selectedId = match.params.id;
+const EditViewComponent = () => {
+  const { id: selectedId } = useParams();
   const { foodList, editItem } = useInventory();
   const item = foodList.find((item) => item.id === selectedId);
 
@@ -18,10 +18,6 @@ const EditViewComponent = ({ match }) => {
       />
     </MainTemplate>
   );
-};
-
-EditViewComponent.propTypes = {
-  match: PropTypes.object,
 };
 
 export default EditViewComponent;

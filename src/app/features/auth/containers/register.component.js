@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { UserContext, useAuth } from '../../../shared/utills/auth';
 import { useHttpClient } from '../../../shared/utills/http-client';
 import RegisterFormComponent from '../components/register-form.component';
 
-const RegisterComponent = ({ history }) => {
+const RegisterComponent = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(false);
   const { auth } = useAuth();
   const client = useHttpClient();
@@ -18,7 +18,7 @@ const RegisterComponent = ({ history }) => {
       .createUserWithEmailAndPassword(email.value, password.value)
       .then(() => client.create('users', { userMail: email.value }))
       .then(() => {
-        history.push('/');
+        navigate('/');
       })
       .catch((error) => {
         setError(true);
@@ -39,7 +39,7 @@ const RegisterComponent = ({ history }) => {
 
   const { currentUser } = useContext(UserContext);
   if (currentUser) {
-    return <Redirect to={'/'} />;
+    return <Navigate to={'/'} />;
   }
   return (
     <>
@@ -51,10 +51,6 @@ const RegisterComponent = ({ history }) => {
       <ToastContainer autoClose={2500} />
     </>
   );
-};
-
-RegisterComponent.propTypes = {
-  history: PropTypes.object,
 };
 
 export default RegisterComponent;

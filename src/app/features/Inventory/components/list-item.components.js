@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 import edit from '../../../shared/assets/icons/edit.svg';
@@ -103,7 +103,7 @@ const ListItem = ({
   increaseQuantity,
   deleteItem,
 }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <ItemWraper data-testid={'item'}>
       <Container>
@@ -129,7 +129,7 @@ const ListItem = ({
         />
         <StyledButton
           src={edit}
-          onClick={() => history.push(`/edit/${id}`)}
+          onClick={() => navigate(`/edit/${id}`)}
           data-testid={'editItem'}
         />
         <StyledButton

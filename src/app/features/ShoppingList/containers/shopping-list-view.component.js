@@ -111,7 +111,7 @@ const ShoppingListViewComponent = () => {
             data-testid={'deleteList'}
           />
         </ButtonContainer>
-        {state.shoppingList.length ? (
+        {state && state.shoppingList && state.shoppingList.length ? (
           <TableComponent data={state.shoppingList} />
         ) : (
           <span>

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useInventory } from '../../../services/inventory.store';
@@ -23,8 +23,8 @@ const Heading = styled.h1`
   }
 `;
 
-const MainViewComponent = ({ match }) => {
-  const parameter = match.params.parameter;
+const MainViewComponent = () => {
+  const { parameter } = useParams();
   const { state, getForCurrentUser } = useInventory();
 
   useEffect(() => {
@@ -44,10 +44,6 @@ const MainViewComponent = ({ match }) => {
       />
     </>
   );
-};
-
-MainViewComponent.propTypes = {
-  match: PropTypes.object,
 };
 
 export default MainViewComponent;
