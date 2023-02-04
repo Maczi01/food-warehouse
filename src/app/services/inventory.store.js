@@ -88,7 +88,10 @@ export class InventoryStore {
       .getMany()
       .then((snapshot) => {
         const foodListData = [];
-        snapshot.forEach((doc) => foodListData.push({ ...doc.data(), id: doc.id }));
+        if (snapshot && snapshot.length) {
+          snapshot.forEach((doc) => foodListData.push({ ...doc.data(), id: doc.id }));
+        }
+
         return foodListData.filter((doc) => {
           return doc.userUid === userId;
         });
@@ -98,7 +101,7 @@ export class InventoryStore {
       });
   };
   getForCurrentUser = () => {
-    return this.getByUser(getAuth().currentUser.uid);
+    return this.getByUser(getAuth().currentUser ? getAuth().currentUser.uid : null);
   };
 }
 

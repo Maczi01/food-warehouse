@@ -9,11 +9,18 @@ import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider } from '../../../shared/utills/auth';
 import ItemFormComponents from '../components/item-form.component';
 
+class AuthMock {
+  onAuthStateChanged = () => ({});
+  signInWithEmailAndPassword = () => Promise.resolve();
+  createUserWithEmailAndPassword = () => Promise.resolve();
+  signOut = () => {};
+}
+
 describe('<AddViewComponent />', () => {
   it('correctly call submit function with given arguments', async () => {
     const onSubmitMock = jest.fn();
     render(
-      <AuthProvider>
+      <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
           <IntlProvider
             locale={language.locale}
@@ -35,32 +42,32 @@ describe('<AddViewComponent />', () => {
     const inputCurrentQuantity = screen.getByTestId('currentQuantity');
     const submitButton = screen.getByTestId('accept');
 
-    user.type(inputName, 'Wine');
-    user.selectOptions(inputCategory, ['dairy']);
-    user.selectOptions(inputUnit, ['liter']);
-    user.type(inputMaximalQuantity, '5');
-    user.type(inputMinimalQuantity, '5');
-    user.type(inputCurrentQuantity, '5');
-    user.click(submitButton);
+    await waitFor(async () => {
+      await user.type(inputName, 'Wine');
+      await user.selectOptions(inputCategory, ['dairy']);
+      await user.selectOptions(inputUnit, ['liter']);
+      await user.type(inputMaximalQuantity, '5');
+      await user.type(inputMinimalQuantity, '5');
+      await user.type(inputCurrentQuantity, '5');
+      await user.click(submitButton);
+    });
 
-    await waitFor(() => expect(onSubmitMock).toBeCalled());
-    await waitFor(() => expect(onSubmitMock).toHaveBeenCalledTimes(1));
-    await waitFor(() =>
-      expect(onSubmitMock).toHaveBeenCalledWith({
-        name: 'Wine',
-        category: 'dairy',
-        unit: 'liter',
-        currentQuantity: 5,
-        minimalQuantity: 5,
-        maximalQuantity: 5,
-      })
-    );
+    expect(onSubmitMock).toBeCalled();
+    expect(onSubmitMock).toHaveBeenCalledTimes(1);
+    expect(onSubmitMock).toHaveBeenCalledWith({
+      name: 'Wine',
+      category: 'dairy',
+      unit: 'liter',
+      currentQuantity: 5,
+      minimalQuantity: 5,
+      maximalQuantity: 5,
+    });
   });
 
   it('correctly show error message when field is not filled', async () => {
     const onSubmitMock = jest.fn();
     render(
-      <AuthProvider>
+      <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
           <IntlProvider
             locale={language.locale}
@@ -82,21 +89,23 @@ describe('<AddViewComponent />', () => {
 
     const submitButton = screen.getByTestId('accept');
 
-    user.type(inputName, 'Wine');
-    user.selectOptions(inputCategory, ['dairy']);
-    user.type(inputMaximalQuantity, '5');
-    user.type(inputMinimalQuantity, '5');
-    user.type(inputCurrentQuantity, '5');
-    user.click(submitButton);
+    await waitFor(async () => {
+      await user.type(inputName, 'Wine');
+      await user.selectOptions(inputCategory, ['dairy']);
+      await user.type(inputMaximalQuantity, '5');
+      await user.type(inputMinimalQuantity, '5');
+      await user.type(inputCurrentQuantity, '5');
+      await user.click(submitButton);
+    });
 
-    await waitFor(() => expect(onSubmitMock).toHaveBeenCalledTimes(0));
-    await waitFor(() => expect(screen.getByText('Unit is required!')).toBeInTheDocument());
+    expect(onSubmitMock).toHaveBeenCalledTimes(0);
+    expect(screen.getByText('Unit is required!')).toBeInTheDocument();
   });
 
   it('correctly show error message when number is too big', async () => {
     const onSubmitMock = jest.fn();
     render(
-      <AuthProvider>
+      <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
           <IntlProvider
             locale={language.locale}
@@ -118,15 +127,17 @@ describe('<AddViewComponent />', () => {
     const inputCurrentQuantity = screen.getByTestId('currentQuantity');
     const submitButton = screen.getByTestId('accept');
 
-    user.type(inputName, 'Wine');
-    user.selectOptions(inputCategory, ['dairy']);
-    user.selectOptions(inputUnit, ['liter']);
-    user.type(inputMaximalQuantity, '55');
-    user.type(inputMinimalQuantity, '5');
-    user.type(inputCurrentQuantity, '5');
-    user.click(submitButton);
+    await waitFor(async () => {
+      await user.type(inputName, 'Wine');
+      await user.selectOptions(inputCategory, ['dairy']);
+      await user.selectOptions(inputUnit, ['liter']);
+      await user.type(inputMaximalQuantity, '55');
+      await user.type(inputMinimalQuantity, '5');
+      await user.type(inputCurrentQuantity, '5');
+      await user.click(submitButton);
+    });
 
-    await waitFor(() => expect(onSubmitMock).toHaveBeenCalledTimes(0));
-    await waitFor(() => expect(screen.getByText('Less than 10!')).toBeInTheDocument());
+    expect(onSubmitMock).toHaveBeenCalledTimes(0);
+    expect(screen.getByText('Less than 10!')).toBeInTheDocument();
   });
 });

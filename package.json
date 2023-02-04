@@ -5,7 +5,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test --env=jest-environment-jsdom-sixteen",
+    "test": "craco test",
     "lint:check": "npx eslint \"src/**\"",
     "lint:fix": "npx eslint \"src/**\" --fix",
     "format:check": "prettier --check --configuration ./.prettierrc ./src",

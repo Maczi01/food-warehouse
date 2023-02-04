@@ -36,7 +36,7 @@ describe('<Navbar/>', () => {
     expect(backgroundColor).toHaveStyle('background: #00214D');
   });
 
-  it('correctly call logout function', () => {
+  it('correctly call logout function', async () => {
     const logoutMock = jest.fn();
 
     render(
@@ -53,7 +53,7 @@ describe('<Navbar/>', () => {
     );
 
     const logoutButton = screen.getByTestId('logout');
-    user.click(logoutButton);
+    await user.click(logoutButton);
 
     expect(logoutMock).toBeCalled();
     expect(logoutMock).toHaveBeenCalledTimes(1);
