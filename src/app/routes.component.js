@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Navigate, Routes } from 'react-router';
 import { Route } from 'react-router-dom';
 

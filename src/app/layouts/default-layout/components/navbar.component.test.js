@@ -1,30 +1,26 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { EN_language } from '../../../language';
-import AppProvider from '../../../services/services';
 import { lightTheme } from '../../../shared/theme/theme';
 import Navbar from './navbar.component';
 
 describe('<Navbar/>', () => {
   it('correctly render Navbar with navigation buttons', () => {
     render(
-      <AppProvider>
-        <ThemeProvider theme={lightTheme}>
-          <IntlProvider
-            locale={EN_language.locale}
-            messages={EN_language.lang}
-          >
-            <BrowserRouter>
-              <Navbar />
-            </BrowserRouter>
-          </IntlProvider>
-        </ThemeProvider>
-      </AppProvider>
+      <ThemeProvider theme={lightTheme}>
+        <IntlProvider
+          locale={EN_language.locale}
+          messages={EN_language.lang}
+        >
+          <BrowserRouter>
+            <Navbar />
+          </BrowserRouter>
+        </IntlProvider>
+      </ThemeProvider>
     );
 
     const checkInventoryButton = screen.getByTestId('checkInventory');

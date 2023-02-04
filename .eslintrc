@@ -43,6 +43,7 @@
         "react/jsx-closing-tag-location": ["warn"],
         "react/jsx-closing-bracket-location": ["warn"],
         "react/jsx-first-prop-new-line": ["warn", "multiline"],
+        "react/react-in-jsx-scope": "off",
         "ordered-imports/ordered-imports": [
           "error",
           {

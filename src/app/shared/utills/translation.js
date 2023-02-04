@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 export const useLanguage = () => {
   const { changeLanguage, language } = useContext(LanguageContext);
   return { changeLanguage, language };
 };
-export const LanguageContext = React.createContext();
+export const LanguageContext = createContext(undefined);
 
 export const TranslationProvider = ({ children, languages, defaultLanguage }) => {
   const [language, setLanguage] = useState(languages.find((item) => item.locale === defaultLanguage));

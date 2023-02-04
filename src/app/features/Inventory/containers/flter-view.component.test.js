@@ -1,12 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { EN_language as language } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
-import FlterViewComponent from './flter-view.component.js';
+import FilterViewComponent from './flter-view.component.js';
 
 describe('<FlterViewComponent />', () => {
   it('correctly displays button for each category', () => {
@@ -17,7 +16,7 @@ describe('<FlterViewComponent />', () => {
           messages={language.lang}
         >
           <BrowserRouter>
-            <FlterViewComponent />
+            <FilterViewComponent />
           </BrowserRouter>
         </IntlProvider>
       </ThemeProvider>

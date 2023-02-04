@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 
