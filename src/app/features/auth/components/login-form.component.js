@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
@@ -64,7 +64,7 @@ const LoginForm = ({ handleLogin, error, removeBorder }) => {
 
 LoginForm.propTypes = {
   handleLogin: PropTypes.func,
-  error: PropTypes.string,
+  error: PropTypes.bool,
   removeBorder: PropTypes.func,
 };
 

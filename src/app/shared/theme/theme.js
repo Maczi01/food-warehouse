@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { ThemeProvider as DefaultThemeProvider } from 'styled-components';
 
 import GlobalStyle from './global-style.component';
@@ -36,7 +36,7 @@ export const useTheme = () => {
   const { toggleTheme } = useContext(UseThemeContext);
   return { toggleTheme };
 };
-export const UseThemeContext = React.createContext();
+export const UseThemeContext = createContext(undefined);
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(lightTheme);

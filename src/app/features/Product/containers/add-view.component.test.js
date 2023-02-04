@@ -1,12 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { EN_language as language } from '../../../language';
-import AppProvider from '../../../services/services';
 import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider } from '../../../shared/utills/auth';
 import ItemFormComponents from '../components/item-form.component';
@@ -16,18 +14,16 @@ describe('<AddViewComponent />', () => {
     const onSubmitMock = jest.fn();
     render(
       <AuthProvider>
-        <AppProvider>
-          <ThemeProvider theme={lightTheme}>
-            <IntlProvider
-              locale={language.locale}
-              messages={language.lang}
-            >
-              <BrowserRouter>
-                <ItemFormComponents addItem={onSubmitMock} />
-              </BrowserRouter>
-            </IntlProvider>
-          </ThemeProvider>
-        </AppProvider>
+        <ThemeProvider theme={lightTheme}>
+          <IntlProvider
+            locale={language.locale}
+            messages={language.lang}
+          >
+            <BrowserRouter>
+              <ItemFormComponents addItem={onSubmitMock} />
+            </BrowserRouter>
+          </IntlProvider>
+        </ThemeProvider>
       </AuthProvider>
     );
 
@@ -65,18 +61,16 @@ describe('<AddViewComponent />', () => {
     const onSubmitMock = jest.fn();
     render(
       <AuthProvider>
-        <AppProvider>
-          <ThemeProvider theme={lightTheme}>
-            <IntlProvider
-              locale={language.locale}
-              messages={language.lang}
-            >
-              <BrowserRouter>
-                <ItemFormComponents addItem={onSubmitMock} />
-              </BrowserRouter>
-            </IntlProvider>
-          </ThemeProvider>
-        </AppProvider>
+        <ThemeProvider theme={lightTheme}>
+          <IntlProvider
+            locale={language.locale}
+            messages={language.lang}
+          >
+            <BrowserRouter>
+              <ItemFormComponents addItem={onSubmitMock} />
+            </BrowserRouter>
+          </IntlProvider>
+        </ThemeProvider>
       </AuthProvider>
     );
 
@@ -103,18 +97,16 @@ describe('<AddViewComponent />', () => {
     const onSubmitMock = jest.fn();
     render(
       <AuthProvider>
-        <AppProvider>
-          <ThemeProvider theme={lightTheme}>
-            <IntlProvider
-              locale={language.locale}
-              messages={language.lang}
-            >
-              <BrowserRouter>
-                <ItemFormComponents addItem={onSubmitMock} />
-              </BrowserRouter>
-            </IntlProvider>
-          </ThemeProvider>
-        </AppProvider>
+        <ThemeProvider theme={lightTheme}>
+          <IntlProvider
+            locale={language.locale}
+            messages={language.lang}
+          >
+            <BrowserRouter>
+              <ItemFormComponents addItem={onSubmitMock} />
+            </BrowserRouter>
+          </IntlProvider>
+        </ThemeProvider>
       </AuthProvider>
     );
 

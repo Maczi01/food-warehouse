@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
@@ -71,7 +71,7 @@ const HamburgerContainer = styled.div`
 `;
 
 const Navbar = ({ signOut }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -91,7 +91,6 @@ const Navbar = ({ signOut }) => {
           <List>
             <ListItem
               as={NavLink}
-              exact
               to={'/'}
               activeclass={'active'}
               data-testid={'checkInventory'}

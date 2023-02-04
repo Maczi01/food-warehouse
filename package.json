@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test --env=jest-environment-jsdom-sixteen",
     "lint:check": "npx eslint \"src/**\"",
     "lint:fix": "npx eslint \"src/**\" --fix",
     "format:check": "prettier --check --configuration ./.prettierrc ./src",
@@ -28,12 +27,13 @@
     "react-router-dom": "6.8.0",
     "react-scripts": "5.0.1",
     "react-toastify": "9.1.1",
-    "styled-components": "5.1.0",
+    "styled-components": "5.3.6",
     "yup": "0.32.11"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
     "@babel/preset-react": "7.18.6",
+    "@craco/craco": "7.0.0",
     "@testing-library/dom": "8.1.0",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "13.4.0",

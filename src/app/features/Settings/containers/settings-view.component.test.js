@@ -1,9 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import AppProvider from '../../../services/services';
 import { lightTheme } from '../../../shared/theme/theme';
 import SettingsCardComponent from '../components/settings-card.component';
 
@@ -11,11 +9,9 @@ describe('<SettginsView/>', () => {
   it('correctly call sign out function', async () => {
     const signOutMock = jest.fn();
     render(
-      <AppProvider>
-        <ThemeProvider theme={lightTheme}>
-          <SettingsCardComponent signOut={signOutMock} />
-        </ThemeProvider>
-      </AppProvider>
+      <ThemeProvider theme={lightTheme}>
+        <SettingsCardComponent signOut={signOutMock} />
+      </ThemeProvider>
     );
 
     const signOutButton = screen.getByTestId('signOut');
@@ -28,11 +24,9 @@ describe('<SettginsView/>', () => {
   it('correctly render theme to dark after change', () => {
     const signOutMock = jest.fn();
     render(
-      <AppProvider>
-        <ThemeProvider theme={lightTheme}>
-          <SettingsCardComponent signOut={signOutMock} />
-        </ThemeProvider>
-      </AppProvider>
+      <ThemeProvider theme={lightTheme}>
+        <SettingsCardComponent signOut={signOutMock} />
+      </ThemeProvider>
     );
 
     // TODO

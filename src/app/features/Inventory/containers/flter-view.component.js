@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -95,7 +94,7 @@ const Icon = styled.img`
   }
 `;
 
-const FlterViewComponent = () => (
+const FilterViewComponent = () => (
   <>
     <Heading>
       <FormattedMessage id={'what in inventory'} />
@@ -204,4 +203,4 @@ const FlterViewComponent = () => (
   </>
 );
 
-export default FlterViewComponent;
+export default FilterViewComponent;

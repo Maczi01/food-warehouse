@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
@@ -150,8 +149,8 @@ ListItem.propTypes = {
   unit: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   deleteItem: PropTypes.func.isRequired,
-  decreaseQuantity: NumberOrStringType.isRequired,
-  increaseQuantity: NumberOrStringType.isRequired,
+  decreaseQuantity: PropTypes.func,
+  increaseQuantity: PropTypes.func,
   maximalQuantity: NumberOrStringType.isRequired,
   currentQuantity: NumberOrStringType.isRequired,
 };

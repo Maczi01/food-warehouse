@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
@@ -43,7 +42,6 @@ const Menu = ({ open, setOpen }) => {
     <StyledMenu open={open}>
       <ListItem
         as={NavLink}
-        exact
         to={'/'}
         activeclass={'active'}
         onClick={() => setOpen(!open)}

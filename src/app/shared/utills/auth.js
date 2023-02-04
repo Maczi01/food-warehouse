@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
-export const UserContext = React.createContext();
-export const AuthContext = React.createContext();
+export const UserContext = createContext(null);
+export const AuthContext = createContext(null);
 let instance;
 
 export const getAuth = () => {

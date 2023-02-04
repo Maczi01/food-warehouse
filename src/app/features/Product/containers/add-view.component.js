@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useInventory } from '../../../services/inventory.store';
 import ItemFormComponents from '../components/item-form.component';
 const AddViewComponent = () => {

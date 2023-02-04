@@ -1,6 +1,5 @@
 import { Field, Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
