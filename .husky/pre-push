@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn --frozen-lockfile && yarn lint:check && yarn format:check && yarn test
