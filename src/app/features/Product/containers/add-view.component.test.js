@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { EN_language as language } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
-import { AuthProvider } from '../../../shared/utills/auth';
+import { AuthProvider } from '../../../shared/utils/auth';
 import ItemFormComponents from '../components/item-form.component';
 
 class AuthMock {

@@ -6,7 +6,7 @@ import user from '../../../shared/assets/icons/user.svg';
 import { useTheme } from '../../../shared/theme/theme';
 import { StyledLabel } from '../../../shared/ui/Form';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { useLanguage } from '../../../shared/utills/translation';
+import { useLanguage } from '../../../shared/utils/translation';
 
 const SettingsWrapper = styled.div`
   display: flex;

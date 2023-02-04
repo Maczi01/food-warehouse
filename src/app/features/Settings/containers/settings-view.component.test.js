@@ -3,7 +3,7 @@ import user from '@testing-library/user-event';
 
 import { availableLanguages } from '../../../language';
 import { ThemeProvider } from '../../../shared/theme/theme';
-import { TranslationProvider } from '../../../shared/utills/translation';
+import { TranslationProvider } from '../../../shared/utils/translation';
 import SettingsCardComponent from '../components/settings-card.component';
 
 describe('<SettginsView/>', () => {

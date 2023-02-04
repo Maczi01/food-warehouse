@@ -13,7 +13,7 @@ import LoginComponent from './features/auth/containers/login.component';
 import RegisterComponent from './features/auth/containers/register.component';
 import { DefaultLayout } from './layouts/default-layout';
 import UnauthorizedLayout from './layouts/unauthorized-layout.component';
-import { UserContext } from './shared/utills/auth';
+import { UserContext } from './shared/utils/auth';
 
 export const routes = {
   home: '/',

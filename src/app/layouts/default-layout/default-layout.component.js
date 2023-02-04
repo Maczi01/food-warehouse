@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { useAuth } from '../../shared/utills/auth';
+import { useAuth } from '../../shared/utils/auth';
 import Footer from './components/footer.component';
 import Navbar from './components/navbar.component';
 

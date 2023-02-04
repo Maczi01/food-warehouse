@@ -6,13 +6,13 @@ import { ThemeProvider } from 'styled-components';
 
 import { EN_language as language } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
-import { AuthProvider, getAuth } from '../../../shared/utills/auth';
-import { initializeHttpClient } from '../../../shared/utills/http-client';
+import { AuthProvider, getAuth } from '../../../shared/utils/auth';
+import { initializeHttpClient } from '../../../shared/utils/http-client';
 import ShoppingListViewComponent from './shopping-list-view.component';
 
-jest.mock('../../../shared/utills/auth', () => ({
+jest.mock('../../../shared/utils/auth', () => ({
   __esModule: true,
-  ...jest.requireActual('../../../shared/utills/auth'),
+  ...jest.requireActual('../../../shared/utils/auth'),
   getAuth: jest.fn(),
 }));
 

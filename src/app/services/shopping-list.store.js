@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { getAuth } from '../shared/utills/auth';
-import { getHttpClient } from '../shared/utills/http-client';
+import { getAuth } from '../shared/utils/auth';
+import { getHttpClient } from '../shared/utils/http-client';
 import { ShoppingListService } from './shopping-list.service';
 
 const collectionName = 'shoppingList';

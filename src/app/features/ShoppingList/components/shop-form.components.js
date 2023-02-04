@@ -11,8 +11,8 @@ import { ErrorText, FormItem, FormWrapper, StyledLabel } from '../../../shared/u
 import { StyledInput } from '../../../shared/ui/Input';
 import { Heading } from '../../../shared/ui/Page';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { properties } from '../../../shared/utills/item-properties';
-import { ShoppingListSchema } from '../../../shared/utills/shopping-list.schema';
+import { properties } from '../../../shared/utils/item-properties';
+import { ShoppingListSchema } from '../../../shared/utils/shopping-list.schema';
 
 const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
   const handleSubmitForm = (values) => {
