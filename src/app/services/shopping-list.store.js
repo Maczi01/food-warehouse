@@ -74,8 +74,8 @@ export class ShoppingListStore {
       .getMany()
       .then((snapshot) => {
         const foodListData = [];
-        if (snapshot && snapshot.length) {
-          snapshot.forEach((doc) => foodListData.push({ ...doc.data(), id: doc.id }));
+        if (snapshot && snapshot.docs && snapshot.docs.length) {
+          snapshot.docs.forEach((doc) => foodListData.push({ ...doc.data(), id: doc.id }));
         }
 
         return foodListData.filter((doc) => {
