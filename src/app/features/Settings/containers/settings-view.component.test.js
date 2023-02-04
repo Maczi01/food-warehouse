@@ -13,10 +13,7 @@ describe('<SettginsView/>', () => {
 
     render(
       <ThemeProvider>
-        <TranslationProvider
-          languages={availableLanguages}
-          defaultLanguage={defaultLanguage}
-        >
+        <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
           <SettingsCardComponent signOut={signOutMock} />
         </TranslationProvider>
       </ThemeProvider>
@@ -34,10 +31,7 @@ describe('<SettginsView/>', () => {
 
     render(
       <ThemeProvider>
-        <TranslationProvider
-          languages={availableLanguages}
-          defaultLanguage={defaultLanguage}
-        >
+        <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
           <SettingsCardComponent signOut={signOutMock} />
         </TranslationProvider>
       </ThemeProvider>

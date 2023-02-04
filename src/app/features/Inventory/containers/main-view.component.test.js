@@ -145,15 +145,9 @@ describe('<MainViewComponent/>', () => {
     render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider
-            locale={language.locale}
-            messages={language.lang}
-          >
+          <IntlProvider locale={language.locale} messages={language.lang}>
             <BrowserRouter>
-              <List
-                items={items}
-                parameter={'all'}
-              />
+              <List items={items} parameter={'all'} />
             </BrowserRouter>
           </IntlProvider>
         </ThemeProvider>

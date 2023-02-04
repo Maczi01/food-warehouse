@@ -47,10 +47,7 @@ describe(' <ShoppingListViewComponent  />', () => {
     const { findByTestId } = await render(
       <AuthProvider auth={authMock}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider
-            locale={language.locale}
-            messages={language.lang}
-          >
+          <IntlProvider locale={language.locale} messages={language.lang}>
             <BrowserRouter>
               <ShoppingListViewComponent />
             </BrowserRouter>

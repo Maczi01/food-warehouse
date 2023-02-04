@@ -71,10 +71,7 @@ const EditItemForm = ({ item, editItem }) => {
                 errors={errors.category && touched.category}
               >
                 {properties.categories.map((category) => (
-                  <FormattedMessage
-                    id={category}
-                    key={category}
-                  >
+                  <FormattedMessage id={category} key={category}>
                     {(text) => <option value={category}>{text}</option>}
                   </FormattedMessage>
                 ))}
@@ -93,10 +90,7 @@ const EditItemForm = ({ item, editItem }) => {
                 as={StyledSelect}
               >
                 {properties.units.map((unit) => (
-                  <FormattedMessage
-                    id={unit}
-                    key={unit}
-                  >
+                  <FormattedMessage id={unit} key={unit}>
                     {(text) => <option value={text}>{unit}</option>}
                   </FormattedMessage>
                 ))}
@@ -146,11 +140,7 @@ const EditItemForm = ({ item, editItem }) => {
               <Link to={'/'}>
                 <ButtonIcon icon={decline} />
               </Link>
-              <ButtonIcon
-                disabled={isSubmitting}
-                type={'submit'}
-                icon={accept}
-              />
+              <ButtonIcon disabled={isSubmitting} type={'submit'} icon={accept} />
             </ButtonContainer>
             <ToastContainer autoClose={2500} />
           </Form>

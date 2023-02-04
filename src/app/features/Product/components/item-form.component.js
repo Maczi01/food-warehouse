@@ -80,10 +80,7 @@ const ItemForm = ({ addItem }) => {
                 data-testid={'category'}
               >
                 {properties.categories.map((category) => (
-                  <FormattedMessage
-                    id={category}
-                    key={category}
-                  >
+                  <FormattedMessage id={category} key={category}>
                     {(text) => <option value={category}>{text}</option>}
                   </FormattedMessage>
                 ))}
@@ -103,10 +100,7 @@ const ItemForm = ({ addItem }) => {
                 data-testid={'unit'}
               >
                 {properties.units.map((unit) => (
-                  <FormattedMessage
-                    id={unit}
-                    key={unit}
-                  >
+                  <FormattedMessage id={unit} key={unit}>
                     {(text) => <option value={text}>{unit}</option>}
                   </FormattedMessage>
                 ))}
@@ -159,12 +153,7 @@ const ItemForm = ({ addItem }) => {
               <Link to={'/'}>
                 <ButtonIcon icon={decline} />
               </Link>
-              <ButtonIcon
-                disabled={isSubmitting}
-                type={'submit'}
-                icon={accept}
-                data-testid={'accept'}
-              />
+              <ButtonIcon disabled={isSubmitting} type={'submit'} icon={accept} data-testid={'accept'} />
             </ButtonContainer>
             <ToastContainer autoClose={2500} />
           </Form>

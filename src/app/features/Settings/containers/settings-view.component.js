@@ -6,10 +6,7 @@ const SettingsViewComponent = () => {
   const currentMail = auth.currentUser.email;
   const signOut = () => auth.signOut();
 
-  return <SettingsCardComponent
-    signOut={signOut}
-    currentMail={currentMail}
-         />;
+  return <SettingsCardComponent signOut={signOut} currentMail={currentMail} />;
 };
 
 export default SettingsViewComponent;

@@ -14,10 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider auth={auth}>
-        <TranslationProvider
-          defaultLanguage={'en'}
-          languages={availableLanguages}
-        >
+        <TranslationProvider defaultLanguage={'en'} languages={availableLanguages}>
           <ThemeProvider>
             <Routes />
           </ThemeProvider>

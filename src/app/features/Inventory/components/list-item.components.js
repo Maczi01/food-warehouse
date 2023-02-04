@@ -116,26 +116,10 @@ const ListItem = ({
         <QuantityBarInside style={{ width: `${(currentQuantity / maximalQuantity) * 100}%` }} />
       </QuantityBarOutside>
       <Container>
-        <StyledButton
-          src={minus}
-          onClick={decreaseQuantity}
-          data-testid={'decreaseQuantity'}
-        />
-        <StyledButton
-          src={plus}
-          onClick={increaseQuantity}
-          data-testid={'increaseQuantity'}
-        />
-        <StyledButton
-          src={edit}
-          onClick={() => navigate(`/edit/${id}`)}
-          data-testid={'editItem'}
-        />
-        <StyledButton
-          src={remove}
-          onClick={deleteItem}
-          data-testid={'deleteItem'}
-        />
+        <StyledButton src={minus} onClick={decreaseQuantity} data-testid={'decreaseQuantity'} />
+        <StyledButton src={plus} onClick={increaseQuantity} data-testid={'increaseQuantity'} />
+        <StyledButton src={edit} onClick={() => navigate(`/edit/${id}`)} data-testid={'editItem'} />
+        <StyledButton src={remove} onClick={deleteItem} data-testid={'deleteItem'} />
       </Container>
     </ItemWraper>
   );

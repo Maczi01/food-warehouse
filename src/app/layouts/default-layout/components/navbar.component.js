@@ -76,60 +76,29 @@ const Navbar = ({ signOut }) => {
   return (
     <>
       <HamburgerContainer>
-        <Burger
-          open={open}
-          setOpen={setOpen}
-        />
-        <Menu
-          open={open}
-          setOpen={setOpen}
-        />
+        <Burger open={open} setOpen={setOpen} />
+        <Menu open={open} setOpen={setOpen} />
       </HamburgerContainer>
       <HeaderWrapper data-testid={'navbarBackground'}>
         <LinksWrapper>
           <StyledLogoLink to={'/'} />
           <List>
-            <ListItem
-              as={NavLink}
-              to={'/'}
-              activeclass={'active'}
-              data-testid={'checkInventory'}
-            >
+            <ListItem as={NavLink} to={'/'} activeclass={'active'} data-testid={'checkInventory'}>
               <FormattedMessage id={'check inventory'} />
             </ListItem>
-            <ListItem
-              as={NavLink}
-              to={'/add'}
-              activeclass={'active'}
-              data-testid={'addProduct'}
-            >
+            <ListItem as={NavLink} to={'/add'} activeclass={'active'} data-testid={'addProduct'}>
               <FormattedMessage id={'add product'} />
             </ListItem>
-            <ListItem
-              as={NavLink}
-              to={'/list'}
-              activeclass={'active'}
-              data-testid={'shoppingList'}
-            >
+            <ListItem as={NavLink} to={'/list'} activeclass={'active'} data-testid={'shoppingList'}>
               <FormattedMessage id={'shopping list'} />
             </ListItem>
-            <ListItem
-              as={NavLink}
-              to={'/settings'}
-              activeclass={'active'}
-              data-testid={'settings'}
-            >
+            <ListItem as={NavLink} to={'/settings'} activeclass={'active'} data-testid={'settings'}>
               <FormattedMessage id={'settings'} />
             </ListItem>
           </List>
         </LinksWrapper>
 
-        <ButtonIcon
-          onClick={signOut}
-          type={'submit'}
-          icon={logout}
-          data-testid={'logout'}
-        />
+        <ButtonIcon onClick={signOut} type={'submit'} icon={logout} data-testid={'logout'} />
       </HeaderWrapper>
     </>
   );

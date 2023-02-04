@@ -102,10 +102,7 @@ const List = ({ items, parameter }) => {
         ) : (
           <EmptyListWrapper>
             <Heading>
-              <Image
-                src={bag}
-                alt={'shoping bag'}
-              />
+              <Image src={bag} alt={'shoping bag'} />
               Nothing here,
               <Link to={routes.add}>add something</Link>
             </Heading>

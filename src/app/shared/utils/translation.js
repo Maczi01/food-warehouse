@@ -36,10 +36,7 @@ export const TranslationProvider = ({ children, languages, defaultLanguage }) =>
 
   return (
     <LanguageContext.Provider value={{ changeLanguage: handleLanguageChange, language }}>
-      <IntlProvider
-        locale={language.locale}
-        messages={language.lang}
-      >
+      <IntlProvider locale={language.locale} messages={language.lang}>
         {children}
       </IntlProvider>
     </LanguageContext.Provider>

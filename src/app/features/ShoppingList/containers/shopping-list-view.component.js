@@ -81,35 +81,17 @@ const ShoppingListViewComponent = () => {
   return (
     <>
       {showAddShopModal && (
-        <AddShopModalComponent
-          setShowAddShopModal={setShowAddShopModal}
-          addItemToShoppingList={addItem}
-        />
+        <AddShopModalComponent setShowAddShopModal={setShowAddShopModal} addItemToShoppingList={addItem} />
       )}
       <Heading>
         <FormattedMessage id={'shopping list'} />
       </Heading>
       <TableWrapper>
-        <Image
-          src={bag}
-          alt={'shopping bag'}
-        />
+        <Image src={bag} alt={'shopping bag'} />
         <ButtonContainer>
-          <ButtonIcon
-            onClick={() => setShowAddShopModal((prev) => !prev)}
-            icon={plus}
-            data-testid={'showModal'}
-          />
-          <ButtonIcon
-            onClick={handleGenerateShoppingList}
-            icon={generate}
-            data-testid={'generateList'}
-          />
-          <ButtonIcon
-            onClick={clearList}
-            icon={remove}
-            data-testid={'deleteList'}
-          />
+          <ButtonIcon onClick={() => setShowAddShopModal((prev) => !prev)} icon={plus} data-testid={'showModal'} />
+          <ButtonIcon onClick={handleGenerateShoppingList} icon={generate} data-testid={'generateList'} />
+          <ButtonIcon onClick={clearList} icon={remove} data-testid={'deleteList'} />
         </ButtonContainer>
         {state && state.shoppingList && state.shoppingList.length ? (
           <TableComponent data={state.shoppingList} />

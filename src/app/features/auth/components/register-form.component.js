@@ -23,17 +23,8 @@ const RegisterForm = ({ handleRegister, removeBorder, error }) => {
         <FormattedMessage id={'sign up account'} />
       </Paragraph>
       <ItemsContainerComponent>
-        <Form
-          onSubmit={handleRegister}
-          autocomplete={'off'}
-        >
-          <StyledInputAuth
-            onFocus={removeBorder}
-            error={error}
-            type={'email'}
-            name={'email'}
-            placeholder={'Email'}
-          />
+        <Form onSubmit={handleRegister} autocomplete={'off'}>
+          <StyledInputAuth onFocus={removeBorder} error={error} type={'email'} name={'email'} placeholder={'Email'} />
           <PasswordWrapper>
             <StyledPassword
               onFocus={removeBorder}
@@ -42,10 +33,7 @@ const RegisterForm = ({ handleRegister, removeBorder, error }) => {
               name={'password'}
               placeholder={'Password'}
             />
-            <FormIcon
-              onClick={() => setType(!type)}
-              src={type ? eyeclosed : eyeopen}
-            />
+            <FormIcon onClick={() => setType(!type)} src={type ? eyeclosed : eyeopen} />
           </PasswordWrapper>
           <ConfirmButton>
             <FormattedMessage id={'sign up'} />

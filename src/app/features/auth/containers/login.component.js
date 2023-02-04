@@ -39,11 +39,7 @@ const LoginComponent = () => {
 
   return (
     <>
-      <LoginFormComponent
-        removeBorder={removeBorder}
-        error={error}
-        handleLogin={handleLogin}
-      />
+      <LoginFormComponent removeBorder={removeBorder} error={error} handleLogin={handleLogin} />
       <ToastContainer autoClose={2500} />
     </>
   );
