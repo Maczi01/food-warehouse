@@ -4,9 +4,9 @@ import { HttpClientAdapter, auth } from './firebase.config';
 import { availableLanguages } from './language';
 import Routes from './routes.component';
 import { ThemeProvider } from './shared/theme/theme';
-import { AuthProvider } from './shared/utills/auth';
-import { initializeHttpClient } from './shared/utills/http-client';
-import { TranslationProvider } from './shared/utills/translation';
+import { AuthProvider } from './shared/utils/auth';
+import { initializeHttpClient } from './shared/utils/http-client';
+import { TranslationProvider } from './shared/utils/translation';
 
 initializeHttpClient(new HttpClientAdapter());
 

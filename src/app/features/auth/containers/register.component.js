@@ -2,8 +2,8 @@ import { useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { UserContext, useAuth } from '../../../shared/utills/auth';
-import { useHttpClient } from '../../../shared/utills/http-client';
+import { UserContext, useAuth } from '../../../shared/utils/auth';
+import { useHttpClient } from '../../../shared/utils/http-client';
 import RegisterFormComponent from '../components/register-form.component';
 
 const RegisterComponent = () => {
