@@ -10,6 +10,13 @@ import { AuthProvider } from '../../../shared/utills/auth';
 import ListItem from '../components/list-item.components';
 import List from '../components/list.component';
 
+class AuthMock {
+  onAuthStateChanged = () => ({});
+  signInWithEmailAndPassword = () => Promise.resolve();
+  createUserWithEmailAndPassword = () => Promise.resolve();
+  signOut = () => {};
+}
+
 describe('<MainViewComponent/>', () => {
   it('correctly render item with properties and buttons', async () => {
     const deleteItemMock = jest.fn();
@@ -29,13 +36,15 @@ describe('<MainViewComponent/>', () => {
 
     render(
       <ThemeProvider theme={lightTheme}>
-        <ListItem
-          {...item}
-          editItem={editItemMock}
-          deleteItem={deleteItemMock}
-          decreaseQuantity={decreaseQuantityMock}
-          increaseQuantity={increaseQuantityMock}
-        />
+        <BrowserRouter>
+          <ListItem
+            {...item}
+            editItem={editItemMock}
+            deleteItem={deleteItemMock}
+            decreaseQuantity={decreaseQuantityMock}
+            increaseQuantity={increaseQuantityMock}
+          />
+        </BrowserRouter>
       </ThemeProvider>
     );
 
@@ -88,9 +97,9 @@ describe('<MainViewComponent/>', () => {
     const increaseQuantityButton = screen.getByTestId('increaseQuantity');
     const deleteItemButton = screen.getByTestId('deleteItem');
 
-    user.click(decreaseQuantityButton);
-    user.click(increaseQuantityButton);
-    user.click(deleteItemButton);
+    await user.click(decreaseQuantityButton);
+    await user.click(increaseQuantityButton);
+    await user.click(deleteItemButton);
 
     expect(increaseQuantityMock).toBeCalled();
     expect(increaseQuantityMock).toHaveBeenCalledTimes(1);
@@ -134,7 +143,7 @@ describe('<MainViewComponent/>', () => {
     ];
 
     render(
-      <AuthProvider>
+      <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
           <IntlProvider
             locale={language.locale}

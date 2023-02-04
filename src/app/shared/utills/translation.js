@@ -9,7 +9,9 @@ export const useLanguage = () => {
 export const LanguageContext = createContext(undefined);
 
 export const TranslationProvider = ({ children, languages, defaultLanguage }) => {
-  const [language, setLanguage] = useState(languages.find((item) => item.locale === defaultLanguage));
+  const [language, setLanguage] = useState(
+    languages.length ? languages.find((item) => item.locale === defaultLanguage) : defaultLanguage
+  );
   const handleLanguageChange = (e) => {
     changeLanguage(e.target.value);
   };
