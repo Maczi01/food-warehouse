@@ -5,10 +5,7 @@ const AddViewComponent = () => {
 
   return (
     <>
-      <ItemFormComponents
-        addItem={addItem}
-        edit={editItem}
-      />
+      <ItemFormComponents addItem={addItem} edit={editItem} />
     </>
   );
 };

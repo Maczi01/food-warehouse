@@ -12,10 +12,7 @@ describe('<Navbar/>', () => {
   it('correctly render Navbar with navigation buttons', () => {
     render(
       <ThemeProvider theme={lightTheme}>
-        <IntlProvider
-          locale={EN_language.locale}
-          messages={EN_language.lang}
-        >
+        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
           <BrowserRouter>
             <Navbar />
           </BrowserRouter>
@@ -41,10 +38,7 @@ describe('<Navbar/>', () => {
 
     render(
       <ThemeProvider theme={lightTheme}>
-        <IntlProvider
-          locale={EN_language.locale}
-          messages={EN_language.lang}
-        >
+        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
           <BrowserRouter>
             <Navbar signOut={logoutMock} />
           </BrowserRouter>
@@ -62,10 +56,7 @@ describe('<Navbar/>', () => {
   it('correctly call show menu after click burger button', () => {
     render(
       <ThemeProvider theme={lightTheme}>
-        <IntlProvider
-          locale={EN_language.locale}
-          messages={EN_language.lang}
-        >
+        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
           <BrowserRouter>
             <Navbar />
           </BrowserRouter>

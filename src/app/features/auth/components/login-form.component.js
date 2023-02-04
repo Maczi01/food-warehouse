@@ -23,17 +23,8 @@ const LoginForm = ({ handleLogin, error, removeBorder }) => {
         <FormattedMessage id={'Login welcome mesage'} />
       </Paragraph>
       <ItemsContainerComponent>
-        <Form
-          onSubmit={handleLogin}
-          autocomplete={'off'}
-        >
-          <StyledInputAuth
-            onFocus={removeBorder}
-            error={error}
-            type={'email'}
-            name={'email'}
-            placeholder={'Email'}
-          />
+        <Form onSubmit={handleLogin} autocomplete={'off'}>
+          <StyledInputAuth onFocus={removeBorder} error={error} type={'email'} name={'email'} placeholder={'Email'} />
           <PasswordWrapper>
             <StyledPassword
               onFocus={removeBorder}
@@ -42,10 +33,7 @@ const LoginForm = ({ handleLogin, error, removeBorder }) => {
               name={'password'}
               placeholder={'Password'}
             />
-            <FormIcon
-              onClick={() => setType(!type)}
-              src={type ? eyeopen : eyeclosed}
-            />
+            <FormIcon onClick={() => setType(!type)} src={type ? eyeopen : eyeclosed} />
           </PasswordWrapper>
           <ConfirmButton>
             <FormattedMessage id={'log in'} />

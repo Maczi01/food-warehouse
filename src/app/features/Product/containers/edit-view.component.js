@@ -11,10 +11,7 @@ const EditViewComponent = () => {
 
   return (
     <MainTemplate>
-      <EditItemFormComponents
-        item={item}
-        editItem={editItem}
-      />
+      <EditItemFormComponents item={item} editItem={editItem} />
     </MainTemplate>
   );
 };

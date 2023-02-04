@@ -9,8 +9,8 @@
     "test": "craco test",
     "lint:check": "npx eslint \"src/**\"",
     "lint:fix": "npx eslint \"src/**\" --fix",
-    "format:check": "prettier --check --configuration ./.prettierrc ./src",
-    "format:fix": "prettier --write --configuration ./.prettierrc ./src",
+    "format:check": "prettier --check \"./src\"",
+    "format:fix": "prettier --write \"./src\"",
     "code:check": "yarn run format:check && yarn run lint:check",
     "code:fix": "yarn run format:fix && yarn run lint:fix"
   },

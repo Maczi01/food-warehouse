@@ -22,10 +22,7 @@ describe('<AddViewComponent />', () => {
     render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider
-            locale={language.locale}
-            messages={language.lang}
-          >
+          <IntlProvider locale={language.locale} messages={language.lang}>
             <BrowserRouter>
               <ItemFormComponents addItem={onSubmitMock} />
             </BrowserRouter>
@@ -69,10 +66,7 @@ describe('<AddViewComponent />', () => {
     render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider
-            locale={language.locale}
-            messages={language.lang}
-          >
+          <IntlProvider locale={language.locale} messages={language.lang}>
             <BrowserRouter>
               <ItemFormComponents addItem={onSubmitMock} />
             </BrowserRouter>
@@ -107,10 +101,7 @@ describe('<AddViewComponent />', () => {
     render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider
-            locale={language.locale}
-            messages={language.lang}
-          >
+          <IntlProvider locale={language.locale} messages={language.lang}>
             <BrowserRouter>
               <ItemFormComponents addItem={onSubmitMock} />
             </BrowserRouter>

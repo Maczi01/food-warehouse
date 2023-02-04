@@ -43,11 +43,7 @@ const RegisterComponent = () => {
   }
   return (
     <>
-      <RegisterFormComponent
-        removeBorder={removeBorder}
-        error={error}
-        handleRegister={handleRegister}
-      />
+      <RegisterFormComponent removeBorder={removeBorder} error={error} handleRegister={handleRegister} />
       <ToastContainer autoClose={2500} />
     </>
   );

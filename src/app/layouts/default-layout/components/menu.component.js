@@ -40,36 +40,16 @@ const ListItem = styled.li`
 const Menu = ({ open, setOpen }) => {
   return (
     <StyledMenu open={open}>
-      <ListItem
-        as={NavLink}
-        to={'/'}
-        activeclass={'active'}
-        onClick={() => setOpen(!open)}
-      >
+      <ListItem as={NavLink} to={'/'} activeclass={'active'} onClick={() => setOpen(!open)}>
         <FormattedMessage id={'check inventory'} />
       </ListItem>
-      <ListItem
-        as={NavLink}
-        to={'/add'}
-        activeclass={'active'}
-        onClick={() => setOpen(!open)}
-      >
+      <ListItem as={NavLink} to={'/add'} activeclass={'active'} onClick={() => setOpen(!open)}>
         <FormattedMessage id={'add product'} />
       </ListItem>
-      <ListItem
-        as={NavLink}
-        to={'/list'}
-        activeclass={'active'}
-        onClick={() => setOpen(!open)}
-      >
+      <ListItem as={NavLink} to={'/list'} activeclass={'active'} onClick={() => setOpen(!open)}>
         <FormattedMessage id={'shopping list'} />
       </ListItem>
-      <ListItem
-        as={NavLink}
-        to={'/settings'}
-        activeclass={'active'}
-        onClick={() => setOpen(!open)}
-      >
+      <ListItem as={NavLink} to={'/settings'} activeclass={'active'} onClick={() => setOpen(!open)}>
         <FormattedMessage id={'settings'} />
       </ListItem>
     </StyledMenu>

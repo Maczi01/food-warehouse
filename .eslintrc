@@ -18,6 +18,11 @@
     "es6": true
   },
   "parser": "@babel/eslint-parser",
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "overrides": [
     {
       "files": ["*.js", "*.jsx"],
@@ -37,7 +42,6 @@
             "children": "never"
           }
         ],
-        "react/jsx-max-props-per-line": ["warn"],
         "react/jsx-indent": ["warn", 2],
         "react/jsx-indent-props": ["warn", 2],
         "react/jsx-closing-tag-location": ["warn"],

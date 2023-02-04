@@ -38,10 +38,7 @@ const MainViewComponent = () => {
       <Heading>
         <FormattedMessage id={'what in inventory'} />
       </Heading>
-      <List
-        items={newFoodList}
-        parameter={parameter}
-      />
+      <List items={newFoodList} parameter={parameter} />
     </>
   );
 };

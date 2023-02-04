@@ -49,10 +49,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
         validateOnBlur={false}
       >
         {({ errors, touched, handleBlur, handleSubmit }) => (
-          <Form
-            autoComplete={'off'}
-            onSubmit={handleSubmit}
-          >
+          <Form autoComplete={'off'} onSubmit={handleSubmit}>
             <FormItem>
               <StyledLabel htmlFor={'currentQuantity'}>
                 <FormattedMessage id={'name'} />
@@ -78,10 +75,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
                 as={StyledSelect}
               >
                 {properties.units.map((unit) => (
-                  <FormattedMessage
-                    id={unit}
-                    key={unit}
-                  >
+                  <FormattedMessage id={unit} key={unit}>
                     {(text) => <option value={text}>{unit}</option>}
                   </FormattedMessage>
                 ))}
@@ -103,14 +97,8 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
             </FormItem>
             {errors.neededQuantity && touched.neededQuantity ? <ErrorText>{errors.neededQuantity}</ErrorText> : null}
             <ButtonContainer>
-              <ButtonIcon
-                onClick={() => setShowAddShopModal((prev) => !prev)}
-                icon={decline}
-              />
-              <ButtonIcon
-                type={'submit'}
-                icon={accept}
-              />
+              <ButtonIcon onClick={() => setShowAddShopModal((prev) => !prev)} icon={decline} />
+              <ButtonIcon type={'submit'} icon={accept} />
             </ButtonContainer>
           </Form>
         )}

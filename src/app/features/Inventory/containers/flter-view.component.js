@@ -100,100 +100,70 @@ const FilterViewComponent = () => (
       <FormattedMessage id={'what in inventory'} />
     </Heading>
     <GridWrapper>
-      <IconWrapper
-        as={Link}
-        to={'/filter/all'}
-      >
+      <IconWrapper as={Link} to={'/filter/all'}>
         <Icon src={all} />
         <Paragraph>
           <FormattedMessage id={'all categories'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/beverages'}
-      >
+      <IconWrapper as={Link} to={'/filter/beverages'}>
         <Icon src={beverages} />
         <Paragraph>
           <FormattedMessage id={'beverages'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/baking'}
-      >
+      <IconWrapper as={Link} to={'/filter/baking'}>
         <Icon src={bread} />
         <Paragraph>
           <FormattedMessage id={'baking'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/dairy'}
-      >
+      <IconWrapper as={Link} to={'/filter/dairy'}>
         <Icon src={dairy} />
         <Paragraph>
           <FormattedMessage id={'dairy'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/meatFishesSeafood'}
-      >
+      <IconWrapper as={Link} to={'/filter/meatFishesSeafood'}>
         <Icon src={meat} />
         <Paragraph>
           <FormattedMessage id={'meat and more'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/pasta'}
-      >
+      <IconWrapper as={Link} to={'/filter/pasta'}>
         <Icon src={pasta} />
         <Paragraph>
           <FormattedMessage id={'pasta'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/spieces'}
-      >
+      <IconWrapper as={Link} to={'/filter/spieces'}>
         <Icon src={spieces} />
         <Paragraph>
           <FormattedMessage id={'spieces'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/sweetsAndSnacks'}
-      >
+      <IconWrapper as={Link} to={'/filter/sweetsAndSnacks'}>
         <Icon src={sweets} />
         <Paragraph>
           <FormattedMessage id={'sweets'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/vegetablesAndFruits'}
-      >
+      <IconWrapper as={Link} to={'/filter/vegetablesAndFruits'}>
         <Icon src={vegetables} />
         <Paragraph>
           <FormattedMessage id={'vegetables and fruits'} />
         </Paragraph>
       </IconWrapper>
 
-      <IconWrapper
-        as={Link}
-        to={'/filter/others'}
-      >
+      <IconWrapper as={Link} to={'/filter/others'}>
         <Icon src={other} />
         <Paragraph>
           <FormattedMessage id={'others'} />

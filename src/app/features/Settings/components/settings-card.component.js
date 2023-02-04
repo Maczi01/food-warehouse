@@ -96,19 +96,13 @@ const SettingsCard = ({ signOut, currentMail }) => {
       </Heading>
       <SettingsWrapper>
         <UserCard>
-          <UserAvatarWrapper
-            src={user}
-            alt={'Avatar icon'}
-          />
+          <UserAvatarWrapper src={user} alt={'Avatar icon'} />
           <UserMailWrapper>
             <Paragraph>
               <FormattedMessage id={'logged as'} />
               {currentMail}
             </Paragraph>
-            <Button
-              onClick={() => signOut()}
-              data-testid={'signOut'}
-            >
+            <Button onClick={() => signOut()} data-testid={'signOut'}>
               <FormattedMessage id={'logout'} />
             </Button>
           </UserMailWrapper>
@@ -118,11 +112,7 @@ const SettingsCard = ({ signOut, currentMail }) => {
             <StyledLabel>
               <FormattedMessage id={'change language'} />
             </StyledLabel>
-            <StyledSelect
-              onChange={changeLanguage}
-              defaultValue={language.locale}
-              data-testid={'language'}
-            >
+            <StyledSelect onChange={changeLanguage} defaultValue={language.locale} data-testid={'language'}>
               <option value={'pl'}>Polski</option>
               <option value={'en'}>English</option>
             </StyledSelect>
@@ -131,19 +121,9 @@ const SettingsCard = ({ signOut, currentMail }) => {
             <StyledLabel data-testid={'label'}>
               <FormattedMessage id={'dark mode'} />
             </StyledLabel>
-            <StyledSelect
-              onChange={toggleTheme}
-              defaultValue={'off'}
-              data-testid={'theme'}
-            >
-              <option
-                value={'on'}
-                label={'on'}
-              />
-              <option
-                value={'off'}
-                label={'off'}
-              />
+            <StyledSelect onChange={toggleTheme} defaultValue={'off'} data-testid={'theme'}>
+              <option value={'on'} label={'on'} />
+              <option value={'off'} label={'off'} />
             </StyledSelect>
           </OptionsItem>
         </OptionsWrapper>
