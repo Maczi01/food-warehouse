@@ -27,6 +27,7 @@ const HeaderWrapper = styled.nav`
 const LinksWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 
 const StyledLogoLink = styled(Link)`
@@ -45,13 +46,14 @@ const List = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
 const ListItem = styled.li`
   list-style: none;
   display: flex;
   height: 50px;
-  width: 230px;
+  flex-grow: 1;
   text-decoration: none;
   margin: 0 10px 0 10px;
   justify-content: center;
