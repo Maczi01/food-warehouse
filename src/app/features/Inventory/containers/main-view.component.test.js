@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { EN_language as language } from '../../../language';
+import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider } from '../../../shared/utils/auth';
+import { TranslationProvider } from '../../../shared/utils/translation';
 import ListItem from '../components/list-item.components';
 import List from '../components/list.component';
 
@@ -112,6 +112,7 @@ describe('<MainViewComponent/>', () => {
   });
 
   it('correctly generate list with three given items', async () => {
+    const defaultLanguage = 'en';
     const items = [
       {
         name: 'Wine',
@@ -145,11 +146,11 @@ describe('<MainViewComponent/>', () => {
     render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider locale={language.locale} messages={language.lang}>
+          <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
               <List items={items} parameter={'all'} />
             </BrowserRouter>
-          </IntlProvider>
+          </TranslationProvider>
         </ThemeProvider>
       </AuthProvider>
     );

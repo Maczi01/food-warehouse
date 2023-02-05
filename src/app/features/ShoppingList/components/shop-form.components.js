@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,17 +11,19 @@ import { ErrorText, FormItem, FormWrapper, StyledLabel } from '../../../shared/u
 import { StyledInput } from '../../../shared/ui/Input';
 import { Heading } from '../../../shared/ui/Page';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { properties } from '../../../shared/utils/item-properties';
+import { units } from '../../../shared/utils/item-properties';
 import { ShoppingListSchema } from '../../../shared/utils/shopping-list.schema';
 
-const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
+const ShopForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) => {
+  const { formatMessage } = intl;
+
   const handleSubmitForm = (values) => {
     addItemToShoppingList(values);
     notify(values.name);
   };
 
   const notify = (name) => {
-    toast.success(`Succesfully added ${name}`, {
+    toast.success(formatMessage({ id: 'SHOPPING_LIST.FORM.MESSAGE.SUCCESS', values: { name } }), {
       position: toast.POSITION.TOP_CENTER,
     });
   };
@@ -29,7 +31,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
   return (
     <FormWrapper>
       <Heading>
-        <FormattedMessage id={'add product'} />
+        <FormattedMessage id={'SHOPPING_LIST.FORM.ADD_PRODUCT'} />
       </Heading>
       <Formik
         enableReinitialize
@@ -52,7 +54,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
           <Form autoComplete={'off'} onSubmit={handleSubmit}>
             <FormItem>
               <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'name'} />
+                <FormattedMessage id={'SHOPPING_LIST.FORM.NAME'} />
               </StyledLabel>
               <Field
                 name={'name'}
@@ -65,7 +67,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
             {errors.name && touched.name ? <ErrorText>{errors.name}</ErrorText> : null}
             <FormItem>
               <StyledLabel htmlFor={'unit'}>
-                <FormattedMessage id={'choose unit'} />
+                <FormattedMessage id={'SHOPPING_LIST.FORM.CHOOSE_UNIT'} />
               </StyledLabel>
               <Field
                 name={'unit'}
@@ -74,9 +76,9 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
                 errors={errors.category && touched.category}
                 as={StyledSelect}
               >
-                {properties.units.map((unit) => (
-                  <FormattedMessage id={unit} key={unit}>
-                    {(text) => <option value={text}>{unit}</option>}
+                {units.map((unit) => (
+                  <FormattedMessage id={unit.translationKey} key={unit.name}>
+                    {(text) => <option value={unit.name}>{text}</option>}
                   </FormattedMessage>
                 ))}
               </Field>
@@ -85,7 +87,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
 
             <FormItem>
               <StyledLabel htmlFor={'neededQuantity'}>
-                <FormattedMessage id={'quantity'} />
+                <FormattedMessage id={'SHOPPING_LIST.FORM.QUANTITY'} />
               </StyledLabel>
               <Field
                 name={'neededQuantity'}
@@ -110,6 +112,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal }) => {
 ShopForm.propTypes = {
   addItemToShoppingList: PropTypes.func,
   setShowAddShopModal: PropTypes.func,
+  intl: PropTypes.object,
 };
 
-export default ShopForm;
+export default injectIntl(ShopForm);

@@ -1,50 +1,126 @@
 {
-  "add category": "Dodaj kategorię",
-  "add product": "Dodaj produkt",
-  "add unit": "Dodaj jednostkę",
-  "baking": "pieczywo",
-  "beverages": "napoje",
-  "change language": "Zmień język",
-  "check inventory": "Sprawdź zapasy",
-  "current quantity": "Ilość w spiżarni",
-  "choose category": "Wybierz kategorię",
-  "choose unit": "Wybierz jednostkę",
-  "dairy": "nabiał",
-  "dark mode": "Tryb ciemny",
-  "empty inventory": "Pusta spiżarnia!",
-  "empty list": "Lista jest pusta",
-  "edit product": "Edytuj produkt",
-  "kilogram": "kilogram",
-  "liter": "litr",
-  "have account": "Masz już konto?",
-  "have not account": "Nie masz konta?",
-  "log in": "Zaloguj",
-  "logged as": "Jesteś zalogowany jako ",
-  "logout": "Wyloguj",
-  "maximal quantity": "Ilość maksymalna",
-  "meat and more": "Mięso, ryby, owoce morza",
-  "minimal quantity": "Ilość minimalna",
-  "name": "Nazwa",
-  "others": "Inne",
-  "on": "włączony",
-  "off": "wyłączony",
-  "pasta": "makaron, ryż, kasza",
-  "piece": "sztuka",
-  "quantity": "Ilość",
-  "settings": "Ustawienia",
-  "shopping list": "Lista zakupów",
-  "sign in": "Zarejestruj się",
-  "spieces": "produkty sypkie, przyprawy",
-  "sweets": "słodycze i przekąski",
-  "unit": "Jednostka",
-  "vegetables and fruits": "warzywa i owoce",
-  "what in inventory": "Sprawdź, co masz w spiżarni",
-  "Login welcome mesage": "Ciągle pracuję nad aplikacją, ale jeśli chcesz sprawdzić jej działanie użyj danych testwych: login: test@test.com hasło: tested",
-  "sign up": "Zarejestruj się",
-  "sign up account": "Zarejestruj się, to proste i szybkie!!",
-  "register": "Zarejestruj",
-  "login": "Zaloguj",
-  "all categories": "Wszystkie kategorie",
-  "go back": "Wróć do wyboru kategorii",
-  "pdf saved": "Zapis listy zakończony sukcesem"
+  "GLOBAL": {
+    "LANGUAGES": {
+      "POLISH": "Polski",
+      "ENGLISH": "English"
+    },
+    "MENU": {
+      "CHECK_INVENTORY": "Sprawdź zapasy",
+      "ADD_PRODUCT": "Dodaj produkt",
+      "SHOPPING_LIST": "Lista zakupów",
+      "SETTINGS": "Ustawienia"
+    },
+    "UNIT": {
+      "KILOGRAM": "kilogram",
+      "LITER": "litr",
+      "PIECE": "sztuka"
+    }
+  },
+  "LOGIN": {
+    "ERROR": {
+      "WRONG_CREDENTIALS": "Niepoprane dane"
+    },
+    "HEADER": {
+      "TITLE": "Zaloguj",
+      "WELCOME_MESSAGE": "Ciągle pracuję nad aplikacją, ale jeśli chcesz sprawdzić jej działanie użyj danych testwych: login: test@test.com hasło: tested"
+    },
+    "BODY": {
+      "SING_UP_MESSAGE": "Nie masz konta?",
+      "EMAIL_PLACEHOLDER": "Email",
+      "PASSWORD_PLACEHOLDER": "Hasło",
+      "BUTTON": {
+        "LOG_IN": "Zaloguj",
+        "SIGN_UP": "Zarejestruj się"
+      }
+    }
+  },
+  "REGISTER": {
+    "HEADER": {
+      "TITLE": "Zarejestruj się",
+      "CREATE_NEW_ACCOUNT_MESSAGE": "Zarejestruj się, to proste i szybkie!"
+    },
+    "BODY": {
+      "LOG_IN_MESSAGE": "Masz już konto?",
+      "EMAIL_PLACEHOLDER": "Email",
+      "PASSWORD_PLACEHOLDER": "Hasło",
+      "BUTTON": {
+        "LOG_IN": "Zaloguj",
+        "SIGN_UP": "Zarejestruj się"
+      }
+    }
+  },
+  "INVENTORY": {
+    "CATEGORIES": {
+      "ALL": "Wszystkie kategorie",
+      "BEVERAGES": "napoje",
+      "BAKING": "pieczywo",
+      "DAIRY": "nabiał",
+      "MEAT_FISHES_SEAFOOD": "Mięso, ryby, owoce morza",
+      "PASTA": "makaron, ryż, kasza",
+      "SPICES": "produkty sypkie, przyprawy",
+      "SWEETS_AND_SNACKS": "słodycze i przekąski",
+      "VEGETABLES_AND_FRUITS": "warzywa i owoce",
+      "OTHERS": "Inne"
+    },
+    "HEADER": {
+      "WHAT_IN_INVENTORY": "Sprawdź, co masz w spiżarni"
+    },
+    "LIST": {
+      "GO_BACK_BUTTON": "Wróć do wyboru kategorii"
+    }
+  },
+  "SHOPPING_LIST": {
+    "HEADER": "Lista zakupów",
+    "EMPTY_LIST": "Lista jest pusta",
+    "TABLE": {
+      "NAME": "Nazwa",
+      "QUANTITY": "Ilość",
+      "UNIT": "Jednostka"
+    },
+    "FORM": {
+      "ADD_PRODUCT": "Dodaj produkt",
+      "NAME": "Nazwa",
+      "CHOOSE_UNIT": "Wybierz jednostkę",
+      "QUANTITY": "Ilość",
+      "MESSAGE": {
+        "SUCCESS": "Pomyślnie dodano produkt: {name}"
+      }
+    }
+  },
+  "PRODUCT": {
+    "ADD": {
+      "HEADER": "Dodaj produkt",
+      "MESSAGE": {
+        "SUCCESS": "Pomyślnie dodano produkt: {name}"
+      }
+    },
+    "EDIT": {
+      "HEADER": "Edytuj produkt",
+      "MESSAGE": {
+        "SUCCESS": "Pomyślnie zapisano produkt: {name}"
+      }
+    },
+    "FORM": {
+      "NAME": "Nazwa",
+      "CHOOSE_CATEGORY": "Wybierz kategorię",
+      "CHOOSE_UNIT": "Wybierz jednostkę",
+      "MAXIMAL_QUANTITY": "Ilość maksymalna",
+      "MINIMAL_QUANTITY": "Ilość minimalna",
+      "CURRENT_QUANTITY": "Ilość w spiżarni"
+    }
+  },
+  "SETTINGS": {
+    "HEADER": {
+      "TITLE": "Ustawienia"
+    },
+    "BODY": {
+      "LOGGED_AS": "Jesteś zalogowany jako {email}",
+      "LOGOUT": "Wyloguj",
+      "THEME": {
+        "DARK_MODE": "Tryb ciemny",
+        "DARK_MODE_ON": "włączony",
+        "DARK_MODE_OFF": "wyłączony"
+      }
+    }
+  }
 }

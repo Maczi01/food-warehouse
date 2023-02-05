@@ -1,22 +1,24 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { EN_language } from '../../../language';
+import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
+import { TranslationProvider } from '../../../shared/utils/translation';
 import Navbar from './navbar.component';
 
 describe('<Navbar/>', () => {
   it('correctly render Navbar with navigation buttons', () => {
+    const defaultLanguage = 'en';
+
     render(
       <ThemeProvider theme={lightTheme}>
-        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
+        <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
           <BrowserRouter>
             <Navbar />
           </BrowserRouter>
-        </IntlProvider>
+        </TranslationProvider>
       </ThemeProvider>
     );
 
@@ -34,15 +36,16 @@ describe('<Navbar/>', () => {
   });
 
   it('correctly call logout function', async () => {
+    const defaultLanguage = 'en';
     const logoutMock = jest.fn();
 
     render(
       <ThemeProvider theme={lightTheme}>
-        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
+        <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
           <BrowserRouter>
             <Navbar signOut={logoutMock} />
           </BrowserRouter>
-        </IntlProvider>
+        </TranslationProvider>
       </ThemeProvider>
     );
 
@@ -54,13 +57,15 @@ describe('<Navbar/>', () => {
   });
 
   it('correctly call show menu after click burger button', () => {
+    const defaultLanguage = 'en';
+
     render(
       <ThemeProvider theme={lightTheme}>
-        <IntlProvider locale={EN_language.locale} messages={EN_language.lang}>
+        <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
           <BrowserRouter>
             <Navbar />
           </BrowserRouter>
-        </IntlProvider>
+        </TranslationProvider>
       </ThemeProvider>
     );
     //TODO

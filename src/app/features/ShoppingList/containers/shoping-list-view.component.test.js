@@ -1,13 +1,13 @@
 import { render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { EN_language as language } from '../../../language';
+import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider, getAuth } from '../../../shared/utils/auth';
 import { initializeHttpClient } from '../../../shared/utils/http-client';
+import { TranslationProvider } from '../../../shared/utils/translation';
 import ShoppingListViewComponent from './shopping-list-view.component';
 
 jest.mock('../../../shared/utils/auth', () => ({
@@ -40,6 +40,7 @@ class HttpClientAdapterMock {
 
 describe(' <ShoppingListViewComponent  />', () => {
   it('correctly call submit function with arguments', async () => {
+    const defaultLanguage = 'en';
     const authMock = new AuthMock();
     getAuth.mockReturnValue(authMock);
     initializeHttpClient(new HttpClientAdapterMock());
@@ -47,11 +48,11 @@ describe(' <ShoppingListViewComponent  />', () => {
     const { findByTestId } = await render(
       <AuthProvider auth={authMock}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider locale={language.locale} messages={language.lang}>
+          <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
               <ShoppingListViewComponent />
             </BrowserRouter>
-          </IntlProvider>
+          </TranslationProvider>
         </ThemeProvider>
       </AuthProvider>
     );

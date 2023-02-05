@@ -8,7 +8,8 @@ import logo from '../../../shared/assets/icons/logo.svg';
 import logout from '../../../shared/assets/icons/logout.svg';
 import { Burger } from '../../../shared/ui/Burger';
 import { ButtonIcon } from '../../../shared/ui/Button';
-import Menu from './menu.component';
+import { routes } from '../../../shared/utils/routes';
+import Menu, { links } from './menu.component';
 
 const HeaderWrapper = styled.nav`
   display: flex;
@@ -81,20 +82,19 @@ const Navbar = ({ signOut }) => {
       </HamburgerContainer>
       <HeaderWrapper data-testid={'navbarBackground'}>
         <LinksWrapper>
-          <StyledLogoLink to={'/'} />
+          <StyledLogoLink to={routes.home.path} />
           <List>
-            <ListItem as={NavLink} to={'/'} activeclass={'active'} data-testid={'checkInventory'}>
-              <FormattedMessage id={'check inventory'} />
-            </ListItem>
-            <ListItem as={NavLink} to={'/add'} activeclass={'active'} data-testid={'addProduct'}>
-              <FormattedMessage id={'add product'} />
-            </ListItem>
-            <ListItem as={NavLink} to={'/list'} activeclass={'active'} data-testid={'shoppingList'}>
-              <FormattedMessage id={'shopping list'} />
-            </ListItem>
-            <ListItem as={NavLink} to={'/settings'} activeclass={'active'} data-testid={'settings'}>
-              <FormattedMessage id={'settings'} />
-            </ListItem>
+            {links.map((link) => (
+              <ListItem
+                as={NavLink}
+                to={link.to}
+                key={link.translationKey}
+                activeclass={'active'}
+                data-testid={link.id}
+              >
+                <FormattedMessage id={link.translationKey} />
+              </ListItem>
+            ))}
           </List>
         </LinksWrapper>
 

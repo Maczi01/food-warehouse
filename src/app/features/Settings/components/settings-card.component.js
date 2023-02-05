@@ -86,44 +86,64 @@ const Paragraph = styled.p`
   padding: 15px;
 `;
 
+const languages = [
+  {
+    translationKey: 'GLOBAL.LANGUAGES.POLISH',
+    value: 'pl',
+  },
+  {
+    translationKey: 'GLOBAL.LANGUAGES.ENGLISH',
+    value: 'en',
+  },
+];
+
+// todo: 1. change "signOut" into callback. 2. refactor code - use classnames if possible. 3. move languages into more generic place
+
 const SettingsCard = ({ signOut, currentMail }) => {
   const { changeLanguage, language } = useLanguage();
   const { toggleTheme } = useTheme();
+
   return (
     <>
       <Heading>
-        <FormattedMessage id={'settings'} />
+        <FormattedMessage id={'SETTINGS.HEADER.TITLE'} />
       </Heading>
       <SettingsWrapper>
         <UserCard>
           <UserAvatarWrapper src={user} alt={'Avatar icon'} />
           <UserMailWrapper>
             <Paragraph>
-              <FormattedMessage id={'logged as'} />
-              {currentMail}
+              <FormattedMessage id={'SETTINGS.BODY.LOGGED_AS'} values={{ email: currentMail }} />
             </Paragraph>
             <Button onClick={() => signOut()} data-testid={'signOut'}>
-              <FormattedMessage id={'logout'} />
+              <FormattedMessage id={'SETTINGS.BODY.LOGOUT'} />
             </Button>
           </UserMailWrapper>
         </UserCard>
         <OptionsWrapper>
           <OptionsItem>
             <StyledLabel>
-              <FormattedMessage id={'change language'} />
+              <FormattedMessage id={'SETTINGS.BODY.LOGOUT'} />
             </StyledLabel>
             <StyledSelect onChange={changeLanguage} defaultValue={language.locale} data-testid={'language'}>
-              <option value={'pl'}>Polski</option>
-              <option value={'en'}>English</option>
+              {languages.map((lang) => (
+                <option key={lang.value} value={lang.value}>
+                  <FormattedMessage id={lang.translationKey} />
+                </option>
+              ))}
             </StyledSelect>
           </OptionsItem>
           <OptionsItem>
             <StyledLabel data-testid={'label'}>
-              <FormattedMessage id={'dark mode'} />
+              <FormattedMessage id={'SETTINGS.BODY.THEME.DARK_MODE'} />
             </StyledLabel>
             <StyledSelect onChange={toggleTheme} defaultValue={'off'} data-testid={'theme'}>
-              <option value={'on'} label={'on'} />
-              <option value={'off'} label={'off'} />
+              <option value={'on'}>
+                <FormattedMessage id={'SETTINGS.BODY.THEME.DARK_MODE_ON'} />
+              </option>
+              <option value={'off'}>
+                <FormattedMessage id={'SETTINGS.BODY.THEME.DARK_MODE_OFF'} />
+              </option>
             </StyledSelect>
           </OptionsItem>
         </OptionsWrapper>

@@ -1,12 +1,12 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { EN_language as language } from '../../../language';
+import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider } from '../../../shared/utils/auth';
+import { TranslationProvider } from '../../../shared/utils/translation';
 import ItemFormComponents from '../components/item-form.component';
 
 class AuthMock {
@@ -18,15 +18,17 @@ class AuthMock {
 
 describe('<AddViewComponent />', () => {
   it('correctly call submit function with given arguments', async () => {
+    const defaultLanguage = 'en';
     const onSubmitMock = jest.fn();
+
     render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider locale={language.locale} messages={language.lang}>
+          <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
               <ItemFormComponents addItem={onSubmitMock} />
             </BrowserRouter>
-          </IntlProvider>
+          </TranslationProvider>
         </ThemeProvider>
       </AuthProvider>
     );
@@ -62,28 +64,29 @@ describe('<AddViewComponent />', () => {
   });
 
   it('correctly show error message when field is not filled', async () => {
+    const defaultLanguage = 'en';
     const onSubmitMock = jest.fn();
-    render(
+
+    const { findByTestId } = await render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider locale={language.locale} messages={language.lang}>
+          <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
               <ItemFormComponents addItem={onSubmitMock} />
             </BrowserRouter>
-          </IntlProvider>
+          </TranslationProvider>
         </ThemeProvider>
       </AuthProvider>
     );
 
-    const inputName = screen.getByTestId('name');
-    const inputCategory = screen.getByTestId('category');
-    const inputMaximalQuantity = screen.getByTestId('maximalQuantity');
-    const inputMinimalQuantity = screen.getByTestId('maximalQuantity');
-    const inputCurrentQuantity = screen.getByTestId('currentQuantity');
-
-    const submitButton = screen.getByTestId('accept');
-
     await waitFor(async () => {
+      const inputName = await findByTestId('name');
+      const inputCategory = await findByTestId('category');
+      const inputMaximalQuantity = await findByTestId('maximalQuantity');
+      const inputMinimalQuantity = await findByTestId('maximalQuantity');
+      const inputCurrentQuantity = await findByTestId('currentQuantity');
+      const submitButton = await findByTestId('accept');
+
       await user.type(inputName, 'Wine');
       await user.selectOptions(inputCategory, ['dairy']);
       await user.type(inputMaximalQuantity, '5');
@@ -93,19 +96,21 @@ describe('<AddViewComponent />', () => {
     });
 
     expect(onSubmitMock).toHaveBeenCalledTimes(0);
-    expect(screen.getByText('Unit is required!')).toBeInTheDocument();
+    expect(screen.getByTestId('error-unit')).toBeInTheDocument();
   });
 
   it('correctly show error message when number is too big', async () => {
+    const defaultLanguage = 'en';
     const onSubmitMock = jest.fn();
+
     render(
       <AuthProvider auth={new AuthMock()}>
         <ThemeProvider theme={lightTheme}>
-          <IntlProvider locale={language.locale} messages={language.lang}>
+          <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
               <ItemFormComponents addItem={onSubmitMock} />
             </BrowserRouter>
-          </IntlProvider>
+          </TranslationProvider>
         </ThemeProvider>
       </AuthProvider>
     );
@@ -129,6 +134,6 @@ describe('<AddViewComponent />', () => {
     });
 
     expect(onSubmitMock).toHaveBeenCalledTimes(0);
-    expect(screen.getByText('Less than 10!')).toBeInTheDocument();
+    expect(screen.getByTestId('error-maximal-quantity')).toBeInTheDocument();
   });
 });

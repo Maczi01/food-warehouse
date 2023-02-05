@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,17 +12,19 @@ import { ErrorText, FormItem, FormWrapper, StyledLabel } from '../../../shared/u
 import { StyledInput } from '../../../shared/ui/Input';
 import { Heading } from '../../../shared/ui/Page';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { FoodListSchema } from '../../../shared/utils/food-list.schema';
-import { properties } from '../../../shared/utils/item-properties';
+import { categories, units } from '../../../shared/utils/item-properties';
+import { routes } from '../../../shared/utils/routes';
+import { ItemFormSchema } from '../item-form.schema';
 
-const ItemForm = ({ addItem }) => {
+const ItemForm = ({ addItem, intl }) => {
+  const { formatMessage } = intl;
   const handleSubmitForm = (values) => {
     addItem(values);
     notify(values.name);
   };
 
   const notify = (name) => {
-    toast.success(`Succesfully added ${name}`, {
+    toast.success(formatMessage({ id: 'PRODUCT.ADD.MESSAGE.SUCCESS', values: { name } }), {
       position: toast.POSITION.TOP_CENTER,
     });
   };
@@ -30,7 +32,7 @@ const ItemForm = ({ addItem }) => {
   return (
     <FormWrapper>
       <Heading>
-        <FormattedMessage id={'add product'} />
+        <FormattedMessage id={'PRODUCT.ADD.HEADER'} />
       </Heading>
       <Formik
         enableReinitialize
@@ -48,7 +50,7 @@ const ItemForm = ({ addItem }) => {
           setSubmitting(false);
           resetForm({});
         }}
-        validationSchema={FoodListSchema}
+        validationSchema={ItemFormSchema}
         validateOnChange={false}
         validateOnBlur={false}
       >
@@ -56,7 +58,7 @@ const ItemForm = ({ addItem }) => {
           <Form>
             <FormItem>
               <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'name'} />
+                <FormattedMessage id={'PRODUCT.FORM.NAME'} />
               </StyledLabel>
               <Field
                 name={'name'}
@@ -67,10 +69,14 @@ const ItemForm = ({ addItem }) => {
                 data-testid={'name'}
               />
             </FormItem>
-            {errors.name && touched.name ? <ErrorText>{errors.name}</ErrorText> : null}
+            {errors.name && touched.name ? (
+              <ErrorText data-testid={'error-name'}>
+                <FormattedMessage id={errors.name} />
+              </ErrorText>
+            ) : null}
             <FormItem>
               <StyledLabel htmlFor={'category'}>
-                <FormattedMessage id={'choose category'} />
+                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_CATEGORY'} />
               </StyledLabel>
               <Field
                 name={'category'}
@@ -79,17 +85,21 @@ const ItemForm = ({ addItem }) => {
                 errors={errors.category && touched.category}
                 data-testid={'category'}
               >
-                {properties.categories.map((category) => (
-                  <FormattedMessage id={category} key={category}>
-                    {(text) => <option value={category}>{text}</option>}
+                {categories.map((category) => (
+                  <FormattedMessage id={category.translationKey} key={category.name}>
+                    {(text) => <option value={category.name}>{text}</option>}
                   </FormattedMessage>
                 ))}
               </Field>
             </FormItem>
-            {errors.category && touched.category ? <ErrorText>{errors.category}</ErrorText> : null}
+            {errors.category && touched.category ? (
+              <ErrorText data-testid={'error-category'}>
+                <FormattedMessage id={errors.category} />
+              </ErrorText>
+            ) : null}
             <FormItem>
               <StyledLabel htmlFor={'unit'}>
-                <FormattedMessage id={'choose unit'} />
+                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_UNIT'} />
               </StyledLabel>
               <Field
                 name={'unit'}
@@ -99,17 +109,21 @@ const ItemForm = ({ addItem }) => {
                 as={StyledSelect}
                 data-testid={'unit'}
               >
-                {properties.units.map((unit) => (
-                  <FormattedMessage id={unit} key={unit}>
-                    {(text) => <option value={text}>{unit}</option>}
+                {units.map((unit) => (
+                  <FormattedMessage id={unit.translationKey} key={unit.name}>
+                    {(text) => <option value={unit.name}>{text}</option>}
                   </FormattedMessage>
                 ))}
               </Field>
             </FormItem>
-            {errors.unit && touched.unit ? <ErrorText>{errors.unit}</ErrorText> : null}
+            {errors.unit && touched.unit ? (
+              <ErrorText data-testid={'error-unit'}>
+                <FormattedMessage id={errors.unit} />
+              </ErrorText>
+            ) : null}
             <FormItem>
               <StyledLabel htmlFor={'maximalQuantity'}>
-                <FormattedMessage id={'maximal quantity'} />
+                <FormattedMessage id={'PRODUCT.FORM.MAXIMAL_QUANTITY'} />
               </StyledLabel>
               <Field
                 name={'maximalQuantity'}
@@ -120,10 +134,14 @@ const ItemForm = ({ addItem }) => {
                 data-testid={'maximalQuantity'}
               />
             </FormItem>
-            {errors.maximalQuantity && touched.maximalQuantity ? <ErrorText>{errors.maximalQuantity}</ErrorText> : null}
+            {errors.maximalQuantity && touched.maximalQuantity ? (
+              <ErrorText data-testid={'error-maximal-quantity'}>
+                <FormattedMessage id={errors.maximalQuantity} />
+              </ErrorText>
+            ) : null}
             <FormItem>
               <StyledLabel htmlFor={'minimalQuantity'}>
-                <FormattedMessage id={'minimal quantity'} />
+                <FormattedMessage id={'PRODUCT.FORM.MINIMAL_QUANTITY'} />
               </StyledLabel>
               <Field
                 name={'minimalQuantity'}
@@ -134,10 +152,14 @@ const ItemForm = ({ addItem }) => {
                 data-testid={'minimalQuantity'}
               />
             </FormItem>
-            {errors.minimalQuantity && touched.minimalQuantity ? <ErrorText>{errors.minimalQuantity}</ErrorText> : null}
+            {errors.minimalQuantity && touched.minimalQuantity ? (
+              <ErrorText data-testid={'error-minimal-quantity'}>
+                <FormattedMessage id={errors.minimalQuantity} />
+              </ErrorText>
+            ) : null}
             <FormItem>
               <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'current quantity'} />
+                <FormattedMessage id={'PRODUCT.FORM.CURRENT_QUANTITY'} />
               </StyledLabel>
               <Field
                 name={'currentQuantity'}
@@ -148,9 +170,13 @@ const ItemForm = ({ addItem }) => {
                 data-testid={'currentQuantity'}
               />
             </FormItem>
-            {errors.currentQuantity && touched.currentQuantity ? <ErrorText>{errors.currentQuantity}</ErrorText> : null}
+            {errors.currentQuantity && touched.currentQuantity ? (
+              <ErrorText data-testid={'error-current-quantity'}>
+                <FormattedMessage id={errors.currentQuantity} />
+              </ErrorText>
+            ) : null}
             <ButtonContainer>
-              <Link to={'/'}>
+              <Link to={routes.home.path}>
                 <ButtonIcon icon={decline} />
               </Link>
               <ButtonIcon disabled={isSubmitting} type={'submit'} icon={accept} data-testid={'accept'} />
@@ -165,5 +191,6 @@ const ItemForm = ({ addItem }) => {
 
 ItemForm.propTypes = {
   addItem: PropTypes.func,
+  intl: PropTypes.object,
 };
-export default ItemForm;
+export default injectIntl(ItemForm);
