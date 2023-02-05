@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { useInventory } from '../../../services/inventory.store';
 import { FormWrapper } from '../../../shared/ui/Form';
 import { Heading } from '../../../shared/ui/Page';
+import { toast } from '../../../shared/utils/toast';
 import ProductForm from '../components/product-form.component';
 
 const EditViewComponent = ({ intl }) => {
@@ -21,7 +21,7 @@ const EditViewComponent = ({ intl }) => {
   };
 
   const notify = (name) => {
-    toast.success(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.SUCCESS', values: { name } }), {
+    toast.success(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.SUCCESS' }, { name }), {
       position: toast.POSITION.TOP_CENTER,
     });
   };

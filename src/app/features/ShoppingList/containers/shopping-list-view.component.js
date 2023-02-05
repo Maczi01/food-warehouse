@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 
 import { useInventory } from '../../../services/inventory.store';
@@ -100,7 +98,6 @@ const ShoppingListViewComponent = () => {
             <FormattedMessage id="SHOPPING_LIST.EMPTY_LIST" />
           </span>
         )}
-        <ToastContainer autoClose={1400} />
       </TableWrapper>
     </>
   );

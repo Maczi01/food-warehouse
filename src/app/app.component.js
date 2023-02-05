@@ -6,6 +6,7 @@ import Routes from './routes.component';
 import { ThemeProvider } from './shared/theme/theme';
 import { AuthProvider } from './shared/utils/auth';
 import { initializeHttpClient } from './shared/utils/http-client';
+import { ToastContainer } from './shared/utils/toast';
 import { TranslationProvider } from './shared/utils/translation';
 
 initializeHttpClient(new HttpClientAdapter());
@@ -17,6 +18,7 @@ const App = () => {
         <TranslationProvider defaultLanguage={defaultLanguage} languages={availableLanguages}>
           <ThemeProvider>
             <Routes />
+            <ToastContainer autoClose={2500} />
           </ThemeProvider>
         </TranslationProvider>
       </AuthProvider>
