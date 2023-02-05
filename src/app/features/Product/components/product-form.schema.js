@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const ItemFormSchema = Yup.object({
+export const ProductFormSchema = Yup.object({
   name: Yup.string()
     .min(2, 'GLOBAL.FORM.ERROR.MIN')
     .max(30, 'GLOBAL.FORM.ERROR.MAX')
