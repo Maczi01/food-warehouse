@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import styled from 'styled-components';
 
 import { useInventory } from '../../../services/inventory.store';
 import { useStoppingListStore } from '../../../services/shopping-list.store';
@@ -11,50 +10,7 @@ import remove from '../../../shared/assets/icons/remove.svg';
 import { ButtonIcon } from '../../../shared/ui/Button';
 import AddShopModalComponent from '../components/add-shop-modal.component';
 import TableComponent from '../components/table.component';
-
-const TableWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 80vw;
-  font-size: 14px;
-  overflow-y: auto;
-
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    width: 100vw;
-  }
-`;
-
-const Heading = styled.h1`
-  padding: 12px;
-  color: ${({ theme }) => theme.colors.blue};
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 60vw;
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    padding: 9rem 0 1rem;
-    font-size: 26px;
-    width: 100vw;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  margin: 10px 20px 20px 0;
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const Image = styled.img`
-  margin: 5px;
-  width: 150px;
-  height: 150px;
-`;
+import { ButtonContainer, Heading, Image, TableWrapper } from './shopping-list-view.styled';
 
 const ShoppingListViewComponent = () => {
   const { state: inventoryState, getForCurrentUser: loadInventory } = useInventory();
