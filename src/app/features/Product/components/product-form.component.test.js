@@ -148,6 +148,6 @@ describe('<ProductForm />', () => {
     });
 
     expect(onSubmitMock).toHaveBeenCalledTimes(0);
-    expect(screen.getByTestId('error-maximal-quantity')).toBeInTheDocument();
+    expect(screen.getByTestId('error-maximalQuantity')).toBeInTheDocument();
   });
 });

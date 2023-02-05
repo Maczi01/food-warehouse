@@ -1,22 +1,28 @@
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import accept from '../../../shared/assets/icons/accept.svg';
 import decline from '../../../shared/assets/icons/decline.svg';
 import { ButtonContainer, ButtonIcon } from '../../../shared/ui/Button';
-import { Error, FormItem, FormWrapper, StyledLabel } from '../../../shared/ui/Form';
-import { StyledInput } from '../../../shared/ui/Input';
+import { FormWrapper } from '../../../shared/ui/Form';
+import { Input } from '../../../shared/ui/Form/Input';
+import { Select } from '../../../shared/ui/Form/Select';
 import { Heading } from '../../../shared/ui/Page';
-import { StyledSelect } from '../../../shared/ui/Select';
 import { units } from '../../../shared/utils/item-properties';
 import { toast } from '../../../shared/utils/toast';
 import { ShoppingItemFormSchema } from './shopping-item-form.schema';
 
+const defaultValues = {
+  name: '',
+  unit: '',
+  neededQuantity: 0,
+};
+
 const ShoppingItemForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) => {
   const { formatMessage } = intl;
 
-  const handleSubmitForm = (values) => {
+  const handleSubmit = (values) => {
     addItemToShoppingList(values);
     notify(values.name);
   };
@@ -34,63 +40,35 @@ const ShoppingItemForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) 
       </Heading>
       <Formik
         enableReinitialize
-        initialValues={{
-          name: '',
-          unit: '',
-          neededQuantity: 0,
-        }}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          setSubmitting(true);
-          handleSubmitForm(values);
-          setSubmitting(false);
-          resetForm({});
-        }}
+        initialValues={defaultValues}
+        onSubmit={handleSubmit}
         validationSchema={ShoppingItemFormSchema}
         validateOnChange={false}
         validateOnBlur={false}
       >
-        {({ errors, touched, handleBlur, handleSubmit }) => (
-          <Form autoComplete="off" onSubmit={handleSubmit}>
-            <FormItem>
-              <StyledLabel htmlFor="currentQuantity">
-                <FormattedMessage id="SHOPPING_LIST.FORM.NAME" />
-              </StyledLabel>
-              <Field name="name" type="text" placeholder="" errors={errors.name && touched.name} as={StyledInput} />
-            </FormItem>
-            <Error testid="error-name" show={touched.name} message={errors.name} />
-            <FormItem>
-              <StyledLabel htmlFor="unit">
-                <FormattedMessage id="SHOPPING_LIST.FORM.CHOOSE_UNIT" />
-              </StyledLabel>
-              <Field
-                name="unit"
-                onBlur={handleBlur}
-                placeholder=""
-                errors={errors.category && touched.category}
-                as={StyledSelect}
-              >
-                {units.map((unit) => (
-                  <FormattedMessage id={unit.translationKey} key={unit.name}>
-                    {(text) => <option value={unit.name}>{text}</option>}
-                  </FormattedMessage>
-                ))}
-              </Field>
-            </FormItem>
-            <Error testid="error-unit" show={touched.unit} message={errors.unit} />
+        {({ errors, touched, handleBlur }) => (
+          <Form>
+            <Input
+              name="name"
+              showError={errors.name && touched.name}
+              label="SHOPPING_LIST.FORM.NAME"
+              error={errors.name}
+            />
+            <Select
+              name="unit"
+              showError={errors.unit && touched.unit}
+              label="SHOPPING_LIST.FORM.CHOOSE_UNIT"
+              error={errors.unit}
+              options={units}
+              onBlur={handleBlur}
+            />
+            <Input
+              name="neededQuantity"
+              showError={errors.neededQuantity && touched.neededQuantity}
+              label="SHOPPING_LIST.FORM.QUANTITY"
+              error={errors.neededQuantity}
+            />
 
-            <FormItem>
-              <StyledLabel htmlFor="neededQuantity">
-                <FormattedMessage id="SHOPPING_LIST.FORM.QUANTITY" />
-              </StyledLabel>
-              <Field
-                name="neededQuantity"
-                type="number"
-                as={StyledInput}
-                placeholder=""
-                errors={errors.neededQuantity && touched.neededQuantity}
-              />
-            </FormItem>
-            <Error testid="error-needed-quantity" show={touched.neededQuantity} message={errors.neededQuantity} />
             <ButtonContainer>
               <ButtonIcon onClick={() => setShowAddShopModal((prev) => !prev)} icon={decline} />
               <ButtonIcon type="submit" icon={accept} />

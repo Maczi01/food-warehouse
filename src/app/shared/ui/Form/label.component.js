@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 const StyledLabel = styled.label`
@@ -19,4 +21,19 @@ const StyledLabel = styled.label`
   }
 `;
 
-export default StyledLabel;
+export const Label = ({ name, id }) => {
+  if (!id) {
+    return null;
+  }
+
+  return (
+    <StyledLabel htmlFor={name}>
+      <FormattedMessage id={id} />
+    </StyledLabel>
+  );
+};
+
+Label.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string,
+};

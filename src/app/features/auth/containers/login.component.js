@@ -13,11 +13,13 @@ const LoginComponent = ({ intl }) => {
   const [error, setError] = useState(false);
   const { formatMessage } = intl;
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
+  const removeBorder = () => {
+    setError(false);
+  };
+
+  const handleLogin = ({ email, password }) => {
     auth
-      .signInWithEmailAndPassword(email.value, password.value)
+      .signInWithEmailAndPassword(email, password)
       .then(() => {
         setError(false);
       })
@@ -37,9 +39,6 @@ const LoginComponent = ({ intl }) => {
   if (currentUser) {
     return <Navigate to={routes.home.path} />;
   }
-  const removeBorder = () => {
-    setError(false);
-  };
 
   return <LoginFormComponent removeBorder={removeBorder} error={error} handleLogin={handleLogin} />;
 };
