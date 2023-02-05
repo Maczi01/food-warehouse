@@ -19,18 +19,20 @@ const defaultValues = {
   neededQuantity: 0,
 };
 
-const ShoppingItemForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) => {
+const ShoppingItemForm = ({ onSubmit, onCancel, intl }) => {
   const { formatMessage } = intl;
 
-  const handleSubmit = (values) => {
-    addItemToShoppingList(values);
-    notify(values.name);
+  const handleSubmit = async (values) => {
+    try {
+      await onSubmit(values);
+      toast.success(formatMessage({ id: 'SHOPPING_LIST.FORM.MESSAGE.SUCCESS' }, { name: values.name }));
+    } catch (error) {
+      toast.error(formatMessage({ id: 'SHOPPING_LIST.FORM.MESSAGE.ERROR' }));
+    }
   };
 
-  const notify = (name) => {
-    toast.success(formatMessage({ id: 'SHOPPING_LIST.FORM.MESSAGE.SUCCESS', values: { name } }), {
-      position: toast.POSITION.TOP_CENTER,
-    });
+  const handleCancel = () => {
+    onCancel();
   };
 
   return (
@@ -46,7 +48,7 @@ const ShoppingItemForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) 
         validateOnChange={false}
         validateOnBlur={false}
       >
-        {({ errors, touched, handleBlur }) => (
+        {({ errors, touched, handleBlur, isSubmitting }) => (
           <Form>
             <Input
               name="name"
@@ -70,8 +72,8 @@ const ShoppingItemForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) 
             />
 
             <ButtonContainer>
-              <ButtonIcon onClick={() => setShowAddShopModal((prev) => !prev)} icon={decline} />
-              <ButtonIcon type="submit" icon={accept} />
+              <ButtonIcon onClick={handleCancel} icon={decline} />
+              <ButtonIcon type="submit" icon={accept} disabled={isSubmitting} />
             </ButtonContainer>
           </Form>
         )}
@@ -81,8 +83,8 @@ const ShoppingItemForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) 
 };
 
 ShoppingItemForm.propTypes = {
-  addItemToShoppingList: PropTypes.func,
-  setShowAddShopModal: PropTypes.func,
+  onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
   intl: PropTypes.object,
 };
 

@@ -17,7 +17,7 @@ const defaultValues = {
   password: '',
 };
 
-const RegisterForm = ({ handleRegister, removeBorder, error }) => {
+const RegisterForm = ({ onSubmit }) => {
   return (
     <>
       <StyledTitleComponent>
@@ -31,32 +31,30 @@ const RegisterForm = ({ handleRegister, removeBorder, error }) => {
         <Formik
           enableReinitialize
           initialValues={defaultValues}
-          onSubmit={handleRegister}
+          onSubmit={onSubmit}
           validationSchema={RegisterFormSchema}
           validateOnChange={false}
           validateOnBlur={false}
         >
-          {({ errors, touched, handleSubmit }) => (
+          {({ errors, touched, isSubmitting, handleSubmit }) => (
             <Form autoComplete="off" onSubmit={handleSubmit}>
               <Input
                 name="email"
                 type="email"
-                showError={(errors.email && touched.email) || error}
+                showError={errors.email && touched.email}
                 error={errors.email}
-                onFocus={removeBorder}
                 placeholder="REGISTER.BODY.EMAIL_PLACEHOLDER"
               />
 
               <Input
                 name="password"
                 type="password"
-                showError={(errors.password && touched.password) || error}
+                showError={errors.password && touched.password}
                 error={errors.email}
-                onFocus={removeBorder}
                 placeholder="REGISTER.BODY.PASSWORD_PLACEHOLDER"
               />
 
-              <ConfirmButton>
+              <ConfirmButton disabled={isSubmitting}>
                 <FormattedMessage id="REGISTER.BODY.BUTTON.SIGN_UP" />
               </ConfirmButton>
             </Form>
@@ -75,9 +73,7 @@ const RegisterForm = ({ handleRegister, removeBorder, error }) => {
 };
 
 RegisterForm.propTypes = {
-  handleRegister: PropTypes.func,
-  error: PropTypes.bool,
-  removeBorder: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default RegisterForm;

@@ -1,12 +1,24 @@
+import { useTheme } from '../../../shared/theme/theme';
 import { useAuth } from '../../../shared/utils/auth';
+import { useLanguage } from '../../../shared/utils/translation';
 import SettingsCardComponent from '../components/settings-card.component';
 
 const SettingsViewComponent = () => {
   const { auth } = useAuth();
-  const currentMail = auth.currentUser.email;
+  const { changeLanguage, language } = useLanguage();
+  const { toggleTheme, darkMode } = useTheme();
   const signOut = () => auth.signOut();
 
-  return <SettingsCardComponent signOut={signOut} currentMail={currentMail} />;
+  return (
+    <SettingsCardComponent
+      onSignOut={signOut}
+      email={auth.currentUser.email}
+      language={language.locale}
+      onLanguageChange={changeLanguage}
+      onThemeChange={toggleTheme}
+      darkMode={darkMode}
+    />
+  );
 };
 
 export default SettingsViewComponent;

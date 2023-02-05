@@ -4,10 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 import user from '../../../shared/assets/icons/user.svg';
-import { useTheme } from '../../../shared/theme/theme';
 import { Form } from '../../../shared/ui/Form';
 import { Select } from '../../../shared/ui/Form/Select';
-import { useLanguage } from '../../../shared/utils/translation';
 
 const SettingsWrapper = styled.div`
   display: flex;
@@ -109,12 +107,9 @@ const themes = [
   },
 ];
 
-// todo: 1. change "signOut" into callback. 2. move languages into more generic place
+// todo: 1. move languages into more generic place
 
-const SettingsCard = ({ signOut, currentMail }) => {
-  const { changeLanguage, language } = useLanguage();
-  const { toggleTheme } = useTheme();
-
+const SettingsCard = ({ email, language, darkMode, onLanguageChange, onThemeChange, onSignOut }) => {
   return (
     <>
       <Heading>
@@ -125,60 +120,55 @@ const SettingsCard = ({ signOut, currentMail }) => {
           <UserAvatarWrapper src={user} alt="Avatar icon" />
           <UserMailWrapper>
             <Paragraph>
-              <FormattedMessage id="SETTINGS.BODY.LOGGED_AS" values={{ email: currentMail }} />
+              <FormattedMessage id="SETTINGS.BODY.LOGGED_AS" values={{ email }} />
             </Paragraph>
-            <Button onClick={() => signOut()} data-testid="signOut">
+            <Button onClick={onSignOut} data-testid="signOut">
               <FormattedMessage id="SETTINGS.BODY.LOGOUT" />
             </Button>
           </UserMailWrapper>
         </UserCard>
 
-        <OptionsWrapper>
-          <OptionsItem>
-            <Formik
-              enableReinitialize
-              initialValues={{ language: language.locale }}
-              validateOnChange={false}
-              validateOnBlur={false}
-              onSubmit={() => {}}
-            >
-              <Form autoComplete="off">
+        <Formik
+          enableReinitialize
+          initialValues={{ language: language, theme: darkMode ? 'on' : 'off' }}
+          validateOnChange={false}
+          validateOnBlur={false}
+          onSubmit={() => {}}
+        >
+          <Form autoComplete="off">
+            <OptionsWrapper>
+              <OptionsItem>
                 <Select
                   name="language"
                   type="language"
                   label="SETTINGS.BODY.CHANGE_LANGUAGE"
-                  onChange={changeLanguage}
+                  onChange={onLanguageChange}
                   options={languages}
                 />
-              </Form>
-            </Formik>
-          </OptionsItem>
-          <OptionsItem>
-            <Formik
-              initialValues={{ theme: 'off' }}
-              validateOnChange={false}
-              validateOnBlur={false}
-              onSubmit={() => {}}
-            >
-              <Form autoComplete="off">
+              </OptionsItem>
+              <OptionsItem>
                 <Select
                   name="theme"
                   type="theme"
                   label="SETTINGS.BODY.THEME.DARK_MODE"
-                  onChange={toggleTheme}
+                  onChange={onThemeChange}
                   options={themes}
                 />
-              </Form>
-            </Formik>
-          </OptionsItem>
-        </OptionsWrapper>
+              </OptionsItem>
+            </OptionsWrapper>
+          </Form>
+        </Formik>
       </SettingsWrapper>
     </>
   );
 };
 
 SettingsCard.propTypes = {
-  signOut: PropTypes.func,
-  currentMail: PropTypes.string,
+  email: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+  onSignOut: PropTypes.func.isRequired,
+  onLanguageChange: PropTypes.func.isRequired,
+  onThemeChange: PropTypes.func.isRequired,
 };
 export default SettingsCard;

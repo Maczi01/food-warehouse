@@ -8,6 +8,11 @@ import { Error } from '../error.component';
 import { Label } from '../label.component';
 import StyledSelect from './select.styled';
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const FormItem = styled.div`
       width: 100%;
       display: flex;
@@ -42,7 +47,7 @@ const Select = ({ name, label, showError, error, onBlur, options, onChange }) =>
   }, [error]);
 
   return (
-    <>
+    <Wrapper>
       <FormItem>
         <Label name={name} id={label} />
         <StyledSelect name={name} value={field.value} onChange={handleChange} onBlur={handleBlur} data-testid={name}>
@@ -58,7 +63,7 @@ const Select = ({ name, label, showError, error, onBlur, options, onChange }) =>
         </StyledSelect>
       </FormItem>
       <Error testid={`error-${name}`} show={showError} message={error} />
-    </>
+    </Wrapper>
   );
 };
 

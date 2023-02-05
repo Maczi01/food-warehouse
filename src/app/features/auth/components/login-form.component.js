@@ -12,14 +12,12 @@ import ItemsContainerComponent from './items-container.component';
 import { LoginFormSchema } from './login-form.schema';
 import StyledTitleComponent from './styled-title.component';
 
-// todo: 1. change "handleLogin" name to callback
-
 const defaultValues = {
   email: '',
   password: '',
 };
 
-const LoginForm = ({ handleLogin, error, removeBorder }) => {
+const LoginForm = ({ onSubmit }) => {
   return (
     <>
       <StyledTitleComponent>
@@ -33,32 +31,30 @@ const LoginForm = ({ handleLogin, error, removeBorder }) => {
         <Formik
           enableReinitialize
           initialValues={defaultValues}
-          onSubmit={handleLogin}
+          onSubmit={onSubmit}
           validationSchema={LoginFormSchema}
           validateOnChange={false}
           validateOnBlur={false}
         >
-          {({ errors, touched, handleSubmit }) => (
+          {({ errors, touched, isSubmitting, handleSubmit }) => (
             <Form autoComplete="off" onSubmit={handleSubmit}>
               <Input
                 name="email"
                 type="email"
-                showError={(errors.email && touched.email) || error}
+                showError={errors.email && touched.email}
                 error={errors.email}
-                onFocus={removeBorder}
                 placeholder="LOGIN.BODY.EMAIL_PLACEHOLDER"
               />
 
               <Input
                 name="password"
                 type="password"
-                showError={(errors.password && touched.password) || error}
+                showError={errors.password && touched.password}
                 error={errors.email}
-                onFocus={removeBorder}
                 placeholder="LOGIN.BODY.PASSWORD_PLACEHOLDER"
               />
 
-              <ConfirmButton>
+              <ConfirmButton disabled={isSubmitting}>
                 <FormattedMessage id="LOGIN.BODY.BUTTON.LOG_IN" />
               </ConfirmButton>
             </Form>
@@ -77,9 +73,7 @@ const LoginForm = ({ handleLogin, error, removeBorder }) => {
 };
 
 LoginForm.propTypes = {
-  handleLogin: PropTypes.func,
-  error: PropTypes.bool,
-  removeBorder: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default LoginForm;

@@ -91,7 +91,8 @@
       "CHOOSE_UNIT": "Wybierz jednostkę",
       "QUANTITY": "Ilość",
       "MESSAGE": {
-        "SUCCESS": "Pomyślnie dodano produkt: {name}"
+        "SUCCESS": "Pomyślnie dodano produkt: {name}",
+        "ERROR": "Wystąpił błąd. spróbuj jeszcze raz."
       },
       "ERROR": {
         "CURRENT_QUANTITY_LOWER_THAN_MAXIMAL": "Ilość w spiżarni musi być mniejsza od maksymalnej"
@@ -102,13 +103,15 @@
     "ADD": {
       "HEADER": "Dodaj produkt",
       "MESSAGE": {
-        "SUCCESS": "Pomyślnie dodano produkt: {name}"
+        "SUCCESS": "Pomyślnie dodano produkt: {name}",
+        "ERROR": "Wystąpił błąd. spróbuj jeszcze raz."
       }
     },
     "EDIT": {
       "HEADER": "Edytuj produkt",
       "MESSAGE": {
-        "SUCCESS": "Pomyślnie zapisano produkt: {name}"
+        "SUCCESS": "Pomyślnie zapisano produkt: {name}",
+        "ERROR": "Wystąpił błąd. spróbuj jeszcze raz."
       }
     },
     "FORM": {

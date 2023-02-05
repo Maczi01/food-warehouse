@@ -33,18 +33,25 @@ export const nightTheme = {
 };
 
 export const useTheme = () => {
-  const { toggleTheme } = useContext(UseThemeContext);
-  return { toggleTheme };
+  const { toggleTheme, darkMode } = useContext(UseThemeContext);
+  return { toggleTheme, darkMode };
 };
 export const UseThemeContext = createContext(undefined);
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(lightTheme);
+  const [darkMode, setDarkMode] = useState(false);
   const toggleTheme = () => {
-    theme === lightTheme ? setTheme(nightTheme) : setTheme(lightTheme);
+    if (theme === lightTheme) {
+      setTheme(nightTheme);
+      setDarkMode(true);
+    } else {
+      setTheme(lightTheme);
+      setDarkMode(false);
+    }
   };
   return (
-    <UseThemeContext.Provider value={{ toggleTheme }}>
+    <UseThemeContext.Provider value={{ toggleTheme, darkMode: darkMode }}>
       <DefaultThemeProvider theme={theme}>
         <GlobalStyle backgroundColor={theme.backgroundColor} />
         {children}

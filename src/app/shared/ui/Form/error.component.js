@@ -7,7 +7,7 @@ const ErrorText = styled.p`
   align-items: center;
   color: red;
   font-weight: bold;
-  margin-right: 20px;
+  margin-right: 26px;
 `;
 
 export const Error = ({ show, message, testid }) => {

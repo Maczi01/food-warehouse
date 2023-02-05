@@ -9,12 +9,21 @@ import SettingsCardComponent from '../components/settings-card.component';
 describe('<SettginsView/>', () => {
   it('correctly call sign out function', async () => {
     const signOutMock = jest.fn();
+    const onThemeChangeMock = jest.fn();
+    const onLanguageChangeMock = jest.fn();
     const defaultLanguage = 'en';
 
     render(
       <ThemeProvider>
         <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
-          <SettingsCardComponent signOut={signOutMock} />
+          <SettingsCardComponent
+            onSignOut={signOutMock}
+            onThemeChange={onThemeChangeMock}
+            onLanguageChange={onLanguageChangeMock}
+            language={defaultLanguage}
+            darkMode={false}
+            email=""
+          />
         </TranslationProvider>
       </ThemeProvider>
     );
@@ -27,12 +36,21 @@ describe('<SettginsView/>', () => {
 
   it('correctly render theme to dark after change', async () => {
     const signOutMock = jest.fn();
+    const onThemeChangeMock = jest.fn();
+    const onLanguageChangeMock = jest.fn();
     const defaultLanguage = 'en';
 
     render(
       <ThemeProvider>
         <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
-          <SettingsCardComponent signOut={signOutMock} />
+          <SettingsCardComponent
+            onSignOut={signOutMock}
+            onThemeChange={onThemeChangeMock}
+            onLanguageChange={onLanguageChangeMock}
+            language={defaultLanguage}
+            darkMode={false}
+            email=""
+          />
         </TranslationProvider>
       </ThemeProvider>
     );
