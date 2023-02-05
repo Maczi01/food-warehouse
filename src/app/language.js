@@ -12,4 +12,4 @@ export const EN_language = {
 
 export const availableLanguages = [PL_language, EN_language];
 
-export const defaultLanguage = EN_language.lang;
+export const defaultLanguage = EN_language.locale;
