@@ -14,6 +14,14 @@
       "KILOGRAM": "kilogram",
       "LITER": "litr",
       "PIECE": "sztuka"
+    },
+    "FORM": {
+      "ERROR": {
+        "MIN": "Podana wartość jest zbyt krótka",
+        "MAX": "Podana wartość jest zbyt długa",
+        "REQUIRED": "Pole jest wymagane",
+        "NUMBER": "Podana wartość nie jest liczbą"
+      }
     }
   },
   "LOGIN": {
@@ -84,6 +92,9 @@
       "QUANTITY": "Ilość",
       "MESSAGE": {
         "SUCCESS": "Pomyślnie dodano produkt: {name}"
+      },
+      "ERROR": {
+        "CURRENT_QUANTITY_LOWER_THAN_MAXIMAL": "Ilość w spiżarni musi być mniejsza od maksymalnej"
       }
     }
   },
@@ -101,6 +112,11 @@
       }
     },
     "FORM": {
+      "ERROR": {
+        "CURRENT_QUANTITY_LOWER_THAN_MAXIMAL": "Ilość w spiżarni musi być mniejsza od maksymalnej",
+        "LOWER_QUANTITY_LOWER_THAN_MAXIMAL": "Ilość minimalna musi być mniejsza od maksymalnej",
+        "MAXIMAL_QUANTITY_GRATER_THAN_MINIMAL": "Ilość maksymalna nie może być większa od minimalnej"
+      },
       "NAME": "Nazwa",
       "CHOOSE_CATEGORY": "Wybierz kategorię",
       "CHOOSE_UNIT": "Wybierz jednostkę",
@@ -116,6 +132,7 @@
     "BODY": {
       "LOGGED_AS": "Jesteś zalogowany jako {email}",
       "LOGOUT": "Wyloguj",
+      "CHANGE_LANGUAGE": "Zmień język",
       "THEME": {
         "DARK_MODE": "Tryb ciemny",
         "DARK_MODE_ON": "włączony",
