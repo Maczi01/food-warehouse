@@ -22,18 +22,18 @@ const LoginForm = ({ handleLogin, error, removeBorder, intl }) => {
   return (
     <>
       <StyledTitleComponent>
-        <FormattedMessage id={'LOGIN.HEADER.TITLE'} />
+        <FormattedMessage id="LOGIN.HEADER.TITLE" />
       </StyledTitleComponent>
       <Paragraph>
-        <FormattedMessage id={'LOGIN.HEADER.WELCOME_MESSAGE'} />
+        <FormattedMessage id="LOGIN.HEADER.WELCOME_MESSAGE" />
       </Paragraph>
       <ItemsContainerComponent>
-        <Form onSubmit={handleLogin} autocomplete={'off'}>
+        <Form onSubmit={handleLogin} autocomplete="off">
           <StyledInputAuth
             onFocus={removeBorder}
             error={error}
-            type={'email'}
-            name={'email'}
+            type="email"
+            name="email"
             placeholder={formatMessage({ id: 'LOGIN.BODY.EMAIL_PLACEHOLDER' })}
           />
           <PasswordWrapper>
@@ -41,19 +41,19 @@ const LoginForm = ({ handleLogin, error, removeBorder, intl }) => {
               onFocus={removeBorder}
               error={error}
               type={type ? 'text' : 'password'}
-              name={'password'}
+              name="password"
               placeholder={formatMessage({ id: 'LOGIN.BODY.PASSWORD_PLACEHOLDER' })}
             />
             <FormIcon onClick={() => setType(!type)} src={type ? eyeopen : eyeclosed} />
           </PasswordWrapper>
           <ConfirmButton>
-            <FormattedMessage id={'LOGIN.BODY.BUTTON.LOG_IN'} />
+            <FormattedMessage id="LOGIN.BODY.BUTTON.LOG_IN" />
           </ConfirmButton>
         </Form>
         <Paragraph>
-          <FormattedMessage id={'LOGIN.BODY.SING_UP_MESSAGE'} />
+          <FormattedMessage id="LOGIN.BODY.SING_UP_MESSAGE" />
           <Link to={routes.register.path}>
-            <FormattedMessage id={'LOGIN.BODY.BUTTON.SIGN_UP'} />
+            <FormattedMessage id="LOGIN.BODY.BUTTON.SIGN_UP" />
           </Link>
         </Paragraph>
       </ItemsContainerComponent>

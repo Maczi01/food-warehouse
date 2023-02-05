@@ -80,25 +80,19 @@ const Navbar = ({ signOut }) => {
         <Burger open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} />
       </HamburgerContainer>
-      <HeaderWrapper data-testid={'navbarBackground'}>
+      <HeaderWrapper data-testid="navbarBackground">
         <LinksWrapper>
           <StyledLogoLink to={routes.home.path} />
           <List>
             {links.map((link) => (
-              <ListItem
-                as={NavLink}
-                to={link.to}
-                key={link.translationKey}
-                activeclass={'active'}
-                data-testid={link.id}
-              >
+              <ListItem as={NavLink} to={link.to} key={link.translationKey} activeclass="active" data-testid={link.id}>
                 <FormattedMessage id={link.translationKey} />
               </ListItem>
             ))}
           </List>
         </LinksWrapper>
 
-        <ButtonIcon onClick={signOut} type={'submit'} icon={logout} data-testid={'logout'} />
+        <ButtonIcon onClick={signOut} type="submit" icon={logout} data-testid="logout" />
       </HeaderWrapper>
     </>
   );

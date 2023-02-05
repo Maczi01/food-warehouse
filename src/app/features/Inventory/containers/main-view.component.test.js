@@ -148,7 +148,7 @@ describe('<MainViewComponent/>', () => {
         <ThemeProvider theme={lightTheme}>
           <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
-              <List items={items} parameter={'all'} />
+              <List items={items} parameter="all" />
             </BrowserRouter>
           </TranslationProvider>
         </ThemeProvider>

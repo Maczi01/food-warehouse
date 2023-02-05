@@ -19,7 +19,7 @@ const StyledTr = ({ item, setItemAsChecked }) => (
     <Td checked={item.checked}>{item.neededQuantity}</Td>
     <Td checked={item.checked}>{item.unit}</Td>
     <Td>
-      <input type={'checkbox'} onChange={() => setItemAsChecked(item)} />
+      <input type="checkbox" onChange={() => setItemAsChecked(item)} />
     </Td>
   </StyledTrWrapper>
 );

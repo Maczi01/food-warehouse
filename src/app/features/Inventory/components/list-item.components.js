@@ -105,11 +105,11 @@ const ListItem = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <ItemWrapper data-testid={'item'}>
+    <ItemWrapper data-testid="item">
       <Container>
-        <NameWrapper data-testid={'itemName'}>{name}</NameWrapper>
-        <InfoWrapper data-testid={'itemUnit'}>{unit} </InfoWrapper>
-        <InfoWrapper data-testid={'itemQuantities'}>
+        <NameWrapper data-testid="itemName">{name}</NameWrapper>
+        <InfoWrapper data-testid="itemUnit">{unit} </InfoWrapper>
+        <InfoWrapper data-testid="itemQuantities">
           {currentQuantity} z {maximalQuantity}
         </InfoWrapper>
       </Container>
@@ -117,10 +117,10 @@ const ListItem = ({
         <QuantityBarInside style={{ width: `${(currentQuantity / maximalQuantity) * 100}%` }} />
       </QuantityBarOutside>
       <Container>
-        <StyledButton src={minus} onClick={decreaseQuantity} data-testid={'decreaseQuantity'} />
-        <StyledButton src={plus} onClick={increaseQuantity} data-testid={'increaseQuantity'} />
-        <StyledButton src={edit} onClick={() => navigate(routes.product.edit.url(id))} data-testid={'editItem'} />
-        <StyledButton src={remove} onClick={deleteItem} data-testid={'deleteItem'} />
+        <StyledButton src={minus} onClick={decreaseQuantity} data-testid="decreaseQuantity" />
+        <StyledButton src={plus} onClick={increaseQuantity} data-testid="increaseQuantity" />
+        <StyledButton src={edit} onClick={() => navigate(routes.product.edit.url(id))} data-testid="editItem" />
+        <StyledButton src={remove} onClick={deleteItem} data-testid="deleteItem" />
       </Container>
     </ItemWrapper>
   );
