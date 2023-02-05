@@ -15,7 +15,7 @@ import { ShoppingItemFormSchema } from './shopping-item-form.schema';
 
 const defaultValues = {
   name: '',
-  unit: '',
+  unit: 'piece',
   neededQuantity: 0,
 };
 

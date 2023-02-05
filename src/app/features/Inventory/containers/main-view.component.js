@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { useInventory } from '../../../services/inventory.store';
+import { useInventory } from '../../../services/inventory.hook';
 import List from '../components/list.component';
 
 const Heading = styled.h1`

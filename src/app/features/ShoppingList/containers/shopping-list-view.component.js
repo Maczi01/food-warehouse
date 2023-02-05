@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { useInventory } from '../../../services/inventory.store';
-import { useStoppingListStore } from '../../../services/shopping-list.store';
+import { useInventory } from '../../../services/inventory.hook';
+import { useStoppingListStore } from '../../../services/shopping-list.hook';
 import bag from '../../../shared/assets/icons/bag.svg';
 import generate from '../../../shared/assets/icons/generate.svg';
 import plus from '../../../shared/assets/icons/plus.svg';
@@ -37,8 +37,8 @@ const ShoppingListViewComponent = () => {
     setModalOpen(false);
   };
 
-  const handleSubmit = async () => {
-    await addItem();
+  const handleSubmit = async (data) => {
+    await addItem(data);
     hideModal();
   };
 

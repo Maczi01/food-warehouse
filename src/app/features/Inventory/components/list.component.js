@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
-import { useInventory } from '../../../services/inventory.store';
+import { useInventory } from '../../../services/inventory.hook';
 import bag from '../../../shared/assets/icons/bag.svg';
 import { categories } from '../../../shared/utils/item-properties';
 import { routes } from '../../../shared/utils/routes';

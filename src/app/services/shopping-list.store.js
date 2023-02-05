@@ -1,5 +1,3 @@
-import { useEffect, useMemo, useState } from 'react';
-
 import { getAuth } from '../shared/utils/auth';
 import { getHttpClient } from '../shared/utils/http-client';
 import { ShoppingListService } from './shopping-list.service';
@@ -121,20 +119,3 @@ export class ShoppingListStore {
     return this.getByUser(getAuth().currentUser.uid);
   };
 }
-
-export const useStoppingListStore = () => {
-  const store = useMemo(() => ShoppingListStore.getInstance());
-  const [state, setState] = useState(() => store.state);
-
-  useEffect(() => {
-    const callback = () => (newState) => {
-      setState((oldState) => ({ ...oldState, ...newState }));
-    };
-    store.addListener(callback);
-    return () => {
-      store.removeListener(callback);
-    };
-  }, [store, setState]);
-
-  return { ...store, state };
-};
