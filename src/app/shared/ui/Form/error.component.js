@@ -10,7 +10,7 @@ const ErrorText = styled.p`
   margin-right: 20px;
 `;
 
-const Error = ({ show, message, testid }) => {
+export const Error = ({ show, message, testid }) => {
   if (!show || !message || !message.length) {
     return null;
   }

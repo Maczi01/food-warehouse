@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledSelect = styled.select`
+export const StyledSelect = styled.select`
   width: 300px;
   font-size: 18px;
   display: flex;

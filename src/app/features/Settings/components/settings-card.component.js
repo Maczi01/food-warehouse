@@ -1,11 +1,12 @@
+import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 import user from '../../../shared/assets/icons/user.svg';
 import { useTheme } from '../../../shared/theme/theme';
-import { StyledLabel } from '../../../shared/ui/Form';
-import { StyledSelect } from '../../../shared/ui/Select';
+import { Form } from '../../../shared/ui/Form';
+import { Select } from '../../../shared/ui/Form/Select';
 import { useLanguage } from '../../../shared/utils/translation';
 
 const SettingsWrapper = styled.div`
@@ -89,15 +90,26 @@ const Paragraph = styled.p`
 const languages = [
   {
     translationKey: 'GLOBAL.LANGUAGES.POLISH',
-    value: 'pl',
+    name: 'pl',
   },
   {
     translationKey: 'GLOBAL.LANGUAGES.ENGLISH',
-    value: 'en',
+    name: 'en',
   },
 ];
 
-// todo: 1. change "signOut" into callback. 2. refactor code - use classnames if possible. 3. move languages into more generic place
+const themes = [
+  {
+    translationKey: 'SETTINGS.BODY.THEME.DARK_MODE_OFF',
+    name: 'off',
+  },
+  {
+    translationKey: 'SETTINGS.BODY.THEME.DARK_MODE_ON',
+    name: 'on',
+  },
+];
+
+// todo: 1. change "signOut" into callback. 2. move languages into more generic place
 
 const SettingsCard = ({ signOut, currentMail }) => {
   const { changeLanguage, language } = useLanguage();
@@ -120,31 +132,44 @@ const SettingsCard = ({ signOut, currentMail }) => {
             </Button>
           </UserMailWrapper>
         </UserCard>
+
         <OptionsWrapper>
           <OptionsItem>
-            <StyledLabel>
-              <FormattedMessage id="SETTINGS.BODY.LOGOUT" />
-            </StyledLabel>
-            <StyledSelect onChange={changeLanguage} defaultValue={language.locale} data-testid="language">
-              {languages.map((lang) => (
-                <option key={lang.value} value={lang.value}>
-                  <FormattedMessage id={lang.translationKey} />
-                </option>
-              ))}
-            </StyledSelect>
+            <Formik
+              enableReinitialize
+              initialValues={{ language: language.locale }}
+              validateOnChange={false}
+              validateOnBlur={false}
+              onSubmit={() => {}}
+            >
+              <Form autoComplete="off">
+                <Select
+                  name="language"
+                  type="language"
+                  label="SETTINGS.BODY.CHANGE_LANGUAGE"
+                  onChange={changeLanguage}
+                  options={languages}
+                />
+              </Form>
+            </Formik>
           </OptionsItem>
           <OptionsItem>
-            <StyledLabel data-testid="label">
-              <FormattedMessage id="SETTINGS.BODY.THEME.DARK_MODE" />
-            </StyledLabel>
-            <StyledSelect onChange={toggleTheme} defaultValue="off" data-testid="theme">
-              <option value="on">
-                <FormattedMessage id="SETTINGS.BODY.THEME.DARK_MODE_ON" />
-              </option>
-              <option value="off">
-                <FormattedMessage id="SETTINGS.BODY.THEME.DARK_MODE_OFF" />
-              </option>
-            </StyledSelect>
+            <Formik
+              initialValues={{ theme: 'off' }}
+              validateOnChange={false}
+              validateOnBlur={false}
+              onSubmit={() => {}}
+            >
+              <Form autoComplete="off">
+                <Select
+                  name="theme"
+                  type="theme"
+                  label="SETTINGS.BODY.THEME.DARK_MODE"
+                  onChange={toggleTheme}
+                  options={themes}
+                />
+              </Form>
+            </Formik>
           </OptionsItem>
         </OptionsWrapper>
       </SettingsWrapper>

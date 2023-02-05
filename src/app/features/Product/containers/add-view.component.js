@@ -9,8 +9,8 @@ import ProductForm from '../components/product-form.component';
 
 const defaultValues = {
   name: '',
-  category: '',
-  unit: '',
+  category: 'all',
+  unit: 'piece',
   currentQuantity: 0,
   minimalQuantity: 0,
   maximalQuantity: 0,

@@ -132,6 +132,7 @@
     "BODY": {
       "LOGGED_AS": "You're logged as {email}",
       "LOGOUT": "Logout",
+      "CHANGE_LANGUAGE": "Change language",
       "THEME": {
         "DARK_MODE": "Dark mode",
         "DARK_MODE_ON": "On",

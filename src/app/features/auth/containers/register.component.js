@@ -14,12 +14,10 @@ const RegisterComponent = () => {
   const { auth } = useAuth();
   const { currentUser } = useContext(UserContext);
 
-  const handleRegister = (event) => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
+  const handleRegister = ({ email, password }) => {
     auth
-      .createUserWithEmailAndPassword(email.value, password.value)
-      .then(() => client.create('users', { userMail: email.value }))
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => client.create('users', { userMail: email }))
       .then(() => {
         navigate(routes.home.path);
       })
