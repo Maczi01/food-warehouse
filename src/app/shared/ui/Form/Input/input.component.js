@@ -13,6 +13,7 @@ import FormIcon from './toggle-password.icon';
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 const InputWrapper = styled.div`
@@ -36,6 +37,7 @@ const Input = ({ name, label, showError, error, type, placeholder, onFocus, intl
   const [showInputValue, setShowInputValue] = useState(false);
 
   const handleChange = (event) => {
+    helpers.setError(undefined);
     if (!Number.isNaN(event.target.valueAsNumber)) {
       helpers.setValue(event.target.valueAsNumber);
     } else {
@@ -76,7 +78,7 @@ const Input = ({ name, label, showError, error, type, placeholder, onFocus, intl
   }
 
   return (
-    <>
+    <Wrapper>
       <FormItem>
         <Label name={name} id={label} />
         <Field
@@ -91,7 +93,7 @@ const Input = ({ name, label, showError, error, type, placeholder, onFocus, intl
         />
       </FormItem>
       <Error testid={`error-${name}`} show={showError} message={error} />
-    </>
+    </Wrapper>
   );
 };
 

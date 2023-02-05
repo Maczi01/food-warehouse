@@ -22,7 +22,7 @@ const ButtonIcon = styled.button`
     transform: translateY(6px);
   }
   :disabled {
-    background-color: red;
+    cursor: default;
   }
 `;
 

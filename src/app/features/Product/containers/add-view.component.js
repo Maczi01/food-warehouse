@@ -20,15 +20,13 @@ const AddViewComponent = ({ intl }) => {
   const { addItem } = useInventory();
   const { formatMessage } = intl;
 
-  const handleSubmitForm = (values) => {
-    addItem(values);
-    notify(values.name);
-  };
-
-  const notify = (name) => {
-    toast.success(formatMessage({ id: 'PRODUCT.ADD.MESSAGE.SUCCESS' }, { name }), {
-      position: toast.POSITION.TOP_CENTER,
-    });
+  const handleSubmit = async (values) => {
+    try {
+      await addItem(values);
+      toast.success(formatMessage({ id: 'PRODUCT.ADD.MESSAGE.SUCCESS' }, { name: values.name }));
+    } catch (error) {
+      toast.error(formatMessage({ id: 'PRODUCT.ADD.MESSAGE.ERROR' }));
+    }
   };
 
   return (
@@ -36,7 +34,7 @@ const AddViewComponent = ({ intl }) => {
       <Heading>
         <FormattedMessage id="PRODUCT.ADD.HEADER" />
       </Heading>
-      <ProductForm onSubmit={handleSubmitForm} values={defaultValues} />
+      <ProductForm onSubmit={handleSubmit} values={defaultValues} />
     </FormWrapper>
   );
 };

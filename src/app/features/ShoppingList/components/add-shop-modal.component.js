@@ -10,9 +10,9 @@ const ModalWrapper = styled.div`
   left: 0;
   right: 0;
   margin: 0 auto;
-  width: 40vw;
+  min-width: 40vw;
+  max-width: 80vw;
   background-color: white;
-  box-shadow: 0 20px 40px -5px rgba(#1e58ff, 0.3);
   position: fixed;
   border: 3px solid #000000;
   border-radius: 10px;
@@ -23,19 +23,26 @@ const ModalWrapper = styled.div`
   }
 `;
 
-const AddShopModal = ({ addItemToShoppingList, setShowAddShopModal }) => (
-  <ModalWrapper>
-    <ShopFormComponents
-      addItemToShoppingList={addItemToShoppingList}
-      setShowAddShopModal={setShowAddShopModal}
-      data-testid="modal"
-    />
-  </ModalWrapper>
-);
+const AddShopModal = ({ open, onCancel, onSubmit }) => {
+  if (!open) {
+    return null;
+  }
+
+  return (
+    <ModalWrapper>
+      <ShopFormComponents onCancel={onCancel} onSubmit={onSubmit} data-testid="modal" />
+    </ModalWrapper>
+  );
+};
 
 AddShopModal.propTypes = {
-  addItemToShoppingList: PropTypes.func,
-  setShowAddShopModal: PropTypes.func,
+  open: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
+};
+
+AddShopModal.defaultProps = {
+  open: false,
 };
 
 export default AddShopModal;

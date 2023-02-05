@@ -65,11 +65,24 @@ const ShoppingListViewComponent = () => {
     generateShoppingList,
     getForCurrentUser: loadShoppingList,
   } = useStoppingListStore();
-  const [showAddShopModal, setShowAddShopModal] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleGenerateShoppingList = useCallback(() => {
     generateShoppingList(inventoryState.inventory);
   }, [generateShoppingList, inventoryState.inventory]);
+
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
+  const hideModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleSubmit = async () => {
+    await addItem();
+    hideModal();
+  };
 
   useEffect(() => {
     loadInventory();
@@ -78,16 +91,14 @@ const ShoppingListViewComponent = () => {
 
   return (
     <>
-      {showAddShopModal && (
-        <AddShopModalComponent setShowAddShopModal={setShowAddShopModal} addItemToShoppingList={addItem} />
-      )}
+      <AddShopModalComponent open={modalOpen} onCancel={hideModal} onSubmit={handleSubmit} />
       <Heading>
         <FormattedMessage id="SHOPPING_LIST.HEADER" />
       </Heading>
       <TableWrapper>
         <Image src={bag} alt="shopping bag" />
         <ButtonContainer>
-          <ButtonIcon onClick={() => setShowAddShopModal((prev) => !prev)} icon={plus} data-testid="showModal" />
+          <ButtonIcon onClick={showModal} icon={plus} data-testid="showModal" />
           <ButtonIcon onClick={handleGenerateShoppingList} icon={generate} data-testid="generateList" />
           <ButtonIcon onClick={clearList} icon={remove} data-testid="deleteList" />
         </ButtonContainer>

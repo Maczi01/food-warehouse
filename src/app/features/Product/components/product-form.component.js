@@ -2,6 +2,7 @@ import { Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import acceptDisabled from '../../../shared/assets/icons/accept-disabled.svg';
 import accept from '../../../shared/assets/icons/accept.svg';
 import decline from '../../../shared/assets/icons/decline.svg';
 import { ButtonContainer, ButtonIcon } from '../../../shared/ui/Button';
@@ -12,8 +13,8 @@ import { routes } from '../../../shared/utils/routes';
 import { ProductFormSchema } from './product-form.schema';
 
 const ProductForm = ({ values, onSubmit }) => {
-  const handleSubmit = (values) => {
-    onSubmit(values);
+  const handleSubmit = async (values) => {
+    await onSubmit(values);
   };
 
   return (
@@ -70,7 +71,12 @@ const ProductForm = ({ values, onSubmit }) => {
             <Link to={routes.home.path}>
               <ButtonIcon icon={decline} />
             </Link>
-            <ButtonIcon disabled={isSubmitting} type="submit" icon={accept} data-testid="accept" />
+            <ButtonIcon
+              disabled={isSubmitting}
+              type="submit"
+              icon={isSubmitting ? acceptDisabled : accept}
+              data-testid="accept"
+            />
           </ButtonContainer>
         </Form>
       )}

@@ -91,7 +91,8 @@
       "CHOOSE_UNIT": "Choose unit",
       "QUANTITY": "Quantity",
       "MESSAGE": {
-        "SUCCESS": "Successfully added product: {name}"
+        "SUCCESS": "Successfully added product: {name}",
+        "ERROR": "Something went wrong. Please try again."
       },
       "ERROR": {
         "CURRENT_QUANTITY_LOWER_THAN_MAXIMAL": "Current quantity must be lower than maximal!"
@@ -102,13 +103,15 @@
     "ADD": {
       "HEADER": "Add product",
       "MESSAGE": {
-        "SUCCESS": "Successfully added product: {name}"
+        "SUCCESS": "Successfully added product: {name}",
+        "ERROR": "Something went wrong. Please try again."
       }
     },
     "EDIT": {
       "HEADER": "Edit product",
       "MESSAGE": {
-        "SUCCESS": "Successfully saved product: {name}"
+        "SUCCESS": "Successfully saved product: {name}",
+        "ERROR": "Something went wrong. Please try again."
       }
     },
     "FORM": {

@@ -15,15 +15,13 @@ const EditViewComponent = ({ intl }) => {
 
   const item = state.inventory.find((item) => item.id === selectedId);
 
-  const handleSubmitForm = (values) => {
-    editItem(values);
-    notify(values.name);
-  };
-
-  const notify = (name) => {
-    toast.success(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.SUCCESS' }, { name }), {
-      position: toast.POSITION.TOP_CENTER,
-    });
+  const handleSubmit = async (values) => {
+    try {
+      await editItem(values);
+      toast.success(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.SUCCESS' }, { name }));
+    } catch (error) {
+      toast.error(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.ERROR' }));
+    }
   };
 
   return (
@@ -31,7 +29,7 @@ const EditViewComponent = ({ intl }) => {
       <Heading>
         <FormattedMessage id="PRODUCT.EDIT.HEADER" />
       </Heading>
-      <ProductForm onSubmit={handleSubmitForm} values={item} />
+      <ProductForm onSubmit={handleSubmit} values={item} />
     </FormWrapper>
   );
 };

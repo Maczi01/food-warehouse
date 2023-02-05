@@ -12,6 +12,12 @@ const ConfirmButton = styled.button`
   cursor: pointer;
   background: ${({ theme }) => theme.colors.green};
   color: grey;
+
+  :disabled {
+    color: white;
+    background-color: grey;
+    cursor: default;
+  }
 `;
 
 export default ConfirmButton;
