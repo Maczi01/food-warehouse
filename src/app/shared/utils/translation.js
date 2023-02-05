@@ -35,21 +35,9 @@ export const TranslationProvider = ({ children, languages, defaultLanguage }) =>
     changeLanguage(e.target.value);
   };
   const changeLanguage = (language) => {
-    switch (language) {
-      case 'en': {
-        const current = languages.find((item) => item.locale === 'en');
-        if (current) {
-          setLanguage(current);
-        }
-        break;
-      }
-      default: {
-        const current = languages.find((item) => item.locale === defaultLanguage);
-        if (current) {
-          setLanguage(current);
-        }
-        break;
-      }
+    const newLanguage = languages.find((item) => item.locale === language) || defaultLanguage;
+    if (newLanguage) {
+      setLanguage(newLanguage);
     }
   };
 
