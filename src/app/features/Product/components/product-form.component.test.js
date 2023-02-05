@@ -7,7 +7,7 @@ import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider } from '../../../shared/utils/auth';
 import { TranslationProvider } from '../../../shared/utils/translation';
-import ItemFormComponents from '../components/item-form.component';
+import ProductForm from './product-form.component';
 
 class AuthMock {
   onAuthStateChanged = () => ({});
@@ -16,9 +16,23 @@ class AuthMock {
   signOut = () => {};
 }
 
-describe('<AddViewComponent />', () => {
+const setup = () => {
+  const defaultValues = {
+    name: '',
+    category: '',
+    unit: '',
+    currentQuantity: 0,
+    minimalQuantity: 0,
+    maximalQuantity: 0,
+  };
+  const defaultLanguage = 'en';
+
+  return { defaultValues, defaultLanguage };
+};
+
+describe('<ProductForm />', () => {
   it('correctly call submit function with given arguments', async () => {
-    const defaultLanguage = 'en';
+    const { defaultValues, defaultLanguage } = setup();
     const onSubmitMock = jest.fn();
 
     render(
@@ -26,7 +40,7 @@ describe('<AddViewComponent />', () => {
         <ThemeProvider theme={lightTheme}>
           <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
-              <ItemFormComponents addItem={onSubmitMock} />
+              <ProductForm onSubmit={onSubmitMock} values={defaultValues} />
             </BrowserRouter>
           </TranslationProvider>
         </ThemeProvider>
@@ -64,7 +78,7 @@ describe('<AddViewComponent />', () => {
   });
 
   it('correctly show error message when field is not filled', async () => {
-    const defaultLanguage = 'en';
+    const { defaultValues, defaultLanguage } = setup();
     const onSubmitMock = jest.fn();
 
     const { findByTestId } = await render(
@@ -72,7 +86,7 @@ describe('<AddViewComponent />', () => {
         <ThemeProvider theme={lightTheme}>
           <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
-              <ItemFormComponents addItem={onSubmitMock} />
+              <ProductForm onSubmit={onSubmitMock} values={defaultValues} />
             </BrowserRouter>
           </TranslationProvider>
         </ThemeProvider>
@@ -100,7 +114,7 @@ describe('<AddViewComponent />', () => {
   });
 
   it('correctly show error message when number is too big', async () => {
-    const defaultLanguage = 'en';
+    const { defaultValues, defaultLanguage } = setup();
     const onSubmitMock = jest.fn();
 
     render(
@@ -108,7 +122,7 @@ describe('<AddViewComponent />', () => {
         <ThemeProvider theme={lightTheme}>
           <TranslationProvider languages={availableLanguages} defaultLanguage={defaultLanguage}>
             <BrowserRouter>
-              <ItemFormComponents addItem={onSubmitMock} />
+              <ProductForm onSubmit={onSubmitMock} values={defaultValues} />
             </BrowserRouter>
           </TranslationProvider>
         </ThemeProvider>
