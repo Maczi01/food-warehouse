@@ -20,18 +20,18 @@ const RegisterForm = ({ handleRegister, removeBorder, error, intl }) => {
   return (
     <>
       <StyledTitleComponent>
-        <FormattedMessage id={'REGISTER.HEADER.TITLE'} />
+        <FormattedMessage id="REGISTER.HEADER.TITLE" />
       </StyledTitleComponent>
       <Paragraph>
-        <FormattedMessage id={'REGISTER.HEADER.CREATE_NEW_ACCOUNT_MESSAGE'} />
+        <FormattedMessage id="REGISTER.HEADER.CREATE_NEW_ACCOUNT_MESSAGE" />
       </Paragraph>
       <ItemsContainerComponent>
-        <Form onSubmit={handleRegister} autocomplete={'off'}>
+        <Form onSubmit={handleRegister} autocomplete="off">
           <StyledInputAuth
             onFocus={removeBorder}
             error={error}
-            type={'email'}
-            name={'email'}
+            type="email"
+            name="email"
             placeholder={formatMessage({ id: 'REGISTER.BODY.PASSWORD_PLACEHOLDER' })}
           />
           <PasswordWrapper>
@@ -39,19 +39,19 @@ const RegisterForm = ({ handleRegister, removeBorder, error, intl }) => {
               onFocus={removeBorder}
               error={error}
               type={type ? 'text' : 'password'}
-              name={'password'}
+              name="password"
               placeholder={formatMessage({ id: 'REGISTER.BODY.PASSWORD_PLACEHOLDER' })}
             />
             <FormIcon onClick={() => setType(!type)} src={type ? eyeclosed : eyeopen} />
           </PasswordWrapper>
           <ConfirmButton>
-            <FormattedMessage id={'REGISTER.BODY.BUTTON.SIGN_UP'} />
+            <FormattedMessage id="REGISTER.BODY.BUTTON.SIGN_UP" />
           </ConfirmButton>
         </Form>
         <Paragraph>
-          <FormattedMessage id={'REGISTER.BODY.LOG_IN_MESSAGE'} />
+          <FormattedMessage id="REGISTER.BODY.LOG_IN_MESSAGE" />
           <Link to={routes.login.path}>
-            <FormattedMessage id={'REGISTER.BODY.BUTTON.LOG_IN'} />
+            <FormattedMessage id="REGISTER.BODY.BUTTON.LOG_IN" />
           </Link>
         </Paragraph>
       </ItemsContainerComponent>

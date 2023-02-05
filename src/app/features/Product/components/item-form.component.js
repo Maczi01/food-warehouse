@@ -32,7 +32,7 @@ const ItemForm = ({ addItem, intl }) => {
   return (
     <FormWrapper>
       <Heading>
-        <FormattedMessage id={'PRODUCT.ADD.HEADER'} />
+        <FormattedMessage id="PRODUCT.ADD.HEADER" />
       </Heading>
       <Formik
         enableReinitialize
@@ -57,33 +57,33 @@ const ItemForm = ({ addItem, intl }) => {
         {({ errors, touched, handleBlur, isSubmitting }) => (
           <Form>
             <FormItem>
-              <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.NAME'} />
+              <StyledLabel htmlFor="currentQuantity">
+                <FormattedMessage id="PRODUCT.FORM.NAME" />
               </StyledLabel>
               <Field
-                name={'name'}
-                type={'text'}
-                placeholder={''}
+                name="name"
+                type="text"
+                placeholder=""
                 errors={errors.name && touched.name}
                 as={StyledInput}
-                data-testid={'name'}
+                data-testid="name"
               />
             </FormItem>
             {errors.name && touched.name ? (
-              <ErrorText data-testid={'error-name'}>
+              <ErrorText data-testid="error-name">
                 <FormattedMessage id={errors.name} />
               </ErrorText>
             ) : null}
             <FormItem>
-              <StyledLabel htmlFor={'category'}>
-                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_CATEGORY'} />
+              <StyledLabel htmlFor="category">
+                <FormattedMessage id="PRODUCT.FORM.CHOOSE_CATEGORY" />
               </StyledLabel>
               <Field
-                name={'category'}
+                name="category"
                 onBlur={handleBlur}
                 as={StyledSelect}
                 errors={errors.category && touched.category}
-                data-testid={'category'}
+                data-testid="category"
               >
                 {categories.map((category) => (
                   <FormattedMessage id={category.translationKey} key={category.name}>
@@ -93,21 +93,21 @@ const ItemForm = ({ addItem, intl }) => {
               </Field>
             </FormItem>
             {errors.category && touched.category ? (
-              <ErrorText data-testid={'error-category'}>
+              <ErrorText data-testid="error-category">
                 <FormattedMessage id={errors.category} />
               </ErrorText>
             ) : null}
             <FormItem>
-              <StyledLabel htmlFor={'unit'}>
-                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_UNIT'} />
+              <StyledLabel htmlFor="unit">
+                <FormattedMessage id="PRODUCT.FORM.CHOOSE_UNIT" />
               </StyledLabel>
               <Field
-                name={'unit'}
+                name="unit"
                 onBlur={handleBlur}
-                placeholder={''}
+                placeholder=""
                 errors={errors.category && touched.category}
                 as={StyledSelect}
-                data-testid={'unit'}
+                data-testid="unit"
               >
                 {units.map((unit) => (
                   <FormattedMessage id={unit.translationKey} key={unit.name}>
@@ -117,61 +117,61 @@ const ItemForm = ({ addItem, intl }) => {
               </Field>
             </FormItem>
             {errors.unit && touched.unit ? (
-              <ErrorText data-testid={'error-unit'}>
+              <ErrorText data-testid="error-unit">
                 <FormattedMessage id={errors.unit} />
               </ErrorText>
             ) : null}
             <FormItem>
-              <StyledLabel htmlFor={'maximalQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.MAXIMAL_QUANTITY'} />
+              <StyledLabel htmlFor="maximalQuantity">
+                <FormattedMessage id="PRODUCT.FORM.MAXIMAL_QUANTITY" />
               </StyledLabel>
               <Field
-                name={'maximalQuantity'}
-                type={'number'}
-                placeholder={''}
+                name="maximalQuantity"
+                type="number"
+                placeholder=""
                 errors={errors.maximalQuantity && touched.maximalQuantity}
                 as={StyledInput}
-                data-testid={'maximalQuantity'}
+                data-testid="maximalQuantity"
               />
             </FormItem>
             {errors.maximalQuantity && touched.maximalQuantity ? (
-              <ErrorText data-testid={'error-maximal-quantity'}>
+              <ErrorText data-testid="error-maximal-quantity">
                 <FormattedMessage id={errors.maximalQuantity} />
               </ErrorText>
             ) : null}
             <FormItem>
-              <StyledLabel htmlFor={'minimalQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.MINIMAL_QUANTITY'} />
+              <StyledLabel htmlFor="minimalQuantity">
+                <FormattedMessage id="PRODUCT.FORM.MINIMAL_QUANTITY" />
               </StyledLabel>
               <Field
-                name={'minimalQuantity'}
-                type={'number'}
-                placeholder={''}
+                name="minimalQuantity"
+                type="number"
+                placeholder=""
                 errors={errors.minimalQuantity && touched.minimalQuantity}
                 as={StyledInput}
-                data-testid={'minimalQuantity'}
+                data-testid="minimalQuantity"
               />
             </FormItem>
             {errors.minimalQuantity && touched.minimalQuantity ? (
-              <ErrorText data-testid={'error-minimal-quantity'}>
+              <ErrorText data-testid="error-minimal-quantity">
                 <FormattedMessage id={errors.minimalQuantity} />
               </ErrorText>
             ) : null}
             <FormItem>
-              <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.CURRENT_QUANTITY'} />
+              <StyledLabel htmlFor="currentQuantity">
+                <FormattedMessage id="PRODUCT.FORM.CURRENT_QUANTITY" />
               </StyledLabel>
               <Field
-                name={'currentQuantity'}
-                type={'number'}
+                name="currentQuantity"
+                type="number"
                 as={StyledInput}
-                placeholder={''}
+                placeholder=""
                 errors={errors.currentQuantity && touched.currentQuantity}
-                data-testid={'currentQuantity'}
+                data-testid="currentQuantity"
               />
             </FormItem>
             {errors.currentQuantity && touched.currentQuantity ? (
-              <ErrorText data-testid={'error-current-quantity'}>
+              <ErrorText data-testid="error-current-quantity">
                 <FormattedMessage id={errors.currentQuantity} />
               </ErrorText>
             ) : null}
@@ -179,7 +179,7 @@ const ItemForm = ({ addItem, intl }) => {
               <Link to={routes.home.path}>
                 <ButtonIcon icon={decline} />
               </Link>
-              <ButtonIcon disabled={isSubmitting} type={'submit'} icon={accept} data-testid={'accept'} />
+              <ButtonIcon disabled={isSubmitting} type="submit" icon={accept} data-testid="accept" />
             </ButtonContainer>
             <ToastContainer autoClose={2500} />
           </Form>

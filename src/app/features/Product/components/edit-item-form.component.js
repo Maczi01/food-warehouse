@@ -33,7 +33,7 @@ const EditItemForm = ({ item, editItem, intl }) => {
   return (
     <FormWrapper>
       <Heading>
-        <FormattedMessage id={'PRODUCT.EDIT.HEADER'} />
+        <FormattedMessage id="PRODUCT.EDIT.HEADER" />
       </Heading>
       <Formik
         enableReinitialize
@@ -51,28 +51,17 @@ const EditItemForm = ({ item, editItem, intl }) => {
         {({ errors, touched, handleBlur, isSubmitting }) => (
           <Form>
             <FormItem>
-              <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.NAME'} />
+              <StyledLabel htmlFor="currentQuantity">
+                <FormattedMessage id="PRODUCT.FORM.NAME" />
               </StyledLabel>
-              <Field
-                name={'name'}
-                type={'text'}
-                placeholder={''}
-                errors={errors.name && touched.name}
-                as={StyledInput}
-              />
+              <Field name="name" type="text" placeholder="" errors={errors.name && touched.name} as={StyledInput} />
             </FormItem>
             {errors.name && touched.name ? <ErrorText>{errors.name}</ErrorText> : null}
             <FormItem>
-              <StyledLabel htmlFor={'category'}>
-                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_CATEGORY'} />
+              <StyledLabel htmlFor="category">
+                <FormattedMessage id="PRODUCT.FORM.CHOOSE_CATEGORY" />
               </StyledLabel>
-              <Field
-                name={'category'}
-                onBlur={handleBlur}
-                as={StyledSelect}
-                errors={errors.category && touched.category}
-              >
+              <Field name="category" onBlur={handleBlur} as={StyledSelect} errors={errors.category && touched.category}>
                 {categories.map((category) => (
                   <FormattedMessage id={category.translationKey} key={category.name}>
                     {(text) => <option value={category.name}>{text}</option>}
@@ -82,13 +71,13 @@ const EditItemForm = ({ item, editItem, intl }) => {
             </FormItem>
             {errors.category && touched.category ? <ErrorText>{errors.category}</ErrorText> : null}
             <FormItem>
-              <StyledLabel htmlFor={'unit'}>
-                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_UNIT'} />
+              <StyledLabel htmlFor="unit">
+                <FormattedMessage id="PRODUCT.FORM.CHOOSE_UNIT" />
               </StyledLabel>
               <Field
-                name={'unit'}
+                name="unit"
                 onBlur={handleBlur}
-                placeholder={''}
+                placeholder=""
                 errors={errors.category && touched.category}
                 as={StyledSelect}
               >
@@ -101,40 +90,40 @@ const EditItemForm = ({ item, editItem, intl }) => {
             </FormItem>
             {errors.unit && touched.unit ? <ErrorText>{errors.unit}</ErrorText> : null}
             <FormItem>
-              <StyledLabel htmlFor={'maximalQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.MAXIMAL_QUANTITY'} />
+              <StyledLabel htmlFor="maximalQuantity">
+                <FormattedMessage id="PRODUCT.FORM.MAXIMAL_QUANTITY" />
               </StyledLabel>
               <Field
-                name={'maximalQuantity'}
-                type={'number'}
-                placeholder={''}
+                name="maximalQuantity"
+                type="number"
+                placeholder=""
                 errors={errors.maximalQuantity && touched.maximalQuantity}
                 as={StyledInput}
               />
             </FormItem>
             {errors.maximalQuantity && touched.maximalQuantity ? <ErrorText>{errors.maximalQuantity}</ErrorText> : null}
             <FormItem>
-              <StyledLabel htmlFor={'minimalQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.MINIMAL_QUANTITY'} />
+              <StyledLabel htmlFor="minimalQuantity">
+                <FormattedMessage id="PRODUCT.FORM.MINIMAL_QUANTITY" />
               </StyledLabel>
               <Field
-                name={'minimalQuantity'}
-                type={'number'}
-                placeholder={''}
+                name="minimalQuantity"
+                type="number"
+                placeholder=""
                 errors={errors.minimalQuantity && touched.minimalQuantity}
                 as={StyledInput}
               />
             </FormItem>
             {errors.minimalQuantity && touched.minimalQuantity ? <ErrorText>{errors.minimalQuantity}</ErrorText> : null}
             <FormItem>
-              <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'PRODUCT.FORM.CURRENT_QUANTITY'} />
+              <StyledLabel htmlFor="currentQuantity">
+                <FormattedMessage id="PRODUCT.FORM.CURRENT_QUANTITY" />
               </StyledLabel>
               <Field
-                name={'currentQuantity'}
-                type={'number'}
+                name="currentQuantity"
+                type="number"
                 as={StyledInput}
-                placeholder={''}
+                placeholder=""
                 errors={errors.currentQuantity && touched.currentQuantity}
               />
             </FormItem>
@@ -143,7 +132,7 @@ const EditItemForm = ({ item, editItem, intl }) => {
               <Link to={routes.home.path}>
                 <ButtonIcon icon={decline} />
               </Link>
-              <ButtonIcon disabled={isSubmitting} type={'submit'} icon={accept} />
+              <ButtonIcon disabled={isSubmitting} type="submit" icon={accept} />
             </ButtonContainer>
             <ToastContainer autoClose={2500} />
           </Form>

@@ -89,7 +89,7 @@ const Icon = styled.img`
 const FilterViewComponent = () => (
   <>
     <Heading>
-      <FormattedMessage id={'INVENTORY.HEADER.WHAT_IN_INVENTORY'} />
+      <FormattedMessage id="INVENTORY.HEADER.WHAT_IN_INVENTORY" />
     </Heading>
     <GridWrapper>
       {categories.map((category) => (

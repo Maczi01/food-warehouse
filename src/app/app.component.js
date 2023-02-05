@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 
 import { HttpClientAdapter, auth } from './firebase.config';
-import { availableLanguages } from './language';
+import { availableLanguages, defaultLanguage } from './language';
 import Routes from './routes.component';
 import { ThemeProvider } from './shared/theme/theme';
 import { AuthProvider } from './shared/utils/auth';
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider auth={auth}>
-        <TranslationProvider defaultLanguage={'en'} languages={availableLanguages}>
+        <TranslationProvider defaultLanguage={defaultLanguage} languages={availableLanguages}>
           <ThemeProvider>
             <Routes />
           </ThemeProvider>

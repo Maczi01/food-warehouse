@@ -28,7 +28,7 @@ const AddShopModal = ({ addItemToShoppingList, setShowAddShopModal }) => (
     <ShopFormComponents
       addItemToShoppingList={addItemToShoppingList}
       setShowAddShopModal={setShowAddShopModal}
-      data-testid={'modal'}
+      data-testid="modal"
     />
   </ModalWrapper>
 );

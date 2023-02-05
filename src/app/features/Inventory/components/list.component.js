@@ -98,7 +98,7 @@ const List = ({ items, parameter }) => {
       </CategoryWrapper>
       <Link to={routes.home.path}>
         <Paragraph>
-          🡄 <FormattedMessage id={'INVENTORY.LIST.GO_BACK_BUTTON'} />
+          🡄 <FormattedMessage id="INVENTORY.LIST.GO_BACK_BUTTON" />
         </Paragraph>
       </Link>
       <UlWrapper>
@@ -116,7 +116,7 @@ const List = ({ items, parameter }) => {
         ) : (
           <EmptyListWrapper>
             <Heading>
-              <Image src={bag} alt={'shopping bag'} />
+              <Image src={bag} alt="shopping bag" />
               Nothing here,
               <Link to={routes.product.add.path}>add something</Link>
             </Heading>

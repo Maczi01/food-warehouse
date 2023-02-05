@@ -31,7 +31,7 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) => {
   return (
     <FormWrapper>
       <Heading>
-        <FormattedMessage id={'SHOPPING_LIST.FORM.ADD_PRODUCT'} />
+        <FormattedMessage id="SHOPPING_LIST.FORM.ADD_PRODUCT" />
       </Heading>
       <Formik
         enableReinitialize
@@ -51,28 +51,22 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) => {
         validateOnBlur={false}
       >
         {({ errors, touched, handleBlur, handleSubmit }) => (
-          <Form autoComplete={'off'} onSubmit={handleSubmit}>
+          <Form autoComplete="off" onSubmit={handleSubmit}>
             <FormItem>
-              <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'SHOPPING_LIST.FORM.NAME'} />
+              <StyledLabel htmlFor="currentQuantity">
+                <FormattedMessage id="SHOPPING_LIST.FORM.NAME" />
               </StyledLabel>
-              <Field
-                name={'name'}
-                type={'text'}
-                placeholder={''}
-                errors={errors.name && touched.name}
-                as={StyledInput}
-              />
+              <Field name="name" type="text" placeholder="" errors={errors.name && touched.name} as={StyledInput} />
             </FormItem>
             {errors.name && touched.name ? <ErrorText>{errors.name}</ErrorText> : null}
             <FormItem>
-              <StyledLabel htmlFor={'unit'}>
-                <FormattedMessage id={'SHOPPING_LIST.FORM.CHOOSE_UNIT'} />
+              <StyledLabel htmlFor="unit">
+                <FormattedMessage id="SHOPPING_LIST.FORM.CHOOSE_UNIT" />
               </StyledLabel>
               <Field
-                name={'unit'}
+                name="unit"
                 onBlur={handleBlur}
-                placeholder={''}
+                placeholder=""
                 errors={errors.category && touched.category}
                 as={StyledSelect}
               >
@@ -86,21 +80,21 @@ const ShopForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) => {
             {errors.unit && touched.unit ? <ErrorText>{errors.unit}</ErrorText> : null}
 
             <FormItem>
-              <StyledLabel htmlFor={'neededQuantity'}>
-                <FormattedMessage id={'SHOPPING_LIST.FORM.QUANTITY'} />
+              <StyledLabel htmlFor="neededQuantity">
+                <FormattedMessage id="SHOPPING_LIST.FORM.QUANTITY" />
               </StyledLabel>
               <Field
-                name={'neededQuantity'}
-                type={'number'}
+                name="neededQuantity"
+                type="number"
                 as={StyledInput}
-                placeholder={''}
+                placeholder=""
                 errors={errors.neededQuantity && touched.neededQuantity}
               />
             </FormItem>
             {errors.neededQuantity && touched.neededQuantity ? <ErrorText>{errors.neededQuantity}</ErrorText> : null}
             <ButtonContainer>
               <ButtonIcon onClick={() => setShowAddShopModal((prev) => !prev)} icon={decline} />
-              <ButtonIcon type={'submit'} icon={accept} />
+              <ButtonIcon type="submit" icon={accept} />
             </ButtonContainer>
           </Form>
         )}

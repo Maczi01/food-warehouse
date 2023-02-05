@@ -66,7 +66,7 @@ export const MenuItems = ({ onClick }) => {
   return (
     <>
       {links.map((link) => (
-        <ListItem key={link.translationKey} as={NavLink} to={link.to} activeclass={'active'} onClick={onClick}>
+        <ListItem key={link.translationKey} as={NavLink} to={link.to} activeclass="active" onClick={onClick}>
           <FormattedMessage id={link.translationKey} />
         </ListItem>
       ))}
