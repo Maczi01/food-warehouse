@@ -15,13 +15,15 @@ import { ButtonContainer, Heading, Image, TableWrapper } from './shopping-list-v
 const ShoppingListViewComponent = () => {
   const { state: inventoryState, getForCurrentUser: loadInventory } = useInventory();
   const {
-    state,
+    state: shoppingListState,
     addItem,
     clearList,
     generateShoppingList,
     getForCurrentUser: loadShoppingList,
+    toggleItem,
   } = useStoppingListStore();
   const [modalOpen, setModalOpen] = useState(false);
+  const shoppingList = shoppingListState && shoppingListState.shoppingList ? shoppingListState.shoppingList : [];
 
   const handleGenerateShoppingList = useCallback(() => {
     generateShoppingList(inventoryState.inventory);
@@ -58,8 +60,8 @@ const ShoppingListViewComponent = () => {
           <ButtonIcon onClick={handleGenerateShoppingList} icon={generate} data-testid="generateList" />
           <ButtonIcon onClick={clearList} icon={remove} data-testid="deleteList" />
         </ButtonContainer>
-        {state && state.shoppingList && state.shoppingList.length ? (
-          <TableComponent data={state.shoppingList} />
+        {shoppingList.length ? (
+          <TableComponent data={shoppingList} onToggleItem={toggleItem} />
         ) : (
           <span>
             <FormattedMessage id="SHOPPING_LIST.EMPTY_LIST" />

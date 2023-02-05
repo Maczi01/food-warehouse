@@ -27,7 +27,7 @@ export class ShoppingListStore {
 
   onShoppingListUpdate = (shoppingList) => {
     this.state = { ...this.state, shoppingList: shoppingList ? shoppingList : [] };
-    this.callbacks.forEach((callback) => callback()(this.state.shoppingList));
+    this.callbacks.forEach((callback) => callback()(this.state));
   };
 
   addListener = (callback) => {
@@ -62,10 +62,9 @@ export class ShoppingListStore {
   clearList = () => {
     return getHttpClient()
       .clear(collectionName)
-      .then((response) => {
-        return this.getForCurrentUser().then(() => {
-          return response;
-        });
+      .then(() => {
+        this.onShoppingListUpdate([]);
+        return Promise.resolve();
       });
   };
 
@@ -124,17 +123,18 @@ export class ShoppingListStore {
 }
 
 export const useStoppingListStore = () => {
-  const shoppingList = useMemo(() => ShoppingListStore.getInstance());
-  const [state, setState] = useState(() => shoppingList.state);
-  useEffect(() => {
-    const callback = () => (shoppingList) => {
-      setState({ shoppingList: shoppingList });
-    };
-    shoppingList.addListener(callback);
-    return () => {
-      shoppingList.removeListener(callback);
-    };
-  }, [shoppingList, setState]);
+  const store = useMemo(() => ShoppingListStore.getInstance());
+  const [state, setState] = useState(() => store.state);
 
-  return { ...shoppingList, state };
+  useEffect(() => {
+    const callback = () => (newState) => {
+      setState((oldState) => ({ ...oldState, ...newState }));
+    };
+    store.addListener(callback);
+    return () => {
+      store.removeListener(callback);
+    };
+  }, [store, setState]);
+
+  return { ...store, state };
 };
