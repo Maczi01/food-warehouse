@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { useStoppingListStore } from '../../../services/shopping-list.store';
 import StyledTr from './styled-tr.component';
 import { StyledTable, TableWrapper } from './table.styled';
 
-const Table = ({ data }) => {
-  const { toggleItem } = useStoppingListStore();
+const Table = ({ data, onToggleItem }) => {
   const items = data && data.length ? data : [];
 
   return (
@@ -33,7 +31,7 @@ const Table = ({ data }) => {
         </thead>
         <tbody>
           {items.map((item, index) => (
-            <StyledTr key={item.id} item={item} index={index} onToggle={toggleItem} />
+            <StyledTr key={item.id} item={item} index={index} onToggle={onToggleItem} />
           ))}
         </tbody>
       </StyledTable>
@@ -42,7 +40,8 @@ const Table = ({ data }) => {
 };
 
 Table.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
+  onToggleItem: PropTypes.func.isRequired,
 };
 
 Table.defaultProps = {

@@ -25,7 +25,7 @@ export class InventoryStore {
 
   onInventoryUpdate = (inventory) => {
     this.state = { ...this.state, inventory: inventory ? inventory : [] };
-    this.callbacks.forEach((callback) => callback()(this.state.inventory));
+    this.callbacks.forEach((callback) => callback()(this.state));
   };
 
   addListener = (callback) => {
@@ -106,16 +106,18 @@ export class InventoryStore {
 }
 
 export const useInventory = () => {
-  const inventoryStore = useMemo(() => InventoryStore.getInstance());
-  const [state, setState] = useState(() => inventoryStore.state);
+  const store = useMemo(() => InventoryStore.getInstance());
+  const [state, setState] = useState(() => store.state);
+
   useEffect(() => {
-    const callback = () => (inventory) => {
-      setState({ inventory: inventory });
+    const callback = () => (newState) => {
+      setState((oldState) => ({ ...oldState, ...newState }));
     };
-    inventoryStore.addListener(callback);
+    store.addListener(callback);
     return () => {
-      inventoryStore.removeListener(callback);
+      store.removeListener(callback);
     };
-  }, [inventoryStore, setState]);
-  return { ...inventoryStore, state };
+  }, [store, setState]);
+
+  return { ...store, state };
 };
