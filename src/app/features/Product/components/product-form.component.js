@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import accept from '../../../shared/assets/icons/accept.svg';
 import decline from '../../../shared/assets/icons/decline.svg';
 import { ButtonContainer, ButtonIcon } from '../../../shared/ui/Button';
-import { ErrorText, FormItem, StyledLabel } from '../../../shared/ui/Form';
+import { Error, FormItem, StyledLabel } from '../../../shared/ui/Form';
 import { StyledInput } from '../../../shared/ui/Input';
 import { StyledSelect } from '../../../shared/ui/Select';
 import { categories, units } from '../../../shared/utils/item-properties';
@@ -42,11 +42,7 @@ const ProductForm = ({ values, onSubmit }) => {
               data-testid="name"
             />
           </FormItem>
-          {errors.name && touched.name ? (
-            <ErrorText data-testid="error-name">
-              <FormattedMessage id={errors.name} />
-            </ErrorText>
-          ) : null}
+          <Error data-testid="error-name" show={touched.name} message={errors.name} />
           <FormItem>
             <StyledLabel htmlFor="category">
               <FormattedMessage id="PRODUCT.FORM.CHOOSE_CATEGORY" />
@@ -65,11 +61,7 @@ const ProductForm = ({ values, onSubmit }) => {
               ))}
             </Field>
           </FormItem>
-          {errors.category && touched.category ? (
-            <ErrorText data-testid="error-category">
-              <FormattedMessage id={errors.category} />
-            </ErrorText>
-          ) : null}
+          <Error testid="error-category" show={touched.category} message={errors.category} />
           <FormItem>
             <StyledLabel htmlFor="unit">
               <FormattedMessage id="PRODUCT.FORM.CHOOSE_UNIT" />
@@ -89,11 +81,7 @@ const ProductForm = ({ values, onSubmit }) => {
               ))}
             </Field>
           </FormItem>
-          {errors.unit && touched.unit ? (
-            <ErrorText data-testid="error-unit">
-              <FormattedMessage id={errors.unit} />
-            </ErrorText>
-          ) : null}
+          <Error testid="error-unit" show={touched.unit} message={errors.unit} />
           <FormItem>
             <StyledLabel htmlFor="maximalQuantity">
               <FormattedMessage id="PRODUCT.FORM.MAXIMAL_QUANTITY" />
@@ -107,11 +95,7 @@ const ProductForm = ({ values, onSubmit }) => {
               data-testid="maximalQuantity"
             />
           </FormItem>
-          {errors.maximalQuantity && touched.maximalQuantity ? (
-            <ErrorText data-testid="error-maximal-quantity">
-              <FormattedMessage id={errors.maximalQuantity} />
-            </ErrorText>
-          ) : null}
+          <Error testid="error-maximal-quantity" show={touched.maximalQuantity} message={errors.maximalQuantity} />
           <FormItem>
             <StyledLabel htmlFor="minimalQuantity">
               <FormattedMessage id="PRODUCT.FORM.MINIMAL_QUANTITY" />
@@ -125,11 +109,7 @@ const ProductForm = ({ values, onSubmit }) => {
               data-testid="minimalQuantity"
             />
           </FormItem>
-          {errors.minimalQuantity && touched.minimalQuantity ? (
-            <ErrorText data-testid="error-minimal-quantity">
-              <FormattedMessage id={errors.minimalQuantity} />
-            </ErrorText>
-          ) : null}
+          <Error testid="error-minimal-quantity" show={touched.minimalQuantity} message={errors.minimalQuantity} />
           <FormItem>
             <StyledLabel htmlFor="currentQuantity">
               <FormattedMessage id="PRODUCT.FORM.CURRENT_QUANTITY" />
@@ -143,11 +123,7 @@ const ProductForm = ({ values, onSubmit }) => {
               data-testid="currentQuantity"
             />
           </FormItem>
-          {errors.currentQuantity && touched.currentQuantity ? (
-            <ErrorText data-testid="error-current-quantity">
-              <FormattedMessage id={errors.currentQuantity} />
-            </ErrorText>
-          ) : null}
+          <Error testid="error-current-quantity" show={touched.currentQuantity} message={errors.currentQuantity} />
           <ButtonContainer>
             <Link to={routes.home.path}>
               <ButtonIcon icon={decline} />

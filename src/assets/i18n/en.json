@@ -92,6 +92,9 @@
       "QUANTITY": "Quantity",
       "MESSAGE": {
         "SUCCESS": "Successfully added product: {name}"
+      },
+      "ERROR": {
+        "CURRENT_QUANTITY_LOWER_THAN_MAXIMAL": "Current quantity must be lower than maximal!"
       }
     }
   },

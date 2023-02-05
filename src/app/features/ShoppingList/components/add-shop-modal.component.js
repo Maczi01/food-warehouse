@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import ShopFormComponents from './shop-form.components';
+import ShopFormComponents from './shopping-item-form.components';
 
 const ModalWrapper = styled.div`
   padding: 50px;
