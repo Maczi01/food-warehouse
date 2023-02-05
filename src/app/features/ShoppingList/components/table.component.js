@@ -7,6 +7,7 @@ import { StyledTable, TableWrapper } from './table.styled';
 
 const Table = ({ data }) => {
   const { toggleItem } = useStoppingListStore();
+  const items = data && data.length ? data : [];
 
   return (
     <TableWrapper>
@@ -31,11 +32,9 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data &&
-            data.length &&
-            data.map((item, index) => (
-              <StyledTr key={item.id} item={item} index={index} setItemAsChecked={toggleItem} />
-            ))}
+          {items.map((item, index) => (
+            <StyledTr key={item.id} item={item} index={index} onToggle={toggleItem} />
+          ))}
         </tbody>
       </StyledTable>
     </TableWrapper>

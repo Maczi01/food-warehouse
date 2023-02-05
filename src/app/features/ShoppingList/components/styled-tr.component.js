@@ -13,20 +13,20 @@ const Td = styled.td`
   text-align: center;
 `;
 
-const StyledTr = ({ item, setItemAsChecked }) => (
+const StyledTr = ({ item, onToggle }) => (
   <StyledTrWrapper checked={item.checked}>
     <Td checked={item.checked}>{item.name}</Td>
     <Td checked={item.checked}>{item.neededQuantity}</Td>
     <Td checked={item.checked}>{item.unit}</Td>
     <Td>
-      <input type="checkbox" onChange={() => setItemAsChecked(item)} />
+      <input type="checkbox" onChange={() => onToggle(item)} />
     </Td>
   </StyledTrWrapper>
 );
 
 StyledTr.propTypes = {
   item: PropTypes.object.isRequired,
-  setItemAsChecked: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default StyledTr;
