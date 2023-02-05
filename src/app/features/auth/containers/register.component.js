@@ -1,17 +1,19 @@
 import { useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router';
-import { ToastContainer, toast } from 'react-toastify';
 
 import { UserContext, useAuth } from '../../../shared/utils/auth';
 import { useHttpClient } from '../../../shared/utils/http-client';
 import { routes } from '../../../shared/utils/routes';
+import { toast } from '../../../shared/utils/toast';
 import RegisterFormComponent from '../components/register-form.component';
 
 const RegisterComponent = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
-  const { auth } = useAuth();
   const client = useHttpClient();
+  const { auth } = useAuth();
+  const { currentUser } = useContext(UserContext);
+
   const handleRegister = (event) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
@@ -38,16 +40,11 @@ const RegisterComponent = () => {
     setError(false);
   };
 
-  const { currentUser } = useContext(UserContext);
   if (currentUser) {
     return <Navigate to={routes.home.path} />;
   }
-  return (
-    <>
-      <RegisterFormComponent removeBorder={removeBorder} error={error} handleRegister={handleRegister} />
-      <ToastContainer autoClose={2500} />
-    </>
-  );
+
+  return <RegisterFormComponent removeBorder={removeBorder} error={error} handleRegister={handleRegister} />;
 };
 
 export default RegisterComponent;

@@ -1,8 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import accept from '../../../shared/assets/icons/accept.svg';
 import decline from '../../../shared/assets/icons/decline.svg';
@@ -13,6 +11,7 @@ import { Heading } from '../../../shared/ui/Page';
 import { StyledSelect } from '../../../shared/ui/Select';
 import { units } from '../../../shared/utils/item-properties';
 import { ShoppingListSchema } from '../../../shared/utils/shopping-list.schema';
+import { toast } from '../../../shared/utils/toast';
 
 const ShopForm = ({ addItemToShoppingList, setShowAddShopModal, intl }) => {
   const { formatMessage } = intl;

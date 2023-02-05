@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { injectIntl } from 'react-intl';
 import { Navigate } from 'react-router';
-import { ToastContainer, toast } from 'react-toastify';
 
 import { useAuth } from '../../../shared/utils/auth';
 import { routes } from '../../../shared/utils/routes';
+import { toast } from '../../../shared/utils/toast';
 import LoginFormComponent from '../components/login-form.component';
 
 const LoginComponent = ({ intl }) => {
@@ -41,12 +41,7 @@ const LoginComponent = ({ intl }) => {
     setError(false);
   };
 
-  return (
-    <>
-      <LoginFormComponent removeBorder={removeBorder} error={error} handleLogin={handleLogin} />
-      <ToastContainer autoClose={2500} />
-    </>
-  );
+  return <LoginFormComponent removeBorder={removeBorder} error={error} handleLogin={handleLogin} />;
 };
 
 LoginComponent.propTypes = {

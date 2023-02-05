@@ -2,8 +2,6 @@ import { Field, Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import accept from '../../../shared/assets/icons/accept.svg';
 import decline from '../../../shared/assets/icons/decline.svg';
@@ -156,7 +154,6 @@ const ProductForm = ({ values, onSubmit }) => {
             </Link>
             <ButtonIcon disabled={isSubmitting} type="submit" icon={accept} data-testid="accept" />
           </ButtonContainer>
-          <ToastContainer autoClose={2500} />
         </Form>
       )}
     </Formik>
