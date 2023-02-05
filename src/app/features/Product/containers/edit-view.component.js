@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
-import { useInventory } from '../../../services/inventory.store';
+import { useInventory } from '../../../services/inventory.hook';
 import { FormWrapper } from '../../../shared/ui/Form';
 import { Heading } from '../../../shared/ui/Page';
 import { toast } from '../../../shared/utils/toast';
