@@ -8,6 +8,25 @@ export const useLanguage = () => {
 };
 export const LanguageContext = createContext(undefined);
 
+const flattenMessages = (nestedMessages, prefix = '') => {
+  if (nestedMessages === null) {
+    return {};
+  }
+
+  return Object.keys(nestedMessages).reduce((messages, key) => {
+    const value = nestedMessages[key];
+    const prefixedKey = prefix ? `${prefix}.${key}` : key;
+
+    if (typeof value === 'string') {
+      Object.assign(messages, { [prefixedKey]: value });
+    } else {
+      Object.assign(messages, flattenMessages(value, prefixedKey));
+    }
+
+    return messages;
+  }, {});
+};
+
 export const TranslationProvider = ({ children, languages, defaultLanguage }) => {
   const [language, setLanguage] = useState(
     languages.length ? languages.find((item) => item.locale === defaultLanguage) : defaultLanguage
@@ -36,7 +55,7 @@ export const TranslationProvider = ({ children, languages, defaultLanguage }) =>
 
   return (
     <LanguageContext.Provider value={{ changeLanguage: handleLanguageChange, language }}>
-      <IntlProvider locale={language.locale} messages={language.lang}>
+      <IntlProvider locale={language.locale} messages={flattenMessages(language.lang)}>
         {children}
       </IntlProvider>
     </LanguageContext.Provider>

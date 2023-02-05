@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,17 +12,20 @@ import { ErrorText, FormItem, FormWrapper, StyledLabel } from '../../../shared/u
 import { StyledInput } from '../../../shared/ui/Input';
 import { Heading } from '../../../shared/ui/Page';
 import { StyledSelect } from '../../../shared/ui/Select';
-import { FoodListSchema } from '../../../shared/utils/food-list.schema';
-import { properties } from '../../../shared/utils/item-properties';
+import { categories, units } from '../../../shared/utils/item-properties';
+import { routes } from '../../../shared/utils/routes';
+import { ItemFormSchema } from '../item-form.schema';
 
-const EditItemForm = ({ item, editItem }) => {
+const EditItemForm = ({ item, editItem, intl }) => {
+  const { formatMessage } = intl;
+
   const handleSubmitForm = (values) => {
     editItem(values);
     notify(values.name);
   };
 
   const notify = (name) => {
-    toast.success(`Succesfully edited ${name}`, {
+    toast.success(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.SUCCESS', values: { name } }), {
       position: toast.POSITION.TOP_CENTER,
     });
   };
@@ -30,7 +33,7 @@ const EditItemForm = ({ item, editItem }) => {
   return (
     <FormWrapper>
       <Heading>
-        <FormattedMessage id={'edit product'} />
+        <FormattedMessage id={'PRODUCT.EDIT.HEADER'} />
       </Heading>
       <Formik
         enableReinitialize
@@ -41,7 +44,7 @@ const EditItemForm = ({ item, editItem }) => {
           setSubmitting(false);
           resetForm({});
         }}
-        validationSchema={FoodListSchema}
+        validationSchema={ItemFormSchema}
         validateOnChange={false}
         validateOnBlur={false}
       >
@@ -49,7 +52,7 @@ const EditItemForm = ({ item, editItem }) => {
           <Form>
             <FormItem>
               <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'name'} />
+                <FormattedMessage id={'PRODUCT.FORM.NAME'} />
               </StyledLabel>
               <Field
                 name={'name'}
@@ -62,7 +65,7 @@ const EditItemForm = ({ item, editItem }) => {
             {errors.name && touched.name ? <ErrorText>{errors.name}</ErrorText> : null}
             <FormItem>
               <StyledLabel htmlFor={'category'}>
-                <FormattedMessage id={'choose category'} />
+                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_CATEGORY'} />
               </StyledLabel>
               <Field
                 name={'category'}
@@ -70,9 +73,9 @@ const EditItemForm = ({ item, editItem }) => {
                 as={StyledSelect}
                 errors={errors.category && touched.category}
               >
-                {properties.categories.map((category) => (
-                  <FormattedMessage id={category} key={category}>
-                    {(text) => <option value={category}>{text}</option>}
+                {categories.map((category) => (
+                  <FormattedMessage id={category.translationKey} key={category.name}>
+                    {(text) => <option value={category.name}>{text}</option>}
                   </FormattedMessage>
                 ))}
               </Field>
@@ -80,7 +83,7 @@ const EditItemForm = ({ item, editItem }) => {
             {errors.category && touched.category ? <ErrorText>{errors.category}</ErrorText> : null}
             <FormItem>
               <StyledLabel htmlFor={'unit'}>
-                <FormattedMessage id={'choose unit'} />
+                <FormattedMessage id={'PRODUCT.FORM.CHOOSE_UNIT'} />
               </StyledLabel>
               <Field
                 name={'unit'}
@@ -89,9 +92,9 @@ const EditItemForm = ({ item, editItem }) => {
                 errors={errors.category && touched.category}
                 as={StyledSelect}
               >
-                {properties.units.map((unit) => (
-                  <FormattedMessage id={unit} key={unit}>
-                    {(text) => <option value={text}>{unit}</option>}
+                {units.map((unit) => (
+                  <FormattedMessage id={unit.translationKey} key={unit.name}>
+                    {(text) => <option value={unit.name}>{text}</option>}
                   </FormattedMessage>
                 ))}
               </Field>
@@ -99,7 +102,7 @@ const EditItemForm = ({ item, editItem }) => {
             {errors.unit && touched.unit ? <ErrorText>{errors.unit}</ErrorText> : null}
             <FormItem>
               <StyledLabel htmlFor={'maximalQuantity'}>
-                <FormattedMessage id={'maximal quantity'} />
+                <FormattedMessage id={'PRODUCT.FORM.MAXIMAL_QUANTITY'} />
               </StyledLabel>
               <Field
                 name={'maximalQuantity'}
@@ -112,7 +115,7 @@ const EditItemForm = ({ item, editItem }) => {
             {errors.maximalQuantity && touched.maximalQuantity ? <ErrorText>{errors.maximalQuantity}</ErrorText> : null}
             <FormItem>
               <StyledLabel htmlFor={'minimalQuantity'}>
-                <FormattedMessage id={'minimal quantity'} />
+                <FormattedMessage id={'PRODUCT.FORM.MINIMAL_QUANTITY'} />
               </StyledLabel>
               <Field
                 name={'minimalQuantity'}
@@ -125,7 +128,7 @@ const EditItemForm = ({ item, editItem }) => {
             {errors.minimalQuantity && touched.minimalQuantity ? <ErrorText>{errors.minimalQuantity}</ErrorText> : null}
             <FormItem>
               <StyledLabel htmlFor={'currentQuantity'}>
-                <FormattedMessage id={'current quantity'} />
+                <FormattedMessage id={'PRODUCT.FORM.CURRENT_QUANTITY'} />
               </StyledLabel>
               <Field
                 name={'currentQuantity'}
@@ -137,7 +140,7 @@ const EditItemForm = ({ item, editItem }) => {
             </FormItem>
             {errors.currentQuantity && touched.currentQuantity ? <ErrorText>{errors.currentQuantity}</ErrorText> : null}
             <ButtonContainer>
-              <Link to={'/'}>
+              <Link to={routes.home.path}>
                 <ButtonIcon icon={decline} />
               </Link>
               <ButtonIcon disabled={isSubmitting} type={'submit'} icon={accept} />
@@ -153,6 +156,7 @@ const EditItemForm = ({ item, editItem }) => {
 EditItemForm.propTypes = {
   item: PropTypes.object,
   editItem: PropTypes.func,
+  intl: PropTypes.object,
 };
 
-export default EditItemForm;
+export default injectIntl(EditItemForm);

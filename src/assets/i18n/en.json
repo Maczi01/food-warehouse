@@ -1,50 +1,139 @@
 {
-  "add category": "Add category",
-  "add product": "Add product",
-  "add unit": "Add unit",
-  "baking": "baking",
-  "beverages": "beverages",
-  "choose category": "Choose category",
-  "choose unit": "Choose unit",
-  "change language": "Change Language",
-  "check inventory": "Check inventory",
-  "current quantity": "Current quantity",
-  "dairy": "dairy",
-  "dark mode": "Dark moge",
-  "empty inventory": "Empty inventory!",
-  "empty list": "The list is generated if the amount of the item falls below the minimum amount",
-  "edit product": "Edit product",
-  "have account": "You have account?",
-  "have not account": "You havn't account?",
-  "kilogram": "kilogram",
-  "liter": "liter",
-  "logged as": "You're logged as ",
-  "log in": "Log in",
-  "logout": "Logout",
-  "maximal quantity": "Maximal quantity",
-  "meat and more": "meat, fishes, seafood",
-  "minimal quantity": "Minimal quantity",
-  "name": "Name",
-  "others": "others",
-  "on": "on",
-  "off": "off",
-  "pasta": "pasta, rice, groats",
-  "piece": "piece",
-  "quantity": "Quantity",
-  "settings": "Settings",
-  "shopping list": "Shopping List",
-  "spieces": "loose products, spieces",
-  "sign in": "Sign up",
-  "sweets": "sweets and snacks",
-  "unit": "Unit",
-  "vegetables and fruits": "vegetables and fruits",
-  "what in inventory": "Check, what you have in inventory",
-  "Login welcome mesage": "I'm still working on this application, but if you want to try, use this data login: test@test.com password: tested",
-  "sign up": "Register",
-  "sign up account": "Register, it is free and quick!",
-  "register": "Register",
-  "login": "Log in",
-  "all categories": "All categories",
-  "go back": "Go back to select category",
-  "pdf saved": "File with list succesfully saved"
+  "GLOBAL": {
+    "LANGUAGES": {
+      "POLISH": "Polski",
+      "ENGLISH": "English"
+    },
+    "MENU": {
+      "CHECK_INVENTORY": "Check inventory",
+      "ADD_PRODUCT": "Add product",
+      "SHOPPING_LIST": "Shopping List",
+      "SETTINGS": "Settings"
+    },
+    "UNIT": {
+      "KILOGRAM": "kilogram",
+      "LITER": "liter",
+      "PIECE": "piece"
+    },
+    "FORM": {
+      "ERROR": {
+        "MIN": "Field value is too short",
+        "MAX": "Field value is too long",
+        "REQUIRED": "Field is required",
+        "NUMBER": "Field value has to be a number"
+      }
+    }
+  },
+  "LOGIN": {
+    "ERROR": {
+      "WRONG_CREDENTIALS": "Wrong credentials"
+    },
+    "HEADER": {
+      "TITLE": "Log in",
+      "WELCOME_MESSAGE": "I'm still working on this application, but if you want to try, use this data login: test@test.com password: tested"
+    },
+    "BODY": {
+      "SING_UP_MESSAGE": "You don't have an account?",
+      "EMAIL_PLACEHOLDER": "Email",
+      "PASSWORD_PLACEHOLDER": "Password",
+      "BUTTON": {
+        "LOG_IN": "Log in",
+        "SIGN_UP": "Sign up"
+      }
+    }
+  },
+  "REGISTER": {
+    "HEADER": {
+      "TITLE": "Register",
+      "CREATE_NEW_ACCOUNT_MESSAGE": "Register, it is free and quick!"
+    },
+    "BODY": {
+      "LOG_IN_MESSAGE": "You have account?",
+      "EMAIL_PLACEHOLDER": "Email",
+      "PASSWORD_PLACEHOLDER": "Password",
+      "BUTTON": {
+        "LOG_IN": "Log in",
+        "SIGN_UP": "Sign up"
+      }
+    }
+  },
+  "INVENTORY": {
+    "CATEGORIES": {
+      "ALL": "all categories",
+      "BEVERAGES": "beverages",
+      "BAKING": "baking",
+      "DAIRY": "dairy",
+      "MEAT_FISHES_SEAFOOD": "meat, fishes, seafood",
+      "PASTA": "pasta, rice, groats",
+      "SPICES": "loose products, spices",
+      "SWEETS_AND_SNACKS": "sweets and snacks",
+      "VEGETABLES_AND_FRUITS": "vegetables and fruits",
+      "OTHERS": "others"
+    },
+    "HEADER": {
+      "WHAT_IN_INVENTORY": "Check, what you have in inventory"
+    },
+    "LIST": {
+      "GO_BACK_BUTTON": "Go back to select category"
+    }
+  },
+  "SHOPPING_LIST": {
+    "HEADER": "Shopping List",
+    "EMPTY_LIST": "The list is generated if the amount of the item falls below the minimum amount",
+    "TABLE": {
+      "NAME": "Name",
+      "QUANTITY": "Quantity",
+      "UNIT": "Unit"
+    },
+    "FORM": {
+      "ADD_PRODUCT": "Add product",
+      "NAME": "Name",
+      "CHOOSE_UNIT": "Choose unit",
+      "QUANTITY": "Quantity",
+      "MESSAGE": {
+        "SUCCESS": "Successfully added product: {name}"
+      }
+    }
+  },
+  "PRODUCT": {
+    "ADD": {
+      "HEADER": "Add product",
+      "MESSAGE": {
+        "SUCCESS": "Successfully added product: {name}"
+      }
+    },
+    "EDIT": {
+      "HEADER": "Edit product",
+      "MESSAGE": {
+        "SUCCESS": "Successfully saved product: {name}"
+      }
+    },
+    "FORM": {
+      "ERROR": {
+        "CURRENT_QUANTITY_LOWER_THAN_MAXIMAL": "Current quantity must be lower than maximal!",
+        "LOWER_QUANTITY_LOWER_THAN_MAXIMAL": "Minimal quantity must be lower than maximal!",
+        "MAXIMAL_QUANTITY_GRATER_THAN_MINIMAL": "Maximal quantity must be greater than minimal!"
+      },
+      "NAME": "Name",
+      "CHOOSE_CATEGORY": "Choose category",
+      "CHOOSE_UNIT": "Choose unit",
+      "MAXIMAL_QUANTITY": "Maximal quantity",
+      "MINIMAL_QUANTITY": "Minimal quantity",
+      "CURRENT_QUANTITY": "Current quantity"
+    }
+  },
+  "SETTINGS": {
+    "HEADER": {
+      "TITLE": "Settings"
+    },
+    "BODY": {
+      "LOGGED_AS": "You're logged as {email}",
+      "LOGOUT": "Logout",
+      "THEME": {
+        "DARK_MODE": "Dark mode",
+        "DARK_MODE_ON": "On",
+        "DARK_MODE_OFF": "Off"
+      }
+    }
+  }
 }

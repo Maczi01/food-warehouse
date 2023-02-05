@@ -2,16 +2,8 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import all from '../../../shared/assets/icons/all.svg';
-import beverages from '../../../shared/assets/icons/beverages.svg';
-import bread from '../../../shared/assets/icons/bread.svg';
-import dairy from '../../../shared/assets/icons/dairy.svg';
-import meat from '../../../shared/assets/icons/meat.svg';
-import other from '../../../shared/assets/icons/other.svg';
-import pasta from '../../../shared/assets/icons/pasta.svg';
-import spieces from '../../../shared/assets/icons/spieces.svg';
-import sweets from '../../../shared/assets/icons/sweets.svg';
-import vegetables from '../../../shared/assets/icons/vegetables.svg';
+import { categories } from '../../../shared/utils/item-properties';
+import { routes } from '../../../shared/utils/routes';
 
 const GridWrapper = styled.div`
   display: flex;
@@ -97,78 +89,22 @@ const Icon = styled.img`
 const FilterViewComponent = () => (
   <>
     <Heading>
-      <FormattedMessage id={'what in inventory'} />
+      <FormattedMessage id={'INVENTORY.HEADER.WHAT_IN_INVENTORY'} />
     </Heading>
     <GridWrapper>
-      <IconWrapper as={Link} to={'/filter/all'}>
-        <Icon src={all} />
-        <Paragraph>
-          <FormattedMessage id={'all categories'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/beverages'}>
-        <Icon src={beverages} />
-        <Paragraph>
-          <FormattedMessage id={'beverages'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/baking'}>
-        <Icon src={bread} />
-        <Paragraph>
-          <FormattedMessage id={'baking'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/dairy'}>
-        <Icon src={dairy} />
-        <Paragraph>
-          <FormattedMessage id={'dairy'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/meatFishesSeafood'}>
-        <Icon src={meat} />
-        <Paragraph>
-          <FormattedMessage id={'meat and more'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/pasta'}>
-        <Icon src={pasta} />
-        <Paragraph>
-          <FormattedMessage id={'pasta'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/spieces'}>
-        <Icon src={spieces} />
-        <Paragraph>
-          <FormattedMessage id={'spieces'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/sweetsAndSnacks'}>
-        <Icon src={sweets} />
-        <Paragraph>
-          <FormattedMessage id={'sweets'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/vegetablesAndFruits'}>
-        <Icon src={vegetables} />
-        <Paragraph>
-          <FormattedMessage id={'vegetables and fruits'} />
-        </Paragraph>
-      </IconWrapper>
-
-      <IconWrapper as={Link} to={'/filter/others'}>
-        <Icon src={other} />
-        <Paragraph>
-          <FormattedMessage id={'others'} />
-        </Paragraph>
-      </IconWrapper>
+      {categories.map((category) => (
+        <IconWrapper
+          key={category.name}
+          as={Link}
+          to={routes.inventory.category.url(category.name)}
+          data-testid={category.id}
+        >
+          <Icon src={category.icon} />
+          <Paragraph>
+            <FormattedMessage id={category.translationKey} />
+          </Paragraph>
+        </IconWrapper>
+      ))}
     </GridWrapper>
   </>
 );

@@ -6,8 +6,9 @@ import edit from '../../../shared/assets/icons/edit.svg';
 import minus from '../../../shared/assets/icons/minus.svg';
 import plus from '../../../shared/assets/icons/plus.svg';
 import remove from '../../../shared/assets/icons/remove.svg';
+import { routes } from '../../../shared/utils/routes';
 
-const ItemWraper = styled.li`
+const ItemWrapper = styled.li`
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
@@ -104,7 +105,7 @@ const ListItem = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <ItemWraper data-testid={'item'}>
+    <ItemWrapper data-testid={'item'}>
       <Container>
         <NameWrapper data-testid={'itemName'}>{name}</NameWrapper>
         <InfoWrapper data-testid={'itemUnit'}>{unit} </InfoWrapper>
@@ -118,10 +119,10 @@ const ListItem = ({
       <Container>
         <StyledButton src={minus} onClick={decreaseQuantity} data-testid={'decreaseQuantity'} />
         <StyledButton src={plus} onClick={increaseQuantity} data-testid={'increaseQuantity'} />
-        <StyledButton src={edit} onClick={() => navigate(`/edit/${id}`)} data-testid={'editItem'} />
+        <StyledButton src={edit} onClick={() => navigate(routes.product.edit.url(id))} data-testid={'editItem'} />
         <StyledButton src={remove} onClick={deleteItem} data-testid={'deleteItem'} />
       </Container>
-    </ItemWraper>
+    </ItemWrapper>
   );
 };
 

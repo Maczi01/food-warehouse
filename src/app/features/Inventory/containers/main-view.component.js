@@ -23,6 +23,8 @@ const Heading = styled.h1`
   }
 `;
 
+const allCategoryName = 'all';
+
 const MainViewComponent = () => {
   const { parameter } = useParams();
   const { state, getForCurrentUser } = useInventory();
@@ -32,11 +34,12 @@ const MainViewComponent = () => {
   }, []);
 
   const newFoodList =
-    parameter === 'all' ? state.inventory : state.inventory.filter((item) => item.category === parameter);
+    parameter === allCategoryName ? state.inventory : state.inventory.filter((item) => item.category === parameter);
+
   return (
     <>
       <Heading>
-        <FormattedMessage id={'what in inventory'} />
+        <FormattedMessage id={'INVENTORY.HEADER.WHAT_IN_INVENTORY'} />
       </Heading>
       <List items={newFoodList} parameter={parameter} />
     </>

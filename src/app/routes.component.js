@@ -14,24 +14,13 @@ import RegisterComponent from './features/auth/containers/register.component';
 import { DefaultLayout } from './layouts/default-layout';
 import UnauthorizedLayout from './layouts/unauthorized-layout.component';
 import { UserContext } from './shared/utils/auth';
-
-export const routes = {
-  home: '/',
-  list: '/list',
-  add: '/add',
-  edit: '/edit/:id',
-  settings: '/settings',
-  login: '/login',
-  register: '/register',
-  filter: '/filter/',
-  parameter: ':parameter',
-};
+import { routes } from './shared/utils/routes';
 
 const PrivateRoute = ({ children }) => {
   const { currentUser } = useContext(UserContext);
 
   if (!currentUser) {
-    return <Navigate to={'/login'} />;
+    return <Navigate to={routes.login.path} />;
   }
 
   return <DefaultLayout>{children}</DefaultLayout>;
@@ -45,7 +34,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route
-        path={routes.login}
+        path={routes.login.path}
         element={
           <UnauthorizedLayout>
             <LoginComponent />
@@ -53,17 +42,17 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path={routes.register}
+        path={routes.register.path}
         element={
           <UnauthorizedLayout>
             <RegisterComponent />
           </UnauthorizedLayout>
         }
       />
-      <Route path={'/'}>
+      <Route path={routes.home.path}>
         <Route
           exact
-          path={routes.home}
+          path={routes.home.path}
           element={
             <PrivateRoute>
               <MainView />
@@ -71,7 +60,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path={`${routes.filter}${routes.parameter}`}
+          path={routes.inventory.category.path}
           element={
             <PrivateRoute>
               <FilterView />
@@ -79,7 +68,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path={routes.list}
+          path={routes.inventory.list.path}
           element={
             <PrivateRoute>
               <ShoppingListViewComponent />
@@ -87,7 +76,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path={routes.add}
+          path={routes.product.add.path}
           element={
             <PrivateRoute>
               <AddViewComponent />
@@ -95,7 +84,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path={routes.edit}
+          path={routes.product.edit.path}
           element={
             <PrivateRoute>
               <EditViewComponent />
@@ -103,7 +92,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path={routes.settings}
+          path={routes.settings.path}
           element={
             <PrivateRoute>
               <SettingsViewComponent />

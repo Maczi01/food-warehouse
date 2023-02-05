@@ -61,13 +61,13 @@ const Table = ({ data }) => {
         <thead>
           <tr>
             <th>
-              <FormattedMessage id={'name'} />
+              <FormattedMessage id={'SHOPPING_LIST.TABLE.NAME'} />
             </th>
             <th>
-              <FormattedMessage id={'quantity'} />
+              <FormattedMessage id={'SHOPPING_LIST.TABLE.QUANTITY'} />
             </th>
             <th>
-              <FormattedMessage id={'unit'} />
+              <FormattedMessage id={'SHOPPING_LIST.TABLE.UNIT'} />
             </th>
             <th>Purchased</th>
           </tr>

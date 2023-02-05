@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import { UserContext, useAuth } from '../../../shared/utils/auth';
 import { useHttpClient } from '../../../shared/utils/http-client';
+import { routes } from '../../../shared/utils/routes';
 import RegisterFormComponent from '../components/register-form.component';
 
 const RegisterComponent = () => {
@@ -18,7 +19,7 @@ const RegisterComponent = () => {
       .createUserWithEmailAndPassword(email.value, password.value)
       .then(() => client.create('users', { userMail: email.value }))
       .then(() => {
-        navigate('/');
+        navigate(routes.home.path);
       })
       .catch((error) => {
         setError(true);
@@ -39,7 +40,7 @@ const RegisterComponent = () => {
 
   const { currentUser } = useContext(UserContext);
   if (currentUser) {
-    return <Navigate to={'/'} />;
+    return <Navigate to={routes.home.path} />;
   }
   return (
     <>

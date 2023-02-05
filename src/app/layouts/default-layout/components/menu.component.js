@@ -3,6 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { routes } from '../../../shared/utils/routes';
+
 const StyledMenu = styled.ul`
   display: flex;
   flex-direction: column;
@@ -37,21 +39,49 @@ const ListItem = styled.li`
   }
 `;
 
+export const links = [
+  {
+    id: 'checkInventory',
+    to: routes.home.path,
+    translationKey: 'GLOBAL.MENU.CHECK_INVENTORY',
+  },
+  {
+    id: 'addProduct',
+    to: routes.product.add.path,
+    translationKey: 'GLOBAL.MENU.ADD_PRODUCT',
+  },
+  {
+    id: 'shoppingList',
+    to: routes.inventory.list.path,
+    translationKey: 'GLOBAL.MENU.SHOPPING_LIST',
+  },
+  {
+    id: 'settings',
+    to: routes.settings.path,
+    translationKey: 'GLOBAL.MENU.SETTINGS',
+  },
+];
+
+export const MenuItems = ({ onClick }) => {
+  return (
+    <>
+      {links.map((link) => (
+        <ListItem key={link.translationKey} as={NavLink} to={link.to} activeclass={'active'} onClick={onClick}>
+          <FormattedMessage id={link.translationKey} />
+        </ListItem>
+      ))}
+    </>
+  );
+};
+
+MenuItems.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
 const Menu = ({ open, setOpen }) => {
   return (
     <StyledMenu open={open}>
-      <ListItem as={NavLink} to={'/'} activeclass={'active'} onClick={() => setOpen(!open)}>
-        <FormattedMessage id={'check inventory'} />
-      </ListItem>
-      <ListItem as={NavLink} to={'/add'} activeclass={'active'} onClick={() => setOpen(!open)}>
-        <FormattedMessage id={'add product'} />
-      </ListItem>
-      <ListItem as={NavLink} to={'/list'} activeclass={'active'} onClick={() => setOpen(!open)}>
-        <FormattedMessage id={'shopping list'} />
-      </ListItem>
-      <ListItem as={NavLink} to={'/settings'} activeclass={'active'} onClick={() => setOpen(!open)}>
-        <FormattedMessage id={'settings'} />
-      </ListItem>
+      <MenuItems onClick={() => setOpen(!open)} />
     </StyledMenu>
   );
 };

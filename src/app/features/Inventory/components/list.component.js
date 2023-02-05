@@ -3,9 +3,10 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { routes } from '../../../routes.component';
 import { useInventory } from '../../../services/inventory.store';
 import bag from '../../../shared/assets/icons/bag.svg';
+import { categories } from '../../../shared/utils/item-properties';
+import { routes } from '../../../shared/utils/routes';
 import ListItem from './list-item.components';
 
 const UlWrapper = styled.ul`
@@ -73,18 +74,31 @@ const EmptyListWrapper = styled.div`
   font-size: 14px;
 `;
 
+const Header = ({ category }) => {
+  const categoryName = categories.find((cat) => cat.name === category);
+
+  if (!categoryName) {
+    return null;
+  }
+
+  return <FormattedMessage id={categoryName.translationKey} />;
+};
+
+Header.propTypes = {
+  category: PropTypes.string,
+};
+
 const List = ({ items, parameter }) => {
   const { increaseQuantity, decreaseQuantity, deleteItem, editItem } = useInventory();
 
   return (
     <>
       <CategoryWrapper>
-        {parameter === 'all' ? <FormattedMessage id={'all categories'} /> : <FormattedMessage id={parameter} />}
+        <Header category={parameter} />
       </CategoryWrapper>
-      <Link to={'/'}>
-        {' '}
+      <Link to={routes.home.path}>
         <Paragraph>
-          🡄 <FormattedMessage id={'go back'} />
+          🡄 <FormattedMessage id={'INVENTORY.LIST.GO_BACK_BUTTON'} />
         </Paragraph>
       </Link>
       <UlWrapper>
@@ -102,9 +116,9 @@ const List = ({ items, parameter }) => {
         ) : (
           <EmptyListWrapper>
             <Heading>
-              <Image src={bag} alt={'shoping bag'} />
+              <Image src={bag} alt={'shopping bag'} />
               Nothing here,
-              <Link to={routes.add}>add something</Link>
+              <Link to={routes.product.add.path}>add something</Link>
             </Heading>
           </EmptyListWrapper>
         )}

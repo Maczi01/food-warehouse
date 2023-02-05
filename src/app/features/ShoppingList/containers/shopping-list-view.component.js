@@ -11,8 +11,8 @@ import generate from '../../../shared/assets/icons/generate.svg';
 import plus from '../../../shared/assets/icons/plus.svg';
 import remove from '../../../shared/assets/icons/remove.svg';
 import { ButtonIcon } from '../../../shared/ui/Button';
-import TableComponent from '../../Inventory/components/table.component';
 import AddShopModalComponent from '../components/add-shop-modal.component';
+import TableComponent from '../components/table.component';
 
 const TableWrapper = styled.div`
   display: flex;
@@ -84,7 +84,7 @@ const ShoppingListViewComponent = () => {
         <AddShopModalComponent setShowAddShopModal={setShowAddShopModal} addItemToShoppingList={addItem} />
       )}
       <Heading>
-        <FormattedMessage id={'shopping list'} />
+        <FormattedMessage id={'SHOPPING_LIST.HEADER'} />
       </Heading>
       <TableWrapper>
         <Image src={bag} alt={'shopping bag'} />
@@ -97,7 +97,7 @@ const ShoppingListViewComponent = () => {
           <TableComponent data={state.shoppingList} />
         ) : (
           <span>
-            <FormattedMessage id={'empty list'} />
+            <FormattedMessage id={'SHOPPING_LIST.EMPTY_LIST'} />
           </span>
         )}
         <ToastContainer autoClose={1400} />
