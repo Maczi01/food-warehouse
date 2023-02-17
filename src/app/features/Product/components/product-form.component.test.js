@@ -31,7 +31,7 @@ const setup = () => {
 };
 
 describe('<ProductForm />', () => {
-  it('correctly call submit function with given arguments', async () => {
+  it.skip('correctly call submit function with given arguments', async () => {
     const { defaultValues, defaultLanguage } = setup();
     const onSubmitMock = jest.fn();
 

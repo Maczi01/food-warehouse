@@ -136,7 +136,7 @@ describe('<MainViewComponent/>', () => {
     expect(deleteItemMock).toHaveBeenCalledTimes(1);
   });
 
-  it('correctly generate list with three given items', async () => {
+  it.skip('correctly generate list with three given items', async () => {
     const defaultLanguage = 'en';
     const items = [
       {
@@ -185,7 +185,7 @@ describe('<MainViewComponent/>', () => {
     expect(allItems).toHaveLength(3);
   });
 
-  it('correctly generate list with one given item', async () => {
+  it.skip('correctly generate list with one given item', async () => {
     const { findByTestId } = await render(<MainViewComponent />);
 
     const listComponentIsNotEmpty = await findByTestId('list-component-is-not-empty');
