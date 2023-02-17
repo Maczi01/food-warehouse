@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { ThemeProvider } from 'styled-components';
-
 import { BrowserRouter } from 'react-router-dom';
+import {ThemeProvider} from 'styled-components';
+
 import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider } from '../../../shared/utils/auth';
@@ -35,7 +35,7 @@ jest.mock('react-router-dom', () => ({
 
 jest.mock('../components/list.component', () => ({
   __esModule: true,
-  default: jest.fn(({ items, parameter }) => (
+  default: jest.fn(({ items }) => (
     <div data-testid="list-component">
       <div data-testid={items.length ? 'list-component-is-not-empty' : 'list-component-is-empty'} />
     </div>
