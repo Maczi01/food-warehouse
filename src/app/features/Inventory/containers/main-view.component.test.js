@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
-import {ThemeProvider} from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
