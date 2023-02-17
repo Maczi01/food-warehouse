@@ -15,7 +15,6 @@ export class HttpClientAdapter {
           resolve(snapshot);
         },
         (error) => {
-          console.error(error.message);
           reject(error);
         }
       );

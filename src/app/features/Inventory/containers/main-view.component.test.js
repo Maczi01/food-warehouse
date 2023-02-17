@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-// import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import { BrowserRouter } from 'react-router-dom';
 import { availableLanguages } from '../../../language';
 import { lightTheme } from '../../../shared/theme/theme';
 import { AuthProvider } from '../../../shared/utils/auth';
@@ -10,7 +10,7 @@ import { TranslationProvider } from '../../../shared/utils/translation';
 import ListItem from '../components/list-item.components';
 import List from '../components/list.component';
 import MainViewComponent from './main-view.component';
-import {BrowserRouter} from 'react-router-dom';
+
 class AuthMock {
   onAuthStateChanged = () => ({});
   signInWithEmailAndPassword = () => Promise.resolve();
@@ -19,25 +19,27 @@ class AuthMock {
 }
 
 jest.mock('../../../services/inventory.hook', () => ({
-    useInventory: jest.fn().mockReturnValue({
-      state: {
-        inventory: []
-      },
-      getForCurrentUser: jest.fn(),
-    })
+  useInventory: jest.fn().mockReturnValue({
+    state: {
+      inventory: [],
+    },
+    getForCurrentUser: jest.fn(),
+  }),
 }));
 
 jest.mock('react-router-dom', () => ({
   __esModule: true,
   ...jest.requireActual('react-router-dom'),
-    useParams: jest.fn().mockReturnValue({parameter: 'test'}),
+  useParams: jest.fn().mockReturnValue({ parameter: 'test' }),
 }));
 
 jest.mock('../components/list.component', () => ({
-    __esModule: true,
-  default: jest.fn(({items, parameter}) => <div data-testid="list-component">
-    <div data-testid={items.length ? 'list-component-is-not-empty' : 'list-component-is-empty'} />
-  </div>),
+  __esModule: true,
+  default: jest.fn(({ items, parameter }) => (
+    <div data-testid="list-component">
+      <div data-testid={items.length ? 'list-component-is-not-empty' : 'list-component-is-empty'} />
+    </div>
+  )),
 }));
 
 describe('<MainViewComponent/>', () => {
@@ -184,13 +186,10 @@ describe('<MainViewComponent/>', () => {
   });
 
   it('correctly generate list with one given item', async () => {
-    const {findByTestId} = await render(
-          <MainViewComponent />
-    );
+    const { findByTestId } = await render(<MainViewComponent />);
 
     const listComponentIsNotEmpty = await findByTestId('list-component-is-not-empty');
 
     expect(listComponentIsNotEmpty).toBeTruthy();
   });
-
 });
