@@ -10,7 +10,7 @@ import { TranslationProvider } from '../../../shared/utils/translation';
 import ListItem from '../components/list-item.components';
 import List from '../components/list.component';
 import MainViewComponent from './main-view.component';
-import ReactRouter, {MemoryRouter} from 'react-router'
+import {BrowserRouter} from 'react-router-dom';
 class AuthMock {
   onAuthStateChanged = () => ({});
   signInWithEmailAndPassword = () => Promise.resolve();
@@ -27,11 +27,11 @@ jest.mock('../../../services/inventory.hook', () => ({
     })
 }));
 
-// jest.mock('react-router-dom', () => ({
-//   __esModule: true,
-//   // ...jest.requireActual('react-router-dom'),
-//     useParams: jest.fn().mockReturnValue({parameter: 'test'}),
-// }));
+jest.mock('react-router-dom', () => ({
+  __esModule: true,
+  ...jest.requireActual('react-router-dom'),
+    useParams: jest.fn().mockReturnValue({parameter: 'test'}),
+}));
 
 jest.mock('../components/list.component', () => ({
     __esModule: true,
@@ -185,9 +185,7 @@ describe('<MainViewComponent/>', () => {
 
   it('correctly generate list with one given item', async () => {
     const {findByTestId} = await render(
-        <MemoryRouter initialEntries={["/category/beverages"]}>
           <MainViewComponent />
-        </MemoryRouter>
     );
 
     const listComponentIsNotEmpty = await findByTestId('list-component-is-not-empty');
