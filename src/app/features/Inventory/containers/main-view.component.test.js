@@ -17,9 +17,9 @@ jest.mock('../../../services/inventory.hook', () => ({
 jest.mock('../components/list.component', () => ({
     __esModule: true,
     default: ({items}) => (
-        <div data-testid="list-component">
-            <div data-testid={`list-component-${items.length}`}/>
-        </div>
+      <div data-testid="list-component">
+        <div data-testid={`list-component-${items.length}`}/>
+      </div>
     ),
 }));
 
