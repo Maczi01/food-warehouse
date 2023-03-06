@@ -1,32 +1,30 @@
-import { useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { useParams } from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
+import {useParams} from 'react-router-dom';
 
-import { useInventory } from '../../../services/inventory.hook';
 import List from '../components/list.component';
-import { Heading } from './main-view.styled';
+import {useGetInventoriesQuery} from '../get-inventories.query';
+import {Heading} from './main-view.styled';
 
 const allCategoryName = 'all';
 
 const MainViewComponent = () => {
-  const { parameter } = useParams();
-  const { state, getForCurrentUser } = useInventory();
+    const {parameter} = useParams();
+    const inventory = useGetInventoriesQuery();
 
-  useEffect(() => {
-    getForCurrentUser();
-  }, []);
+    const newFoodList =
+        parameter === allCategoryName ? inventory.data : inventory.data.filter((item) => item.category === parameter);
 
-  const newFoodList =
-    parameter === allCategoryName ? state.inventory : state.inventory.filter((item) => item.category === parameter);
-
-  return (
-    <>
-      <Heading>
-        <FormattedMessage id="INVENTORY.HEADER.WHAT_IN_INVENTORY" />
-      </Heading>
-      <List items={newFoodList} parameter={parameter} />
-    </>
-  );
+    return (
+        <>
+            <Heading>
+                <FormattedMessage id="INVENTORY.HEADER.WHAT_IN_INVENTORY"/>
+            </Heading>
+            {
+                inventory.isLoading ? <FormattedMessage id="GLOBAL.STATUS.LOADING"/>
+                    : <List items={newFoodList} parameter={parameter}/>
+            }
+        </>
+    );
 };
 
 export default MainViewComponent;

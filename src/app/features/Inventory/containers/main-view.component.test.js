@@ -1,7 +1,6 @@
 import {render} from '@testing-library/react';
 import {useParams} from 'react-router-dom';
 
-import {useInventory} from '../../../services/inventory.hook';
 import MainViewComponent from './main-view.component';
 
 jest.mock('react-router-dom', () => ({
@@ -56,7 +55,6 @@ describe('MainView component', () => {
                 getForCurrentUser: () => {
                 },
             };
-            useInventory.mockReturnValue(exampleStore);
             useParams.mockReturnValue(exampleParams);
             // jest.spyOn(List, 'default').mockImplementation(({ items }) => (
             //     <div data-testid="list-component">

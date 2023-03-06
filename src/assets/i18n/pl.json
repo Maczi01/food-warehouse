@@ -4,6 +4,9 @@
       "POLISH": "Polski",
       "ENGLISH": "English"
     },
+    "STATUS": {
+      "LOADING": "Ładowanie..."
+    },
     "MENU": {
       "CHECK_INVENTORY": "Sprawdź zapasy",
       "ADD_PRODUCT": "Dodaj produkt",
