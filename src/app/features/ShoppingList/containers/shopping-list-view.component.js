@@ -1,7 +1,6 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 
-import {useStoppingListStore} from '../../../services/shopping-list.hook';
 import bag from '../../../shared/assets/icons/bag.svg';
 import generate from '../../../shared/assets/icons/generate.svg';
 import plus from '../../../shared/assets/icons/plus.svg';
@@ -10,24 +9,25 @@ import {ButtonIcon} from '../../../shared/ui/Button';
 import {useGetInventoriesQuery} from '../../Inventory/get-inventories.query';
 import AddShopModalComponent from '../components/add-shop-modal.component';
 import TableComponent from '../components/table.component';
+import {useGetShoppingListQuery} from '../get-shopping-list.query';
+import {useAddItemToShoppingListMutation} from '../mutations/add-shopping-list-item.mutation';
+import {useClearShoppingListMutation} from '../mutations/clear-shopping-list.mutation';
+import {useGenerateShoppingListMutation} from '../mutations/generate-shopping-list.mutation';
+import {useToggleShoppingListItemMutation} from '../mutations/toggle-shopping-list-item.mutation';
 import {ButtonContainer, Heading, Image, TableWrapper} from './shopping-list-view.styled';
 
 const ShoppingListViewComponent = () => {
     const inventory = useGetInventoriesQuery();
-    const {
-        state: shoppingListState,
-        addItem,
-        clearList,
-        generateShoppingList,
-        getForCurrentUser: loadShoppingList,
-        toggleItem,
-    } = useStoppingListStore();
+    const generateShoppingList = useGenerateShoppingListMutation();
+    const clearList = useClearShoppingListMutation();
+    const toggleItem = useToggleShoppingListItemMutation();
+    const addItem = useAddItemToShoppingListMutation();
+    const shoppingList = useGetShoppingListQuery();
     const [modalOpen, setModalOpen] = useState(false);
-    const shoppingList = shoppingListState && shoppingListState.shoppingList ? shoppingListState.shoppingList : [];
 
-    const handleGenerateShoppingList = useCallback(() => {
+    const handleGenerateShoppingList = useCallback(async () => {
         if (inventory.isSuccess) {
-            generateShoppingList(inventory.data);
+            await generateShoppingList.mutateAsync(inventory.data);
         }
     }, [generateShoppingList, inventory.data, inventory.isSuccess]);
 
@@ -40,13 +40,15 @@ const ShoppingListViewComponent = () => {
     };
 
     const handleSubmit = async (data) => {
-        await addItem(data);
+        await addItem.mutateAsync(data);
         hideModal();
     };
-
-    useEffect(() => {
-        loadShoppingList();
-    }, []);
+    const handleClearList = async () => {
+        await clearList.mutateAsync();
+    }
+    const handleToggleItem = async (item) => {
+        await toggleItem.mutateAsync(item);
+    }
 
     return (
       <>
@@ -59,10 +61,10 @@ const ShoppingListViewComponent = () => {
           <ButtonContainer>
             <ButtonIcon onClick={showModal} icon={plus} data-testid="showModal"/>
             <ButtonIcon onClick={handleGenerateShoppingList} icon={generate} data-testid="generateList"/>
-            <ButtonIcon onClick={clearList} icon={remove} data-testid="deleteList"/>
+            <ButtonIcon onClick={handleClearList} icon={remove} data-testid="deleteList"/>
           </ButtonContainer>
-          {shoppingList.length ? (
-            <TableComponent data={shoppingList} onToggleItem={toggleItem}/>
+          {shoppingList.data.length ? (
+            <TableComponent data={shoppingList.data} onToggleItem={handleToggleItem}/>
                 ) : (
                   <span>
                     <FormattedMessage id="SHOPPING_LIST.EMPTY_LIST"/>
