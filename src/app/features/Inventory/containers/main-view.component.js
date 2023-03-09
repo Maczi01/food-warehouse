@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
@@ -10,9 +11,12 @@ const allCategoryName = 'all';
 const MainViewComponent = () => {
   const { parameter } = useParams();
   const inventory = useGetInventoriesQuery();
-
   const newFoodList =
     parameter === allCategoryName ? inventory.data : inventory.data.filter((item) => item.category === parameter);
+
+  useEffect(() => {
+    inventory.refetch();
+  }, []);
 
   return (
     <>

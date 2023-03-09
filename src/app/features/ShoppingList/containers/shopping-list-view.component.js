@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import bag from '../../../shared/assets/icons/bag.svg';
@@ -49,6 +49,11 @@ const ShoppingListViewComponent = () => {
   const handleToggleItem = async (item) => {
     await toggleItem.mutateAsync(item);
   };
+
+  useEffect(() => {
+    inventory.refetch();
+    shoppingList.refetch();
+  }, []);
 
   return (
     <>

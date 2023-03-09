@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
@@ -25,6 +26,14 @@ const EditViewComponent = ({ intl }) => {
       toast.error(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.ERROR' }));
     }
   };
+
+  useEffect(() => {
+    inventory.refetch();
+  }, []);
+
+  if (inventory.isFetching) {
+    return <FormattedMessage id="GLOBAL.STATUS.LOADING" />;
+  }
 
   return (
     <FormWrapper>
