@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { getAuth } from '../shared/utils/auth';
-import { getHttpClient } from '../shared/utils/http-client';
+import { getAuth } from '../../shared/utils/auth';
+import { getHttpClient } from '../../shared/utils/http-client';
 
 const collectionName = 'foodList';
 
@@ -48,3 +48,5 @@ export class InventoryService {
 
   getMany = () => getHttpClient().getAll(collectionName);
 }
+
+export const inventoryService = new InventoryService();

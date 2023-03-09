@@ -4,6 +4,9 @@
       "POLISH": "Polski",
       "ENGLISH": "English"
     },
+    "STATUS": {
+      "LOADING": "Loading data..."
+    },
     "MENU": {
       "CHECK_INVENTORY": "Check inventory",
       "ADD_PRODUCT": "Add product",

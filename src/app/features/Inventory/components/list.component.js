@@ -2,10 +2,12 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
-import { useInventory } from '../../../services/inventory.hook';
 import bag from '../../../shared/assets/icons/bag.svg';
 import { categories } from '../../../shared/utils/item-properties';
 import { routes } from '../../../shared/utils/routes';
+import {useDecreaseQuantityMutation} from '../mutations/decrease-quantity.mutation';
+import {useDeleteInventoryMutation} from '../mutations/delete-inventory.mutation';
+import {useIncreaseQuantityMutation} from '../mutations/increase-inventory.mutation';
 import ListItem from './list-item.components';
 import { CategoryWrapper, EmptyListWrapper, Heading, Image, Paragraph, UlWrapper } from './list.styled';
 
@@ -24,7 +26,9 @@ Header.propTypes = {
 };
 
 const List = ({ items, parameter }) => {
-  const { increaseQuantity, decreaseQuantity, deleteItem, editItem } = useInventory();
+  const deleteItem = useDeleteInventoryMutation();
+  const increaseQuantity = useIncreaseQuantityMutation();
+  const decreaseQuantity =  useDecreaseQuantityMutation();
 
   return (
     <>
@@ -42,10 +46,9 @@ const List = ({ items, parameter }) => {
             <ListItem
               {...item}
               key={item.id}
-              deleteItem={() => deleteItem(item.id)}
-              editItem={editItem}
-              decreaseQuantity={() => decreaseQuantity(item)}
-              increaseQuantity={() => increaseQuantity(item)}
+              deleteItem={() => deleteItem.mutateAsync(item.id)}
+              decreaseQuantity={() => decreaseQuantity.mutateAsync(item)}
+              increaseQuantity={() => increaseQuantity.mutateAsync(item)}
             />
           ))
         ) : (
