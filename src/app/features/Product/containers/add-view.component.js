@@ -4,7 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { FormWrapper } from '../../../shared/ui/Form';
 import { Heading } from '../../../shared/ui/Page';
 import { toast } from '../../../shared/utils/toast';
-import {useAddInventoryMutation} from '../../Inventory/mutations/add-inventory.mutation';
+import { useAddInventoryMutation } from '../../Inventory/data-access/mutations/add-inventory.mutation';
 import ProductForm from '../components/product-form.component';
 
 const defaultValues = {

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import bag from '../../../shared/assets/icons/bag.svg';
 import { categories } from '../../../shared/utils/item-properties';
 import { routes } from '../../../shared/utils/routes';
-import {useDecreaseQuantityMutation} from '../mutations/decrease-quantity.mutation';
-import {useDeleteInventoryMutation} from '../mutations/delete-inventory.mutation';
-import {useIncreaseQuantityMutation} from '../mutations/increase-inventory.mutation';
+import { useDecreaseQuantityMutation } from '../data-access/mutations/decrease-quantity.mutation';
+import { useDeleteInventoryMutation } from '../data-access/mutations/delete-inventory.mutation';
+import { useIncreaseQuantityMutation } from '../data-access/mutations/increase-inventory.mutation';
 import ListItem from './list-item.components';
 import { CategoryWrapper, EmptyListWrapper, Heading, Image, Paragraph, UlWrapper } from './list.styled';
 
@@ -28,7 +28,7 @@ Header.propTypes = {
 const List = ({ items, parameter }) => {
   const deleteItem = useDeleteInventoryMutation();
   const increaseQuantity = useIncreaseQuantityMutation();
-  const decreaseQuantity =  useDecreaseQuantityMutation();
+  const decreaseQuantity = useDecreaseQuantityMutation();
 
   return (
     <>

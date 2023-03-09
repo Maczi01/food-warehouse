@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { getAuth } from '../../shared/utils/auth';
-import { getHttpClient } from '../../shared/utils/http-client';
+import { getAuth } from '../../../shared/utils/auth';
+import { getHttpClient } from '../../../shared/utils/http-client';
 
 const collectionName = 'shoppingList';
 
@@ -22,10 +22,10 @@ export class ShoppingListService {
 
   clear = () => {
     return getHttpClient()
-        .clear(collectionName)
-        .then(() => {
-          return Promise.resolve();
-        });
+      .clear(collectionName)
+      .then(() => {
+        return Promise.resolve();
+      });
   };
 }
 
