@@ -1,12 +1,12 @@
 import { useMutation } from 'react-query';
 
-import { inventoryService } from '../inventory.service';
+import { deleteInventory } from '../infrastructure/delete-inventory';
 import { useInvalidatedAllInventories } from './utils/invalidate-all-inventories';
 
 export const useDeleteInventoryMutation = () => {
   const invalidateAll = useInvalidatedAllInventories();
   return useMutation({
-    mutationFn: (id) => inventoryService.delete(id),
+    mutationFn: deleteInventory,
     onSuccess: () => {
       invalidateAll();
     },

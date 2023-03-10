@@ -1,12 +1,12 @@
 import { useMutation } from 'react-query';
 
-import { shoppingListService } from '../shopping-list.service';
+import { clearShoppingList } from '../infrastructure/clear-shopping-list';
 import { useInvalidatedShoppingList } from './utils/invalidate-shopping-list';
 
 export const useClearShoppingListMutation = () => {
   const invalidateShoppingList = useInvalidatedShoppingList();
   return useMutation({
-    mutationFn: () => shoppingListService.clear(),
+    mutationFn: clearShoppingList,
     onSuccess: () => {
       invalidateShoppingList();
     },

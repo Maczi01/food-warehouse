@@ -1,18 +1,12 @@
 import { useMutation } from 'react-query';
 
-import { shoppingListService } from '../shopping-list.service';
+import { toggleItem } from '../infrastructure/toggle-shopping-list-item';
 import { useInvalidatedShoppingList } from './utils/invalidate-shopping-list';
 
 export const useToggleShoppingListItemMutation = () => {
   const invalidateShoppingList = useInvalidatedShoppingList();
   return useMutation({
-    mutationFn: (item) => {
-      const newItem = {
-        ...item,
-        checked: !item.checked,
-      };
-      return shoppingListService.update(newItem);
-    },
+    mutationFn: toggleItem,
     onSuccess: () => {
       invalidateShoppingList();
     },
