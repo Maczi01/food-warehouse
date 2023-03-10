@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
 import { FormWrapper } from '../../../shared/ui/Form';
 import { Heading } from '../../../shared/ui/Page';
 import { toast } from '../../../shared/utils/toast';
-import {useEditInventoryMutation} from '../../Inventory/mutations/edit-inventory.mutation';
-import {useGetInventoriesQuery} from '../../Inventory/get-inventories.query';
+import { useGetInventoriesQuery } from '../../Inventory/data-access/get-inventories.query';
+import { useEditInventoryMutation } from '../../Inventory/data-access/mutations/edit-inventory.mutation';
 import ProductForm from '../components/product-form.component';
 
 const EditViewComponent = ({ intl }) => {
@@ -25,6 +26,14 @@ const EditViewComponent = ({ intl }) => {
       toast.error(formatMessage({ id: 'PRODUCT.EDIT.MESSAGE.ERROR' }));
     }
   };
+
+  useEffect(() => {
+    inventory.refetch();
+  }, []);
+
+  if (inventory.isFetching) {
+    return <FormattedMessage id="GLOBAL.STATUS.LOADING" />;
+  }
 
   return (
     <FormWrapper>
