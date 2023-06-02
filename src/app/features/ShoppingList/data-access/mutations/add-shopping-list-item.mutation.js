@@ -1,12 +1,12 @@
 import { useMutation } from 'react-query';
 
-import { shoppingListService } from '../shopping-list.service';
+import { createShoppingListItem } from '../infrastructure/create-shopping-list-item';
 import { useInvalidatedShoppingList } from './utils/invalidate-shopping-list';
 
 export const useAddItemToShoppingListMutation = () => {
   const invalidateShoppingList = useInvalidatedShoppingList();
   return useMutation({
-    mutationFn: (item) => shoppingListService.create(item),
+    mutationFn: createShoppingListItem,
     onSuccess: () => {
       invalidateShoppingList();
     },

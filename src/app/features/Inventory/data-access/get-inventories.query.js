@@ -1,23 +1,18 @@
-import { useQuery } from 'react-query';
+import {useQuery} from 'react-query';
+import {z} from 'zod';
 
-import { getAuth } from '../../../shared/utils/auth';
-import { queryKey } from './inventory.query-key';
-import { inventoryService } from './inventory.service';
+import {getAllInventories} from './infrastructure/get-all-invetories';
+import {queryKey} from './inventory.query-key';
 
 export const useGetInventoriesQuery = () => {
-  return useQuery({
-    queryKey: queryKey.inventory(),
-    queryFn: () =>
-      inventoryService.getMany().then((snapshot) => {
-        const userId = getAuth().currentUser.uid;
-        const foodListData = [];
-        if (snapshot && snapshot.docs && snapshot.docs.length) {
-          snapshot.docs.forEach((doc) => foodListData.push({ ...doc.data(), id: doc.id }));
-        }
-
-        return foodListData.filter((doc) => {
-          return doc.userUid === userId;
-        });
-      }),
-  });
+    return useQuery({
+        queryKey: queryKey.inventory(),
+        queryFn: getAllInventories,
+        onError: (error) => {
+            if (error instanceof z.ZodError) {
+                // eslint-disable-next-line no-console
+                console.log('error from useGetInventoriesQuery', error)
+            }
+        },
+    });
 };

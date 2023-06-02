@@ -29,7 +29,8 @@
     "react-scripts": "5.0.1",
     "react-toastify": "9.1.1",
     "styled-components": "5.3.6",
-    "yup": "0.32.11"
+    "yup": "0.32.11",
+    "zod": "3.19.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
