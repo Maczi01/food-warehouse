@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { availableLanguages } from '../../../language';
-import { lightTheme } from '../../../shared/theme/theme';
+import { lightTheme } from '../../../shared/theme/theme.provider';
 import { TranslationProvider } from '../../../shared/utils/translation';
 import FilterViewComponent from './flter-view.component.js';
 

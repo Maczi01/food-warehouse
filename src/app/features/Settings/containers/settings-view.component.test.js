@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import { availableLanguages } from '../../../language';
-import { ThemeProvider } from '../../../shared/theme/theme';
+import { ThemeProvider } from '../../../shared/theme/theme.provider';
 import { TranslationProvider } from '../../../shared/utils/translation';
 import SettingsCardComponent from '../components/settings-card.component';
 

@@ -4,7 +4,7 @@ import { HttpClientAdapter, auth } from './firebase.config';
 import { availableLanguages, defaultLanguage } from './language';
 import { ReactQuery } from './react-query.component';
 import Routes from './routes.component';
-import { ThemeProvider } from './shared/theme/theme';
+import { ThemeProvider } from './shared/theme/theme.provider';
 import { AuthProvider } from './shared/utils/auth';
 import { initializeHttpClient } from './shared/utils/http-client';
 import { ToastContainer, toast } from './shared/utils/toast';

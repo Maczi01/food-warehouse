@@ -32,12 +32,6 @@ export const Heading = styled.h1`
   }
 `;
 
-export const ButtonContainer = styled.div`
-  margin: 10px 20px 20px 0;
-  display: flex;
-  justify-content: flex-end;
-`;
-
 export const Image = styled.img`
   margin: 5px;
   width: 150px;

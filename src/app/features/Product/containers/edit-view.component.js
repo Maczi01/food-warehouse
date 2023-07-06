@@ -1,10 +1,10 @@
+import { Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
-import { FormWrapper } from '../../../shared/ui/Form';
-import { Heading } from '../../../shared/ui/Page';
+import FormWrapper from '../../../shared/ui/Form/form-wrapper.component';
 import { toast } from '../../../shared/utils/toast';
 import { useGetInventoriesQuery } from '../../Inventory/data-access/get-inventories.query';
 import { useEditInventoryMutation } from '../../Inventory/data-access/mutations/edit-inventory.mutation';
@@ -36,10 +36,11 @@ const EditViewComponent = ({ intl }) => {
   }
 
   return (
+      //   TODO, tu byl <FormWrapper>
     <FormWrapper>
-      <Heading>
+      <Typography variant="h1">
         <FormattedMessage id="PRODUCT.EDIT.HEADER" />
-      </Heading>
+      </Typography>
       <ProductForm onSubmit={handleSubmit} values={item} />
     </FormWrapper>
   );

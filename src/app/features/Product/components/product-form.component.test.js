@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { availableLanguages } from '../../../language';
-import { lightTheme } from '../../../shared/theme/theme';
+import { lightTheme } from '../../../shared/theme/theme.provider';
 import { AuthProvider } from '../../../shared/utils/auth';
 import { TranslationProvider } from '../../../shared/utils/translation';
 import ProductForm from './product-form.component';

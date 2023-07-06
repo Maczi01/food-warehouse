@@ -1,4 +1,4 @@
-import { useTheme } from '../../../shared/theme/theme';
+import { useTheme } from '../../../shared/theme/theme.provider';
 import { useAuth } from '../../../shared/utils/auth';
 import { useLanguage } from '../../../shared/utils/translation';
 import SettingsCardComponent from '../components/settings-card.component';

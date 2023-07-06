@@ -1,38 +1,75 @@
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Drawer, IconButton, Toolbar } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { NavLink } from 'react-router-dom';
 
-import logout from '../../../shared/assets/icons/logout.svg';
-import { Burger } from '../../../shared/ui/Burger';
-import { ButtonIcon } from '../../../shared/ui/Button';
+import Logout from '../../../shared/assets/icons/logout.svg';
 import { routes } from '../../../shared/utils/routes';
-import Menu, { links } from './menu.component';
-import { HamburgerContainer, HeaderWrapper, LinksWrapper, List, ListItem, StyledLogoLink } from './navbar.styled';
+import {HamburgerContainer, ListItem, StyledLogoLink, styles} from './navbar.styled';
+
+
+const links = [
+  {
+    id: 'checkInventory',
+    to: routes.home.path,
+    translationKey: 'GLOBAL.MENU.CHECK_INVENTORY',
+  },
+  {
+    id: 'addProduct',
+    to: routes.product.add.path,
+    translationKey: 'GLOBAL.MENU.ADD_PRODUCT',
+  },
+  {
+    id: 'shoppingList',
+    to: routes.inventory.list.path,
+    translationKey: 'GLOBAL.MENU.SHOPPING_LIST',
+  },
+  {
+    id: 'settings',
+    to: routes.settings.path,
+    translationKey: 'GLOBAL.MENU.SETTINGS',
+  },
+];
 
 const Navbar = ({ signOut }) => {
   const [open, setOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setOpen((prev) => !prev);
+  };
+
   return (
     <>
       <HamburgerContainer>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
+        <IconButton onClick={setOpen}>
+          <MenuIcon fontSize="large" />
+        </IconButton>
+        <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+          <IconButton onClick={toggleMenu}>
+            <CloseIcon fontSize="large" />
+          </IconButton>
+          {links.map((link) => (
+            <ListItem key={link.translationKey} to={link.to} activeclass="active">
+              <FormattedMessage id={link.translationKey} />
+            </ListItem>
+          ))}
+        </Drawer>
       </HamburgerContainer>
-      <HeaderWrapper data-testid="navbarBackground">
-        <LinksWrapper>
+      <AppBar sx={styles.appBar} data-testid="navbarBackground">
+        <Toolbar sx={styles.toolbar}>
           <StyledLogoLink to={routes.home.path} />
-          <List>
-            {links.map((link) => (
-              <ListItem as={NavLink} to={link.to} key={link.translationKey} activeclass="active" data-testid={link.id}>
-                <FormattedMessage id={link.translationKey} />
-              </ListItem>
-            ))}
-          </List>
-        </LinksWrapper>
-
-        <ButtonIcon onClick={signOut} type="submit" icon={logout} data-testid="logout" />
-      </HeaderWrapper>
+          {links.map((link) => (
+            <ListItem to={link.to} key={link.translationKey} activeclass="active" data-testid={link.id}>
+              <FormattedMessage id={link.translationKey} />
+            </ListItem>
+          ))}
+        </Toolbar>
+        <IconButton onClick={signOut} type="submit" data-testid="logout">
+          <img src={Logout} alt="Logout" />
+        </IconButton>
+      </AppBar>
     </>
   );
 };

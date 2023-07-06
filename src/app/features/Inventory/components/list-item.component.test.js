@@ -3,7 +3,7 @@ import user from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { lightTheme } from '../../../shared/theme/theme';
+import { lightTheme } from '../../../shared/theme/theme.provider';
 import ListItem from './list-item.components';
 
 describe('MainView component', () => {

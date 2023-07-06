@@ -1,9 +1,10 @@
+import {Typography} from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import { categories } from '../../../shared/utils/item-properties';
 import { routes } from '../../../shared/utils/routes';
-import { GridWrapper, Heading, Icon, IconWrapper, Paragraph } from './flter-view.styled';
+import { GridWrapper, Heading, Icon, IconWrapper } from './flter-view.styled';
 
 const FilterViewComponent = () => (
   <>
@@ -19,9 +20,9 @@ const FilterViewComponent = () => (
           data-testid={category.id}
         >
           <Icon src={category.icon} />
-          <Paragraph>
+          <Typography paragraph={true}>
             <FormattedMessage id={category.translationKey} />
-          </Paragraph>
+          </Typography>
         </IconWrapper>
       ))}
     </GridWrapper>

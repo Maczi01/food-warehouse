@@ -1,3 +1,4 @@
+import {Typography} from '@mui/material';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
@@ -9,7 +10,7 @@ import { useDecreaseQuantityMutation } from '../data-access/mutations/decrease-q
 import { useDeleteInventoryMutation } from '../data-access/mutations/delete-inventory.mutation';
 import { useIncreaseQuantityMutation } from '../data-access/mutations/increase-inventory.mutation';
 import ListItem from './list-item.components';
-import { CategoryWrapper, EmptyListWrapper, Heading, Image, Paragraph, UlWrapper } from './list.styled';
+import { CategoryWrapper, EmptyListWrapper, Heading, Image, UlWrapper } from './list.styled';
 
 const Header = ({ category }) => {
   const categoryName = categories.find((cat) => cat.name === category);
@@ -36,9 +37,9 @@ const List = ({ items, parameter }) => {
         <Header category={parameter} />
       </CategoryWrapper>
       <Link to={routes.home.path}>
-        <Paragraph>
+        <Typography paragraph={true}>
           <FormattedMessage id="INVENTORY.LIST.GO_BACK_BUTTON" />
-        </Paragraph>
+        </Typography>
       </Link>
       <UlWrapper>
         {items.length ? (

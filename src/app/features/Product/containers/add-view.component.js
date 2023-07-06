@@ -1,8 +1,8 @@
+import { Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { FormWrapper } from '../../../shared/ui/Form';
-import { Heading } from '../../../shared/ui/Page';
 import { toast } from '../../../shared/utils/toast';
 import { useAddInventoryMutation } from '../../Inventory/data-access/mutations/add-inventory.mutation';
 import ProductForm from '../components/product-form.component';
@@ -31,9 +31,9 @@ const AddViewComponent = ({ intl }) => {
 
   return (
     <FormWrapper>
-      <Heading>
+      <Typography variant="h1">
         <FormattedMessage id="PRODUCT.ADD.HEADER" />
-      </Heading>
+      </Typography>
       <ProductForm onSubmit={handleSubmit} values={defaultValues} />
     </FormWrapper>
   );

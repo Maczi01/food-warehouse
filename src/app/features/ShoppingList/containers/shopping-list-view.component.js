@@ -1,3 +1,4 @@
+import {ButtonGroup, IconButton} from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
@@ -5,7 +6,6 @@ import bag from '../../../shared/assets/icons/bag.svg';
 import generate from '../../../shared/assets/icons/generate.svg';
 import plus from '../../../shared/assets/icons/plus.svg';
 import remove from '../../../shared/assets/icons/remove.svg';
-import { ButtonIcon } from '../../../shared/ui/Button';
 import { useGetInventoriesQuery } from '../../Inventory/data-access/get-inventories.query';
 import AddShopModalComponent from '../components/add-shop-modal.component';
 import TableComponent from '../components/table.component';
@@ -14,7 +14,7 @@ import { useAddItemToShoppingListMutation } from '../data-access/mutations/add-s
 import { useClearShoppingListMutation } from '../data-access/mutations/clear-shopping-list.mutation';
 import { useGenerateShoppingListMutation } from '../data-access/mutations/generate-shopping-list.mutation';
 import { useToggleShoppingListItemMutation } from '../data-access/mutations/toggle-shopping-list-item.mutation';
-import { ButtonContainer, Heading, Image, TableWrapper } from './shopping-list-view.styled';
+import { Heading, Image, TableWrapper } from './shopping-list-view.styled';
 
 const ShoppingListViewComponent = () => {
   const inventory = useGetInventoriesQuery();
@@ -63,11 +63,19 @@ const ShoppingListViewComponent = () => {
       </Heading>
       <TableWrapper>
         <Image src={bag} alt="shopping bag" />
-        <ButtonContainer>
-          <ButtonIcon onClick={showModal} icon={plus} data-testid="showModal" />
-          <ButtonIcon onClick={handleGenerateShoppingList} icon={generate} data-testid="generateList" />
-          <ButtonIcon onClick={handleClearList} icon={remove} data-testid="deleteList" />
-        </ButtonContainer>
+        <ButtonGroup>
+          <IconButton onClick={showModal} data-testid="showModal" >
+            <img src={plus} alt=""/>
+          </IconButton>
+          <IconButton onClick={handleGenerateShoppingList} data-testid="generateList" >
+            <img src={generate} alt=""/>
+
+          </IconButton>
+          <IconButton onClick={handleClearList} data-testid="deleteList" >
+            <img src={remove} alt=""/>
+
+          </IconButton>
+        </ButtonGroup>
         {shoppingList.data.length ? (
           <TableComponent data={shoppingList.data} onToggleItem={handleToggleItem} />
         ) : (

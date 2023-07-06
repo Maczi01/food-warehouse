@@ -1,17 +1,22 @@
-import styled from 'styled-components';
+import {BottomNavigation} from "@mui/material";
 
-const Container = styled.div`
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.blue};
-  color: white;
-  text-align: center;
-  height: 70px;
-  margin-top: 70px;
-`;
+const Footer = () => (
+    <BottomNavigation
+        sx={{
+            position: "fixed",
+            left: "0",
+            bottom: "0",
+            width: "100%",
+            color: "white",
+            backgroundColor: '#00214D',
+            textAlign: "center",
+            height: "70px",
+            marginTop: "70px"
+        }}
+    >
 
-const Footer = () => <Container />;
+    </BottomNavigation>
+)
+// <Container />;
 
 export default Footer;
